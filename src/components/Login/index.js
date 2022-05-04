@@ -19,7 +19,7 @@ function Login() {
   };
   return (
     <>
-      <button type="button" class="login-signup" onClick={handleSignup} >s'inscrire</button>
+    <button type="button" class="login-signup" onClick={handleSignup} >s'inscrire</button>
         {isOpenSignup && (
             <form className="login-form" onSubmit={handleSubmit}>
                 <Field
@@ -30,7 +30,7 @@ function Login() {
                 onChange={changeField}
                 title="email"
                 />
-                <input
+                <Field
                 type="password"
                 className="login-input"
                 placeholder="Mot de passe"
@@ -38,7 +38,7 @@ function Login() {
                 onChange={(event) => handleChange(event.target.value, 'password')}
                 title="password"
                 />
-                <input
+                <Field
                 type="insee-code"
                 className="login-input"
                 placeholder="Code INSEE"
