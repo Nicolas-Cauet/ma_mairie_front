@@ -19,7 +19,7 @@ function Login() {
   };
   return (
     <>
-    <button type="button" class="login-signup" onClick={handleSignup} >s'inscrire</button>
+    <button type="button" className="login-signup" onClick={handleSignup} >s'inscrire</button>
         {isOpenSignup && (
             <form className="login-form" onSubmit={handleSubmit}>
                 <Field
@@ -56,7 +56,7 @@ function Login() {
             )}
         
 
-      <button type="button" class="login-login" onClick={handleLogin} >se connecter</button>
+      <button type="button" className="login-login" onClick={handleLogin} >se connecter</button>
       {isOpenLogin && (
         <form className="login-form" onSubmit={handleSubmit}>
                 <input
