@@ -5,7 +5,7 @@ import './style.scss';
 
 function Menu() {
   return (
-    <Dropdown direction='left' button='true' icon='sidebar' className='menu-icon'>
+    <Dropdown direction='left' icon='sidebar' className='menu-icon'>
     <Dropdown.Menu>
       <Dropdown.Item icon='newspaper outline' text='Articles' />
       <Dropdown.Item icon='warning sign' text='Signaler' />
