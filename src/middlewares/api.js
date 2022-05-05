@@ -17,12 +17,12 @@ const api = (store) => (next) => (action) => {
         .then((response) => {
           console.log(response);
           //! en cas de succès message d'information dans le composant
-          //! avec sélection du button connexion
+          //! avec state loginMessage
+          //! affichage modale Connexion
+          //! avec rendu active du button connexion (créer un state)
         })
         .catch((error) => {
-          //! emmettre un mesage d'erreur
-          alert('Mauvais couple identifiant / mot de passe');
-          console.log(error);
+          store.dispatch(setLoginMessage('Une erreur est survenue, veuillez recommencer'));
         });
     break;
     case SUBMIT_LOGIN:
@@ -44,7 +44,8 @@ const api = (store) => (next) => (action) => {
 
         })
         .catch((error) => {
-          store.dispatch(setLoginMessage('email et/ou password incorrect'));
+          store.dispatch(setLoginMessage('Email et/ou Mot de passe incorrect'));
+          console.log(error);
         });
   break;
     default:

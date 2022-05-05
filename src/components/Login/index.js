@@ -6,7 +6,7 @@ import Field from '../Field'
 import { Button } from 'semantic-ui-react'
 
 import './style.scss';
-import { logout, submitSignup, submitLogin } from '../../actions/action';
+import { logout, submitSignup, submitLogin, toggleLogin, toggleSignup } from '../../actions/action';
 
 function Login() {
   const dispatch = useDispatch();
@@ -20,11 +20,11 @@ function Login() {
     loginMessage,
   } = useSelector((state) => state.login);
   
-  const toggleLogin = () => {
+  const handleToggleLogin = () => {
     dispatch(toggleLogin());
   };
   
-  const toggleSignup = () => {
+  const handleToggleSignup = () => {
     dispatch(toggleSignup());
   };
   
@@ -46,6 +46,7 @@ function Login() {
     <div className='login'>
       {logged && (
         <Button
+          // active="!state"/
           type="button"
           className='login-button'
           onClick={handleLogout}
@@ -58,15 +59,16 @@ function Login() {
         <Button
           type="button"
           className="login-button"
-          onClick={toggleSignup}
+          onClick={handleToggleSignup}
         >
           Inscription
         </Button>
         <Button.Or text="Ou"/>
           <Button
+            // active="true(dans state)"
             type="button"
             className="login-button"
-            onClick={toggleLogin}
+            onClick={handleToggleLogin}
           >
             Connexion
           </Button>

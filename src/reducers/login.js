@@ -6,7 +6,7 @@ export const initialState = {
     inseeCode: '',
     logged: false,
     isOpenSignup: false,
-    isOpenLogin: true,
+    isOpenLogin: false,
     loginMessage: '',
 };
 
@@ -22,6 +22,7 @@ const reducer = (state = initialState, action = {}) => {
         ...state,
         isOpenLogin: !state.isOpenLogin,
         isOpenSignup: false,
+        loginMessage: '',
       };
     }
     case TOGGLE_SIGNUP: {
@@ -29,6 +30,7 @@ const reducer = (state = initialState, action = {}) => {
         ...state,
         isOpenSignup: !state.isOpenSignup,
         isOpenLogin: false,
+        loginMessage: '',
       };
     }
     case LOGIN: {
