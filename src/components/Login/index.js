@@ -1,70 +1,78 @@
-import { useSelector } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import PropTypes from 'prop-types';
+
 import Field from '../Field'
 
+import { Button } from 'semantic-ui-react'
+
 import './style.scss';
+import { logout, toggleLogin, toggleSignup } from '../../actions/action';
 
 function Login() {
-  const { email, password, inseeCode, logged, isOpenSignup, isOpenLogin } = useSelector((state) => state.login);
-  const handleLogin = () => {
-  }
-  const handleSignup = () => {
-  }
-  const handleChange = (event) => {
-  };
-  const changeField = () => {
-  };
-  const handleSubmit = (event) => {
-    event.preventDefault();
-  };
-  return (
-    <>
-    <button type="button" className="login-signup" onClick={handleSignup} >s'inscrire</button>
-        {isOpenSignup && (
-            <form className="login-form" onSubmit={handleSubmit}>
-                <Field
-                type="email"
-                className="login-input"
-                placeholder="email"
-                value={email}
-                onChange={changeField}
-                title="email"
-                />
-                <Field
-                type="password"
-                className="login-input"
-                placeholder="Mot de passe"
-                value={password}
-                onChange={(event) => handleChange(event.target.value, 'password')}
-                title="password"
-                />
-                <Field
-                type="insee-code"
-                className="login-input"
-                placeholder="Code INSEE"
-                value={inseeCode}
-                onChange={(event) => handleChange(event.target.value, 'insee-code')}
-                title="insee-code"
-                />
-                <button
-                type="submit"
-                className="login-form-button"
-                >
-                Envoyer
-                </button>
-            </form>
-            )}
-        
+  const dispatch = useDispatch();
 
-      <button type="button" className="login-login" onClick={handleLogin} >se connecter</button>
-      {!isOpenLogin && (
-        <form className="login-form" onSubmit={handleSubmit}>
+  const { email, password, inseeCode, logged, isOpenSignup, isOpenLogin } = useSelector((state) => state.login);
+  
+  const toggleLogin = () => {
+    dispatch(toggleLogin());
+  };
+  
+  const toggleSignup = () => {
+    dispatch(toggleSignup());
+  };
+  
+  const handleLogout = () => {
+    dispatch(logout());
+  };
+
+  const submitSignup = (event) => {
+    event.preventDefault();
+    dispatch(submitSignup(email, password, inseeCode))
+  };
+
+  const submitLogin = (event) => {
+    event.preventDefault();
+    dispatch(submitLogin(email, password))
+  };
+  
+  return (
+    <div className='login'>
+      {logged && (
+        <Button
+          type="button"
+          className='login-button'
+          onClick={handleLogout}
+        >
+          Se déconnecter
+        </Button>
+      )}
+      {!logged && (
+        <Button.Group>
+        <Button
+          type="button"
+          className="login-button"
+          onClick={toggleSignup}
+       >Inscription</Button>
+        <Button.Or text="Ou"/>
+          <Button
+            type="button"
+            className="login-button"
+            onClick={toggleLogin}
+          >
+            Connexion
+          </Button>
+      </Button.Group>
+      )}
+      
+      {isOpenSignup && (
+            <form className="login-form" onSubmit={submitSignup}>
                 <Field
                 type="email"
                 className="login-input"
                 placeholder="Email"
                 value={email}
                 title="email"
+                icon="envelope"
                 />
                 <Field
                 type="password"
@@ -72,6 +80,7 @@ function Login() {
                 placeholder="Mot de passe"
                 value={password}
                 title="password"
+                icon="key"
                 />
                 <Field
                 type="insee-code"
@@ -79,16 +88,43 @@ function Login() {
                 placeholder="Code INSEE"
                 value={inseeCode}
                 title="inseeCode"
+                icon="building"
                 />
-                <button
+                <Button
                 type="submit"
-                className="settings__submit"
+                className="login-form-button"
                 >
-                Envoyer
-                </button>
+                S'inscrire
+                </Button>
+            </form>
+            )}
+      {isOpenLogin && (
+        <form className="login-form" onSubmit={submitLogin}>
+                <Field
+                type="email"
+                className="login-input"
+                placeholder="Email"
+                value={email}
+                title="email"
+                icon="envelope"
+                />
+                <Field
+                type="password"
+                className="login-input"
+                placeholder="Mot de passe"
+                value={password}
+                title="password"
+                icon="key"
+                />
+                <Button
+                type="submit"
+                className="login-form-button"
+                >
+                Se connecter
+                </Button>
             </form>
       )}
-    </>
+    </div>
   );
 }
 
