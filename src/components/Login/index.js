@@ -6,7 +6,7 @@ import Field from '../Field'
 import { Button } from 'semantic-ui-react'
 
 import './style.scss';
-import { logout, toggleLogin, toggleSignup } from '../../actions/action';
+import { logout, submitSignup, submitLogin } from '../../actions/action';
 
 function Login() {
   const dispatch = useDispatch();
@@ -25,12 +25,12 @@ function Login() {
     dispatch(logout());
   };
 
-  const submitSignup = (event) => {
+  const handleSubmitSignup = (event) => {
     event.preventDefault();
     dispatch(submitSignup(email, password, inseeCode))
   };
 
-  const submitLogin = (event) => {
+  const handleSubmitLogin = (event) => {
     event.preventDefault();
     dispatch(submitLogin(email, password))
   };
@@ -65,7 +65,7 @@ function Login() {
       )}
       
       {isOpenSignup && (
-            <form className="login-form" onSubmit={submitSignup}>
+            <form className="login-form" onSubmit={handleSubmitSignup}>
                 <Field
                 type="email"
                 className="login-input"
@@ -99,7 +99,7 @@ function Login() {
             </form>
             )}
       {isOpenLogin && (
-        <form className="login-form" onSubmit={submitLogin}>
+        <form className="login-form" onSubmit={handleSubmitLogin}>
                 <Field
                 type="email"
                 className="login-input"

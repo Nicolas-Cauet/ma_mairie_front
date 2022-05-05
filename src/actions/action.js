@@ -27,10 +27,15 @@ export const logout = () => ({
 
 export const SUBMIT_SIGNUP = 'SUBMIT_SIGNUP';
 export const submitSignup = (email, password, inseeCode) => ({
-  type: SUBMIT_SIGNUP
+  type: SUBMIT_SIGNUP,
+  email,
+  password,
+  inseeCode,
 })
 
 export const SUBMIT_LOGIN = 'SUBMIT_LOGIN';
 export const submitLogin = (email, password) => ({
-  type: SUBMIT_LOGIN
+  type: SUBMIT_LOGIN,
+  email,
+  password,
 })
