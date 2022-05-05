@@ -1,4 +1,5 @@
 import PropTypes from 'prop-types';
+import Menu from './Menu'
 
 import logo from '../../assets/images/logo.png';
 
@@ -8,7 +9,10 @@ function Header() {
   return (
     <header className='header'>
       <img src={logo} className="header-logo" alt="Mairie" />
-      <h1 className="header-title">mamairie.fr</h1>
+      <div className='header-content'>
+        <h1 className="header-title">mamairie.fr</h1>
+        <Menu />
+      </div>
     </header>
   );
 }

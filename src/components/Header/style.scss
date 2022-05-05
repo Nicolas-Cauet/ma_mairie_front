@@ -5,11 +5,17 @@
         width: 100%;
         // background-size: contain;
     }
-    &-title {
-        text-align: center;
-        margin-top: -6px;
-        margin-bottom: 1rem;
-        padding: 1rem;
+
+    &-content {
+        display: flex;
+        justify-content: space-between;
+        border-top: solid 0.05rem;
+        border-bottom: solid 0.05rem;
+        align-items: center;
+        padding: 0.6rem;
     }
+    &-title {
+        margin: 0;
+    } 
 
 }
