@@ -10,7 +10,7 @@ function Login() {
   }
   const handleSignup = () => {
   }
-  const handleChange = () => {
+  const handleChange = (event) => {
   };
   const changeField = () => {
   };
@@ -57,28 +57,28 @@ function Login() {
         
 
       <button type="button" className="login-login" onClick={handleLogin} >se connecter</button>
-      {isOpenLogin && (
+      {!isOpenLogin && (
         <form className="login-form" onSubmit={handleSubmit}>
-                <input
+                <Field
                 type="email"
                 className="login-input"
                 placeholder="Email"
                 value={email}
-                onChange={(event) => handleChange(event.target.value, 'email')}
+                title="email"
                 />
-                <input
+                <Field
                 type="password"
                 className="login-input"
                 placeholder="Mot de passe"
                 value={password}
-                onChange={(event) => handleChange(event.target.value, 'password')}
+                title="password"
                 />
-                <input
+                <Field
                 type="insee-code"
                 className="login-input"
                 placeholder="Code INSEE"
                 value={inseeCode}
-                onChange={(event) => handleChange(event.target.value, 'insee-code')}
+                title="inseeCode"
                 />
                 <button
                 type="submit"

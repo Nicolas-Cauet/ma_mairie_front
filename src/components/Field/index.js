@@ -1,18 +1,25 @@
 import PropTypes from 'prop-types';
 import { useDispatch } from 'react-redux';
 
+import { changeCurrentField } from '../../actions/action';
+
 import './style.scss';
 /***
  * JS Docs
  */
 function Field({ type, value, title, placeholder }) {
   const dispatch = useDispatch();
-  const handleChange = () => {
+
+  const handleChange = (event) => {
+    dispatch(changeCurrentField(event.target.value, title));
+    console.log(event.target.value);
+    console.log(title);
   };
+
   const inputId = `field-${title}`
   return (
-    <div className='input-container'>
-      <input
+    <div className="ui left icon input">
+      <input 
         id={inputId}
         value={value}
         type={type}
@@ -20,8 +27,9 @@ function Field({ type, value, title, placeholder }) {
         placeholder={placeholder}
         onChange={handleChange}
         title={title}
-                />
-    </div>
+      />
+      <i className="users icon"></i>
+    </div>  
   );
 }
 
