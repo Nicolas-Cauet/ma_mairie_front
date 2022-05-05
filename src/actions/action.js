@@ -39,3 +39,9 @@ export const submitLogin = (email, password) => ({
   email,
   password,
 })
+
+export const SET_LOGIN_MESSAGE = 'SET_LOGIN_MESSAGE';
+export const setLoginMessage = (message) => ({
+  type: SET_LOGIN_MESSAGE,
+  loginMessage: message,
+})

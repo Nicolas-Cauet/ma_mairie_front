@@ -1,49 +1,55 @@
-import { CHANGE_CURRENT_FIELD, TOGGLE_LOGIN, TOGGLE_SIGNUP, LOGIN, LOGOUT } from "../actions/action";
+import { CHANGE_CURRENT_FIELD, TOGGLE_LOGIN, TOGGLE_SIGNUP, LOGIN, LOGOUT, SET_LOGIN_MESSAGE } from "../actions/action";
 
 export const initialState = {
     email: '',
     password: '',
     inseeCode: '',
-    logged: true,
+    logged: false,
     isOpenSignup: false,
-    isOpenLogin: false,
+    isOpenLogin: true,
+    loginMessage: '',
 };
 
 const reducer = (state = initialState, action = {}) => {
   switch (action.type) {
     case CHANGE_CURRENT_FIELD:
-      console.log('coucou', action.value);
-      console.log(action.key);
       return {
         ...state,
         [action.key]: action.value,
       };
-      case TOGGLE_LOGIN: {
-        return {
-          ...state,
-          isOpenLogin: !state.isOpenLogin,
-          isOpenSignup: false,
-        };
-      }
-      case TOGGLE_SIGNUP: {
-        return {
-          ...state,
-          isOpenSignup: !state.isOpenSignup,
-          isOpenLogin: false,
-        };
-      }
-      case LOGIN: {
-        return {
+    case TOGGLE_LOGIN: {
+      return {
         ...state,
-        logged: false,
-        };
-      }
-      case LOGOUT: {
-        return {
+        isOpenLogin: !state.isOpenLogin,
+        isOpenSignup: false,
+      };
+    }
+    case TOGGLE_SIGNUP: {
+      return {
         ...state,
-        logged: false,
-        };
-      }
+        isOpenSignup: !state.isOpenSignup,
+        isOpenLogin: false,
+      };
+    }
+    case LOGIN: {
+      return {
+      ...state,
+      logged: true,
+      loginMessage: '',
+      };
+    }
+    case LOGOUT: {
+      return {
+      ...state,
+      logged: false,
+      };
+    }
+    case SET_LOGIN_MESSAGE: {
+      return {
+        ...state,
+        loginMessage: action.loginMessage,
+      };
+    }
     default:
       return state; 
   }

@@ -11,7 +11,14 @@ import { logout, submitSignup, submitLogin } from '../../actions/action';
 function Login() {
   const dispatch = useDispatch();
 
-  const { email, password, inseeCode, logged, isOpenSignup, isOpenLogin } = useSelector((state) => state.login);
+  const { email,
+    password,
+    inseeCode,
+    logged,
+    isOpenSignup,
+    isOpenLogin,
+    loginMessage,
+  } = useSelector((state) => state.login);
   
   const toggleLogin = () => {
     dispatch(toggleLogin());
@@ -126,11 +133,10 @@ function Login() {
           </Button>
         </form>
       )}
-        {/* <div>CEci est un mesage d'erreur</div> */}
+        <h2 className="login-message">{loginMessage}</h2>
     </div>
   );
 }
-
 Login.propTypes = {
   email: PropTypes.string,
   password: PropTypes.string,
@@ -138,6 +144,7 @@ Login.propTypes = {
   logged: PropTypes.bool,
   isOpenSignup: PropTypes.bool,
   isOpenLogin: PropTypes.bool,
+  loginMessage: PropTypes.string,
 };
 
 export default Login;

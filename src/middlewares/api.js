@@ -1,6 +1,6 @@
 import axios from "axios";
 
-import { SUBMIT_LOGIN, SUBMIT_SIGNUP } from "../actions/action";
+import { SUBMIT_LOGIN, SUBMIT_SIGNUP, setLoginMessage } from "../actions/action";
 
 const instance = axios.create({
   baseURL: 'http://localhost:3001',
@@ -44,10 +44,7 @@ const api = (store) => (next) => (action) => {
 
         })
         .catch((error) => {
-          //! Passage du message d'erreur dans le composant login avec
-          //! coloration des inputs
-          alert('Mauvais couple identifiant / mot de passe');
-          console.log(error);
+          store.dispatch(setLoginMessage('email et/ou password incorrect'));
         });
   break;
     default:

@@ -14,8 +14,6 @@ function Field({ type, value, title, placeholder, icon }) {
 
   const handleChange = (event) => {
     dispatch(changeCurrentField(event.target.value, title));
-    console.log(event.target.value);
-    console.log(title);
   };
 
   const inputId = `field-${title}`

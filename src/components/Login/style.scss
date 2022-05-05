@@ -1,16 +1,3 @@
-
-.login-form>.ui.input {
-    margin-top : 1rem;
-}
-
-.ui.button.login-form-button {
-    margin-top: 1rem;
-}
-
-// .login-form-login>.ui.input {
-//     color: blue;
-// }
-
 .login {
     text-align: center;
     
@@ -21,6 +8,21 @@
         align-items: center;
     }
 }
+
+.login-form>.ui.input {
+    margin-top : 1rem;
+}
+
+.ui.button.login-form-button {
+    margin-top: 1rem;
+}
+
+
+
+// .login-form-login>.ui.input {
+//     color: blue;
+// }
+
 
 
 // .ui.button {
