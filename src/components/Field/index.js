@@ -35,7 +35,11 @@ function Field({ type, value, title, placeholder, icon }) {
 }
 
 Field.propTypes = {
-
+type: PropTypes.string,
+value: PropTypes.string,
+title: PropTypes.string,
+placeholder: PropTypes.string,
+icon: PropTypes.string,
 };
 
 export default Field;

@@ -1,4 +1,4 @@
-import PropTypes from 'prop-types';
+// import PropTypes from 'prop-types';
 
 import Login from '../Login';
 import Header from '../Header';
@@ -17,9 +17,9 @@ function App() {
   );
 }
 
-App.propTypes = {
+// App.propTypes = {
 
-};
+// };
 
 export default App;
 

@@ -52,7 +52,9 @@ function Login() {
           type="button"
           className="login-button"
           onClick={toggleSignup}
-       >Inscription</Button>
+        >
+          Inscription
+        </Button>
         <Button.Or text="Ou"/>
           <Button
             type="button"
@@ -65,71 +67,77 @@ function Login() {
       )}
       
       {isOpenSignup && (
-            <form className="login-form" onSubmit={handleSubmitSignup}>
-                <Field
-                type="email"
-                className="login-input"
-                placeholder="Email"
-                value={email}
-                title="email"
-                icon="envelope"
-                />
-                <Field
-                type="password"
-                className="login-input"
-                placeholder="Mot de passe"
-                value={password}
-                title="password"
-                icon="key"
-                />
-                <Field
-                type="insee-code"
-                className="login-input"
-                placeholder="Code INSEE"
-                value={inseeCode}
-                title="inseeCode"
-                icon="building"
-                />
-                <Button
-                type="submit"
-                className="login-form-button"
-                >
-                S'inscrire
-                </Button>
-            </form>
-            )}
+        <form className="login-form" onSubmit={handleSubmitSignup}>
+          <Field
+          type="email"
+          className="login-input"
+          placeholder="Email"
+          value={email}
+          title="email"
+          icon="envelope"
+          />
+          <Field
+          type="password"
+          className="login-input"
+          placeholder="Mot de passe"
+          value={password}
+          title="password"
+          icon="key"
+          />
+          <Field
+          type="insee-code"
+          className="login-input"
+          placeholder="Code INSEE"
+          value={inseeCode}
+          title="inseeCode"
+          icon="building"
+          />
+          <Button
+          type="submit"
+          className="login-form-button"
+          >
+          S'inscrire
+          </Button>
+        </form>
+      )}
       {isOpenLogin && (
         <form className="login-form" onSubmit={handleSubmitLogin}>
-                <Field
-                type="email"
-                className="login-input"
-                placeholder="Email"
-                value={email}
-                title="email"
-                icon="envelope"
-                />
-                <Field
-                type="password"
-                className="login-input"
-                placeholder="Mot de passe"
-                value={password}
-                title="password"
-                icon="key"
-                />
-                <Button
-                type="submit"
-                className="login-form-button"
-                >
-                Se connecter
-                </Button>
-            </form>
+          <Field
+          type="email"
+          className="login-input"
+          placeholder="Email"
+          value={email}
+          title="email"
+          icon="envelope"
+          />
+          <Field
+          type="password"
+          className="login-input"
+          placeholder="Mot de passe"
+          value={password}
+          title="password"
+          icon="key"
+          />
+          <Button
+          type="submit"
+          className="login-form-button"
+          >
+          Se connecter
+          </Button>
+        </form>
       )}
+        {/* <div>CEci est un mesage d'erreur</div> */}
     </div>
   );
 }
 
 Login.propTypes = {
-
+  email: PropTypes.string,
+  password: PropTypes.string,
+  inseeCode: PropTypes.number,
+  logged: PropTypes.bool,
+  isOpenSignup: PropTypes.bool,
+  isOpenLogin: PropTypes.bool,
 };
 
 export default Login;
