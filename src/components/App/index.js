@@ -1,7 +1,10 @@
 // import PropTypes from 'prop-types';
 import Login from '../Login';
 import Header from '../Header';
+import Menu from '../Header/Menu';
 import logo from '../../assets/images/logo.png';
+import Home from '../Home';
+
 import { Route, Routes } from 'react-router-dom';
 
 import 'semantic-ui-css/semantic.min.css';
@@ -13,9 +16,9 @@ function App() {
   return (
     <div className='app'>
       <Header />
-      <Login />
+      <Menu />
       <Routes>
-        <Route path="/" element={<p>Bienvenue sur le route accueil</p>} />
+        <Route path="/" element={<Home />} />
         <Route path="*" element={<p>route inconnue</p>} />
       </Routes>
     </div>

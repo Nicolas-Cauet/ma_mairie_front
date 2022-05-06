@@ -45,3 +45,8 @@ export const setLoginMessage = (message) => ({
   type: SET_LOGIN_MESSAGE,
   loginMessage: message,
 })
+
+export const TOGGLE_MENU = 'TOGGLE_MENU';
+export const toggleMenu = () => ({
+  type: TOGGLE_MENU,
+})
