@@ -1,4 +1,5 @@
 import { useDispatch, useSelector } from 'react-redux';
+import { useEffect } from 'react';
 import PropTypes from 'prop-types';
 import { useNavigate } from 'react-router';
 
@@ -45,10 +46,11 @@ function Login() {
     event.preventDefault();
     dispatch(submitLogin(email, password))
   };
-
-  if (redirect) {
-    navigate("/admin");
-  };
+  useEffect (()=> {
+    if (redirect) {
+      navigate('/admin');
+    };
+  })
   
   return (
     <div className='login'>
@@ -112,7 +114,6 @@ function Login() {
           <Button
           type="submit"
           className="login-form-button"
-          loading
           >
           S'inscrire
           </Button>
@@ -139,7 +140,6 @@ function Login() {
           <Button
           type="submit"
           className="login-form-button"
-          loading
           >
           Se connecter
           </Button>
