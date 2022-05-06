@@ -18,6 +18,7 @@ function Login() {
     isOpenSignup,
     isOpenLogin,
     loginMessage,
+    activeConnectionButton,
   } = useSelector((state) => state.login);
   
   const handleToggleLogin = () => {
@@ -46,7 +47,6 @@ function Login() {
     <div className='login'>
       {logged && (
         <Button
-          // active="!state"/
           type="button"
           className='login-button'
           onClick={handleLogout}
@@ -65,7 +65,8 @@ function Login() {
         </Button>
         <Button.Or text="Ou"/>
           <Button
-            // active="true(dans state)"
+            // active="true"
+            active={activeConnectionButton}
             type="button"
             className="login-button"
             onClick={handleToggleLogin}
@@ -104,6 +105,7 @@ function Login() {
           <Button
           type="submit"
           className="login-form-button"
+          loading
           >
           S'inscrire
           </Button>
@@ -130,6 +132,7 @@ function Login() {
           <Button
           type="submit"
           className="login-form-button"
+          loading
           >
           Se connecter
           </Button>
@@ -147,6 +150,7 @@ Login.propTypes = {
   isOpenSignup: PropTypes.bool,
   isOpenLogin: PropTypes.bool,
   loginMessage: PropTypes.string,
+  activeConnectionButton: PropTypes.bool,
 };
 
 export default Login;

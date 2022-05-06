@@ -1,4 +1,4 @@
-import PropTypes from 'prop-types';
+// import PropTypes from 'prop-types';
 
 import logo from '../../assets/images/logo.png';
 
@@ -13,8 +13,8 @@ function Header() {
   );
 }
 
-Header.propTypes = {
+// Header.propTypes = {
 
-};
+// };
 
 export default Header;

@@ -1,4 +1,4 @@
-import { CHANGE_CURRENT_FIELD, TOGGLE_LOGIN, TOGGLE_SIGNUP, LOGIN, LOGOUT, SET_LOGIN_MESSAGE } from "../actions/action";
+import { CHANGE_CURRENT_FIELD, TOGGLE_LOGIN, TOGGLE_SIGNUP, LOGIN, LOGOUT, SET_LOGIN_MESSAGE, ACTIVE_CONNECTION_BUTTON } from "../actions/action";
 
 export const initialState = {
     email: '',
@@ -8,6 +8,7 @@ export const initialState = {
     isOpenSignup: false,
     isOpenLogin: false,
     loginMessage: '',
+    activeConnectionButton: false,
 };
 
 const reducer = (state = initialState, action = {}) => {
@@ -22,6 +23,7 @@ const reducer = (state = initialState, action = {}) => {
         ...state,
         isOpenLogin: !state.isOpenLogin,
         isOpenSignup: false,
+        activeConnectionButton: !state.activeConnectionButton,
         loginMessage: '',
       };
     }
@@ -30,6 +32,7 @@ const reducer = (state = initialState, action = {}) => {
         ...state,
         isOpenSignup: !state.isOpenSignup,
         isOpenLogin: false,
+        activeConnectionButton: false,
         loginMessage: '',
       };
     }
@@ -51,6 +54,12 @@ const reducer = (state = initialState, action = {}) => {
         ...state,
         loginMessage: action.loginMessage,
       };
+    }
+    case ACTIVE_CONNECTION_BUTTON: {
+      return {
+        ...state,
+        activeConnectionButton: true,
+      }
     }
     default:
       return state; 

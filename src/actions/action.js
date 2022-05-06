@@ -6,8 +6,9 @@ export const changeCurrentField = (value, key) => ({
 });
 
 export const TOGGLE_LOGIN = 'TOGGLE_LOGIN';
-export const toggleLogin = () => ({
+export const toggleLogin = (bool) => ({
   type: TOGGLE_LOGIN,
+  isOpenLogin: bool,
 });
 
 export const TOGGLE_SIGNUP = 'TOGGLE_SIGNUP';
@@ -31,17 +32,22 @@ export const submitSignup = (email, password, inseeCode) => ({
   email,
   password,
   inseeCode,
-})
+});
 
 export const SUBMIT_LOGIN = 'SUBMIT_LOGIN';
 export const submitLogin = (email, password) => ({
   type: SUBMIT_LOGIN,
   email,
   password,
-})
+});
 
 export const SET_LOGIN_MESSAGE = 'SET_LOGIN_MESSAGE';
 export const setLoginMessage = (message) => ({
   type: SET_LOGIN_MESSAGE,
   loginMessage: message,
-})
+});
+
+export const ACTIVE_CONNECTION_BUTTON = 'ACTIVE_CONNECTION_BUTTON';
+export const activeConnectionButton = () => ({
+  type: ACTIVE_CONNECTION_BUTTON,
+});

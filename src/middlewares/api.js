@@ -1,6 +1,11 @@
 import axios from "axios";
 
-import { SUBMIT_LOGIN, SUBMIT_SIGNUP, setLoginMessage } from "../actions/action";
+import { SUBMIT_LOGIN,
+  SUBMIT_SIGNUP,
+  setLoginMessage,
+  toggleLogin,
+  activeConnectionButton,
+} from "../actions/action";
 
 const instance = axios.create({
   baseURL: 'http://localhost:3001',
@@ -16,10 +21,9 @@ const api = (store) => (next) => (action) => {
       })
         .then((response) => {
           console.log(response);
-          //! en cas de succès message d'information dans le composant
-          //! avec state loginMessage
-          //! affichage modale Connexion
-          //! avec rendu active du button connexion (créer un state)
+          store.dispatch(setLoginMessage('Votre inscription c\'est dérouler avec succès'));
+          store.dispatch(toggleLogin());
+          store.dispatch(activeConnectionButton());
         })
         .catch((error) => {
           store.dispatch(setLoginMessage('Une erreur est survenue, veuillez recommencer'));
@@ -34,6 +38,7 @@ const api = (store) => (next) => (action) => {
           console.log(response);
 
           //! besoin de mettre des informations dans le state ??
+          //! oui => logged
           // store.dispatch(login(response.data.pseudo));
           //! en cas de succès redirect vers la page d'accueil
 
