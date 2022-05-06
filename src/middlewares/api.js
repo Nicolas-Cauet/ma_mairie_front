@@ -14,6 +14,8 @@ const instance = axios.create({
   baseURL: 'http://localhost:3001',
 });
 
+
+
 const api = (store) => (next) => (action) => {
   switch (action.type) {
     case SUBMIT_SIGNUP:
