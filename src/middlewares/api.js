@@ -29,10 +29,7 @@ const api = (store) => (next) => (action) => {
           store.dispatch(activeConnectionButton());
         })
         .catch((error) => {
-          // store.dispatch(setLoginMessage('Une erreur est survenue, veuillez recommencer'));
-          store.dispatch(setLoginMessage('Votre inscription c\'est dérouler avec succès'));
-          store.dispatch(toggleLogin());
-          store.dispatch(activeConnectionButton());
+          store.dispatch(setLoginMessage('Une erreur est survenue, veuillez recommencer'));
         });
     break;
     case SUBMIT_LOGIN:
@@ -43,6 +40,7 @@ const api = (store) => (next) => (action) => {
         .then((response) => {
           console.log(response);
           store.dispatch(login());
+          store.dispatch(redirect());
 
           //? Récupération du token lors du login
           // const { token } = response.data;
@@ -53,7 +51,6 @@ const api = (store) => (next) => (action) => {
         .catch((error) => {
           store.dispatch(setLoginMessage('Email et/ou Mot de passe incorrect'));
           console.log(error);
-          store.dispatch(redirect());
         });
   break;
     default:
