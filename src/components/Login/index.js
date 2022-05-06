@@ -21,6 +21,7 @@ function Login() {
     isOpenSignup,
     isOpenLogin,
     loginMessage,
+    loginMessageColor,
     activeConnectionButton,
     redirect,
   } = useSelector((state) => state.login);
@@ -145,7 +146,7 @@ function Login() {
           </Button>
         </form>
       )}
-        <h2 className="login-message">{loginMessage}</h2>
+        <h2 className={loginMessageColor ? 'login-message green' : 'login-message red'}>{loginMessage}</h2>
     </div>
   );
 }

@@ -8,6 +8,7 @@ export const initialState = {
     isOpenSignup: false,
     isOpenLogin: false,
     loginMessage: '',
+    loginMessageColor:false,
     activeConnectionButton: false,
     redirect: false,
 };
@@ -54,6 +55,7 @@ const reducer = (state = initialState, action = {}) => {
       return {
         ...state,
         loginMessage: action.loginMessage,
+        loginMessageColor: action.loginMessageColor,
       };
     }
     case ACTIVE_CONNECTION_BUTTON: {

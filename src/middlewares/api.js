@@ -24,12 +24,12 @@ const api = (store) => (next) => (action) => {
       })
         .then((response) => {
           console.log(response);
-          store.dispatch(setLoginMessage('Votre inscription c\'est dérouler avec succès'));
+          store.dispatch(setLoginMessage('Votre inscription c\'est déroulée avec succès, vous pouvez vous connecter', true));
           store.dispatch(toggleLogin());
           store.dispatch(activeConnectionButton());
         })
         .catch((error) => {
-          store.dispatch(setLoginMessage('Une erreur est survenue, veuillez recommencer'));
+          store.dispatch(setLoginMessage('Une erreur est survenue, veuillez recommencer', false));
         });
     break;
     case SUBMIT_LOGIN:
@@ -49,7 +49,7 @@ const api = (store) => (next) => (action) => {
 
         })
         .catch((error) => {
-          store.dispatch(setLoginMessage('Email et/ou Mot de passe incorrect'));
+          store.dispatch(setLoginMessage('Email et/ou Mot de passe incorrect', false));
           console.log(error);
         });
   break;
