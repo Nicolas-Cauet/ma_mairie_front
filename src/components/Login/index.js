@@ -65,6 +65,8 @@ function Login() {
         </Button>
         <Button.Or text="Ou"/>
           <Button
+            //! Rajouter statut loading ?
+            // loading
             // active="true(dans state)"
             type="button"
             className="login-button"
