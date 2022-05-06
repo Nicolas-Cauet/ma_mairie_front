@@ -51,3 +51,8 @@ export const ACTIVE_CONNECTION_BUTTON = 'ACTIVE_CONNECTION_BUTTON';
 export const activeConnectionButton = () => ({
   type: ACTIVE_CONNECTION_BUTTON,
 });
+
+export const REDIRECT = 'REDIRECT';
+export const redirect = () => ({
+  type: REDIRECT,
+});

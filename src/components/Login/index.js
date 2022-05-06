@@ -1,15 +1,17 @@
 import { useDispatch, useSelector } from 'react-redux';
 import PropTypes from 'prop-types';
+import { useNavigate } from 'react-router';
 
 import Field from '../Field'
 
-import { Button } from 'semantic-ui-react'
-
-import './style.scss';
 import { logout, submitSignup, submitLogin, toggleLogin, toggleSignup } from '../../actions/action';
+
+import { Button } from 'semantic-ui-react'
+import './style.scss';
 
 function Login() {
   const dispatch = useDispatch();
+  const navigate = useNavigate();
 
   const { email,
     password,
@@ -19,6 +21,7 @@ function Login() {
     isOpenLogin,
     loginMessage,
     activeConnectionButton,
+    redirect,
   } = useSelector((state) => state.login);
   
   const handleToggleLogin = () => {
@@ -41,6 +44,10 @@ function Login() {
   const handleSubmitLogin = (event) => {
     event.preventDefault();
     dispatch(submitLogin(email, password))
+  };
+
+  if (redirect) {
+    navigate("/admin");
   };
   
   return (

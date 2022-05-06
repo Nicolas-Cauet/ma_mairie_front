@@ -1,10 +1,13 @@
-import axios from "axios";
+import axios from 'axios';
+// import { Navigate, useNavigate } from 'react-router-dom';
 
 import { SUBMIT_LOGIN,
   SUBMIT_SIGNUP,
   setLoginMessage,
   toggleLogin,
   activeConnectionButton,
+  login,
+  redirect,
 } from "../actions/action";
 
 const instance = axios.create({
@@ -26,7 +29,10 @@ const api = (store) => (next) => (action) => {
           store.dispatch(activeConnectionButton());
         })
         .catch((error) => {
-          store.dispatch(setLoginMessage('Une erreur est survenue, veuillez recommencer'));
+          // store.dispatch(setLoginMessage('Une erreur est survenue, veuillez recommencer'));
+          store.dispatch(setLoginMessage('Votre inscription c\'est dérouler avec succès'));
+          store.dispatch(toggleLogin());
+          store.dispatch(activeConnectionButton());
         });
     break;
     case SUBMIT_LOGIN:
@@ -36,11 +42,7 @@ const api = (store) => (next) => (action) => {
       })
         .then((response) => {
           console.log(response);
-
-          //! besoin de mettre des informations dans le state ??
-          //! oui => logged
-          // store.dispatch(login(response.data.pseudo));
-          //! en cas de succès redirect vers la page d'accueil
+          store.dispatch(login());
 
           //? Récupération du token lors du login
           // const { token } = response.data;
@@ -51,6 +53,7 @@ const api = (store) => (next) => (action) => {
         .catch((error) => {
           store.dispatch(setLoginMessage('Email et/ou Mot de passe incorrect'));
           console.log(error);
+          store.dispatch(redirect());
         });
   break;
     default:
