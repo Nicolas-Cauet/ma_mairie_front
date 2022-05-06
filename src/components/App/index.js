@@ -4,6 +4,8 @@ import Header from '../Header';
 import Menu from '../Header/Menu';
 import logo from '../../assets/images/logo.png';
 import Home from '../Home';
+import Footer from '../Footer';
+
 
 import { Route, Routes } from 'react-router-dom';
 
@@ -21,6 +23,7 @@ function App() {
         <Route path="/" element={<Home />} />
         <Route path="*" element={<p>route inconnue</p>} />
       </Routes>
+      <Footer />
     </div>
   );
 }
