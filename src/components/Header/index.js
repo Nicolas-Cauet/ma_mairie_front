@@ -22,16 +22,13 @@ function Header() {
       <img src={logo} className="header-logo" alt="Mairie" />
       <div className='header-content'>
         <h1 className="header-title">mamairie.fr</h1>
-        <div className='header-button'>
-        <Button icon='sidebar' size='big' onClick={HandleToggle}/>
-        </div>
+        <Button className='header-button' icon='sidebar' size='massive' basic onClick={HandleToggle}/>
       </div>
     </header>
   );
 }
 
 // Header.propTypes = {
-
 // };
 
 export default Header;

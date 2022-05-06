@@ -34,7 +34,7 @@ const api = (store) => (next) => (action) => {
         });
     break;
     case SUBMIT_LOGIN:
-      instance.post('login', {
+      instance.post('/login', {
         email: action.email,
         password: action.password,
       })
