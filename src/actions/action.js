@@ -57,3 +57,8 @@ export const REDIRECT = 'REDIRECT';
 export const redirect = () => ({
   type: REDIRECT,
 });
+
+export const TOGGLE_MENU = 'TOGGLE_MENU';
+export const toggleMenu = () => ({
+  type: TOGGLE_MENU,
+})
