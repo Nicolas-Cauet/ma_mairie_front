@@ -1,0 +1,15 @@
+.header {
+
+    &-logo {
+        align-items: center;
+        width: 100%;
+        // background-size: contain;
+    }
+    &-title {
+        text-align: center;
+        margin-top: -6px;
+        margin-bottom: 1rem;
+        padding: 1rem;
+    }
+
+}

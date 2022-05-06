@@ -15,6 +15,10 @@ const instance = axios.create({
 });
 
 
+<<<<<<< HEAD
+=======
+
+>>>>>>> origin/login
 const api = (store) => (next) => (action) => {
   switch (action.type) {
     case SUBMIT_SIGNUP:

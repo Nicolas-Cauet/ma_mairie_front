@@ -1,0 +1,52 @@
+.login {
+    text-align: center;
+    
+
+    &-form {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+
+    &-message {
+        padding: 1rem 2rem;
+        font-size: 1rem;
+      }
+    }
+    
+.green {
+    color: green;
+  }
+.red {
+    color: red;
+  }
+  
+.login-form>.ui.input {
+  margin-top : 1rem;
+}
+
+.ui.button.login-form-button {
+    margin-top: 1rem;
+}
+
+
+
+// .login-form-login>.ui.input {
+//     color: blue;
+// }
+
+
+
+// .ui.button {
+//     border: 2px solid green;
+
+// }
+
+// .ui.button.login-form-button {
+//     border: 2px solid yellow;
+// }
+
+// .ui.button.login-login {
+//     border: 2px solid red;
+
+// }
