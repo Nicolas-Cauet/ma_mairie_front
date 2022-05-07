@@ -23,8 +23,9 @@ function Login() {
     loginMessage,
     loginMessageColor,
     activeConnectionButton,
-    redirect,
+    redirectTo,
   } = useSelector((state) => state.login);
+  
   
   const handleToggleLogin = () => {
     dispatch(toggleLogin());
@@ -35,6 +36,7 @@ function Login() {
   };
   
   const handleLogout = () => {
+    console.log(redirectTo);
     dispatch(logout());
   };
 
@@ -48,8 +50,10 @@ function Login() {
     dispatch(submitLogin(email, password))
   };
   useEffect (()=> {
-    if (redirect) {
-      navigate('/admin');
+    console.log(redirectTo);
+
+    if (redirectTo !== '') {
+      navigate(redirectTo);
     };
   })
   

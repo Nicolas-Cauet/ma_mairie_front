@@ -1,4 +1,4 @@
-import PropTypes from 'prop-types';
+// import PropTypes from 'prop-types';
 // import Menu from './Menu'
 import { Button } from 'semantic-ui-react';
 import { toggleMenu } from '../../actions/action';

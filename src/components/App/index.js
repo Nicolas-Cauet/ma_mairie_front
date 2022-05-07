@@ -5,7 +5,6 @@ import { Routes, Route } from 'react-router-dom';
 import Login from '../Login';
 import Header from '../Header';
 import Menu from '../Header/Menu';
-import logo from '../../assets/images/logo.png';
 import Home from '../Home';
 
 import 'semantic-ui-css/semantic.min.css';

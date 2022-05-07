@@ -41,16 +41,16 @@ const api = (store) => (next) => (action) => {
         .then((response) => {
           console.log(response);
           store.dispatch(login());
-          store.dispatch(redirect());
-
+          
           //? Récupération du token lors du login
           // const { token } = response.data;
           // instance.defaults.headers.common.Authorization = `bearer ${token}`;
           // localStorage.setItem('token', token);
-
+          
         })
         .catch((error) => {
           store.dispatch(setLoginMessage('Email et/ou Mot de passe incorrect', false));
+          store.dispatch(redirect('/'));
           console.log(error);
         });
   break;

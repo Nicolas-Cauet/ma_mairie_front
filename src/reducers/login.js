@@ -10,7 +10,7 @@ export const initialState = {
     loginMessage: '',
     loginMessageColor:false,
     activeConnectionButton: false,
-    redirect: false,
+    redirectTo: '',
 };
 
 const reducer = (state = initialState, action = {}) => {
@@ -67,7 +67,7 @@ const reducer = (state = initialState, action = {}) => {
     case REDIRECT: {
       return {
         ...state,
-        redirect: true,
+        redirectTo: action.redirectTo,
       };
     }
     default:

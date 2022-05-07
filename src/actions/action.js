@@ -54,8 +54,9 @@ export const activeConnectionButton = () => ({
 });
 
 export const REDIRECT = 'REDIRECT';
-export const redirect = () => ({
+export const redirect = (route) => ({
   type: REDIRECT,
+  redirectTo: route,
 });
 
 export const TOGGLE_MENU = 'TOGGLE_MENU';
