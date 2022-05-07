@@ -1,5 +1,4 @@
 import axios from 'axios';
-// import { Navigate, useNavigate } from 'react-router-dom';
 
 import { SUBMIT_LOGIN,
   SUBMIT_SIGNUP,
@@ -7,8 +6,8 @@ import { SUBMIT_LOGIN,
   toggleLogin,
   activeConnectionButton,
   login,
-  redirect,
-} from "../actions/action";
+} from '../actions/action';
+import { redirect } from '../actions/utilities';
 
 const instance = axios.create({
   baseURL: 'http://localhost:3001',

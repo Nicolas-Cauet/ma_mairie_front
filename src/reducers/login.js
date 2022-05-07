@@ -1,5 +1,5 @@
-import { CHANGE_CURRENT_FIELD, TOGGLE_LOGIN, TOGGLE_SIGNUP, LOGIN, LOGOUT, SET_LOGIN_MESSAGE, ACTIVE_CONNECTION_BUTTON, REDIRECT } from "../actions/action";
-
+import { CHANGE_CURRENT_FIELD, TOGGLE_LOGIN, TOGGLE_SIGNUP, LOGIN, LOGOUT, SET_LOGIN_MESSAGE, ACTIVE_CONNECTION_BUTTON } from "../actions/action";
+import { REDIRECT } from '../actions/utilities';
 export const initialState = {
     email: '',
     password: '',

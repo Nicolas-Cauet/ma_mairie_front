@@ -1,7 +1,7 @@
 // import PropTypes from 'prop-types';
 // import Menu from './Menu'
 import { Button } from 'semantic-ui-react';
-import { toggleMenu } from '../../actions/action';
+import { toggleMenu } from '../../actions/menu';
 import { useDispatch } from 'react-redux';
 
 import logo from '../../assets/images/logo.png';
