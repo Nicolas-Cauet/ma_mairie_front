@@ -22,7 +22,7 @@ function Header() {
       <img src={logo} className="header-logo" alt="Mairie" />
       <div className='header-content'>
         <h1 className="header-title">mamairie.fr</h1>
-        <Button className='header-button' icon='sidebar' size='massive' basic onClick={HandleToggle}/>
+        <Button className='header-button' icon='sidebar' onClick={HandleToggle}/>
       </div>
     </header>
   );

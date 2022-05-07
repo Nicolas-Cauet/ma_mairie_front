@@ -1,8 +1,8 @@
-import PropTypes from 'prop-types';
-import { useDispatch, useSelector } from 'react-redux';
+// import PropTypes from 'prop-types';
+import { useSelector } from 'react-redux';
 import { NavLink } from 'react-router-dom';
 import React from 'react';
-import { Grid, Button, Icon, Image } from 'semantic-ui-react'
+import { Button, Icon, } from 'semantic-ui-react'
 
 import './style.scss';
 
@@ -45,35 +45,15 @@ function Menu() {
               <p>Ecole</p>
             </section>
           </Button>
-        </NavLink>
-
-          {/* <Button color='linkedin'>
-            <section className="button-container">
-              <Icon name='sign-in' />
-              <p>LinkedIn</p>
-            </section>
-          </Button>
-          <Button color='instagram'>
-            <section className="button-container">
-              <Icon name='instagram' />
-              <p>Instagram</p>
-            </section>
-          </Button>
-          <Button color='youtube'>
-              <section className="button-container">
-                <Icon name='youtube' />
-                <p>YouTube</p>
-              </section>
-          </Button> */}
-        
+        </NavLink>       
       </nav>
     )}
     </div>
   );
 }
 
-Menu.propTypes = {
+// Menu.propTypes = {
 
-};
+// };
 
 export default Menu;
