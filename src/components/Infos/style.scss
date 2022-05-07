@@ -1,0 +1,37 @@
+.infos-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+
+  border-top: solid 0.1rem black;
+}
+
+.infos-container h1 {
+  margin-top: 0.5rem;
+  margin-bottom: 2rem;
+}
+
+.infos-container .ui.button {
+  
+  width: 80%;
+  margin-bottom: 1rem;
+
+}
+
+.button-container {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.button-container p {
+  font-size: 1.5rem;
+  padding: 0.5rem;
+  margin: 0;
+}
+
+.button-container .icon {
+  transform: scale(2);
+}
