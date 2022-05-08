@@ -1,0 +1,23 @@
+.footer{
+
+    margin: 0 1.5rem 0;
+
+    &-infos {
+        border-top: solid 0.1rem;
+        margin-top: 1rem;
+    }
+    &-hourly {
+        border-top: solid 0.1rem;
+        margin-top: 1rem;
+    }
+    &-followUs {
+        border-top: solid 0.1rem;
+        margin-top: 1rem;
+        
+        &-icons {
+            text-align: center;
+        }
+    }
+
+    
+}
