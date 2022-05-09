@@ -46,10 +46,10 @@ const api = (store) => (next) => (action) => {
           store.dispatch(login());
           store.dispatch(redirect('/'));
           
-          //? Récupération du token lors du login
-          // const { token } = response.data;
-          // instance.defaults.headers.common.Authorization = `bearer ${token}`;
-          // localStorage.setItem('token', token);
+          //Récupération du token lors du login
+          const { token } = response.data;
+          instance.defaults.headers.common.Authorization = `bearer ${token}`;
+          localStorage.setItem('token', token);
           
         })
         .catch((error) => {
