@@ -10,13 +10,14 @@ import { SUBMIT_LOGIN,
 import { redirect } from '../actions/utilities';
 
 const instance = axios.create({
-  baseURL: 'http://localhost:3001',
+  baseURL: 'https://ma-mairie.herokuapp.com',
 });
 
-if (localStorage.getItem('token')) {
-  const token = localStorage.getItem('token');
-  instance.defaults.headers.common.Authorization = `bearer ${token}`;
-}
+
+// if (localStorage.getItem('token')) {
+//   const token = localStorage.getItem('token');
+//   instance.defaults.headers.common.Authorization = `bearer ${token}`;
+// }
 
 const api = (store) => (next) => (action) => {
   switch (action.type) {
@@ -25,13 +26,14 @@ const api = (store) => (next) => (action) => {
         pseudo: action.pseudo,
         email: action.email,
         password: action.password,
-        inseeCode: action.inseeCode,
+        insee: action.inseeCode,
       })
         .then((response) => {
+          console.log('User signup')
           console.log(response);
-          store.dispatch(setLoginMessage('Votre inscription c\'est déroulée avec succès, vous pouvez vous connecter', true));
           store.dispatch(toggleLogin());
           store.dispatch(activeConnectionButton());
+          store.dispatch(setLoginMessage('Votre inscription c\'est déroulée avec succès, vous pouvez vous connecter', true));
         })
         .catch((error) => {
           store.dispatch(setLoginMessage('Une erreur est survenue, veuillez recommencer', false));
@@ -43,8 +45,10 @@ const api = (store) => (next) => (action) => {
         password: action.password,
       })
         .then((response) => {
+          console.log('User login');
           console.log(response);
           store.dispatch(login());
+          store.dispatch(redirect('/'));
           
           //Récupération du token lors du login
           const { token } = response.data;
@@ -53,7 +57,6 @@ const api = (store) => (next) => (action) => {
           
         })
         .catch((error) => {
-          store.dispatch(redirect('/'));
           store.dispatch(setLoginMessage('Email et/ou Mot de passe incorrect', false));
           console.log(error);
         });

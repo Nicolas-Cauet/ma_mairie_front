@@ -51,6 +51,13 @@ const reducer = (state = initialState, action = {}) => {
       return {
       ...state,
       logged: false,
+      pseudo: '',
+      email: '',
+      password: '',
+      inseeCode: '',
+      loginMessage: '',
+      loginMessageColor: false,
+      activeConnectionButton: false, 
       };
     }
     case SET_LOGIN_MESSAGE: {

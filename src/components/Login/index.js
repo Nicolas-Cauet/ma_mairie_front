@@ -38,7 +38,7 @@ function Login() {
   };
   
   const handleLogout = () => {
-    console.log(redirectTo);
+    console.log('User logout');
     dispatch(logout());
   };
 
@@ -90,7 +90,7 @@ function Login() {
       </Button.Group>
       )}
       
-      {isOpenSignup && (
+      {(isOpenSignup && !logged) && (
         <form className="login-form" onSubmit={handleSubmitSignup}>
         <Field
           type="text"
@@ -132,7 +132,7 @@ function Login() {
           </Button>
         </form>
       )}
-      {isOpenLogin && (
+      {(isOpenLogin && !logged) && (
         <form className="login-form" onSubmit={handleSubmitLogin}>
           <Field
           type="email"
