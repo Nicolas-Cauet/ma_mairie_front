@@ -6,6 +6,8 @@ import Login from '../Login';
 import Header from '../Header';
 import Menu from '../Menu';
 import Home from '../Home';
+import Footer from '../Footer';
+
 
 import 'semantic-ui-css/semantic.min.css';
 import './style.scss';
@@ -21,6 +23,7 @@ function App() {
         <Route path="/admin" element={(<Login />)} />
         <Route path="*" element={<p>route inconnue</p>} />
       </Routes>
+      <Footer />
     </div>
   );
 }
