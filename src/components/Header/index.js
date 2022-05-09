@@ -19,7 +19,7 @@ function Header() {
 
   return (
     <header className='header'>
-      <img src={logo} className="header-logo" alt="Mairie" />
+      <img src={logo} className="header-logo" alt="Mairie"/>
       <div className='header-content'>
         <h1 className="header-title">mamairie.fr</h1>
         <Button className='header-button' icon='sidebar' size='massive' basic onClick={HandleToggle}/>
