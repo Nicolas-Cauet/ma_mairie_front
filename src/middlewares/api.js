@@ -13,6 +13,10 @@ const instance = axios.create({
   baseURL: 'http://localhost:3001',
 });
 
+if (localStorage.getItem('token')) {
+  const token = localStorage.getItem('token');
+  instance.defaults.headers.common.Authorization = `bearer ${token}`;
+}
 
 const api = (store) => (next) => (action) => {
   switch (action.type) {
@@ -40,6 +44,7 @@ const api = (store) => (next) => (action) => {
         .then((response) => {
           console.log(response);
           store.dispatch(login());
+          store.dispatch(redirect('/'));
           
           //? Récupération du token lors du login
           // const { token } = response.data;
@@ -49,7 +54,6 @@ const api = (store) => (next) => (action) => {
         })
         .catch((error) => {
           store.dispatch(setLoginMessage('Email et/ou Mot de passe incorrect', false));
-          store.dispatch(redirect('/'));
           console.log(error);
         });
   break;
