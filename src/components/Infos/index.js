@@ -21,7 +21,7 @@ function Infos() {
 
   return (
     <div className='infos-container'>
-      <h1>Infos pratiques</h1>
+      <h2>Infos pratiques</h2>
       <Button color='violet' onClick={handleClickWaste}>
         <section className="button-container">
           <p>Ramassage des déchets</p>
