@@ -20,7 +20,7 @@ function Admin() {
             <Button>Traiter</Button>
         </div>
 
-        <div className='admin-reports admin-content'>
+        <div className='admin-services admin-content'>
             <h3>Services</h3>
             <Button>Créer</Button>
             <Button>Editer</Button>
