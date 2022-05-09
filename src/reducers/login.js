@@ -2,6 +2,7 @@ import { CHANGE_CURRENT_FIELD, TOGGLE_LOGIN, TOGGLE_SIGNUP, LOGIN, LOGOUT, SET_L
 import { REDIRECT } from '../actions/utilities';
 
 export const initialState = {
+    pseudo: '',
     email: '',
     password: '',
     inseeCode: '',

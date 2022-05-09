@@ -9,13 +9,14 @@ import { logout, submitSignup, submitLogin, toggleLogin, toggleSignup } from '..
 
 import { Button } from 'semantic-ui-react'
 import './style.scss';
-import { redirect } from '../../actions/utilities';
 
 function Login() {
   const dispatch = useDispatch();
   const navigate = useNavigate();
 
-  const { email,
+  const { 
+    pseudo,
+    email,
     password,
     inseeCode,
     logged,
@@ -43,7 +44,7 @@ function Login() {
 
   const handleSubmitSignup = (event) => {
     event.preventDefault();
-    dispatch(submitSignup(email, password, inseeCode))
+    dispatch(submitSignup(pseudo, email, password, inseeCode))
   };
 
   const handleSubmitLogin = (event) => {
@@ -95,9 +96,9 @@ function Login() {
           type="text"
           className="login-input"
           placeholder="Pseudonyme"
-          value={email}
-          title="email"
-          icon="envelope"
+          value={pseudo}
+          title="pseudo"
+          icon="user"
           />
           <Field
           type="email"
@@ -105,7 +106,7 @@ function Login() {
           placeholder="Email"
           value={email}
           title="email"
-          icon="envelope"
+          icon="at"
           />
           <Field
           type="password"

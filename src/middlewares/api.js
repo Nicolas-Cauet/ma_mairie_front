@@ -22,6 +22,7 @@ const api = (store) => (next) => (action) => {
   switch (action.type) {
     case SUBMIT_SIGNUP:
       instance.post('/signup', {
+        pseudo: action.pseudo,
         email: action.email,
         password: action.password,
         inseeCode: action.inseeCode,
