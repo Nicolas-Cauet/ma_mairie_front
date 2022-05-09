@@ -44,7 +44,6 @@ const api = (store) => (next) => (action) => {
         .then((response) => {
           console.log(response);
           store.dispatch(login());
-          store.dispatch(redirect('/'));
           
           //Récupération du token lors du login
           const { token } = response.data;
@@ -53,6 +52,7 @@ const api = (store) => (next) => (action) => {
           
         })
         .catch((error) => {
+          store.dispatch(redirect('/'));
           store.dispatch(setLoginMessage('Email et/ou Mot de passe incorrect', false));
           console.log(error);
         });

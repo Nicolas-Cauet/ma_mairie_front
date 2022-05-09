@@ -9,6 +9,7 @@ import { logout, submitSignup, submitLogin, toggleLogin, toggleSignup } from '..
 
 import { Button } from 'semantic-ui-react'
 import './style.scss';
+import { redirect } from '../../actions/utilities';
 
 function Login() {
   const dispatch = useDispatch();
@@ -50,8 +51,6 @@ function Login() {
     dispatch(submitLogin(email, password))
   };
   useEffect (()=> {
-    console.log(redirectTo);
-
     if (redirectTo !== '') {
       navigate(redirectTo);
     };
@@ -92,6 +91,14 @@ function Login() {
       
       {isOpenSignup && (
         <form className="login-form" onSubmit={handleSubmitSignup}>
+        <Field
+          type="text"
+          className="login-input"
+          placeholder="Pseudonyme"
+          value={email}
+          title="email"
+          icon="envelope"
+          />
           <Field
           type="email"
           className="login-input"
