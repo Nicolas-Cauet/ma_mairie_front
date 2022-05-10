@@ -15,7 +15,7 @@ function Menu() {
     { isOpen && (
       <nav className='menu-list'>
         <NavLink className='menu-item' to="/articles/:mairie_id">
-          <Button color='blue'>
+          <Button className='article'>
             <section className='button-container'>
               <Icon name='newspaper outline' />
               <p>Articles</p>
@@ -23,7 +23,7 @@ function Menu() {
           </Button>
         </NavLink>
         <NavLink className='menu-item' to="/reports/:mairie_id">
-          <Button color='orange'>
+          <Button className='warning'>
             <section className="button-container">
               <Icon name='warning sign' />
               <p>Signaler</p>
@@ -31,7 +31,7 @@ function Menu() {
           </Button>
         </NavLink>
         <NavLink className='menu-item' to="/council/:mairie_id">
-          <Button color='red' className='council'>
+          <Button className='council'>
             <section className="button-container">
               <Icon name='building outline' />
               <p>Conseil Municipal</p>
@@ -39,10 +39,18 @@ function Menu() {
           </Button>
         </NavLink>
         <NavLink className='menu-item' to="/school/:mairie_id">
-          <Button color='violet'>
+          <Button className='school'>
             <section className="button-container">
               <Icon name='student' />
               <p>Ecole</p>
+            </section>
+          </Button>
+        </NavLink> 
+        <NavLink className='menu-item' to="/admin">
+          <Button className='admin'>
+            <section className="button-container">
+              <Icon name='sign-in' />
+              <p>Administration</p>
             </section>
           </Button>
         </NavLink>       
