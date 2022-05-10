@@ -8,11 +8,7 @@
     &-content {
         margin-bottom: 2rem;
 
-        .admin-button .ui.button{
-            text-align: center;
-            align-items: center;
-            width: 80%;
-        }
+        
 
         .create {
             background-color: #8db9d7;
@@ -29,11 +25,25 @@
         }
     }
 
-    & h3 {
-        margin-right: 2rem;
+    &-button .ui.button {
+        width: 100%;
+        text-align: center;
+        align-items: center;
+        border: solid 0.1rem grey;
     }
 
-    
+    &-button {
+        text-align: center;
+        background-color: #EEEEEE;
+        padding: 1rem;
+        border: solid 0.1rem grey;
+        border-radius: 1rem;
+    }
 
-    
+    form {
+        display: flex;
+        flex-direction: column;
+        margin: 1rem;
+    }
+ 
 }
