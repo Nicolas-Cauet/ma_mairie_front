@@ -33,7 +33,7 @@ function Menu() {
         <NavLink className='menu-item' to="/council/:mairie_id">
           <Button className='council'>
             <section className="buttonMenu-container">
-              <Icon name='building outline' />
+              <Icon className='council' name='building outline' />
               <p>Conseil Municipal</p>
             </section>
           </Button>
