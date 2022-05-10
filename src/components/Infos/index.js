@@ -3,6 +3,8 @@ import { useDispatch, useSelector } from 'react-redux';
 
 import { Button, Icon } from 'semantic-ui-react';
 import { toggleRecycling, toggleWaste } from '../../actions/infos';
+import schedule from '../../assets/images/waste/schedule.jpg';
+import guide from '../../assets/images/waste/guide.png';
 
 import './style.scss';
 
@@ -22,24 +24,29 @@ function Infos() {
   return (
     <div className='infos-container'>
       <h2>Infos pratiques</h2>
-      <Button color='violet' onClick={handleClickWaste}>
-        <section className="button-container">
-          <p>Ramassage des déchets</p>
-          <Icon name='trash alternate' />
-        </section>
-      </Button>
+      <Button color='violet' onClick={handleClickWaste} icon='trash' content='Ramassage des déchets'/>
       {isOpenWaste && (
-        <div>coucou</div>
+        // <div className='button-toPDF'>
+        //   <a href={schedule} target="_blank" rel="noopener noreferrer">
+        //     <Button icon='file' content='Calendrier 2022'/> 
+        //   </a>
+
+        //   <a href={guide} target="_blank" rel="noopener noreferrer">
+        //     <Button icon='file' content='Guide de tri'/>
+        //   </a>
+        // </div>
+        <img src={schedule} className="header-logo" alt="Mairie" />
       )}
-      <Button color='violet' onClick={handleClickRecycling}>
-        <section className="button-container">
-          <p>Déchetterie</p>
-          <Icon name='factory' />
-        </section>
-      </Button>
+
+      <Button color='violet' onClick={handleClickRecycling} icon='factory' content='Déchetterie'/>
       {isOpenRecycling && (
-        <div>coucou</div>
+        <div className='button-toPDF'>
+        <a href={schedule} target="_blank" rel="noopener noreferrer">
+          <Button icon='file' content="Plan d'accès"/> 
+        </a>
+      </div>
       )}
+
     </div>
   );
 }

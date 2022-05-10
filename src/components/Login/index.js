@@ -92,7 +92,7 @@ function Login() {
       
       {(isOpenSignup && !logged) && (
         <form className="login-form" onSubmit={handleSubmitSignup}>
-        <Field
+          <Field
           type="text"
           className="login-input"
           placeholder="Pseudonyme"
