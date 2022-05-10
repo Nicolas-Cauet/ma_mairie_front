@@ -26,15 +26,16 @@ function Infos() {
       <h2>Infos pratiques</h2>
       <Button color='violet' onClick={handleClickWaste} icon='trash' content='Ramassage des déchets'/>
       {isOpenWaste && (
-        <div className='button-toPDF'>
-          <a href={schedule} target="_blank" rel="noopener noreferrer">
-            <Button icon='file' content='Calendrier 2022'/> 
-          </a>
+        // <div className='button-toPDF'>
+        //   <a href={schedule} target="_blank" rel="noopener noreferrer">
+        //     <Button icon='file' content='Calendrier 2022'/> 
+        //   </a>
 
-          <a href={guide} target="_blank" rel="noopener noreferrer">
-            <Button icon='file' content='Guide de tri'/>
-          </a>
-        </div>
+        //   <a href={guide} target="_blank" rel="noopener noreferrer">
+        //     <Button icon='file' content='Guide de tri'/>
+        //   </a>
+        // </div>
+        <img src={schedule} className="header-logo" alt="Mairie" />
       )}
 
       <Button color='violet' onClick={handleClickRecycling} icon='factory' content='Déchetterie'/>
