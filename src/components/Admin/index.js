@@ -1,6 +1,7 @@
 // import './style.scss';
 import { useSelector } from 'react-redux';
 import { Button } from 'semantic-ui-react';
+import Field from '../Field';
 import Login from '../Login';
 import './style.scss';
 
@@ -17,40 +18,71 @@ function Admin() {
             <h2>Votre espace administration</h2>
             <div className='admin-articles admin-content'>
                 <h3>Articles</h3>
-                <Button>Créer</Button>
-                <Button>Editer</Button>
+                <div className='button-test'>
+                <Button className='create' icon='plus' content='Créer'/>
+                <Button className='edit' icon='edit' content='Editer'/>
+                </div>
             </div>
 
             <div className='admin-reports admin-content'>
                 <h3>Signalements</h3>
-                <Button>Traiter</Button>
+                <Button className='process' icon='pencil alternate' content='Traiter'/>
             </div>
 
             <div className='admin-services admin-content'>
                 <h3>Services</h3>
-                <Button>Créer</Button>
-                <Button>Editer</Button>
+                <Button className='create' icon='plus' content='Créer'/>
+                <Button className='edit' icon='edit' content='Editer'/>
             </div>
         
             <div className='admin-recycling admin-content'>
                 <h3>Ramassage des ordures</h3>
-                <Button>Ajouter calendrier</Button>
-                <Button>Ajouter un guide</Button>
+                <Button className='create' icon='plus' content='Ajouter calendrier'/>
+                <Button className='create' icon='plus' content='Ajouter un guide'/>
             </div>
 
             <div className='admin-waste admin-content'>
                 <h3>Déchetterie</h3>
-                <Button>Ajouter plan d'accès</Button>
-                <Button>Editer les horaires</Button>
+                <Button className='create' icon='plus' content="Ajouter plan d'accès"/>
+                <Button className='edit' icon='edit' content='Editer les horaires'/>
             </div>
         
             <div className='admin-council admin-content'>
                 <h3>Conseil municipal</h3>
-                <Button>Editer le conseil</Button>
+                <Button className='create' icon='plus' content='Créer'/>
+                <Button className='edit' icon='edit' content='Editer'/>
             </div>
 
             <div className='admin-socialNetwork admin-content'>
                 <h3>Réseaux sociaux</h3>
+                <form>
+                    <Field 
+                    type="text"
+                    className="admin-form-input"
+                    placeholder="URL facebook"
+                    // value={facebook}
+                    title="facebook"
+                    icon="facebook"/>
+                    <Button
+                    type="submit"
+                    className="admin-form-button"
+                    >
+                    Enregistrer
+                    </Button>
+                    <Field 
+                    type="text"
+                    className="admin-form-input"
+                    placeholder="URL twitter"
+                    // value={facebook}
+                    title="twitter"
+                    icon="twitter"/>
+                    <Button
+                    type="submit"
+                    className="admin-form-button"
+                    >
+                    Enregistrer
+                    </Button>
+                </form>
             </div>
             </>
         )} 

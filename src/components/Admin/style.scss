@@ -1,10 +1,38 @@
 .admin {
     margin: 0 1.5rem 0;
 
+    & h2 {
+        text-align: center;
+    }
+
     &-content {
         margin-bottom: 2rem;
+
+        .button-test {
+            width: 100%;
+            align-items: center;
+        }
+
+        .create {
+            background-color: #8db9d7;
+        }
+        .edit {
+            background-color: #FBE192
+        }
+        .process {
+            background-color: #8DD7CF
+        }
+
+        .ui.button {
+            margin: 0.2rem;
+        }
     }
+
     & h3 {
         margin-right: 2rem;
     }
+
+    
+
+    
 }
