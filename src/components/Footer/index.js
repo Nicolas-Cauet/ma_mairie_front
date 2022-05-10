@@ -9,7 +9,7 @@ function Footer() {
     <div className='footer'>
 
       <div className="footer-infos">
-        <h2>Infos pratiques</h2>
+        <h2>Informations de la mairie</h2>
         <p>Adresse de la mairie :<br />
         14 rue de la République<br />
         27000 MairieVille</p>
@@ -18,7 +18,7 @@ function Footer() {
       </div>
 
       <div className="footer-hourly">
-        <h2>Ouverture de la mairie</h2>
+        <h2>Horaires de la mairie</h2>
         <p>Du lundi au mardi de 9h à 12h<br />
         Puis du jeudi au vendredi de 14h à 17h</p>
       </div>
@@ -41,4 +41,3 @@ function Footer() {
 // };
 
 export default Footer;
-
