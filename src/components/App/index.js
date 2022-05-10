@@ -7,7 +7,7 @@ import Menu from '../Menu';
 import Home from '../Home';
 import Footer from '../Footer';
 import Admin from '../Admin';
-import Reporting from '../Reporting';
+import Reports from '../Reports';
 
 import 'semantic-ui-css/semantic.min.css';
 import './style.scss';
@@ -20,7 +20,7 @@ function App() {
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/admin" element={(<Admin />)} />
-        <Route path="/reporting" element={<Reporting />} />
+        <Route path="/reports" element={<Reports />} />
         <Route path="*" element={<p>route inconnue</p>} />
       </Routes>
       <Footer />

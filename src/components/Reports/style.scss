@@ -1,0 +1,57 @@
+.reports-container {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  // width: 100%;
+}
+
+.ui.button.reporting-button {
+  font-size: 1.5rem ;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  padding: 1.5rem;
+  margin: 1rem;
+  width: 70%;
+  // flex: 1;
+
+}
+
+.accordion {
+  border: none;
+
+  &-title {
+    border: none;
+  }
+}
+
+
+.accordion-title-container {
+  color: black;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: space-around;
+  align-items: center;
+
+  & h1 {
+    font-size: 1.5rem;
+    width: 90%;
+    margin: 0;
+  }
+
+  & h2 {
+    font-size: 0.75rem;
+    margin: 0;
+    margin-bottom: 0.5rem;
+    width: 90%;
+  }
+}
+.reports-container {
+  // text-align: center;
+  // flex-wrap: nowrap;
+  // display: flex;
+  // justify-content: center;
+  // padding: 1rem;
+}
