@@ -1,7 +1,7 @@
 import { SET_ACTIVE_INDEX } from "../actions/reports";
 
 export const initialState = {
-  activeIndex: 0,
+  activeIndex: -1,
 };
 
 const reducer = (state = initialState, action = {}) => {

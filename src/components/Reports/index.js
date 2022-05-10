@@ -1,4 +1,4 @@
-import PropTypes from 'prop-types';
+// import PropTypes from 'prop-types';
 import { useDispatch, useSelector } from 'react-redux';
 import { Accordion, Button, Icon, Label } from 'semantic-ui-react'
 import { setActiveIndex } from '../../actions/reports';
@@ -55,6 +55,17 @@ function Reports() {
             <p>
               A dog is a type of domesticated animal. Known for its loyalty and
               faithfulness, it can be found as a welcome guest in many households
+              across the world. A dog is a type of domesticated animal. Known for its loyalty and
+              faithfulness, it can be found as a welcome guest in many households
+              across the world.
+              A dog is a type of domesticated animal. Known for its loyalty and
+              faithfulness, it can be found as a welcome guest in many households
+              across the world.
+              A dog is a type of domesticated animal. Known for its loyalty and
+              faithfulness, it can be found as a welcome guest in many households
+              across the world.
+              A dog is a type of domesticated animal. Known for its loyalty and
+              faithfulness, it can be found as a welcome guest in many households
               across the world.
             </p>
           </Accordion.Content>
@@ -83,6 +94,18 @@ function Reports() {
           </Accordion.Title>
           <Accordion.Content active={activeIndex === 1}>
             <p>
+              A dog is a type of domesticated animal. Known for its loyalty and
+              faithfulness, it can be found as a welcome guest in many households
+              across the world.
+              A dog is a type of domesticated animal. Known for its loyalty and
+              faithfulness, it can be found as a welcome guest in many households
+              across the world.
+              A dog is a type of domesticated animal. Known for its loyalty and
+              faithfulness, it can be found as a welcome guest in many households
+              across the world.
+              A dog is a type of domesticated animal. Known for its loyalty and
+              faithfulness, it can be found as a welcome guest in many households
+              across the world.
               A dog is a type of domesticated animal. Known for its loyalty and
               faithfulness, it can be found as a welcome guest in many households
               across the world.
@@ -115,6 +138,13 @@ function Reports() {
               A dog is a type of domesticated animal. Known for its loyalty and
               faithfulness, it can be found as a welcome guest in many households
               across the world.
+              A dog is a type of domesticated animal. Known for its loyalty and
+              faithfulness, it can be found as a welcome guest in many households
+              across the world. A dog is a type of domesticated animal. Known for its loyalty and
+              faithfulness, it can be found as a welcome guest in many households
+              across the world. A dog is a type of domesticated animal. Known for its loyalty and
+              faithfulness, it can be found as a welcome guest in many households
+              across the world.
             </p>
           </Accordion.Content>
         </Accordion>
@@ -122,8 +152,8 @@ function Reports() {
   );
 }
 
-Reports.propTypes = {
+// Reports.propTypes = {
 
-};
+// };
 
 export default Reports;
