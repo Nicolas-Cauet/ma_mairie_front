@@ -1,6 +1,9 @@
 import { useDispatch } from 'react-redux';
 import { useEffect } from 'react';
 import { toggleMenu } from '../../actions/menu';
+import { redirect } from '../../actions/utilities';
+import { setLoginMessage } from '../../actions/action';
+
 import Infos from '../Infos';
 import './style.scss';
 
@@ -14,6 +17,10 @@ function Home() {
       dispatch(toggleMenu(false))
     }
   },);
+  useEffect(()=> {
+    dispatch(redirect(''))
+    dispatch(setLoginMessage(''))
+  });
 
   return (
     <div className='home'>
