@@ -22,7 +22,7 @@ function Menu() {
             </section>
           </Button>
         </NavLink>
-        <NavLink className='menu-item' to="/reports/:mairie_id">
+        <NavLink className='menu-item' to="/reporting">
           <Button className='warning'>
             <section className="buttonMenu-container">
               <Icon name='warning sign' />
