@@ -1,3 +1,6 @@
+@use 'sass:color';
+@use 'src/styles/vars';
+
 .reports-container {
   display: flex;
   justify-content: center;
@@ -6,7 +9,10 @@
 }
 
 .ui.button.reporting-button {
-  font-size: 1.5rem ;
+  background-color: vars.$warningButtonColor;
+  border: 2px solid color.scale(vars.$warningButtonColor, $lightness: -20%);
+  color: black;
+  font-size: 2rem ;
   display: flex;
   flex-direction: row;
   align-items: center;
@@ -16,6 +22,14 @@
   width: 70%;
   // flex: 1;
 
+  &:hover {
+    background-color: color.scale(vars.$warningButtonColor, $lightness: -10%);
+    border: 2px solid color.scale(vars.$warningButtonColor, $lightness: -30%);
+  }
+
+  & .icon {
+    transform: scale(1);
+  }
 }
 
 .accordion {
@@ -47,11 +61,28 @@
     margin-bottom: 0.5rem;
     width: 90%;
   }
-}
-.reports-container {
-  // text-align: center;
-  // flex-wrap: nowrap;
-  // display: flex;
-  // justify-content: center;
-  // padding: 1rem;
+    
+  & .ui.label {
+    color: black!important;
+  }
+
+  & .ui.green.label {
+    background-color: vars.$statusOkColor!important;
+  }
+
+  & .ui.orange.label {
+    background-color: vars.$statusInProgressColor!important;
+  }
+
+  & .ui.red.label {
+    background-color: vars.$statusRefusedColor!important;
+  }
+
+  & .ui.blue.label {
+    background-color: vars.$categoryRoute!important;
+  }
+
+  & .ui.yellow.label {
+    background-color: vars.$categoryNeighboord!important;
+  }
 }
