@@ -17,16 +17,19 @@ function Admin() {
             <>
             <h2>Votre espace administration</h2>
             <div className='admin-articles admin-content'>
-                <h3>Articles</h3>
-                <div className='button-test'>
-                <Button className='create' icon='plus' content='Créer'/>
-                <Button className='edit' icon='edit' content='Editer'/>
+                
+                <div className='admin-button'>
+                    <h3>Articles</h3>
+                    <Button className='create' icon='plus' content='Créer'/>
+                    <Button className='edit' icon='edit' content='Editer'/>
                 </div>
             </div>
 
             <div className='admin-reports admin-content'>
                 <h3>Signalements</h3>
-                <Button className='process' icon='pencil alternate' content='Traiter'/>
+                <div className='admin-button'>
+                    <Button className='process' icon='pencil alternate' content='Traiter'/>
+                </div>
             </div>
 
             <div className='admin-services admin-content'>
