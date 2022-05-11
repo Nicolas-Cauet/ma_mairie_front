@@ -1,3 +1,5 @@
+@use 'sass:color';
+
 .admin {
     margin: 0 1.5rem 0;
 
@@ -8,16 +10,26 @@
     &-content {
         margin-bottom: 2rem;
 
-        
-
         .create {
             background-color: #8db9d7;
+
+            &:hover {
+                background-color: #8db9d7;
+            }
         }
         .edit {
-            background-color: #FBE192
+            background-color: #FBE192;
+
+            &:hover {
+                background-color: #FBE192;
+            }
         }
         .process {
-            background-color: #8DD7CF
+            background-color: #8DD7CF;
+
+            &:hover {
+                background-color: #8DD7CF;
+            }
         }
 
         .ui.button {
