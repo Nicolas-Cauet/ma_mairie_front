@@ -1,10 +1,61 @@
+@use 'sass:color';
+
 .admin {
     margin: 0 1.5rem 0;
 
+    & h2 {
+        text-align: center;
+    }
+
     &-content {
         margin-bottom: 2rem;
+
+        .create {
+            background-color: #8db9d7;
+
+            &:hover {
+                background-color: #8db9d7;
+            }
+        }
+        .edit {
+            background-color: #FBE192;
+
+            &:hover {
+                background-color: #FBE192;
+            }
+        }
+        .process {
+            background-color: #8DD7CF;
+
+            &:hover {
+                background-color: #8DD7CF;
+            }
+        }
+
+        .ui.button {
+            margin: 0.2rem;
+        }
     }
-    & h3 {
-        margin-right: 2rem;
+
+    &-button .ui.button {
+        width: 100%;
+        text-align: center;
+        align-items: center;
+        border: solid 0.1rem grey;
     }
+
+    &-button {
+        text-align: center;
+        background-color: #EEEEEE;
+        padding: 1rem;
+        border: solid 0.1rem grey;
+        border-radius: 1rem;
+    }
+
+    form {
+        display: flex;
+        flex-direction: column;
+        margin: 1rem;
+    }
+ 
 }

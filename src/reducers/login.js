@@ -54,6 +54,8 @@ const reducer = (state = initialState, action = {}) => {
       ...state,
       logged: true,
       loginMessage: '',
+      email: '',
+      password: '',
       };
     }
     case SET_LOGOUT: {
@@ -61,8 +63,6 @@ const reducer = (state = initialState, action = {}) => {
       ...state,
       logged: false,
       pseudo: '',
-      email: '',
-      password: '',
       inseeCode: '',
       loginMessage: '',
       loginMessageColor: false,
