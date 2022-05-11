@@ -6,6 +6,7 @@ import { SUBMIT_LOGIN,
   toggleLogin,
   activeConnectionButton,
   login,
+  LOGOUT,
 } from '../actions/action';
 import { redirect } from '../actions/utilities';
 
@@ -60,7 +61,11 @@ const api = (store) => (next) => (action) => {
           store.dispatch(setLoginMessage('Email et/ou Mot de passe incorrect', false));
           console.log(error);
         });
-  break;
+    break;
+    case LOGOUT:
+      delete instance.defaults.headers.common.Authorization;
+      localStorage.removeItem('token');
+    break;
     default:
       next(action);
   }
