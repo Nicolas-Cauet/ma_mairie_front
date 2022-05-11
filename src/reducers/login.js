@@ -6,7 +6,7 @@ export const initialState = {
     email: '',
     password: '',
     inseeCode: '',
-    logged: false,
+    logged: true,
     isOpenSignup: false,
     isOpenLogin: false,
     loginMessage: '',
