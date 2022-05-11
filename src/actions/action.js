@@ -26,6 +26,11 @@ export const logout = () => ({
   type: LOGOUT,
 });
 
+export const SET_LOGOUT = 'SET_LOGOUT';
+export const setLogout = () => ({
+  type: SET_LOGOUT,
+});
+
 export const SUBMIT_SIGNUP = 'SUBMIT_SIGNUP';
 export const submitSignup = (pseudo, email, password, inseeCode) => ({
   type: SUBMIT_SIGNUP,

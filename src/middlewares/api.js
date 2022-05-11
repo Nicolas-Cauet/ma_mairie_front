@@ -7,6 +7,7 @@ import { SUBMIT_LOGIN,
   activeConnectionButton,
   login,
   LOGOUT,
+  setLogout,
 } from '../actions/action';
 import { redirect } from '../actions/utilities';
 
@@ -65,6 +66,8 @@ const api = (store) => (next) => (action) => {
     case LOGOUT:
       delete instance.defaults.headers.common.Authorization;
       localStorage.removeItem('token');
+      console.log('token deleted');
+      store.dispatch(setLogout())
     break;
     default:
       next(action);

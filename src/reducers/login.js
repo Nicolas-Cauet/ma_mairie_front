@@ -1,4 +1,13 @@
-import { CHANGE_CURRENT_FIELD, TOGGLE_LOGIN, TOGGLE_SIGNUP, LOGIN, LOGOUT, SET_LOGIN_MESSAGE, ACTIVE_CONNECTION_BUTTON } from "../actions/action";
+import {
+  CHANGE_CURRENT_FIELD,
+  TOGGLE_LOGIN,
+  TOGGLE_SIGNUP,
+  LOGIN,
+  SET_LOGOUT,
+  SET_LOGIN_MESSAGE,
+  ACTIVE_CONNECTION_BUTTON,
+} from "../actions/action";
+
 import { REDIRECT } from '../actions/utilities';
 
 export const initialState = {
@@ -6,7 +15,7 @@ export const initialState = {
     email: '',
     password: '',
     inseeCode: '',
-    logged: false,
+    logged: true,
     isOpenSignup: false,
     isOpenLogin: false,
     loginMessage: '',
@@ -47,7 +56,7 @@ const reducer = (state = initialState, action = {}) => {
       loginMessage: '',
       };
     }
-    case LOGOUT: {
+    case SET_LOGOUT: {
       return {
       ...state,
       logged: false,
