@@ -3,10 +3,12 @@
 import { Button } from 'semantic-ui-react';
 import { toggleMenu } from '../../actions/menu';
 import { useDispatch } from 'react-redux';
+import { Link } from 'react-router-dom';
 
 import logo from '../../assets/images/logo.png';
 
 import './style.scss';
+
 
 
 function Header() {
@@ -19,9 +21,13 @@ function Header() {
 
   return (
     <header className='header'>
-      <img src={logo} className="header-logo" alt="Mairie"/>
+      <Link to="/">
+        <img src={logo} className="header-logo" alt="Mairie"/>
+      </Link>
       <div className='header-content'>
-        <h1 className="header-title">mamairie.fr</h1>
+        <Link to="/">
+          <h1 className="header-title">mamairie.fr</h1>
+        </Link>
         <Button className='header-button' icon='sidebar' onClick={HandleToggle}/>
       </div>
     </header>
