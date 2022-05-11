@@ -80,18 +80,21 @@ function Reports() {
     return (
       <>
         {/*Section for reporting action*/}
-        {!isReporting && (<Reporting />)}
+        {isReporting && (<Reporting />)}
 
         {/*Section for reporting button*/}
-        <section className='reporting-container'>
+        {!isReporting && (
+          <section className='reporting-container'>
           <Button className='reporting-button'>
             <Icon name='warning sign' />
             <p>Signaler</p>
           </Button>
         </section>
+        )}
 
         {/*Section to filter reports list*/}
-        <section className='filter-section'>
+        {!isReporting && (
+          <section className='filter-section'>
           <Dropdown
             className='filter-dropdown categories'
             placeholder='Catégories'
@@ -114,9 +117,10 @@ function Reports() {
             options={yearOptions}
           />
         </section>
-
+        )}
+        
         {/*Section for reports list*/}
-        {isReporting && (
+        {!isReporting && (
           <section className='reports-container'>
 
             {/* Accordion list of reports */}
