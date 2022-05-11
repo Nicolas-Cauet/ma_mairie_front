@@ -1,8 +1,8 @@
 // import PropTypes from 'prop-types';
 import { useDispatch, useSelector } from 'react-redux';
-
-import { Button, Icon } from 'semantic-ui-react';
+import { Button } from 'semantic-ui-react';
 import { toggleRecycling, toggleWaste } from '../../actions/infos';
+
 import schedule from '../../assets/images/waste/schedule.jpg';
 import guide from '../../assets/images/waste/guide.png';
 
@@ -22,29 +22,26 @@ function Infos() {
   };
 
   return (
-    <div className='infos-container'>
-      <h2>Infos pratiques</h2>
-      <Button color='violet' onClick={handleClickWaste} icon='trash' content='Ramassage des déchets'/>
-      {isOpenWaste && (
-        // <div className='button-toPDF'>
-        //   <a href={schedule} target="_blank" rel="noopener noreferrer">
-        //     <Button icon='file' content='Calendrier 2022'/> 
-        //   </a>
+    <div className='infos'>
 
-        //   <a href={guide} target="_blank" rel="noopener noreferrer">
-        //     <Button icon='file' content='Guide de tri'/>
-        //   </a>
-        // </div>
-        <img src={schedule} className="header-logo" alt="Mairie" />
+      <h2>Infos pratiques</h2>
+
+      <Button className='infos-button' onClick={handleClickWaste} icon='trash' content='Ramassage des déchets'/>
+      {isOpenWaste && (
+        <div className='infos-waste infos-content'>
+          <h3>Calendrier ramassage des déchets 2022</h3>
+          <img src={schedule} className="header-logo" alt="Mairie" />
+          <h3>Guide de tri</h3>
+          <img src={guide} className="header-logo" alt="Mairie" />
+        </div>
       )}
 
-      <Button color='violet' onClick={handleClickRecycling} icon='factory' content='Déchetterie'/>
+      <Button className='infos-button' onClick={handleClickRecycling} icon='factory' content='Déchetterie'/>
       {isOpenRecycling && (
-        <div className='button-toPDF'>
-        <a href={schedule} target="_blank" rel="noopener noreferrer">
-          <Button icon='file' content="Plan d'accès"/> 
-        </a>
-      </div>
+        <div className='infos-recycling infos-content'>
+          <h3>Plan d'accès et horaires</h3>
+          <img src={schedule} className="header-logo" alt="Mairie" />
+        </div>
       )}
 
     </div>
