@@ -1,7 +1,7 @@
 @use 'sass:color';
 @use 'src/styles/vars';
 
-.reports-container {
+.reporting-container {
   display: flex;
   justify-content: center;
   flex-wrap: wrap;
@@ -32,14 +32,13 @@
   }
 }
 
-.accordion {
-  border: none;
+.ui.styled.accordion {
+  box-shadow: none;
 
-  &-title {
+  & .title {
     border: none;
   }
 }
-
 
 .accordion-title-container {
   color: black;
@@ -84,5 +83,19 @@
 
   & .ui.yellow.label {
     background-color: vars.$categoryNeighboord!important;
+  }
+}
+
+.filter-section {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-evenly;
+
+  & .ui.fluid.dropdown {
+    width: 22%;
+
+    &.categories {
+    width: 40%;
+    }
   }
 }
