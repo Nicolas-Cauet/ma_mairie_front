@@ -61,7 +61,7 @@ function Reporting() {
           placeholder="Téléphone"
           // value={phone}
           title="Téléphone"
-          icon="rotated phone"
+          icon="phone"
           />
           <Form.Field className='reporting-form-checkbox'>
             <Checkbox label="J'accepte les termes et conditions" />
@@ -83,7 +83,7 @@ function Reporting() {
                 // warning
                 // header='You must register before you can do that!'
                 content="En acceptant les termes et les conditions de ce formualire, j'autorise
-                 mamairie.fr à stocker mon addresse IP durant 30j, afin de ...."
+                mamairie.fr à stocker mon addresse IP durant 30j, afin de ...."
               />
               </Accordion.Content>
             </Accordion>
