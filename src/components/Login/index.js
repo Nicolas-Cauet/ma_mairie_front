@@ -117,7 +117,7 @@ function Login() {
           icon="key"
           />
           <Field
-          type="insee-code"
+          type="tel"
           className="login-input"
           placeholder="Code INSEE"
           value={inseeCode}
