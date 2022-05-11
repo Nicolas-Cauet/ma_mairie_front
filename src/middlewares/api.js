@@ -62,10 +62,12 @@ const api = (store) => (next) => (action) => {
           console.log(error);
         });
     break;
-    case LOGOUT:
+    case LOGOUT: {
+      console.log('User logout middleware');
       delete instance.defaults.headers.common.Authorization;
       localStorage.removeItem('token');
-    break;
+      break;
+    }
     default:
       next(action);
   }
