@@ -11,12 +11,9 @@ function Home() {
   const dispatch = useDispatch();
 
   useEffect(() => {
-    dispatch(toggleMenu(true));
-
-    return function cleanup() {
-      dispatch(toggleMenu(false))
-    }
+    dispatch(toggleMenu());
   },);
+  
   useEffect(()=> {
     dispatch(redirect(''))
     dispatch(setLoginMessage(''))
