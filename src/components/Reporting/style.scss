@@ -1,0 +1,53 @@
+.reporting-form {
+  
+  & h1 {
+    text-align: center;
+
+  }
+
+  & .reporting-form-textarea {
+    width: 90%;
+  }
+
+  & .ui.form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  
+    & .ui.field-input {
+      margin-bottom: 1rem;
+    }
+  
+    & .reporting-form-checkbox {
+      width: 90%;
+      display: flex ;
+      flex-direction: column;
+      flex-wrap: wrap;
+      align-items: center;
+      justify-content: space-between;
+  
+      & .accordion.ui {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      text-align: center;
+  
+        & .retail-container {
+          display: flex;
+          flex-direction: row;
+          flex-wrap: wrap;
+          align-items: center;
+          
+          & p {
+            margin: 0;
+          }
+        }
+  
+        & .ui.message {
+          padding: 1rem;
+        }
+      }
+    }
+  }
+}
+

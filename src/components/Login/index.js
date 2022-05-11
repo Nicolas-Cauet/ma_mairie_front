@@ -140,7 +140,7 @@ function Login() {
           placeholder="Email"
           value={email}
           title="email"
-          icon="envelope"
+          icon="at"
           />
           <Field
           type="password"
