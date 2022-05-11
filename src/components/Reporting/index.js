@@ -1,6 +1,6 @@
 // import PropTypes from 'prop-types';
 import { useDispatch, useSelector } from 'react-redux';
-import { Button, Checkbox, Form, Accordion, Icon } from 'semantic-ui-react'
+import { Button, Checkbox, Form, Accordion, Icon, Message } from 'semantic-ui-react'
 import { setActiveIndexTerms } from '../../actions/reports';
 
 import Field from '../Field';
@@ -26,9 +26,9 @@ function Reporting() {
     {isReporting && (
       <section className="reporting-form">
         <h1>Signaler un événement</h1>
-        <Form>
+        <Form className='reporting-form'> 
           <Form.TextArea
-            // label='Description'
+            className='reporting-form-textarea'
             placeholder='Description : Que souhaitez vous signaler ?'
           />
           <Field
@@ -63,7 +63,7 @@ function Reporting() {
           title="Téléphone"
           icon="rotated phone"
           />
-          <Form.Field>
+          <Form.Field className='reporting-form-checkbox'>
             <Checkbox label="J'accepte les termes et conditions" />
             <Accordion >
               <Accordion.Title
@@ -71,16 +71,20 @@ function Reporting() {
                 index={0}
                 onClick={handleClick}
               >
-                <div>
+                <div className='retail-container'>
                   <p>Détails</p>
                   <Icon name='dropdown' />
                 </div>
               </Accordion.Title>
               <Accordion.Content active={activeIndexTerms === 0}>
-                <p>
-                 En acceptant les termes et les conditions de ce formualire, j'autorise
-                 mamairie.fr à stocker mon addresse IP durant 30j, afin de ....
-                </p>
+              
+              <Message
+                // as={'p'}
+                // warning
+                // header='You must register before you can do that!'
+                content="En acceptant les termes et les conditions de ce formualire, j'autorise
+                 mamairie.fr à stocker mon addresse IP durant 30j, afin de ...."
+              />
               </Accordion.Content>
             </Accordion>
           </Form.Field>

@@ -3,7 +3,7 @@ import { SET_ACTIVE_INDEX, SET_ACTIVE_INDEX_TERMS } from "../actions/reports";
 export const initialState = {
   activeIndex: -1,
   activeIndexTerms: -1,
-  isReporting: true,
+  isReporting:true,
 
 };
 
