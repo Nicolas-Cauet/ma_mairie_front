@@ -26,4 +26,12 @@
 }
 
 .ui.button.header-button .icon {
-transform: scale(2.5);}
+
+    transition: transform .3s ease-out;
+    transform: scale(2.5);
+
+}
+
+.ui.button.header-button--open .icon {
+    transform: scale(2.5) translateX(0) rotate(90deg);
+}
