@@ -1,5 +1,5 @@
 import { useDispatch, useSelector } from 'react-redux';
-import { useEffect } from 'react';
+import { useEffect, useState } from 'react';
 import PropTypes from 'prop-types';
 import { useNavigate } from 'react-router';
 
@@ -18,6 +18,7 @@ function Login() {
     pseudo,
     email,
     password,
+    confirmPassword,
     inseeCode,
     logged,
     isOpenSignup,
@@ -27,7 +28,12 @@ function Login() {
     activeConnectionButton,
     redirectTo,
   } = useSelector((state) => state.login);
-  
+
+  const [samePassword, setSamePassword] = useState()
+
+  useEffect(() => {
+    setSamePassword(true)
+  }, [])
   
   const handleToggleLogin = () => {
     dispatch(toggleLogin());
@@ -44,7 +50,13 @@ function Login() {
 
   const handleSubmitSignup = (event) => {
     event.preventDefault();
-    dispatch(submitSignup(pseudo, email, password, inseeCode))
+    if(password !== confirmPassword){
+      setSamePassword(false);
+    }
+    else {
+      setSamePassword(true);
+      dispatch(submitSignup(pseudo, email, password, confirmPassword, inseeCode));
+    } 
   };
 
   const handleSubmitLogin = (event) => {
@@ -115,7 +127,19 @@ function Login() {
           value={password}
           title="password"
           icon="key"
+          inputError={!samePassword}
           />
+          <Field error
+          type="password"
+          className="login-input"
+          placeholder="Confirmation mot de passe"
+          value={confirmPassword}
+          title="confirmPassword"
+          icon="key"
+          inputError={!samePassword}
+          />
+          {samePassword ? '' :  <p className='red'>Les mots de passe sont différents</p>}
+
           <Field
           type="insee-code"
           className="login-input"
@@ -170,6 +194,7 @@ function Login() {
     </div>
   );
 }
+
 Login.propTypes = {
   email: PropTypes.string,
   password: PropTypes.string,

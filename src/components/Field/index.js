@@ -9,7 +9,7 @@ import './style.scss';
 /***
  * JS Docs
  */
-function Field({ type, value, title, placeholder, icon }) {
+function Field({ type, value, title, placeholder, icon, inputError }) {
   const dispatch = useDispatch();
 
   const handleChange = (event) => {
@@ -18,7 +18,7 @@ function Field({ type, value, title, placeholder, icon }) {
 
   const inputId = `field-${title}`
   return (
-      <Input
+      <Input error={inputError}
         id={inputId}
         value={value}
         type={type}

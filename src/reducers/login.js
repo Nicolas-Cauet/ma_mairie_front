@@ -14,6 +14,7 @@ export const initialState = {
     pseudo: '',
     email: '',
     password: '',
+    confirmPassword: '',
     inseeCode: '',
     logged: false,
     isOpenSignup: false,
@@ -56,6 +57,7 @@ const reducer = (state = initialState, action = {}) => {
       loginMessage: '',
       email: '',
       password: '',
+      confirmPassword: '',
       };
     }
     case SET_LOGOUT: {
