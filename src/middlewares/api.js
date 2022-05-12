@@ -54,7 +54,7 @@ const api = (store) => (next) => (action) => {
           store.dispatch(redirect('/'));
           
           //Récupération du token lors du login
-          const { accessToken } = response.data;
+          const accessToken = response.data.accessToken;
           console.log(accessToken);
           instance.defaults.headers.common.Authorization = `bearer ${accessToken}`;
           localStorage.setItem('accessToken', accessToken);
