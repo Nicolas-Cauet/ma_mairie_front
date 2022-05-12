@@ -97,6 +97,7 @@ function Login() {
           className="login-input"
           placeholder="Pseudonyme"
           value={pseudo}
+          name="pseudo"
           title="pseudo"
           icon="user"
 
@@ -106,6 +107,7 @@ function Login() {
           className="login-input"
           placeholder="Email"
           value={email}
+          name="email"
           title="email"
           icon="at"
           />
@@ -114,6 +116,7 @@ function Login() {
           className="login-input"
           placeholder="Mot de passe"
           value={password}
+          name="password"
           title="password"
           icon="key"
           />
@@ -122,6 +125,7 @@ function Login() {
           className="login-input"
           placeholder="Code INSEE"
           value={inseeCode}
+          name="inseeeCode"
           title="inseeCode"
           icon="building"
           />
@@ -140,6 +144,7 @@ function Login() {
           className="login-input"
           placeholder="Email"
           value={email}
+          name="email"
           title="email"
           icon="at"
           />
@@ -148,6 +153,7 @@ function Login() {
           className="login-input"
           placeholder="Mot de passe"
           value={password}
+          name="password"
           title="password"
           icon="key"
           />

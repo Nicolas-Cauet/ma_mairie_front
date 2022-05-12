@@ -7,14 +7,14 @@ import { changeCurrentField } from '../../actions/utilities';
 
 import './style.scss';
 
-function Field({ type, value, title, placeholder, icon }) {
+function Field({ type, value, name, placeholder, icon }) {
   const dispatch = useDispatch();
 
   const handleChange = (event) => {
-    dispatch(changeCurrentField(event.target.value, title));
+    dispatch(changeCurrentField(event.target.value, name));
   };
 
-  const inputId = `field-${title}`
+  const inputId = `field-${name}`
   return (
       <Input
         id={inputId}
@@ -25,7 +25,7 @@ function Field({ type, value, title, placeholder, icon }) {
         iconPosition='left'
         placeholder={placeholder}
         onChange={handleChange}
-        title={title}
+        name={name}
       />
   );
 }

@@ -5,11 +5,11 @@ export const initialState = {
   email: '',
   password: '',
   inseeCode: '',
-  reporting_description:'rerer',
-  reporting_email:'er',
-  reporting_firstName:'er',
-  reporting_lastName:'er',
-  reporting_phone:'06265',
+  reporting_description: '',
+  reporting_email: '',
+  reporting_firstName: '',
+  reporting_lastName: '',
+  reporting_phone: '',
   reporting_checkBox: false,
   };
   

@@ -13,7 +13,14 @@ import './style.scss';
 function Reporting() {
   const dispatch = useDispatch();
   const { isReporting, activeIndexTerms, categoriesOptions } = useSelector((state) => state.reports);
-  const { description, email, firstName, lastName, phone, checkBox } = useSelector((state) => state.reporting);
+  const {
+    reporting_description,
+    reporting_email,
+    reporting_firstName,
+    reporting_lastName,
+    reporting_phone,
+    reporting_checkBox
+  } = useSelector((state) => state.reporting);
   const handleClick = (e, titleProps) => {
     const { index } = titleProps
     const newIndex = activeIndexTerms === index ? -1 : index
@@ -27,11 +34,6 @@ function Reporting() {
   const handleClickBack = () => {
     dispatch(toggleReporting());
   }
-
-  // const handleChange = () => {
-  //   console.log('coucou');
-  //   dispatch(changeCurrentFieldReporting(event.target.value, title));
-  // }
 
   return (
     <>
@@ -49,9 +51,9 @@ function Reporting() {
             />
           </section>
           <Form.TextArea
-            value={description}
-            title="description"
-            // onChange={handleChange(changeCurrentFieldReporting)}
+            value={reporting_description}
+            title="Description"
+            name="reporting_description"
             className='reporting-form-textarea'
             placeholder='Description : Que souhaitez vous signaler ?'
           />
@@ -59,16 +61,17 @@ function Reporting() {
           type="email"
           className="reporting-email"
           placeholder="Email"
-          value={email}
+          value={reporting_email}
           title="email"
-          // onChange={handleChange(changeCurrentFieldReporting)}
+          name="reporting_email"
           icon="at"
           />
           <Field
           type="text"
           className="reporting-firstname"
           placeholder="Nom"
-          value={firstName}
+          value={reporting_firstName}
+          name="reporting_firstname"
           title="firstName"
           icon="user"
           />
@@ -76,25 +79,26 @@ function Reporting() {
           type="text"
           className="reporting-lastname"
           placeholder="Prénom"
-          value={lastName}
+          value={reporting_lastName}
+          name="reporting_lastName"
           title="lastName"
-          // onChange={changeCurrentFieldReporting}
           icon="user"
           />
           <Field
           type="tel"
           className="reporting-phone"
           placeholder="Téléphone"
-          value={phone}
+          value={reporting_phone}
           title="phone"
-          // onChange={changeCurrentFieldReporting}
+          name="reporting_phone"
           icon="phone"
           />
           <Form.Field className='reporting-form-checkbox'>
             <Checkbox 
               label="J'accepte les termes et conditions"
-              checked={checkBox}
-              // onChange={changeCurrentFieldReporting}
+              name="reporting_checkBox"
+              title="Accepter les conditions"
+              checked={reporting_checkBox}
             />
             <Accordion >
               <Accordion.Title
