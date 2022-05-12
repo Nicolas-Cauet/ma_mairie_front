@@ -10,11 +10,11 @@ import { SUBMIT_LOGIN,
   setLogout,
 } from '../actions/action';
 import { SUBMIT_REPORTING } from '../actions/reporting';
-import { GET_REPORTS } from '../actions/reports';
+import { GET_REPORTS, saveReports } from '../actions/reports';
 import { redirect } from '../actions/utilities';
 
 const instance = axios.create({
-  baseURL: 'https://ma-mairie.herokuapp.com',
+  baseURL: 'http://localhost:3001',
 });
 
 
@@ -79,6 +79,7 @@ const api = (store) => (next) => (action) => {
       instance.get('/admin/reporting/1')
         .then((response) => {
           console.log(response);
+          store.dispatch(saveReports(response.data));
           // store.dispatch(login());
           // store.dispatch(redirect('/'));
           

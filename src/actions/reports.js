@@ -23,3 +23,9 @@ export const TOGGLE_REPORTING = 'TOGGLE_REPORTING';
 export const toggleReporting = () => ({
   type: TOGGLE_REPORTING,
 });
+
+export const SAVE_REPORTS = 'SAVE_REPORTS';
+export const saveReports = (reports) => ({
+  type: SAVE_REPORTS,
+  playload: reports,
+});
