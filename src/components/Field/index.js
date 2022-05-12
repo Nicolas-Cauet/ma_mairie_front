@@ -6,8 +6,10 @@ import { Input } from 'semantic-ui-react'
 import { changeCurrentField } from '../../actions/utilities';
 
 import './style.scss';
-
-function Field({ type, value, name, placeholder, icon }) {
+/***
+ * JS Docs
+ */
+function Field({ type, value, title, placeholder, icon, inputError, name }) {
   const dispatch = useDispatch();
 
   const handleChange = (event) => {
@@ -16,7 +18,7 @@ function Field({ type, value, name, placeholder, icon }) {
 
   const inputId = `field-${name}`
   return (
-      <Input
+      <Input error={inputError}
         id={inputId}
         value={value}
         type={type}

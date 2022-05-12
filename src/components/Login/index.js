@@ -1,5 +1,5 @@
 import { useDispatch, useSelector } from 'react-redux';
-import { useEffect } from 'react';
+import { useEffect, useState } from 'react';
 import PropTypes from 'prop-types';
 import { useNavigate } from 'react-router';
 
@@ -7,7 +7,7 @@ import Field from '../Field'
 
 import { logout, submitSignup, submitLogin, toggleLogin, toggleSignup } from '../../actions/action';
 
-import { Button } from 'semantic-ui-react'
+import { Button, Message } from 'semantic-ui-react'
 import './style.scss';
 
 function Login() {
@@ -18,6 +18,7 @@ function Login() {
     pseudo,
     email,
     password,
+    confirmPassword,
     inseeCode,
     logged,
     isOpenSignup,
@@ -27,7 +28,12 @@ function Login() {
     activeConnectionButton,
     redirectTo,
   } = useSelector((state) => state.login);
-  
+
+  const [samePassword, setSamePassword] = useState()
+
+  useEffect(() => {
+    setSamePassword(true)
+  }, [])
   
   const handleToggleLogin = () => {
     dispatch(toggleLogin());
@@ -44,7 +50,13 @@ function Login() {
 
   const handleSubmitSignup = (event) => {
     event.preventDefault();
-    dispatch(submitSignup(pseudo, email, password, inseeCode))
+    if(password !== confirmPassword){
+      setSamePassword(false);
+    }
+    else {
+      setSamePassword(true);
+      dispatch(submitSignup(pseudo, email, password, confirmPassword, inseeCode));
+    } 
   };
 
   const handleSubmitLogin = (event) => {
@@ -62,7 +74,7 @@ function Login() {
       {logged && (
         <Button
           type="button"
-          className='login-button'
+          className='logout-button'
           onClick={handleLogout}
         >
           Se déconnecter
@@ -119,7 +131,19 @@ function Login() {
           name="password"
           title="password"
           icon="key"
+          inputError={!samePassword}
           />
+          <Field error
+          type="password"
+          className="login-input"
+          placeholder="Confirmation mot de passe"
+          value={confirmPassword}
+          title="confirmPassword"
+          icon="key"
+          inputError={!samePassword}
+          />
+          {samePassword ? '' :  <p className='red'>Les mots de passe sont différents</p>}
+
           <Field
           type="tel"
           className="login-input"
@@ -137,6 +161,7 @@ function Login() {
           </Button>
         </form>
       )}
+
       {(isOpenLogin && !logged) && (
         <form className="login-form" onSubmit={handleSubmitLogin}>
           <Field
@@ -165,10 +190,18 @@ function Login() {
           </Button>
         </form>
       )}
-        <h2 className={loginMessageColor ? 'login-message green' : 'login-message red'}>{loginMessage}</h2>
+
+      { loginMessage && (
+        loginMessageColor ? 
+        <Message positive>  <p>{loginMessage}</p> </Message>
+        :
+        <Message negative>  <p>{loginMessage}</p> </Message>
+      )}
+
     </div>
   );
 }
+
 Login.propTypes = {
   email: PropTypes.string,
   password: PropTypes.string,

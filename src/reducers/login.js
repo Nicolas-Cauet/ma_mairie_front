@@ -46,6 +46,7 @@ const reducer = (state = initialState, action = {}) => {
       loginMessage: '',
       email: '',
       password: '',
+      confirmPassword: '',
       };
     }
     case SET_LOGOUT: {
