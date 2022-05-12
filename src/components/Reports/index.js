@@ -2,7 +2,7 @@
 import { useDispatch, useSelector } from 'react-redux';
 import { useEffect } from 'react';
 import { Accordion, Button, Icon, Label, Dropdown } from 'semantic-ui-react'
-import { getReports, setActiveIndex } from '../../actions/reports';
+import { getReports, setActiveIndex, toggleReporting } from '../../actions/reports';
 
 import Reporting from '../Reporting';
 
@@ -15,12 +15,17 @@ function Reports() {
 
   useEffect (() =>{
     dispatch((getReports()));
-  }, [])
+  })
 
-  const handleClick = (e, titleProps) => {
+  const handleClickAccordion = (e, titleProps) => {
     const { index } = titleProps
     const newIndex = activeIndex === index ? -1 : index
     dispatch(setActiveIndex(newIndex))
+  }
+
+  const handleClick = () => {
+    console.log('coucou');
+    dispatch((toggleReporting()))
   }
 
   const categoriesOptions = [
@@ -90,7 +95,10 @@ function Reports() {
         {/*Section for reporting button*/}
         {!isReporting && (
           <section className='reporting-container'>
-          <Button className='reporting-button'>
+          <Button 
+            className='reporting-button'
+            onClick={handleClick}
+          >
             <Icon name='warning sign' />
             <p>Signaler</p>
           </Button>
@@ -136,7 +144,7 @@ function Reports() {
                 className='accordion-title'
                 active={activeIndex === 0}
                 index={0}
-                onClick={handleClick}
+                onClick={handleClickAccordion}
               >
                 <div className='accordion-title-container'>
                   <h1>Le chien du voisin s'est enfui</h1>
@@ -145,7 +153,7 @@ function Reports() {
                   Catégorie: Route
                   </Label>
                   <Label color='green'>
-                  Statut: Résolu
+                  Statut: RésoluhandleClick
                   </Label>
                   <div>
                     <Icon name='caret square down outline' />
@@ -176,10 +184,10 @@ function Reports() {
               <Accordion.Title
                 active={activeIndex === 1}
                 index={1}
-                onClick={handleClick}
+                onClick={handleClickAccordion}
                 className='accordion-title'
               >
-                <div className='accordion-title-container'>
+                <div className='accordhandleClickion-title-container'>
                   <h1>La voisine s'est enfuie</h1>
                   <h2>23/06/2022</h2>
                   <Label color='yellow'>
@@ -217,7 +225,7 @@ function Reports() {
               <Accordion.Title
                 active={activeIndex === 2}
                 index={2}
-                onClick={handleClick}
+                onClick={handleClickAccordion}
                 className='accordion-title'
               >
                 <div className='accordion-title-container'>

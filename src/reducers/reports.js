@@ -1,4 +1,4 @@
-import { SET_ACTIVE_INDEX, SET_ACTIVE_INDEX_TERMS } from "../actions/reports";
+import { SET_ACTIVE_INDEX, SET_ACTIVE_INDEX_TERMS, TOGGLE_REPORTING } from "../actions/reports";
 
 export const initialState = {
   activeIndex: -1,
@@ -14,12 +14,17 @@ const reducer = (state = initialState, action = {}) => {
       return {
         ...state,
         activeIndex: action.activeIndex,
-      }
+      };
     case SET_ACTIVE_INDEX_TERMS:
       return {
         ...state,
         activeIndexTerms: action.activeIndexTerms,
-      }
+      };
+    case TOGGLE_REPORTING:
+      return {
+        ...state,
+        isReporting: true,
+      };
     default:
       return state; 
   }

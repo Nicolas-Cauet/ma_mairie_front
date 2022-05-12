@@ -16,3 +16,8 @@ export const GET_REPORTS = 'GET_REPORTS';
 export const getReports = () => ({
   type: GET_REPORTS,
 });
+
+export const TOGGLE_REPORTING = 'TOGGLE_REPORTING';
+export const toggleReporting = () => ({
+  type: TOGGLE_REPORTING,
+});

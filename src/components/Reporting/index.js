@@ -89,7 +89,8 @@ function Reporting() {
             </Accordion>
           </Form.Field>
           <Form.Field>
-            <Button type='submit'>Envoyer</Button>
+            <Button type='submit' className='form-submit'>Envoyer</Button>
+            <Button type='button' className='form-back'>Retour</Button>
           </Form.Field>
         </Form> 
       </section>

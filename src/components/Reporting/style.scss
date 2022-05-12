@@ -9,6 +9,17 @@
     width: 90%;
   }
 
+  & .ui.button {
+
+    &.form-submit {
+      background-color: #2ace2a;
+      margin-right: 3rem;
+    }
+    &.form-back {
+      background-color: #cf2f2f;
+    }
+  }
+
   & .ui.form {
     display: flex;
     flex-direction: column;
@@ -50,4 +61,5 @@
     }
   }
 }
+
 
