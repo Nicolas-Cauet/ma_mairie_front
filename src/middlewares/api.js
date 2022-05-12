@@ -9,6 +9,7 @@ import { SUBMIT_LOGIN,
   LOGOUT,
   setLogout,
 } from '../actions/action';
+import { SUBMIT_REPORTING } from '../actions/reporting';
 import { GET_REPORTS } from '../actions/reports';
 import { redirect } from '../actions/utilities';
 
@@ -66,7 +67,7 @@ const api = (store) => (next) => (action) => {
         });
     break;
     case LOGOUT: {
-      console.log('User logout middleware');
+      console.log('User logout');
       delete instance.defaults.headers.common.Authorization;
       localStorage.removeItem('token');
       console.log('token deleted');
@@ -74,7 +75,7 @@ const api = (store) => (next) => (action) => {
     break;
     }
     case GET_REPORTS:
-      console.log('Get Reports');
+      console.log('GET Reports');
       instance.get('/admin/reporting/1')
         .then((response) => {
           console.log(response);
@@ -83,8 +84,29 @@ const api = (store) => (next) => (action) => {
           
         })
         .catch((error) => {
+          // message d'erreur à faire
           // store.dispatch(setLoginMessage('Email et/ou Mot de passe incorrect', false));
           console.log(error);
+        });
+    break;
+    case SUBMIT_REPORTING:
+      console.log('POST Reporting')
+      instance.post('/admin/reporting/1', {
+        pseudo: action.pseudo,
+        email: action.email,
+        password: action.password,
+        insee: action.inseeCode,
+      })
+        .then((response) => {
+          console.log('POST Reporting OK')
+          console.log(response);
+       
+          //message de succès
+          // store.dispatch(setLoginMessage('Votre inscription c\'est déroulée avec succès, vous pouvez vous connecter', true));
+        })
+        .catch((error) => {
+          //message d'echec
+          // store.dispatch(setLoginMessage('Une erreur est survenue, veuillez recommencer', false));
         });
     break;
     default:

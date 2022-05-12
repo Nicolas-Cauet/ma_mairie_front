@@ -3,12 +3,10 @@ import { useDispatch } from 'react-redux';
 
 import { Input } from 'semantic-ui-react'
 
-import { changeCurrentField } from '../../actions/action';
+import { changeCurrentField } from '../../actions/utilities';
 
 import './style.scss';
-/***
- * JS Docs
- */
+
 function Field({ type, value, title, placeholder, icon }) {
   const dispatch = useDispatch();
 

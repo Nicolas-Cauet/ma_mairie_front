@@ -99,6 +99,7 @@ function Login() {
           value={pseudo}
           title="pseudo"
           icon="user"
+
           />
           <Field
           type="email"

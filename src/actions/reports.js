@@ -12,11 +12,13 @@ export const setActiveIndexTerms = (newIndex) => ({
   activeIndexTerms: newIndex,
 });
 
+//Receive all reports from back
 export const GET_REPORTS = 'GET_REPORTS';
 export const getReports = () => ({
   type: GET_REPORTS,
 });
 
+//Switch reports/reporting component 
 export const TOGGLE_REPORTING = 'TOGGLE_REPORTING';
 export const toggleReporting = () => ({
   type: TOGGLE_REPORTING,
