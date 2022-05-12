@@ -11,3 +11,8 @@ export const setActiveIndexTerms = (newIndex) => ({
   type: SET_ACTIVE_INDEX_TERMS,
   activeIndexTerms: newIndex,
 });
+
+export const GET_REPORTS = 'GET_REPORTS';
+export const getReports = () => ({
+  type: GET_REPORTS,
+});

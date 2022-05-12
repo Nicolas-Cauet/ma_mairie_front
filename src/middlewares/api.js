@@ -9,6 +9,7 @@ import { SUBMIT_LOGIN,
   LOGOUT,
   setLogout,
 } from '../actions/action';
+import { GET_REPORTS } from '../actions/reports';
 import { redirect } from '../actions/utilities';
 
 const instance = axios.create({
@@ -71,6 +72,20 @@ const api = (store) => (next) => (action) => {
       store.dispatch(setLogout())
     break;
     }
+    case GET_REPORTS:
+      console.log('Get Reports');
+      instance.get('/admin/reporting/1')
+        .then((response) => {
+          console.log(response);
+          // store.dispatch(login());
+          // store.dispatch(redirect('/'));
+          
+        })
+        .catch((error) => {
+          // store.dispatch(setLoginMessage('Email et/ou Mot de passe incorrect', false));
+          console.log(error);
+        });
+    break;
     default:
       next(action);
   }
