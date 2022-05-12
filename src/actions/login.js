@@ -1,10 +1,3 @@
-export const CHANGE_CURRENT_FIELD = 'CHANGE_CURRENT_FIELD';
-export const changeCurrentField = (value, key) => ({
-  type: CHANGE_CURRENT_FIELD,
-  value: value,
-  key: key,
-});
-
 export const TOGGLE_LOGIN = 'TOGGLE_LOGIN';
 export const toggleLogin = (bool) => ({
   type: TOGGLE_LOGIN,
@@ -27,10 +20,11 @@ export const logout = () => ({
 });
 
 export const SUBMIT_SIGNUP = 'SUBMIT_SIGNUP';
-export const submitSignup = (email, password, inseeCode) => ({
+export const submitSignup = (email, password, confirmPassword, inseeCode ) => ({
   type: SUBMIT_SIGNUP,
   email,
   password,
+  confirmPassword,
   inseeCode,
 });
 
