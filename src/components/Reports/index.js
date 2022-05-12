@@ -20,6 +20,8 @@ function Reports() {
 
   }
 
+  const report = useSelector((state) => state.reports.list);
+
     return (
       <section className='reports-container'>
         <Button className='reporting-button'>

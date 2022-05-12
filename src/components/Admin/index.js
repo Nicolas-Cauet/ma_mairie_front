@@ -1,6 +1,8 @@
 // import './style.scss';
 import { useSelector } from 'react-redux';
+import { Link } from 'react-router-dom';
 import { Button } from 'semantic-ui-react';
+
 import Field from '../Field';
 import Login from '../Login';
 import './style.scss';
@@ -27,7 +29,9 @@ function Admin() {
             <div className='admin-content'>
                 <div className='admin-button'>
                     <h3>Signalements</h3>
-                    <Button className='process' icon='pencil alternate' content='Traiter'/>
+                    <Link to="/admin/reports/1">
+                        <Button className='process' icon='pencil alternate' content='Traiter'/>
+                    </Link>
                 </div>
             </div>
 

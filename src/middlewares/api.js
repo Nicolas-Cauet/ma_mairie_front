@@ -9,10 +9,11 @@ import { SUBMIT_LOGIN,
   LOGOUT,
   setLogout,
 } from '../actions/action';
+import { GET_REPORTS, saveReports } from '../actions/reports';
 import { redirect } from '../actions/utilities';
 
 const instance = axios.create({
-  baseURL: 'https://ma-mairie.herokuapp.com',
+  baseURL: 'http://localhost:3001',
 });
 
 
@@ -69,6 +70,18 @@ const api = (store) => (next) => (action) => {
       localStorage.removeItem('token');
       console.log('token deleted');
       store.dispatch(setLogout())
+    break;
+    }
+    case GET_REPORTS: {
+      instance.get('/admin/reporting/1')
+        .then((response) => {
+          console.log('reports list')
+          console.log(response);
+          store.dispatch(saveReports(response.data));
+        })
+        .catch((error) => {
+          console.log(error);
+        });
     break;
     }
     default:
