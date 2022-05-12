@@ -76,7 +76,7 @@ const api = (store) => (next) => (action) => {
     }
     case GET_REPORTS:
       console.log('GET Reports');
-      instance.get('/admin/reporting/1')
+      instance.get('/reporting/1')
         .then((response) => {
           console.log(response);
           store.dispatch(saveReports(response.data));
