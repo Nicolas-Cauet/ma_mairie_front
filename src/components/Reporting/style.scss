@@ -5,6 +5,11 @@
 
   }
 
+  & .filter-section {
+    width: 150%;
+    margin-bottom: 1rem;
+  }
+
   & .reporting-form-textarea {
     width: 90%;
   }
@@ -62,4 +67,24 @@
   }
 }
 
+.ui.dropdown {
+
+  font-size: 1rem;
+
+  &>.text>.icon {
+  margin: 0;
+  display: flex;
+  justify-content: flex-start;
+  flex-direction: row;
+  gap: 5px;
+  width: 100%;
+  }
+
+  & .menu>.item>.icon {
+    display: flex;
+    flex-direction: row;
+    gap: 5px;
+    width: 100%;
+  }
+}
 

@@ -17,9 +17,9 @@ const instance = axios.create({
 });
 
 
-// if (localStorage.getItem('token')) {
-//   const token = localStorage.getItem('token');
-//   instance.defaults.headers.common.Authorization = `bearer ${token}`;
+// if (localStorage.getItem('accesToken')) {
+//   const accesToken = localStorage.getItem('accesToken');
+//   instance.defaults.headers.common.Authorization = `bearer ${accesToken}`;
 // }
 
 const api = (store) => (next) => (action) => {
@@ -54,9 +54,10 @@ const api = (store) => (next) => (action) => {
           store.dispatch(redirect('/'));
           
           //Récupération du token lors du login
-          const { token } = response.data;
-          instance.defaults.headers.common.Authorization = `bearer ${token}`;
-          localStorage.setItem('token', token);
+          const { accesToken } = response.data;
+          console.log(accesToken);
+          instance.defaults.headers.common.Authorization = `bearer ${accesToken}`;
+          localStorage.setItem('accesToken', accesToken);
           
         })
         .catch((error) => {

@@ -11,7 +11,7 @@ import './style.scss';
 
 function Reports() {
   const dispatch = useDispatch();
-  const { activeIndex, isReporting } = useSelector((state) => state.reports);
+  const { activeIndex, isReporting, categoriesOptions, monthOptions, yearOptions } = useSelector((state) => state.reports);
 
   useEffect (() =>{
     dispatch((getReports()));
@@ -27,65 +27,6 @@ function Reports() {
     console.log('coucou');
     dispatch((toggleReporting()))
   }
-
-  const categoriesOptions = [
-    {
-      key: 'Catégories',
-      text: 'Catégories',
-      value: 'Catégories',
-    },
-    {
-      key: 'Route',
-      text: 'Route',
-      value: 'Route',
-      icon: 'road'
-    },
-    {
-      key: 'Voisinage',
-      text: 'Voisinage',
-      value: 'Voisinage',
-      icon: 'users'
-    },
-  ]
-  const monthOptions = [
-    {
-      key: 'Mois',
-      text: 'Mois',
-      value: 'Mois',
-    },
-    {
-      key: 'Janvier',
-      text: 'Janvier',
-      value: 'Janvier',
-      // image: { avatar: true, src: '/images/avatar/small/jenny.jpg' },
-    },
-    {
-      key: 'Février',
-      text: 'Février',
-      value: 'Février',
-      // image: { avatar: true, src: '/images/avatar/small/elliot.jpg' },
-    },
-  ]
-  const yearOptions = [
-    {
-      key: 'Année',
-      text: 'Année',
-      value: 'Année',
-      // image: { avatar: true, src: '/images/avatar/small/jenny.jpg' },
-    },
-    {
-      key: '2021',
-      text: '2021',
-      value: '2021',
-      // image: { avatar: true, src: '/images/avatar/small/jenny.jpg' },
-    },
-    {
-      key: '2022',
-      text: '2022',
-      value: '2022',
-      // image: { avatar: true, src: '/images/avatar/small/elliot.jpg' },
-    },
-  ]
 
     return (
       <>
@@ -153,7 +94,7 @@ function Reports() {
                   Catégorie: Route
                   </Label>
                   <Label color='green'>
-                  Statut: RésoluhandleClick
+                  Statut: Résolu
                   </Label>
                   <div>
                     <Icon name='caret square down outline' />
@@ -187,7 +128,7 @@ function Reports() {
                 onClick={handleClickAccordion}
                 className='accordion-title'
               >
-                <div className='accordhandleClickion-title-container'>
+                <div className='accordion-title-container'>
                   <h1>La voisine s'est enfuie</h1>
                   <h2>23/06/2022</h2>
                   <Label color='yellow'>
