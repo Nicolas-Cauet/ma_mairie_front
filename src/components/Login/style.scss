@@ -36,7 +36,19 @@
   background-color: vars.$createColor;
   margin-top: 1rem;
   width: 50%;
+
+  &:active {
+    background-color: vars.$createColor;
+  }
 }
+
+.ui.button.logout-button {
+  background-color: vars.$statusRefusedColor;
+}
+
+
+
+
 
 
 // .login-form-login>.ui.input {

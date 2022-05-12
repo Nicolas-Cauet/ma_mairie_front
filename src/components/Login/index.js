@@ -7,7 +7,7 @@ import Field from '../Field'
 
 import { logout, submitSignup, submitLogin, toggleLogin, toggleSignup } from '../../actions/action';
 
-import { Button } from 'semantic-ui-react'
+import { Button, Message } from 'semantic-ui-react'
 import './style.scss';
 
 function Login() {
@@ -62,7 +62,7 @@ function Login() {
       {logged && (
         <Button
           type="button"
-          className='login-button'
+          className='logout-button'
           onClick={handleLogout}
         >
           Se déconnecter
@@ -132,6 +132,7 @@ function Login() {
           </Button>
         </form>
       )}
+
       {(isOpenLogin && !logged) && (
         <form className="login-form" onSubmit={handleSubmitLogin}>
           <Field
@@ -158,7 +159,14 @@ function Login() {
           </Button>
         </form>
       )}
-        <h2 className={loginMessageColor ? 'login-message green' : 'login-message red'}>{loginMessage}</h2>
+
+      { loginMessage && (
+        loginMessageColor ? 
+        <Message positive>  <p>{loginMessage}</p> </Message>
+        :
+        <Message negative>  <p>{loginMessage}</p> </Message>
+      )}
+
     </div>
   );
 }
