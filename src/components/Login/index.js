@@ -152,7 +152,7 @@ function Login() {
           className="login-input"
           placeholder="Code INSEE"
           value={inseeCode}
-          name="inseeeCode"
+          name="inseeCode"
           title="inseeCode"
           icon="building"
           />
