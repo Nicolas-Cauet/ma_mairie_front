@@ -1,5 +1,4 @@
 import {
-  CHANGE_CURRENT_FIELD,
   TOGGLE_LOGIN,
   TOGGLE_SIGNUP,
   LOGIN,
@@ -11,10 +10,6 @@ import {
 import { REDIRECT } from '../actions/utilities';
 
 export const initialState = {
-    pseudo: '',
-    email: '',
-    password: '',
-    inseeCode: '',
     logged: false,
     isOpenSignup: false,
     isOpenLogin: false,
@@ -26,11 +21,6 @@ export const initialState = {
 
 const reducer = (state = initialState, action = {}) => {
   switch (action.type) {
-    case CHANGE_CURRENT_FIELD:
-      return {
-        ...state,
-        [action.key]: action.value,
-      };
     case TOGGLE_LOGIN: {
       return {
         ...state,
@@ -56,6 +46,7 @@ const reducer = (state = initialState, action = {}) => {
       loginMessage: '',
       email: '',
       password: '',
+      confirmPassword: '',
       };
     }
     case SET_LOGOUT: {

@@ -27,6 +27,8 @@ function Reports() {
     dispatch((toggleReporting()))
   }
 
+  const report = useSelector((state) => state.reports.list);
+
     return (
       <>
         {/*Section for reporting action*/}

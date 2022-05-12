@@ -1,10 +1,11 @@
-import { SET_ACTIVE_INDEX, SET_ACTIVE_INDEX_TERMS, TOGGLE_REPORTING } from "../actions/reports";
+import { SET_ACTIVE_INDEX, SET_ACTIVE_INDEX_TERMS, TOGGLE_REPORTING, SAVE_REPORTS } from "../actions/reports";
 import { Icon } from 'semantic-ui-react'
 
 export const initialState = {
   activeIndex: -1,
   activeIndexTerms: -1,
   isReporting:false,
+  reportsList: [],
   categoriesOptions: [
     {
       // key: 'Catégories',
@@ -81,8 +82,8 @@ export const initialState = {
       // image: { avatar: true, src: '/images/avatar/small/elliot.jpg' },
     },
   ],
-
 };
+
 
 const reducer = (state = initialState, action = {}) => {
   switch (action.type) {
@@ -102,6 +103,11 @@ const reducer = (state = initialState, action = {}) => {
         ...state,
         isReporting: !state.isReporting,
       };
+    case SAVE_REPORTS:
+    return {
+      ...state,
+      reportsList: action.payload,
+    }
     default:
       return state; 
   }

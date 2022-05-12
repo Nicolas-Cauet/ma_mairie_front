@@ -3,22 +3,22 @@ import { useDispatch } from 'react-redux';
 
 import { Input } from 'semantic-ui-react'
 
-import { changeCurrentField } from '../../actions/action';
+import { changeCurrentField } from '../../actions/utilities';
 
 import './style.scss';
 /***
  * JS Docs
  */
-function Field({ type, value, title, placeholder, icon }) {
+function Field({ type, value, title, placeholder, icon, inputError, name }) {
   const dispatch = useDispatch();
 
   const handleChange = (event) => {
-    dispatch(changeCurrentField(event.target.value, title));
+    dispatch(changeCurrentField(event.target.value, name));
   };
 
-  const inputId = `field-${title}`
+  const inputId = `field-${name}`
   return (
-      <Input
+      <Input error={inputError}
         id={inputId}
         value={value}
         type={type}
@@ -27,6 +27,7 @@ function Field({ type, value, title, placeholder, icon }) {
         iconPosition='left'
         placeholder={placeholder}
         onChange={handleChange}
+        name={name}
         title={title}
       />
   );
