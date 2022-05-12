@@ -4,6 +4,7 @@ export const initialState = {
   pseudo: '',
   email: '',
   password: '',
+  confirmPassword: '',
   inseeCode: '',
   reporting_description: '',
   reporting_email: '',

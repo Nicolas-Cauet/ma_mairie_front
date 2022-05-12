@@ -141,7 +141,8 @@ function Login() {
           className="login-input"
           placeholder="Confirmation mot de passe"
           value={confirmPassword}
-          title="confirmPassword"
+          name='confirmPassword'
+          title='Confirmer password'
           icon="key"
           inputError={!samePassword}
           />
