@@ -1,7 +1,8 @@
 // import PropTypes from 'prop-types';
 import { useDispatch, useSelector } from 'react-redux';
+import { useEffect } from 'react';
 import { Accordion, Button, Icon, Label, Dropdown } from 'semantic-ui-react'
-import { setActiveIndex } from '../../actions/reports';
+import { getReports, setActiveIndex } from '../../actions/reports';
 
 import Reporting from '../Reporting';
 
@@ -11,6 +12,10 @@ import './style.scss';
 function Reports() {
   const dispatch = useDispatch();
   const { activeIndex, isReporting } = useSelector((state) => state.reports);
+
+  useEffect (() =>{
+    dispatch((getReports()));
+  }, [])
 
   const handleClick = (e, titleProps) => {
     const { index } = titleProps
