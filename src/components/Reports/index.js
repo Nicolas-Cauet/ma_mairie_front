@@ -24,7 +24,6 @@ function Reports() {
   }
 
   const handleClick = () => {
-    console.log('coucou');
     dispatch((toggleReporting()))
   }
 
