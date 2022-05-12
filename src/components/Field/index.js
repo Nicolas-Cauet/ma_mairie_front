@@ -28,6 +28,7 @@ function Field({ type, value, title, placeholder, icon, inputError, name }) {
         placeholder={placeholder}
         onChange={handleChange}
         name={name}
+        title={title}
       />
   );
 }

@@ -14,12 +14,7 @@ function Login() {
   const dispatch = useDispatch();
   const navigate = useNavigate();
 
-  const { 
-    pseudo,
-    email,
-    password,
-    confirmPassword,
-    inseeCode,
+  const {
     logged,
     isOpenSignup,
     isOpenLogin,
@@ -28,6 +23,14 @@ function Login() {
     activeConnectionButton,
     redirectTo,
   } = useSelector((state) => state.login);
+
+  const { 
+    pseudo,
+    email,
+    password,
+    confirmPassword,
+    inseeCode,
+  } = useSelector((state) => state.utilities);
 
   const [samePassword, setSamePassword] = useState()
 
