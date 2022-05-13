@@ -1,6 +1,7 @@
 import axios from 'axios';
 
-import { SUBMIT_LOGIN,
+import {
+  SUBMIT_LOGIN,
   SUBMIT_SIGNUP,
   setLoginMessage,
   toggleLogin,
@@ -15,10 +16,7 @@ import { redirect } from '../actions/utilities';
 
 const instance = axios.create({
   baseURL: 'https://ma-mairie.herokuapp.com',
-  // baseURL: 'https://localhost:3001',
-
 });
-
 
 // if (localStorage.getItem('accessToken')) {
 //   const accessToken = localStorage.getItem('accessToken');
@@ -35,16 +33,17 @@ const api = (store) => (next) => (action) => {
         insee: action.inseeCode,
       })
         .then((response) => {
-          console.log('User signup')
+          console.log('User signup');
           console.log(response);
           store.dispatch(toggleLogin());
           store.dispatch(activeConnectionButton());
           store.dispatch(setLoginMessage('Votre inscription c\'est déroulée avec succès, vous pouvez vous connecter', true));
         })
         .catch((error) => {
+          console.log(error);
           store.dispatch(setLoginMessage('Une erreur est survenue, veuillez recommencer', false));
         });
-    break;
+      break;
     case SUBMIT_LOGIN:
       instance.post('/login', {
         email: action.email,
@@ -55,26 +54,25 @@ const api = (store) => (next) => (action) => {
           console.log(response);
           store.dispatch(login());
           store.dispatch(redirect('/'));
-          
-          //Récupération du token lors du login
-          const accessToken = response.data.accessToken;
+
+          // Récupération du token lors du login
+          const { accessToken } = response.data;
           console.log(accessToken);
           instance.defaults.headers.common.Authorization = `bearer ${accessToken}`;
           localStorage.setItem('accessToken', accessToken);
-          
         })
         .catch((error) => {
           store.dispatch(setLoginMessage('Email et/ou Mot de passe incorrect', false));
           console.log(error);
         });
-    break;
+      break;
     case LOGOUT: {
       console.log('User logout');
       delete instance.defaults.headers.common.Authorization;
       localStorage.removeItem('token');
       console.log('token deleted');
-      store.dispatch(setLogout())
-    break;
+      store.dispatch(setLogout());
+      break;
     }
     case GET_REPORTS:
       console.log('GET Reports');
@@ -84,16 +82,15 @@ const api = (store) => (next) => (action) => {
           store.dispatch(saveReports(response.data));
           // store.dispatch(login());
           // store.dispatch(redirect('/'));
-          
         })
         .catch((error) => {
           // message d'erreur à faire
           // store.dispatch(setLoginMessage('Email et/ou Mot de passe incorrect', false));
           console.log(error);
         });
-    break;
+      break;
     case SUBMIT_REPORTING:
-      console.log('POST Reporting')
+      console.log('POST Reporting');
       instance.post('/admin/reporting/1', {
         pseudo: action.pseudo,
         email: action.email,
@@ -101,17 +98,20 @@ const api = (store) => (next) => (action) => {
         insee: action.inseeCode,
       })
         .then((response) => {
-          console.log('POST Reporting OK')
+          console.log('POST Reporting OK');
           console.log(response);
-       
-          //message de succès
-          // store.dispatch(setLoginMessage('Votre inscription c\'est déroulée avec succès, vous pouvez vous connecter', true));
+
+          // message de succès
+          // store.dispatch(setLoginMessage
+          // ('Votre inscription c\'est déroulée avec succès, vous pouvez vous connecter', true));
         })
         .catch((error) => {
-          //message d'echec
-          // store.dispatch(setLoginMessage('Une erreur est survenue, veuillez recommencer', false));
+          console.log(error);
+          // message d'echec
+          // store.dispatch(setLoginMessage
+          // ('Une erreur est survenue, veuillez recommencer', false));
         });
-    break;
+      break;
     default:
       next(action);
   }

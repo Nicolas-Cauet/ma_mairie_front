@@ -1,10 +1,12 @@
-import { SET_ACTIVE_INDEX, SET_ACTIVE_INDEX_TERMS, TOGGLE_REPORTING, SAVE_REPORTS } from "../actions/reports";
-import { Icon } from 'semantic-ui-react'
+import { Icon } from 'semantic-ui-react';
+import {
+  SET_ACTIVE_INDEX, SET_ACTIVE_INDEX_TERMS, TOGGLE_REPORTING, SAVE_REPORTS,
+} from '../actions/reports';
 
 export const initialState = {
   activeIndex: -1,
   activeIndexTerms: -1,
-  isReporting:false,
+  isReporting: false,
   reportsList: [],
   categoriesOptions: [
     {
@@ -14,32 +16,32 @@ export const initialState = {
     },
     {
       // key: 'Voirie',
-      text: (<Icon className='dropdown-icon' name='road'> Voirie</Icon>),
+      text: (<Icon className="dropdown-icon" name="road"> Voirie</Icon>),
       value: 'Voirie',
     },
     {
       // key: 'Eclairage public',
-      text: (<Icon className='dropdown-icon' name='lightbulb'> Eclairage public</Icon>),
+      text: (<Icon className="dropdown-icon" name="lightbulb"> Eclairage public</Icon>),
       value: 'Eclairage public',
     },
     {
       // key: 'Voisinage',
-      text: (<Icon className='dropdown-icon' name='users'> Voisinage</Icon>),
+      text: (<Icon className="dropdown-icon" name="users"> Voisinage</Icon>),
       value: 'Voisinage',
     },
     {
       // key: 'Ramassage des déchets',
-      text: (<Icon className='dropdown-icon' name='trash'> Ramassage des déchets</Icon>),
+      text: (<Icon className="dropdown-icon" name="trash"> Ramassage des déchets</Icon>),
       value: 'Ramassage des déchets',
     },
     {
       // key: 'Objets trouvé/perdu',
-      text: (<Icon className='dropdown-icon' name='key'> Objets trouvé/perdu</Icon>),
+      text: (<Icon className="dropdown-icon" name="key"> Objets trouvé/perdu</Icon>),
       value: 'Objets trouvé/perdu',
     },
     {
       // key: 'Autre',
-      text: (<Icon className='dropdown-icon' name='bullhorn'> Autre</Icon>),
+      text: (<Icon className="dropdown-icon" name="bullhorn"> Autre</Icon>),
       value: 'Autre',
     },
   ],
@@ -84,10 +86,9 @@ export const initialState = {
   ],
 };
 
-
 const reducer = (state = initialState, action = {}) => {
   switch (action.type) {
-    //Management of accordion section of report
+    // Management of accordion section of report
     case SET_ACTIVE_INDEX:
       return {
         ...state,
@@ -104,13 +105,13 @@ const reducer = (state = initialState, action = {}) => {
         isReporting: !state.isReporting,
       };
     case SAVE_REPORTS:
-    return {
-      ...state,
-      reportsList: action.payload,
-    }
+      return {
+        ...state,
+        reportsList: action.payload,
+      };
     default:
-      return state; 
+      return state;
   }
 };
 
-export default reducer; 
+export default reducer;

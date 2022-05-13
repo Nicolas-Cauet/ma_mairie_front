@@ -1,13 +1,15 @@
 import { useDispatch, useSelector } from 'react-redux';
 import { useEffect, useState } from 'react';
-import PropTypes from 'prop-types';
+// import PropTypes from 'prop-types';
 import { useNavigate } from 'react-router';
 
-import Field from '../Field'
+import { Button, Message } from 'semantic-ui-react';
+import Field from '../Field';
 
-import { logout, submitSignup, submitLogin, toggleLogin, toggleSignup } from '../../actions/action';
+import {
+  logout, submitSignup, submitLogin, toggleLogin, toggleSignup,
+} from '../../actions/action';
 
-import { Button, Message } from 'semantic-ui-react'
 import './style.scss';
 
 function Login() {
@@ -24,7 +26,7 @@ function Login() {
     redirectTo,
   } = useSelector((state) => state.login);
 
-  const { 
+  const {
     pseudo,
     email,
     password,
@@ -32,20 +34,20 @@ function Login() {
     inseeCode,
   } = useSelector((state) => state.utilities);
 
-  const [samePassword, setSamePassword] = useState()
+  const [samePassword, setSamePassword] = useState();
 
   useEffect(() => {
-    setSamePassword(true)
-  }, [])
-  
+    setSamePassword(true);
+  }, []);
+
   const handleToggleLogin = () => {
     dispatch(toggleLogin());
   };
-  
+
   const handleToggleSignup = () => {
     dispatch(toggleSignup());
   };
-  
+
   const handleLogout = () => {
     console.log('User logout');
     dispatch(logout());
@@ -53,31 +55,30 @@ function Login() {
 
   const handleSubmitSignup = (event) => {
     event.preventDefault();
-    if(password !== confirmPassword){
+    if (password !== confirmPassword) {
       setSamePassword(false);
-    }
-    else {
+    } else {
       setSamePassword(true);
       dispatch(submitSignup(pseudo, email, password, confirmPassword, inseeCode));
-    } 
+    }
   };
 
   const handleSubmitLogin = (event) => {
     event.preventDefault();
-    dispatch(submitLogin(email, password))
+    dispatch(submitLogin(email, password));
   };
-  useEffect (()=> {
+  useEffect(() => {
     if (redirectTo !== '') {
       navigate(redirectTo);
-    };
-  })
-  
+    }
+  });
+
   return (
-    <div className='login'>
+    <div className="login">
       {logged && (
         <Button
           type="button"
-          className='logout-button'
+          className="logout-button"
           onClick={handleLogout}
         >
           Se déconnecter
@@ -85,14 +86,14 @@ function Login() {
       )}
       {!logged && (
         <Button.Group>
-        <Button
-          type="button"
-          className="login-button"
-          onClick={handleToggleSignup}
-        >
-          Inscription
-        </Button>
-        <Button.Or text="Ou"/>
+          <Button
+            type="button"
+            className="login-button"
+            onClick={handleToggleSignup}
+          >
+            Inscription
+          </Button>
+          <Button.Or text="Ou" />
           <Button
             // active="true"
             active={activeConnectionButton}
@@ -102,66 +103,67 @@ function Login() {
           >
             Connexion
           </Button>
-      </Button.Group>
+        </Button.Group>
       )}
-      
+
       {(isOpenSignup && !logged) && (
         <form className="login-form" onSubmit={handleSubmitSignup}>
           <Field
-          type="text"
-          className="login-input"
-          placeholder="Pseudonyme"
-          value={pseudo}
-          name="pseudo"
-          title="pseudo"
-          icon="user"
+            type="text"
+            className="login-input"
+            placeholder="Pseudonyme"
+            value={pseudo}
+            name="pseudo"
+            title="pseudo"
+            icon="user"
 
           />
           <Field
-          type="email"
-          className="login-input"
-          placeholder="Email"
-          value={email}
-          name="email"
-          title="email"
-          icon="at"
+            type="email"
+            className="login-input"
+            placeholder="Email"
+            value={email}
+            name="email"
+            title="email"
+            icon="at"
           />
           <Field
-          type="password"
-          className="login-input"
-          placeholder="Mot de passe"
-          value={password}
-          name="password"
-          title="password"
-          icon="key"
-          inputError={!samePassword}
+            type="password"
+            className="login-input"
+            placeholder="Mot de passe"
+            value={password}
+            name="password"
+            title="password"
+            icon="key"
+            inputError={!samePassword}
           />
-          <Field error
-          type="password"
-          className="login-input"
-          placeholder="Confirmation mot de passe"
-          value={confirmPassword}
-          name='confirmPassword'
-          title='Confirmer password'
-          icon="key"
-          inputError={!samePassword}
+          <Field
+            error
+            type="password"
+            className="login-input"
+            placeholder="Confirmation mot de passe"
+            value={confirmPassword}
+            name="confirmPassword"
+            title="Confirmer password"
+            icon="key"
+            inputError={!samePassword}
           />
-          {samePassword ? '' :  <p className='red'>Les mots de passe sont différents</p>}
+          {samePassword ? '' : <p className="red">Les mots de passe sont différents</p>}
 
           <Field
-          type="tel"
-          className="login-input"
-          placeholder="Code INSEE"
-          value={inseeCode}
-          name="inseeCode"
-          title="inseeCode"
-          icon="building"
+            type="tel"
+            className="login-input"
+            placeholder="Code INSEE"
+            value={inseeCode}
+            name="inseeCode"
+            title="inseeCode"
+            icon="building"
           />
           <Button
-          type="submit"
-          className="login-form-button"
+            type="submit"
+            className="login-form-button"
           >
-          S'inscrire
+            S'inscrire
           </Button>
         </form>
       )}
@@ -169,37 +171,36 @@ function Login() {
       {(isOpenLogin && !logged) && (
         <form className="login-form" onSubmit={handleSubmitLogin}>
           <Field
-          type="email"
-          className="login-input"
-          placeholder="Email"
-          value={email}
-          name="email"
-          title="email"
-          icon="at"
+            type="email"
+            className="login-input"
+            placeholder="Email"
+            value={email}
+            name="email"
+            title="email"
+            icon="at"
           />
           <Field
-          type="password"
-          className="login-input"
-          placeholder="Mot de passe"
-          value={password}
-          name="password"
-          title="password"
-          icon="key"
+            type="password"
+            className="login-input"
+            placeholder="Mot de passe"
+            value={password}
+            name="password"
+            title="password"
+            icon="key"
           />
           <Button
-          type="submit"
-          className="login-form-button"
+            type="submit"
+            className="login-form-button"
           >
-          Se connecter
+            Se connecter
           </Button>
         </form>
       )}
 
       { loginMessage && (
-        loginMessageColor ? 
-        <Message positive>  <p>{loginMessage}</p> </Message>
-        :
-        <Message negative>  <p>{loginMessage}</p> </Message>
+        loginMessageColor
+          ? <Message positive>  <p>{loginMessage}</p> </Message>
+          : <Message negative>  <p>{loginMessage}</p> </Message>
       )}
 
     </div>
@@ -207,14 +208,14 @@ function Login() {
 }
 
 Login.propTypes = {
-  email: PropTypes.string,
-  password: PropTypes.string,
-  inseeCode: PropTypes.number,
-  logged: PropTypes.bool,
-  isOpenSignup: PropTypes.bool,
-  isOpenLogin: PropTypes.bool,
-  loginMessage: PropTypes.string,
-  activeConnectionButton: PropTypes.bool,
+  // email: PropTypes.string.is,
+  // password: PropTypes.string,
+  // inseeCode: PropTypes.number,
+  // logged: PropTypes.bool,
+  // isOpenSignup: PropTypes.bool,
+  // isOpenLogin: PropTypes.bool,
+  // loginMessage: PropTypes.string,
+  // activeConnectionButton: PropTypes.bool,
 };
 
 export default Login;
