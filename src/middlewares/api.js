@@ -15,12 +15,8 @@ import { GET_REPORTS, saveReports, toggleReporting } from '../actions/reports';
 import { redirect } from '../actions/utilities';
 
 const instance = axios.create({
-<<<<<<< HEAD
   baseURL: 'https://mamairie.herokuapp.com/',
 
-=======
-  baseURL: 'https://ma-mairie.herokuapp.com',
->>>>>>> origin/reports
 });
 
 // if (localStorage.getItem('accessToken')) {
@@ -85,20 +81,13 @@ const api = (store) => (next) => (action) => {
         .then((response) => {
           console.log(response);
           store.dispatch(saveReports(response.data));
-<<<<<<< HEAD
-          
-=======
-          // store.dispatch(login());
-          // store.dispatch(redirect('/'));
->>>>>>> origin/reports
         })
         .catch((error) => {
           console.log(error);
         });
       break;
     case SUBMIT_REPORTING:
-<<<<<<< HEAD
-      console.log('POST Reporting')
+      console.log('POST Reporting');
       instance.post('/reporting/1', {
         reporting_category: action.reporting_category,
         title: action.reporting_title,
@@ -110,28 +99,12 @@ const api = (store) => (next) => (action) => {
         town_hall_id: 1,
       })
         .then((response) => {
-          console.log('POST Reporting OK')
-          store.dispatch(toggleReporting())
-          store.dispatch(eraseReportingFields())
-          
-          //message de succès
-          // store.dispatch(setLoginMessage('Votre inscription c\'est déroulée avec succès, vous pouvez vous connecter', true));
-=======
-      console.log('POST Reporting');
-      instance.post('/admin/reporting/1', {
-        pseudo: action.pseudo,
-        email: action.email,
-        password: action.password,
-        insee: action.inseeCode,
-      })
-        .then((response) => {
           console.log('POST Reporting OK');
           console.log(response);
+          store.dispatch(toggleReporting());
+          store.dispatch(eraseReportingFields());
 
           // message de succès
-          // store.dispatch(setLoginMessage
-          // ('Votre inscription c\'est déroulée avec succès, vous pouvez vous connecter', true));
->>>>>>> origin/reports
         })
         .catch((error) => {
           console.log(error);

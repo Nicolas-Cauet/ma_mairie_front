@@ -58,13 +58,8 @@ function Login() {
       setSamePassword(false);
     } else {
       setSamePassword(true);
-<<<<<<< HEAD
       dispatch(submitSignup(pseudo, email, password, inseeCode));
-    } 
-=======
-      dispatch(submitSignup(pseudo, email, password, confirmPassword, inseeCode));
     }
->>>>>>> origin/reports
   };
 
   const handleSubmitLogin = (event) => {

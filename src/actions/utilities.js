@@ -13,7 +13,7 @@ export const changeCurrentField = (value, key) => ({
   key: key,
 });
 
-//Controlled dropdown for category of reporting
+// Controlled dropdown for category of reporting
 export const CHANGE_CURRENT_CATEGORY = 'CHANGE_CURRENT_CATEGORY';
 export const changeCurrentCategory = (value) => ({
   type: CHANGE_CURRENT_CATEGORY,

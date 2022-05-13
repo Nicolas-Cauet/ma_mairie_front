@@ -18,13 +18,14 @@ function Field({
 
   const inputId = `field-${name}`;
   return (
-    <Input error={inputError}
+    <Input
+      error={inputError}
       id={inputId}
       value={value}
       type={type}
       className={inputId}
       icon={icon}
-      iconPosition='left'
+      iconPosition="left"
       placeholder={placeholder}
       onChange={handleChange}
       name={name}
