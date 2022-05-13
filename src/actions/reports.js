@@ -27,5 +27,5 @@ export const toggleReporting = () => ({
 export const SAVE_REPORTS = 'SAVE_REPORTS';
 export const saveReports = (reports) => ({
   type: SAVE_REPORTS,
-  playload: reports,
+  payload: reports,
 });

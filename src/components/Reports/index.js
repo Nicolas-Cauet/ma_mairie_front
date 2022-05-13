@@ -14,8 +14,9 @@ function Reports() {
   const { activeIndex, isReporting, categoriesOptions, monthOptions, yearOptions } = useSelector((state) => state.reports);
 
   useEffect (() =>{
-    dispatch((getReports()));
-  })
+    dispatch(getReports());
+  // eslint-disable-next-line react-hooks/exhaustive-deps
+  },[])
 
   const handleClickAccordion = (e, titleProps) => {
     const { index } = titleProps
@@ -27,7 +28,8 @@ function Reports() {
     dispatch((toggleReporting()))
   }
 
-  const report = useSelector((state) => state.reports.list);
+  const report = useSelector((state) => state.reports.reportsList);
+  console.log(report);
 
     return (
       <>
