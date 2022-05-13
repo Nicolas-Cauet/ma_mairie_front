@@ -5,18 +5,18 @@ import {
   SET_LOGOUT,
   SET_LOGIN_MESSAGE,
   ACTIVE_CONNECTION_BUTTON,
-} from "../actions/action";
+} from '../actions/action';
 
 import { REDIRECT } from '../actions/utilities';
 
 export const initialState = {
-    logged: true,
-    isOpenSignup: false,
-    isOpenLogin: false,
-    loginMessage: '',
-    loginMessageColor:false,
-    activeConnectionButton: false,
-    redirectTo: '',
+  logged: false,
+  isOpenSignup: false,
+  isOpenLogin: false,
+  loginMessage: '',
+  loginMessageColor: false,
+  activeConnectionButton: false,
+  redirectTo: '',
 };
 
 const reducer = (state = initialState, action = {}) => {
@@ -41,23 +41,23 @@ const reducer = (state = initialState, action = {}) => {
     }
     case LOGIN: {
       return {
-      ...state,
-      logged: true,
-      loginMessage: '',
-      email: '',
-      password: '',
-      confirmPassword: '',
+        ...state,
+        logged: true,
+        loginMessage: '',
+        email: '',
+        password: '',
+        confirmPassword: '',
       };
     }
     case SET_LOGOUT: {
       return {
-      ...state,
-      logged: false,
-      pseudo: '',
-      inseeCode: '',
-      loginMessage: '',
-      loginMessageColor: false,
-      activeConnectionButton: false, 
+        ...state,
+        logged: false,
+        pseudo: '',
+        inseeCode: '',
+        loginMessage: '',
+        loginMessageColor: false,
+        activeConnectionButton: false,
       };
     }
     case SET_LOGIN_MESSAGE: {
@@ -80,7 +80,7 @@ const reducer = (state = initialState, action = {}) => {
       };
     }
     default:
-      return state; 
+      return state;
   }
 };
 

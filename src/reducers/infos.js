@@ -1,8 +1,8 @@
-import { TOGGLE_RECYCLING, TOGGLE_WASTE } from "../actions/infos";
+import { TOGGLE_RECYCLING, TOGGLE_WASTE } from '../actions/infos';
 
 export const initialState = {
-    isOpenWaste: false,
-    isOpenRecycling: false,
+  isOpenWaste: false,
+  isOpenRecycling: false,
 };
 
 const reducer = (state = initialState, action = {}) => {
@@ -18,8 +18,8 @@ const reducer = (state = initialState, action = {}) => {
         isOpenRecycling: !state.isOpenRecycling,
       };
     default:
-      return state; 
+      return state;
   }
 };
 
-export default reducer; 
+export default reducer;

@@ -20,7 +20,11 @@ export const logout = () => ({
 });
 
 export const SUBMIT_SIGNUP = 'SUBMIT_SIGNUP';
+<<<<<<< HEAD
 export const submitSignup = (pseudo, email, password, confirmPassword, inseeCode ) => ({
+=======
+export const submitSignup = (email, password, confirmPassword, inseeCode) => ({
+>>>>>>> origin/reports
   type: SUBMIT_SIGNUP,
   pseudo,
   email,
@@ -47,6 +51,3 @@ export const ACTIVE_CONNECTION_BUTTON = 'ACTIVE_CONNECTION_BUTTON';
 export const activeConnectionButton = () => ({
   type: ACTIVE_CONNECTION_BUTTON,
 });
-
-
-

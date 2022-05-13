@@ -1,6 +1,7 @@
 import axios from 'axios';
 
-import { SUBMIT_LOGIN,
+import {
+  SUBMIT_LOGIN,
   SUBMIT_SIGNUP,
   setLoginMessage,
   toggleLogin,
@@ -14,10 +15,13 @@ import { GET_REPORTS, saveReports, toggleReporting } from '../actions/reports';
 import { redirect } from '../actions/utilities';
 
 const instance = axios.create({
+<<<<<<< HEAD
   baseURL: 'https://mamairie.herokuapp.com/',
 
+=======
+  baseURL: 'https://ma-mairie.herokuapp.com',
+>>>>>>> origin/reports
 });
-
 
 // if (localStorage.getItem('accessToken')) {
 //   const accessToken = localStorage.getItem('accessToken');
@@ -34,16 +38,17 @@ const api = (store) => (next) => (action) => {
         insee: action.inseeCode,
       })
         .then((response) => {
-          console.log('User signup')
+          console.log('User signup');
           console.log(response);
           store.dispatch(toggleLogin());
           store.dispatch(activeConnectionButton());
           store.dispatch(setLoginMessage('Votre inscription c\'est déroulée avec succès, vous pouvez vous connecter', true));
         })
         .catch((error) => {
+          console.log(error);
           store.dispatch(setLoginMessage('Une erreur est survenue, veuillez recommencer', false));
         });
-    break;
+      break;
     case SUBMIT_LOGIN:
       instance.post('/login', {
         email: action.email,
@@ -54,26 +59,25 @@ const api = (store) => (next) => (action) => {
           console.log(response);
           store.dispatch(login());
           store.dispatch(redirect('/'));
-          
-          //Récupération du token lors du login
-          const accessToken = response.data.accessToken;
+
+          // Récupération du token lors du login
+          const { accessToken } = response.data;
           console.log(accessToken);
           instance.defaults.headers.common.Authorization = `bearer ${accessToken}`;
           localStorage.setItem('accessToken', accessToken);
-          
         })
         .catch((error) => {
           store.dispatch(setLoginMessage('Email et/ou Mot de passe incorrect', false));
           console.log(error);
         });
-    break;
+      break;
     case LOGOUT: {
       console.log('User logout');
       delete instance.defaults.headers.common.Authorization;
       localStorage.removeItem('token');
       console.log('token deleted');
-      store.dispatch(setLogout())
-    break;
+      store.dispatch(setLogout());
+      break;
     }
     case GET_REPORTS:
       console.log('GET Reports');
@@ -81,13 +85,19 @@ const api = (store) => (next) => (action) => {
         .then((response) => {
           console.log(response);
           store.dispatch(saveReports(response.data));
+<<<<<<< HEAD
           
+=======
+          // store.dispatch(login());
+          // store.dispatch(redirect('/'));
+>>>>>>> origin/reports
         })
         .catch((error) => {
           console.log(error);
         });
-    break;
+      break;
     case SUBMIT_REPORTING:
+<<<<<<< HEAD
       console.log('POST Reporting')
       instance.post('/reporting/1', {
         reporting_category: action.reporting_category,
@@ -106,12 +116,30 @@ const api = (store) => (next) => (action) => {
           
           //message de succès
           // store.dispatch(setLoginMessage('Votre inscription c\'est déroulée avec succès, vous pouvez vous connecter', true));
+=======
+      console.log('POST Reporting');
+      instance.post('/admin/reporting/1', {
+        pseudo: action.pseudo,
+        email: action.email,
+        password: action.password,
+        insee: action.inseeCode,
+      })
+        .then((response) => {
+          console.log('POST Reporting OK');
+          console.log(response);
+
+          // message de succès
+          // store.dispatch(setLoginMessage
+          // ('Votre inscription c\'est déroulée avec succès, vous pouvez vous connecter', true));
+>>>>>>> origin/reports
         })
         .catch((error) => {
-          //message d'echec
-          // store.dispatch(setLoginMessage('Une erreur est survenue, veuillez recommencer', false));
+          console.log(error);
+          // message d'echec
+          // store.dispatch(setLoginMessage
+          // ('Une erreur est survenue, veuillez recommencer', false));
         });
-    break;
+      break;
     default:
       next(action);
   }

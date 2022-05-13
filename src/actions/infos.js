@@ -7,4 +7,3 @@ export const TOGGLE_RECYCLING = 'TOGGLE_RECYCLING';
 export const toggleRecycling = () => ({
   type: TOGGLE_RECYCLING,
 });
-

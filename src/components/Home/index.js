@@ -12,16 +12,16 @@ function Home() {
 
   useEffect(() => {
     dispatch(toggleMenu());
-  },);
-  
-  useEffect(()=> {
-    dispatch(redirect(''))
-    dispatch(setLoginMessage(''))
+  });
+
+  useEffect(() => {
+    dispatch(redirect(''));
+    dispatch(setLoginMessage(''));
   });
 
   return (
-    <div className='home'>
-        <Infos />
+    <div className="home">
+      <Infos />
     </div>
   );
 }
@@ -31,4 +31,3 @@ function Home() {
 // };
 
 export default Home;
-

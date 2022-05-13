@@ -1,4 +1,4 @@
-//Submit reporting form to back by POST resquest
+// Submit reporting form to back by POST resquest
 export const SUBMIT_REPORTING = 'SUBMIT_REPORTING';
 export const submitReporting = (reporting_category, reporting_title, reporting_description, reporting_email,reporting_firstName, reporting_lastName, reporting_phone) => ({
   type: SUBMIT_REPORTING,
@@ -11,7 +11,7 @@ export const submitReporting = (reporting_category, reporting_title, reporting_d
   reporting_phone,
 });
 
-//Controlled field for reporting component
+// Controlled field for reporting component
 export const CHANGE_CURRENT_FIELD_REPORTING = 'CHANGE_CURRENT_FIELD_REPORTING';
 export const changeCurrentFieldReporting = () => ({
   type: CHANGE_CURRENT_FIELD_REPORTING,

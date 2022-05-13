@@ -7,15 +7,13 @@ import reportsReducer from './reports';
 import reportingReducer from './reporting';
 import utilitiesReducer from './utilities';
 
-
-
 const rootReducer = combineReducers({
-    utilities: utilitiesReducer,
-    reporting: reportingReducer,
-    reports: reportsReducer,
-    login: loginReducer,
-    menu: menuReducer,
-    infos: infosReducer,
+  utilities: utilitiesReducer,
+  reporting: reportingReducer,
+  reports: reportsReducer,
+  login: loginReducer,
+  menu: menuReducer,
+  infos: infosReducer,
 });
 
 export default rootReducer;

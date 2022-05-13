@@ -14,21 +14,21 @@ function Infos() {
   const { isOpenWaste, isOpenRecycling } = useSelector((state) => state.infos);
 
   const handleClickWaste = () => {
-    dispatch(toggleWaste())
+    dispatch(toggleWaste());
   };
 
   const handleClickRecycling = () => {
-    dispatch(toggleRecycling())
+    dispatch(toggleRecycling());
   };
 
   return (
-    <div className='infos'>
+    <div className="infos">
 
       <h2>Infos pratiques</h2>
 
-      <Button className='infos-button' onClick={handleClickWaste} icon='trash' content='Ramassage des déchets'/>
+      <Button className="infos-button" onClick={handleClickWaste} icon="trash" content="Ramassage des déchets" />
       {isOpenWaste && (
-        <div className='infos-waste infos-content'>
+        <div className="infos-waste infos-content">
           <h3>Calendrier ramassage des déchets 2022</h3>
           <img src={schedule} className="header-logo" alt="Mairie" />
           <h3>Guide de tri</h3>
@@ -36,9 +36,9 @@ function Infos() {
         </div>
       )}
 
-      <Button className='infos-button' onClick={handleClickRecycling} icon='factory' content='Déchetterie'/>
+      <Button className="infos-button" onClick={handleClickRecycling} icon="factory" content="Déchetterie" />
       {isOpenRecycling && (
-        <div className='infos-recycling infos-content'>
+        <div className="infos-recycling infos-content">
           <h3>Plan d'accès et horaires</h3>
           <img src={schedule} className="header-logo" alt="Mairie" />
         </div>

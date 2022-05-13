@@ -16,11 +16,11 @@ export const initialState = {
   reporting_lastName: '',
   reporting_phone: '',
   reporting_checkBox: false,
-  };
-  
-  const reducer = (state = initialState, action = {}) => {
-    switch (action.type) {
-      case CHANGE_CURRENT_FIELD:
+};
+
+const reducer = (state = initialState, action = {}) => {
+  switch (action.type) {
+    case CHANGE_CURRENT_FIELD:
       return {
         ...state,
         [action.key]: action.value,
