@@ -94,7 +94,14 @@ const api = (store) => (next) => (action) => {
     break;
     case SUBMIT_REPORTING:
       console.log('POST Reporting')
-      instance.post('/admin/reporting/1', {
+      // instance.post('/reporting/1', {
+      //   user_text: action.reporting_description,
+      //   email: action.reporting_email,
+      //   first_name: action.reporting_firstName,
+      //   last_name: action.reporting_lastName,
+      //   phonenumber: action.reporting_phone,
+      // })
+      instance.post('/reporting/1', {
         pseudo: action.pseudo,
         email: action.email,
         password: action.password,

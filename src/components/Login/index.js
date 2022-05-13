@@ -47,7 +47,6 @@ function Login() {
   };
   
   const handleLogout = () => {
-    console.log('User logout');
     dispatch(logout());
   };
 

@@ -27,7 +27,7 @@ function Reporting() {
     dispatch(setActiveIndexTerms(newIndex));
   } 
 
-  const handleSubmit = () => {
+  const handleSubmit = (reporting_description, reporting_email,reporting_firstName, reporting_lastName, reporting_phone) => {
     dispatch(submitReporting());
   }
 
