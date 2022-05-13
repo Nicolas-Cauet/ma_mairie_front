@@ -9,8 +9,8 @@ import { SUBMIT_LOGIN,
   LOGOUT,
   setLogout,
 } from '../actions/action';
-import { SUBMIT_REPORTING } from '../actions/reporting';
-import { GET_REPORTS, saveReports } from '../actions/reports';
+import { eraseReportingFields, SUBMIT_REPORTING } from '../actions/reporting';
+import { GET_REPORTS, saveReports, toggleReporting } from '../actions/reports';
 import { redirect } from '../actions/utilities';
 
 const instance = axios.create({
@@ -82,13 +82,9 @@ const api = (store) => (next) => (action) => {
         .then((response) => {
           console.log(response);
           store.dispatch(saveReports(response.data));
-          // store.dispatch(login());
-          // store.dispatch(redirect('/'));
           
         })
         .catch((error) => {
-          // message d'erreur à faire
-          // store.dispatch(setLoginMessage('Email et/ou Mot de passe incorrect', false));
           console.log(error);
         });
     break;
@@ -106,8 +102,9 @@ const api = (store) => (next) => (action) => {
       })
         .then((response) => {
           console.log('POST Reporting OK')
-          console.log(response);
-       
+          store.dispatch(toggleReporting())
+          store.dispatch(eraseReportingFields())
+          
           //message de succès
           // store.dispatch(setLoginMessage('Votre inscription c\'est déroulée avec succès, vous pouvez vous connecter', true));
         })

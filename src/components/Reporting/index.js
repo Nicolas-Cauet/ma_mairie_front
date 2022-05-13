@@ -1,7 +1,7 @@
 // import PropTypes from 'prop-types';
 import { useDispatch, useSelector } from 'react-redux';
 import { Button, Checkbox, Form, Accordion, Icon, Message, Dropdown } from 'semantic-ui-react'
-import { submitReporting } from '../../actions/reporting';
+import { submitReporting, changeCurrentCheckBoxReporting } from '../../actions/reporting';
 import { changeCurrentCategory, changeCurrentField } from '../../actions/utilities';
 import { setActiveIndexTerms, toggleReporting } from '../../actions/reports';
 
@@ -44,6 +44,10 @@ function Reporting() {
 
   const handleChangeDescription = (event) => {
     dispatch(changeCurrentField(event.target.value, event.target.name));
+  }
+
+  const handleCheckBox = () => {
+    dispatch(changeCurrentCheckBoxReporting());
   }
 
   return (
@@ -121,6 +125,7 @@ function Reporting() {
               name="reporting_checkBox"
               title="Accepter les conditions"
               checked={reporting_checkBox}
+              onChange={handleCheckBox}
             />
             <Accordion >
               <Accordion.Title

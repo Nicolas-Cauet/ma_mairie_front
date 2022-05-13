@@ -17,3 +17,17 @@ export const changeCurrentFieldReporting = () => ({
   type: CHANGE_CURRENT_FIELD_REPORTING,
 });
 
+//Erase fields of Reporting on succes submit
+export const ERASE_REPORTING_FIELDS = 'ERASE_REPORTING_FIELDS';
+export const eraseReportingFields = () => ({
+  type: ERASE_REPORTING_FIELDS,
+});
+
+//Controlled field for checkbox reporting
+export const CHANGE_CURRENT_CHECKBOX_REPORTING = 'CHANGE_CURRENT_CHECKBOX_REPORTING';
+export const changeCurrentCheckBoxReporting = () => ({
+  type: CHANGE_CURRENT_CHECKBOX_REPORTING,
+});
+
+
+
