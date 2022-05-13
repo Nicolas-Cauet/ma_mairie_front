@@ -8,6 +8,7 @@ import Reporting from '../Reporting';
 
 
 import './style.scss';
+import Report from './Report';
 
 function Reports() {
   const dispatch = useDispatch();
@@ -18,18 +19,15 @@ function Reports() {
   // eslint-disable-next-line react-hooks/exhaustive-deps
   },[])
 
-  const handleClickAccordion = (e, titleProps) => {
-    const { index } = titleProps
-    const newIndex = activeIndex === index ? -1 : index
-    dispatch(setActiveIndex(newIndex))
-  }
+  // const handleClickAccordion = (e, titleProps) => {
+  //   const { index } = titleProps
+  //   const newIndex = activeIndex === index ? -1 : index
+  //   dispatch(setActiveIndex(newIndex))
+  // }
 
   const handleClick = () => {
     dispatch((toggleReporting()))
   }
-
-  const report = useSelector((state) => state.reports.reportsList);
-  console.log(report);
 
     return (
       <>
@@ -79,129 +77,7 @@ function Reports() {
         {/*Section for reports list*/}
         {!isReporting && (
           <section className='reports-container'>
-
-            {/* Accordion list of reports */}
-            <Accordion fluid styled className='accordion'>
-
-              {/* Accordion modele */}
-              <Accordion.Title
-                className='accordion-title'
-                active={activeIndex === 0}
-                index={0}
-                onClick={handleClickAccordion}
-              >
-                <div className='accordion-title-container'>
-                  <h1>Le chien du voisin s'est enfui</h1>
-                  <h2>22/06/2022</h2>
-                  <Label color='blue'>
-                  Catégorie: Route
-                  </Label>
-                  <Label color='green'>
-                  Statut: Résolu
-                  </Label>
-                  <div>
-                    <Icon name='caret square down outline' />
-                      Description
-                  </div>
-                </div>
-              </Accordion.Title>
-              <Accordion.Content active={activeIndex === 0}>
-                <p>
-                  A dog is a type of domesticated animal. Known for its loyalty and
-                  faithfulness, it can be found as a welcome guest in many households
-                  across the world. A dog is a type of domesticated animal. Known for its loyalty and
-                  faithfulness, it can be found as a welcome guest in many households
-                  across the world.
-                  A dog is a type of domesticated animal. Known for its loyalty and
-                  faithfulness, it can be found as a welcome guest in many households
-                  across the world.
-                  A dog is a type of domesticated animal. Known for its loyalty and
-                  faithfulness, it can be found as a welcome guest in many households
-                  across the world.
-                  A dog is a type of domesticated animal. Known for its loyalty and
-                  faithfulness, it can be found as a welcome guest in many households
-                  across the world.
-                </p>
-              </Accordion.Content>
-              {/* Accordion modele */}
-
-              <Accordion.Title
-                active={activeIndex === 1}
-                index={1}
-                onClick={handleClickAccordion}
-                className='accordion-title'
-              >
-                <div className='accordion-title-container'>
-                  <h1>La voisine s'est enfuie</h1>
-                  <h2>23/06/2022</h2>
-                  <Label color='yellow'>
-                  Catégorie: Voisinage
-                  </Label>
-                  <Label color='orange'>
-                  Statut: En cours
-                  </Label>
-                  <div>
-                    <Icon name='caret square down outline' />
-                      Description
-                  </div>
-                </div>
-              </Accordion.Title>
-              <Accordion.Content active={activeIndex === 1}>
-                <p>
-                  A dog is a type of domesticated animal. Known for its loyalty and
-                  faithfulness, it can be found as a welcome guest in many households
-                  across the world.
-                  A dog is a type of domesticated animal. Known for its loyalty and
-                  faithfulness, it can be found as a welcome guest in many households
-                  across the world.
-                  A dog is a type of domesticated animal. Known for its loyalty and
-                  faithfulness, it can be found as a welcome guest in many households
-                  across the world.
-                  A dog is a type of domesticated animal. Known for its loyalty and
-                  faithfulness, it can be found as a welcome guest in many households
-                  across the world.
-                  A dog is a type of domesticated animal. Known for its loyalty and
-                  faithfulness, it can be found as a welcome guest in many households
-                  across the world.
-                </p>
-              </Accordion.Content>
-
-              <Accordion.Title
-                active={activeIndex === 2}
-                index={2}
-                onClick={handleClickAccordion}
-                className='accordion-title'
-              >
-                <div className='accordion-title-container'>
-                  <h1>Le voisin est tout seul</h1>
-                  <h2>24/06/2022</h2>
-                  <Label color='yellow'>
-                  Catégorie: Voisinage
-                  </Label>
-                  <Label color='red'>
-                  Statut: Refusé
-                  </Label>
-                  <div>
-                    <Icon name='caret square down outline' />
-                      Description
-                  </div>
-                </div>
-              </Accordion.Title>
-              <Accordion.Content active={activeIndex === 2}>
-                <p>
-                  A dog is a type of domesticated animal. Known for its loyalty and
-                  faithfulness, it can be found as a welcome guest in many households
-                  across the world.
-                  A dog is a type of domesticated animal. Known for its loyalty and
-                  faithfulness, it can be found as a welcome guest in many households
-                  across the world. A dog is a type of domesticated animal. Known for its loyalty and
-                  faithfulness, it can be found as a welcome guest in many households
-                  across the world. A dog is a type of domesticated animal. Known for its loyalty and
-                  faithfulness, it can be found as a welcome guest in many households
-                  across the world.
-                </p>
-              </Accordion.Content>
-            </Accordion>
+            <Report />
           </section>
         )}
       </>
