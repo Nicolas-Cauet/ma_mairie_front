@@ -4,6 +4,7 @@ import { Button, Checkbox, Form, Accordion, Icon, Message, Dropdown } from 'sema
 import { submitReporting, changeCurrentCheckBoxReporting } from '../../actions/reporting';
 import { changeCurrentCategory, changeCurrentField } from '../../actions/utilities';
 import { setActiveIndexTerms, toggleReporting } from '../../actions/reports';
+import { setLoginMessage } from '../../actions/login';
 
 import Field from '../Field';
 
@@ -14,6 +15,7 @@ import './style.scss';
 function Reporting() {
   const dispatch = useDispatch();
   const { isReporting, activeIndexTerms, categoriesOptions } = useSelector((state) => state.reports);
+  const { loginMessage, loginMessageColor } = useSelector((state) => state.login)
   const {
     reporting_category,
     reporting_title,
@@ -31,7 +33,11 @@ function Reporting() {
   } 
 
   const handleSubmit = () => {
-    dispatch(submitReporting(reporting_category, reporting_title, reporting_description, reporting_email,reporting_firstName, reporting_lastName, reporting_phone));
+    if (reporting_checkBox) {
+      dispatch(submitReporting(reporting_category, reporting_title, reporting_description, reporting_email,reporting_firstName, reporting_lastName, reporting_phone));
+    } else {
+      dispatch(setLoginMessage('Vous devez accepter les termes et conditions pour pouvoir signaler un événement', false))
+    }
   }
 
   const handleClickBack = () => {
@@ -160,6 +166,13 @@ function Reporting() {
             >Retour</Button>
           </Form.Field>
         </Form> 
+        {loginMessage && (
+          loginMessageColor ? 
+          <Message positive>  <p>{loginMessage}</p> </Message>
+          :
+          <Message negative>  <p>{loginMessage}</p> </Message>  
+        )}
+
       </section>
     )}
     </>
