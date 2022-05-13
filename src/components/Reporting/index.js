@@ -1,7 +1,9 @@
 // import PropTypes from 'prop-types';
+import { useEffect} from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { Button, Checkbox, Form, Accordion, Icon, Message, Dropdown } from 'semantic-ui-react'
 import { submitReporting } from '../../actions/reporting';
+import { changeCurrentCategory } from '../../actions/utilities';
 import { setActiveIndexTerms, toggleReporting } from '../../actions/reports';
 
 import Field from '../Field';
@@ -14,25 +16,31 @@ function Reporting() {
   const dispatch = useDispatch();
   const { isReporting, activeIndexTerms, categoriesOptions } = useSelector((state) => state.reports);
   const {
+    reporting_category,
+    reporting_title,
     reporting_description,
     reporting_email,
     reporting_firstName,
     reporting_lastName,
     reporting_phone,
-    reporting_checkBox
-  } = useSelector((state) => state.reporting);
+    reporting_checkBox,
+  } = useSelector((state) => state.utilities);
   const handleClick = (e, titleProps) => {
     const { index } = titleProps
     const newIndex = activeIndexTerms === index ? -1 : index
     dispatch(setActiveIndexTerms(newIndex));
   } 
 
-  const handleSubmit = (reporting_description, reporting_email,reporting_firstName, reporting_lastName, reporting_phone) => {
-    dispatch(submitReporting());
+  const handleSubmit = () => {
+    dispatch(submitReporting(reporting_category, reporting_title, reporting_description, reporting_email,reporting_firstName, reporting_lastName, reporting_phone));
   }
 
   const handleClickBack = () => {
     dispatch(toggleReporting());
+  }
+
+  const handleChangeCategory = (event) => {
+    dispatch(changeCurrentCategory(event.target.textContent));
   }
 
   return (
@@ -48,8 +56,18 @@ function Reporting() {
               fluid
               selection
               options={categoriesOptions}
+              onChange={handleChangeCategory}
             />
           </section>
+          <Field
+          type="text"
+          className="reporting-title"
+          placeholder="Titre"
+          value={reporting_title}
+          title="Titre"
+          name="reporting_title"
+          icon="comment alternate"
+          />
           <Form.TextArea
             value={reporting_description}
             title="Description"

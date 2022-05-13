@@ -1,4 +1,4 @@
-import { CHANGE_CURRENT_FIELD } from "../actions/utilities";
+import { CHANGE_CURRENT_CATEGORY, CHANGE_CURRENT_FIELD } from "../actions/utilities";
 
 export const initialState = {
   pseudo: '',
@@ -6,6 +6,8 @@ export const initialState = {
   password: '',
   confirmPassword: '',
   inseeCode: '',
+  reporting_category: '',
+  reporting_title: '',
   reporting_description: '',
   reporting_email: '',
   reporting_firstName: '',
@@ -21,6 +23,11 @@ export const initialState = {
         ...state,
         [action.key]: action.value,
       };
+      case CHANGE_CURRENT_CATEGORY:
+        return {
+          ...state,
+          reporting_category: action.reporting_category,
+        }
       default:
         return state; 
     }

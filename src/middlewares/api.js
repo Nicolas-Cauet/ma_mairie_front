@@ -95,18 +95,13 @@ const api = (store) => (next) => (action) => {
     case SUBMIT_REPORTING:
       console.log('POST Reporting')
       instance.post('/reporting/1', {
-        title: 'Coucou Nico',
-        reporting_category: 'coucou',
-        user_text: 'coucou',
-        email: 'coucou',
-        first_name: 'coucou',
-        last_name: 'coucou',
-        phonenumber: 'coucou',
-        // user_text: action.reporting_description,
-        // email: action.reporting_email,
-        // first_name: action.reporting_firstName,
-        // last_name: action.reporting_lastName,
-        // phonenumber: action.reporting_phone,
+        reporting_category: action.reporting_category,
+        title: action.reporting_title,
+        user_text: action.reporting_description,
+        email: action.reporting_email,
+        first_name: action.reporting_firstName,
+        last_name: action.reporting_lastName,
+        phonenumber: action.reporting_phone,
         town_hall_id: 1,
       })
         .then((response) => {
