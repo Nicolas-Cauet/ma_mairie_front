@@ -28,7 +28,7 @@ function Admin() {
           <div className="admin-content">
             <div className="admin-button">
               <h3>Signalements</h3>
-              <Link to="/admin/reports/1">
+              <Link to="/admin/reporting/1">
                 <Button className="process" icon="pencil alternate" content="Traiter" />
               </Link>
             </div>

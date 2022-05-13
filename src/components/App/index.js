@@ -8,6 +8,7 @@ import Home from '../Home';
 import Footer from '../Footer';
 import Admin from '../Admin';
 import Reports from '../Reports';
+import ReportAdmin from '../ReportAdmin';
 
 import 'semantic-ui-css/semantic.min.css';
 import './style.scss';
@@ -21,7 +22,8 @@ function App() {
         <Route path="/" element={<Home />} />
         <Route path="/admin" element={(<Admin />)} />
         <Route path="/reports" element={<Reports />} />
-        <Route path="/admin/reports/1" element={<Reports />} />
+        <Route path="/admin/reporting/1" element={<Reports />} />
+        <Route path="/admin/reporting/1/:reporting_id" element={<ReportAdmin />} />
         <Route path="*" element={<p>route inconnue</p>} />
       </Routes>
       <Footer />

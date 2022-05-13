@@ -5,11 +5,10 @@ import {
   Button, Icon, Dropdown,
 } from 'semantic-ui-react';
 import { getReports, toggleReporting } from '../../actions/reports';
-
 import Reporting from '../Reporting';
+import Report from './Report';
 
 import './style.scss';
-import Report from './Report';
 
 function Reports() {
   const dispatch = useDispatch();
