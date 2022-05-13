@@ -34,10 +34,19 @@ function Reporting() {
 
 
   const handleSubmit = () => {
-    if (reporting_checkBox) {
+    if (reporting_checkBox
+      && reporting_category !== ''
+      && reporting_title !== ''
+      && reporting_description !== ''
+      && reporting_email !== ''
+      && reporting_firstName !== ''
+      && reporting_lastName !== ''
+    ) {
       dispatch(submitReporting(reporting_category, reporting_title, reporting_description, reporting_email,reporting_firstName, reporting_lastName, reporting_phone));
+    } else if ( !reporting_checkBox) {
+      dispatch(setLoginMessage('Vous devez accepter les termes et conditions pour pouvoir signaler un événement', false));
     } else {
-      dispatch(setLoginMessage('Vous devez accepter les termes et conditions pour pouvoir signaler un événement', false))
+      dispatch(setLoginMessage('Vous devez décrire votre événement, lui donner un titre, renseignez votre prénom et votre nom, ainsi que votre email. Le numéros de téléphone est facultatif', false));
     }
   }
 
