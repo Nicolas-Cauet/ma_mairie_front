@@ -30,8 +30,12 @@
     flex-direction: column;
     align-items: center;
   
-    & .ui.field-input {
+    & .ui.input {
       margin-bottom: 1rem;
+
+      &.field-reporting_title {
+        width: 75%;
+      }
     }
   
     & .reporting-form-checkbox {

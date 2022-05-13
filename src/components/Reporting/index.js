@@ -74,7 +74,7 @@ function Reporting() {
           </section>
           <Field
           type="text"
-          className="reporting-title"
+          className="reporting-title ddd"
           placeholder="Titre"
           value={reporting_title}
           title="Titre"
