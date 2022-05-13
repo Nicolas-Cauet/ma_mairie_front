@@ -57,7 +57,7 @@ function Login() {
     }
     else {
       setSamePassword(true);
-      dispatch(submitSignup(pseudo, email, password, confirmPassword, inseeCode));
+      dispatch(submitSignup(pseudo, email, password, inseeCode));
     } 
   };
 

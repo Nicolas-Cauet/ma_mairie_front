@@ -14,7 +14,7 @@ import { GET_REPORTS, saveReports } from '../actions/reports';
 import { redirect } from '../actions/utilities';
 
 const instance = axios.create({
-  baseURL: 'https://ma-mairie.herokuapp.com',
+  baseURL: 'https://mamairie.herokuapp.com/',
   // baseURL: 'https://localhost:3001',
 
 });
@@ -94,18 +94,20 @@ const api = (store) => (next) => (action) => {
     break;
     case SUBMIT_REPORTING:
       console.log('POST Reporting')
-      // instance.post('/reporting/1', {
-      //   user_text: action.reporting_description,
-      //   email: action.reporting_email,
-      //   first_name: action.reporting_firstName,
-      //   last_name: action.reporting_lastName,
-      //   phonenumber: action.reporting_phone,
-      // })
       instance.post('/reporting/1', {
-        pseudo: action.pseudo,
-        email: action.email,
-        password: action.password,
-        insee: action.inseeCode,
+        title: 'Coucou Nico',
+        reporting_category: 'coucou',
+        user_text: 'coucou',
+        email: 'coucou',
+        first_name: 'coucou',
+        last_name: 'coucou',
+        phonenumber: 'coucou',
+        // user_text: action.reporting_description,
+        // email: action.reporting_email,
+        // first_name: action.reporting_firstName,
+        // last_name: action.reporting_lastName,
+        // phonenumber: action.reporting_phone,
+        town_hall_id: 1,
       })
         .then((response) => {
           console.log('POST Reporting OK')
