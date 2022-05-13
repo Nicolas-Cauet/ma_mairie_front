@@ -15,7 +15,6 @@ import { redirect } from '../actions/utilities';
 
 const instance = axios.create({
   baseURL: 'https://mamairie.herokuapp.com/',
-  // baseURL: 'https://localhost:3001',
 
 });
 

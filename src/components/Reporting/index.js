@@ -32,6 +32,7 @@ function Reporting() {
     dispatch(setActiveIndexTerms(newIndex));
   } 
 
+
   const handleSubmit = () => {
     if (reporting_checkBox) {
       dispatch(submitReporting(reporting_category, reporting_title, reporting_description, reporting_email,reporting_firstName, reporting_lastName, reporting_phone));
@@ -75,7 +76,7 @@ function Reporting() {
           <Field
           type="text"
           className="reporting-title ddd"
-          placeholder="Titre"
+          placeholder='Titre'
           value={reporting_title}
           title="Titre"
           name="reporting_title"
