@@ -1,9 +1,8 @@
 // import PropTypes from 'prop-types';
-import { useEffect} from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { Button, Checkbox, Form, Accordion, Icon, Message, Dropdown } from 'semantic-ui-react'
 import { submitReporting } from '../../actions/reporting';
-import { changeCurrentCategory } from '../../actions/utilities';
+import { changeCurrentCategory, changeCurrentField } from '../../actions/utilities';
 import { setActiveIndexTerms, toggleReporting } from '../../actions/reports';
 
 import Field from '../Field';
@@ -43,6 +42,10 @@ function Reporting() {
     dispatch(changeCurrentCategory(event.target.textContent));
   }
 
+  const handleChangeDescription = (event) => {
+    dispatch(changeCurrentField(event.target.value, event.target.name));
+  }
+
   return (
     <>
     {isReporting && (
@@ -74,32 +77,33 @@ function Reporting() {
             name="reporting_description"
             className='reporting-form-textarea'
             placeholder='Description : Que souhaitez vous signaler ?'
+            onChange={handleChangeDescription}
           />
           <Field
           type="email"
           className="reporting-email"
           placeholder="Email"
           value={reporting_email}
-          title="email"
+          title="Email"
           name="reporting_email"
           icon="at"
           />
           <Field
           type="text"
           className="reporting-firstname"
-          placeholder="Nom"
+          placeholder="Prénom"
           value={reporting_firstName}
-          name="reporting_firstname"
-          title="firstName"
+          name="reporting_firstName"
+          title="Prénom"
           icon="user"
           />
           <Field
           type="text"
           className="reporting-lastname"
-          placeholder="Prénom"
+          placeholder="Nom"
           value={reporting_lastName}
           name="reporting_lastName"
-          title="lastName"
+          title="Nom"
           icon="user"
           />
           <Field
@@ -107,7 +111,7 @@ function Reporting() {
           className="reporting-phone"
           placeholder="Téléphone"
           value={reporting_phone}
-          title="phone"
+          title="Téléphone"
           name="reporting_phone"
           icon="phone"
           />
@@ -132,9 +136,6 @@ function Reporting() {
               <Accordion.Content active={activeIndexTerms === 0}>
               
               <Message
-                // as={'p'}
-                // warning
-                // header='You must register before you can do that!'
                 content="En acceptant les termes et les conditions de ce formualire, j'autorise
                 mamairie.fr à stocker mon addresse IP durant 30j, afin de ...."
               />
