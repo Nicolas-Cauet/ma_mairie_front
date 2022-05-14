@@ -5,7 +5,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { Link } from 'react-router-dom';
 import { toggleMenu } from '../../actions/menu';
 
-import logo from '../../assets/images/logo.png';
+import logo from '../../assets/images/logo2.png';
 
 import './style.scss';
 
