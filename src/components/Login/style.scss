@@ -2,7 +2,12 @@
 
 .login {
     text-align: center;
-    padding: 1rem 0 0;
+    padding: 3rem 0;
+
+    & h1 {
+      font-size: 1rem;
+      padding-bottom: 1rem;
+    }
 
     &-form {
         display: flex;
@@ -34,7 +39,7 @@
 
 .ui.button.login-form-button {
   background-color: vars.$createColor;
-  margin-top: 1rem;
+  margin: 1rem;
   width: 50%;
 
   &:active {
@@ -45,28 +50,3 @@
 .ui.button.logout-button {
   background-color: vars.$statusRefusedColor;
 }
-
-
-
-
-
-
-// .login-form-login>.ui.input {
-//     color: blue;
-// }
-
-
-
-// .ui.button {
-//     border: 2px solid green;
-
-// }
-
-// .ui.button.login-form-button {
-//     border: 2px solid yellow;
-// }
-
-// .ui.button.login-login {
-//     border: 2px solid red;
-
-// }

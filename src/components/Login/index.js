@@ -74,6 +74,7 @@ function Login() {
 
   return (
     <div className="login">
+      <h1>Accèder à votre espace d'administration</h1>
       {logged && (
         <Button
           type="button"
@@ -94,7 +95,6 @@ function Login() {
           </Button>
           <Button.Or text="Ou" />
           <Button
-            // active="true"
             active={activeConnectionButton}
             type="button"
             className="login-button"
