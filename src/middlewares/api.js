@@ -8,7 +8,7 @@ const instance = axios.create({
 });
 
 // if (localStorage.getItem('accessToken')) {
-//   const accessToken = localStorage.getItem('accessToken');
+// const accessToken = localStorage.getItem('accessToken');
 //   instance.defaults.headers.common.Authorization = `bearer ${accessToken}`;
 // }
 

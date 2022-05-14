@@ -1,21 +1,49 @@
 .header {
 
-    &-logo {
+  padding: 0 1.5rem;
+
+    &-head {
+      display: flex;
+      flex-direction: row;
+      align-items: center;
+      justify-content: space-between;
+      
+      & img {
+        margin-top: 0.5rem ;
         align-items: center;
-        width: 100%;
+        width: 7%;
+      }
+
+      & h1 {
+        font-size: 1rem;
+      }
+
+      & h2 {
+        margin: 0;
+        text-align: center;
+        color: black;
+        font-size: 0.75rem;
+        width: 40%;
+      }
+    }  
+
+    &-photo {
+      align-items: center;
+      width: 100%;
     }
 
     &-content {
-        display: flex;
-        flex-direction: row;
-        justify-content: space-between;
-        align-items: center;
-        border-top: solid 0.05rem;
-        border-bottom: solid 0.05rem;
-        padding: 0.6rem 2.5rem;
+      display: flex;
+      flex-direction: row;
+      justify-content: space-between;
+      align-items: center;
+      border-top: solid 0.05rem;
+      border-bottom: solid 0.05rem;
+      padding: 0.6rem 1.75rem;
     }
     &-title {
-        margin: 0;
+      font-size: 1.25rem;
+      margin: 0;
     } 
 
 }
@@ -26,12 +54,10 @@
 }
 
 .ui.button.header-button .icon {
-
-    transition: transform .3s ease-out;
-    transform: scale(2.5);
-
+  transition: transform .3s ease-out;
+  transform: scale(2.5);
 }
 
 .ui.button.header-button--open .icon {
-    transform: scale(2.5) translateX(0) rotate(90deg);
+  transform: scale(2.5) translateX(0) rotate(90deg);
 }
