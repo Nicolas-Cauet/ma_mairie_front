@@ -1,5 +1,5 @@
 import PropTypes from 'prop-types';
-import { useEffect, useState } from 'react';
+import { useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import {
   Accordion, Button, Icon, Label, Confirm,
@@ -23,10 +23,6 @@ function Report({
   //   useEffect (() =>{
   //     dispatch((getReports()));
   //   })
-
-  useEffect(() => {
-    dispatch(deleteSelectedReport(reporting_id));
-  });
 
   const handleClickAccordion = (e, titleProps) => {
     const { index } = titleProps;

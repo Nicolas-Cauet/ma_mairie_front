@@ -49,7 +49,6 @@ function Login() {
   };
 
   const handleLogout = () => {
-    console.log('User logout');
     dispatch(logout());
   };
 
@@ -59,7 +58,7 @@ function Login() {
       setSamePassword(false);
     } else {
       setSamePassword(true);
-      dispatch(submitSignup(pseudo, email, password, confirmPassword, inseeCode));
+      dispatch(submitSignup(pseudo, email, password, inseeCode));
     }
   };
 

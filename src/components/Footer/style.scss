@@ -1,23 +1,29 @@
+.footer-container {
+  border-top: black 0.1rem solid;
+}
+
 .footer{
-    padding: 0 1.5rem 5rem;
+    padding: 0 1.5rem 0;
     text-align: center;
     background-color: #cccccc;
 
     &-infos {
-        border-top: solid 0.1rem;
-        margin-top: 1rem;
+      padding-top: 0.5rem;
+
     }
     &-hourly {
-        border-top: solid 0.1rem;
-        margin-top: 1rem;
+      border-top: solid 0.1rem;
+      margin-top: 1rem;
+      padding-top: 0.5rem;
     }
     &-followUs {
-        border-top: solid 0.1rem;
-        margin-top: 1rem;
-        
+      padding-top: 0.5rem;
+      border-top: solid 0.1rem;
+      margin-top: 1rem;
+      margin-bottom: 1.5rem;
     }
+}
 
-    h2 {
-        margin-top: 0.5rem;
-    }
+.copyright {
+font-size: 1rem;
 }

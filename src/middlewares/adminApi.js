@@ -14,7 +14,7 @@ const instance = axios.create({
 const adminApi = (store) => (next) => (action) => {
   switch (action.type) {
     case GET_ADMIN_REPORTS:
-      console.log('GET Reports');
+      console.log('GET Admin Reports');
       instance.get('/admin/reporting/1')
         .then((response) => {
           console.log(response);
@@ -23,7 +23,7 @@ const adminApi = (store) => (next) => (action) => {
           const { accessToken } = response.data;
           console.log(accessToken);
           instance.defaults.headers.common.Authorization = `bearer ${accessToken}`;
-          localStorage.setItem('accessToken', accessToken);
+          localStorage.getItem('accessToken', accessToken);
           store.dispatch(saveAdminReports(response.data));
         })
         .catch((error) => {

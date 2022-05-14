@@ -23,7 +23,7 @@ function Field({
       id={inputId}
       value={value}
       type={type}
-      className="field-input"
+      className={inputId}
       icon={icon}
       iconPosition="left"
       placeholder={placeholder}

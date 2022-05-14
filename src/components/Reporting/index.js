@@ -4,8 +4,10 @@ import { useDispatch, useSelector } from 'react-redux';
 import {
   Button, Checkbox, Form, Accordion, Icon, Message, Dropdown,
 } from 'semantic-ui-react';
-import { submitReporting } from '../../actions/reporting';
+import { submitReporting, changeCurrentCheckBoxReporting } from '../../actions/reporting';
+import { changeCurrentCategory, changeCurrentField } from '../../actions/utilities';
 import { setActiveIndexTerms, toggleReporting } from '../../actions/reports';
+import { setLoginMessage } from '../../actions/login';
 
 import Field from '../Field';
 
@@ -18,14 +20,17 @@ function Reporting() {
     activeIndexTerms,
     categoriesOptions,
   } = useSelector((state) => state.reports);
+  const { loginMessage, loginMessageColor } = useSelector((state) => state.login);
   const {
+    reporting_category,
+    reporting_title,
     reporting_description,
     reporting_email,
     reporting_firstName,
     reporting_lastName,
     reporting_phone,
     reporting_checkBox,
-  } = useSelector((state) => state.reporting);
+  } = useSelector((state) => state.utilities);
   const handleClick = (e, titleProps) => {
     const { index } = titleProps;
     const newIndex = activeIndexTerms === index ? -1 : index;
@@ -33,11 +38,44 @@ function Reporting() {
   };
 
   const handleSubmit = () => {
-    dispatch(submitReporting());
+    if (reporting_checkBox
+      && reporting_category !== ''
+      && reporting_title !== ''
+      && reporting_description !== ''
+      && reporting_email !== ''
+      && reporting_firstName !== ''
+      && reporting_lastName !== ''
+    ) {
+      dispatch(submitReporting(
+        reporting_category,
+        reporting_title,
+        reporting_description,
+        reporting_email,
+        reporting_firstName,
+        reporting_lastName,
+        reporting_phone,
+      ));
+    } else if (!reporting_checkBox) {
+      dispatch(setLoginMessage('Vous devez accepter les termes et conditions pour pouvoir signaler un événement', false));
+    } else {
+      dispatch(setLoginMessage('Vous devez décrire votre événement, lui donner un titre, renseignez votre prénom et votre nom, ainsi que votre email. Le numéros de téléphone est facultatif', false));
+    }
   };
 
   const handleClickBack = () => {
     dispatch(toggleReporting());
+  };
+
+  const handleChangeCategory = (event) => {
+    dispatch(changeCurrentCategory(event.target.textContent));
+  };
+
+  const handleChangeDescription = (event) => {
+    dispatch(changeCurrentField(event.target.value, event.target.name));
+  };
+
+  const handleCheckBox = () => {
+    dispatch(changeCurrentCheckBoxReporting());
   };
 
   return (
@@ -53,40 +91,51 @@ function Reporting() {
               fluid
               selection
               options={categoriesOptions}
+              onChange={handleChangeCategory}
             />
           </section>
+          <Field
+            type="text"
+            className="reporting-title ddd"
+            placeholder="Titre"
+            value={reporting_title}
+            title="Titre"
+            name="reporting_title"
+            icon="comment alternate"
+          />
           <Form.TextArea
             value={reporting_description}
             title="Description"
             name="reporting_description"
             className="reporting-form-textarea"
             placeholder="Description : Que souhaitez vous signaler ?"
+            onChange={handleChangeDescription}
           />
           <Field
             type="email"
             className="reporting-email"
             placeholder="Email"
             value={reporting_email}
-            title="email"
+            title="Email"
             name="reporting_email"
             icon="at"
           />
           <Field
             type="text"
             className="reporting-firstname"
-            placeholder="Nom"
+            placeholder="Prénom"
             value={reporting_firstName}
-            name="reporting_firstname"
-            title="firstName"
+            name="reporting_firstName"
+            title="Prénom"
             icon="user"
           />
           <Field
             type="text"
             className="reporting-lastname"
-            placeholder="Prénom"
+            placeholder="Nom"
             value={reporting_lastName}
             name="reporting_lastName"
-            title="lastName"
+            title="Nom"
             icon="user"
           />
           <Field
@@ -94,7 +143,7 @@ function Reporting() {
             className="reporting-phone"
             placeholder="Téléphone"
             value={reporting_phone}
-            title="phone"
+            title="Téléphone"
             name="reporting_phone"
             icon="phone"
           />
@@ -104,6 +153,7 @@ function Reporting() {
               name="reporting_checkBox"
               title="Accepter les conditions"
               checked={reporting_checkBox}
+              onChange={handleCheckBox}
             />
             <Accordion>
               <Accordion.Title
@@ -119,9 +169,6 @@ function Reporting() {
               <Accordion.Content active={activeIndexTerms === 0}>
 
                 <Message
-                // as={'p'}
-                // warning
-                // header='You must register before you can do that!'
                   content="En acceptant les termes et les conditions de ce formualire, j'autorise
                 mamairie.fr à stocker mon addresse IP durant 30j, afin de ...."
                 />
@@ -143,6 +190,12 @@ function Reporting() {
             </Button>
           </Form.Field>
         </Form>
+        {loginMessage && (
+          loginMessageColor
+            ? <Message positive>  <p>{loginMessage}</p> </Message>
+            : <Message negative>  <p>{loginMessage}</p> </Message>
+        )}
+
       </section>
       )}
     </>
