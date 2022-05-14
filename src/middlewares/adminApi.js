@@ -1,6 +1,6 @@
 import axios from 'axios';
 
-import { DELETE_SELECTED_REPORT, GET_ADMIN_REPORTS, GET_REPORTS, saveAdminReports, saveReports } from '../actions/reports';
+import { DELETE_SELECTED_REPORT, GET_ADMIN_REPORTS, saveAdminReports } from '../actions/reports';
 
 const instance = axios.create({
   baseURL: 'https://mamairie.herokuapp.com',
@@ -18,9 +18,13 @@ const adminApi = (store) => (next) => (action) => {
       instance.get('/admin/reporting/1')
         .then((response) => {
           console.log(response);
-          store.dispatch(saveAdminReports(response.data));
           // store.dispatch(login());
           // store.dispatch(redirect('/'));
+          const { accessToken } = response.data;
+          console.log(accessToken);
+          instance.defaults.headers.common.Authorization = `bearer ${accessToken}`;
+          localStorage.setItem('accessToken', accessToken);
+          store.dispatch(saveAdminReports(response.data));
         })
         .catch((error) => {
           // message d'erreur à faire
@@ -32,11 +36,13 @@ const adminApi = (store) => (next) => (action) => {
       const { id } = store.getState();
       console.log(id);
       console.log('DELETE Report');
-      instance.delete('/admin/reporting/1/', {
-        id: id,
-      })
+      instance.delete(`/admin/reporting/1/${id}`)
         .then((response) => {
           console.log(response);
+          const { accessToken } = response.data;
+          console.log(accessToken);
+          instance.defaults.headers.common.Authorization = `bearer ${accessToken}`;
+          localStorage.setItem('accessToken', accessToken);
         })
         .catch((error) => {
           // message d'erreur à faire

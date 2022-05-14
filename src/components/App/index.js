@@ -1,6 +1,6 @@
 // import PropTypes from 'prop-types';
 
-import { Routes, Route, Redirect } from 'react-router-dom';
+import { Routes, Route } from 'react-router-dom';
 import { useSelector } from 'react-redux';
 
 import Header from '../Header';
@@ -10,7 +10,7 @@ import Footer from '../Footer';
 import Admin from '../Admin';
 import Reports from '../Reports';
 import ReportAdmin from '../ReportAdmin';
-import Forbidden from '../Forbidden';
+// import Forbidden from '../Forbidden';
 
 import 'semantic-ui-css/semantic.min.css';
 import './style.scss';
