@@ -18,9 +18,8 @@
   align-items: center;
   justify-content: center;
   padding: 1.5rem;
-  margin: 1rem;
+  margin: 1.5rem 1rem;
   width: 70%;
-  // flex: 1;
 
   &:hover {
     background-color: color.scale(vars.$warningButtonColor, $lightness: -10%);
@@ -90,6 +89,7 @@
   display: flex;
   flex-direction: row;
   justify-content: space-evenly;
+  margin-bottom: 1.5rem;
 
   & .ui.fluid.dropdown {
     width: 22%;
