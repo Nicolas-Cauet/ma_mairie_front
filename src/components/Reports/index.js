@@ -2,11 +2,12 @@ import PropTypes from 'prop-types';
 import { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import {
-  Button, Icon, Dropdown,
+  Dropdown,
 } from 'semantic-ui-react';
-import { getReports, toggleReporting } from '../../actions/reports';
+import { getAdminReports, getReports } from '../../actions/reports';
 import Reporting from '../Reporting';
 import Report from './Report';
+import ReportButton from './ReportButton';
 
 import './style.scss';
 
@@ -16,8 +17,14 @@ function Reports() {
     isReporting, categoriesOptions, monthOptions, yearOptions,
   } = useSelector((state) => state.reports);
 
+  const { logged } = useSelector((state) => state.login);
+
   useEffect(() => {
-    dispatch(getReports());
+    if (window.location.pathname.includes('admin') && logged) {
+      dispatch(getAdminReports());
+    } else {
+      dispatch(getReports());
+    }
   // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
@@ -27,30 +34,14 @@ function Reports() {
   //   dispatch(setActiveIndex(newIndex))
   // }
 
-  const handleClick = () => {
-    dispatch((toggleReporting()));
-  };
-
   const reports = useSelector((state) => state.reports.reportsList);
-  console.log(reports);
 
   return (
     <>
       {/* Section for reporting action */}
       {isReporting && (<Reporting />)}
 
-      {/* Section for reporting button */}
-      {!isReporting && (
-      <section className="reporting-container">
-        <Button
-          className="reporting-button"
-          onClick={handleClick}
-        >
-          <Icon name="warning sign" />
-          <p>Signaler</p>
-        </Button>
-      </section>
-      )}
+      <ReportButton />
 
       {/* Section to filter reports list */}
       {!isReporting && (

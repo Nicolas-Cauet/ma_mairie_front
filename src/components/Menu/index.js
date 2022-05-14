@@ -28,7 +28,7 @@ function Menu() {
             </section>
           </Button>
         </NavLink>
-        <NavLink className="menu-item" to="/reports" onClick={hideMenu}>
+        <NavLink className="menu-item" to="/reports/1" onClick={hideMenu}>
           <Button className="warning">
             <section className="buttonMenu-container">
               <Icon name="warning sign" />

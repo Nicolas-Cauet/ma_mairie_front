@@ -1,6 +1,6 @@
 import { Icon } from 'semantic-ui-react';
 import {
-  SET_ACTIVE_INDEX, SET_ACTIVE_INDEX_TERMS, TOGGLE_REPORTING, SAVE_REPORTS,
+  SET_ACTIVE_INDEX, SET_ACTIVE_INDEX_TERMS, TOGGLE_REPORTING, SAVE_REPORTS, DELETE_SELECTED_REPORT, SAVE_ADMIN_REPORTS,
 } from '../actions/reports';
 
 export const initialState = {
@@ -8,6 +8,8 @@ export const initialState = {
   activeIndexTerms: -1,
   isReporting: false,
   reportsList: [],
+  reportsAdminList: [],
+  id: '',
   categoriesOptions: [
     {
       // key: 'Catégories',
@@ -93,6 +95,7 @@ const reducer = (state = initialState, action = {}) => {
       return {
         ...state,
         activeIndex: action.activeIndex,
+        id: action.id,
       };
     case SET_ACTIVE_INDEX_TERMS:
       return {
@@ -108,6 +111,16 @@ const reducer = (state = initialState, action = {}) => {
       return {
         ...state,
         reportsList: action.payload,
+      };
+    case SAVE_ADMIN_REPORTS:
+      return {
+        ...state,
+        reportsAdminList: action.payload,
+      };
+    case DELETE_SELECTED_REPORT:
+      return {
+        ...state,
+        id: action.payload,
       };
     default:
       return state;
