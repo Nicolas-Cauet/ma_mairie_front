@@ -55,8 +55,19 @@
     }
   }
 
+  &.homepage {
+    background-color: vars.$homepageButtonColor;
+    border: 2px solid color.scale(vars.$homepageButtonColor, $lightness: -20%);
+
+    &:hover {
+      background-color: color.scale(vars.$homepageButtonColor, $lightness: -10%);
+      border: 2px solid color.scale(vars.$homepageButtonColor, $lightness: -30%);
+    }
+  }
+
   &.admin {
-    background-color: color.scale(vars.$adminButtonColor, $lightness: -20%);
+    background-color: vars.$adminButtonColor;
+    border: 2px solid color.scale(vars.$adminButtonColor, $lightness: -20%);
 
     &:hover {
       background-color: color.scale(vars.$adminButtonColor, $lightness: -10%);

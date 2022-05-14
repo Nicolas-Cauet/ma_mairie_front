@@ -52,6 +52,14 @@ function Menu() {
             </section>
           </Button>
         </NavLink>
+        <NavLink className="menu-item" to="/" onClick={hideMenu}>
+          <Button className="homepage">
+            <section className="buttonMenu-container">
+              <Icon name="home" />
+              <p>Accueil</p>
+            </section>
+          </Button>
+        </NavLink>
         <NavLink className="menu-item" to="/admin" onClick={hideMenu}>
           <Button className="admin">
             <section className="buttonMenu-container">
