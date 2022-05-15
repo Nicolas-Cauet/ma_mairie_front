@@ -17,20 +17,21 @@ function ReportAdmin() {
   return (
     <div>
       <h2>{report.statut}</h2>
-      <Label color="yellow">Catégorie:
-        {report.reporting_category}
-      </Label>
       <h3>{report.title}</h3>
-      <Moment format="DD/MM/YYYY">{report.created_at}</Moment>
       <div>
-        <p>
-          {report.first_name}
-          {report.last_name}
-          {report.phonenumber}
-          {report.email}
-        </p>
+        <Label color="yellow">Catégorie:
+          {report.reporting_category}
+        </Label>
+        <Moment format="DD/MM/YYYY">{report.created_at}</Moment>
       </div>
-      <p>{report.user_text}</p>
+      <div>
+        <h4>Coordonnées du signalant</h4>
+        <p>Prénom : {report.first_name}</p>
+        <p>Nom : {report.last_name}</p>
+        <p>Numéro de téléphone : {report.phonenumber}</p>
+        <p>Adresse mail : {report.email}</p>
+      </div>
+      <p>Description : {report.user_text}</p>
       <img
         src={report.user_image}
         alt={report.title}

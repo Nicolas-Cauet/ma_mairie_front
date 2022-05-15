@@ -45,7 +45,7 @@ export const saveAdminReports = (reports) => ({
 export const DELETE_SELECTED_REPORT = 'DELETE_SELECTED_REPORT';
 export const deleteSelectedReport = (id) => ({
   type: DELETE_SELECTED_REPORT,
-  payload: id,
+  id: id,
 });
 
 export const DELETE_REPORT = 'DELETE_REPORT';

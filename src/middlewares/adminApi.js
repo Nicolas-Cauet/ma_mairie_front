@@ -23,12 +23,6 @@ const adminApi = (store) => (next) => (action) => {
 
         .then((response) => {
           console.log(response);
-          // store.dispatch(login());
-          // store.dispatch(redirect('/'));
-          //   const { accessToken } = response.data;
-          //   console.log(accessToken);
-          //   instance.defaults.headers.common.Authorization = `bearer ${accessToken}`;
-          // localStorage.getItem('accessToken', accessToken);
           store.dispatch(saveAdminReports(response.data));
           console.log(response.data);
         })
@@ -43,13 +37,14 @@ const adminApi = (store) => (next) => (action) => {
       const { id } = store.getState();
       console.log(id);
       console.log('DELETE Report');
-      instance.delete(`/admin/reporting/1/${id}`)
+      instance.delete(`/admin/reporting/1/${id}`, {
+        headers: {
+          Authorization: `Bearer ${localStorage.getItem('accessToken')}`,
+        },
+      })
+
         .then((response) => {
           console.log(response);
-          const { accessToken } = response.data;
-          console.log(accessToken);
-          instance.defaults.headers.common.Authorization = `bearer ${accessToken}`;
-          localStorage.setItem('accessToken', accessToken);
         })
         .catch((error) => {
           // message d'erreur à faire

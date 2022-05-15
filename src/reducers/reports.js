@@ -125,7 +125,7 @@ const reducer = (state = initialState, action = {}) => {
     case DELETE_SELECTED_REPORT:
       return {
         ...state,
-        id: action.payload,
+        id: action.id,
       };
     default:
       return state;
