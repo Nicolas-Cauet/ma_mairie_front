@@ -86,7 +86,7 @@ function Report({
             </p>
             { logged && window.location.pathname.includes('admin') && (
             <div className="reports-button">
-              <Link to={`/admin/reporting/1/${reporting_id}`}>
+              <Link to={`/admin/reports/1/${reporting_id}`}>
                 <Button>Traiter le signalement</Button>
               </Link>
               <Button onClick={toggleDeleteConfirm}>Supprimer</Button>

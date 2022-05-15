@@ -19,6 +19,7 @@ function Reports() {
 
   const { logged } = useSelector((state) => state.login);
 
+  // GET with Axios in visitor Reports or admin
   useEffect(() => {
     if (window.location.pathname.includes('admin') && logged) {
       dispatch(getAdminReports());
@@ -34,7 +35,13 @@ function Reports() {
   //   dispatch(setActiveIndex(newIndex))
   // }
 
-  const reports = useSelector((state) => state.reports.reportsList);
+  // View admin or visitor reports
+  const reports = useSelector((state) => {
+    if (window.location.pathname.includes('admin') && logged) {
+      return state.reports.reportsAdminList;
+    }
+    return state.reports.reportsList;
+  });
 
   return (
     <>

@@ -10,7 +10,7 @@ import Moment from 'react-moment';
 
 function ReportAdmin() {
   const params = useParams();
-  const report = useSelector((state) => state.reports.reportsList
+  const report = useSelector((state) => state.reports.reportsAdminList
     // eslint-disable-next-line eqeqeq
     .find((p) => p.reporting_id == params.reporting_id));
 

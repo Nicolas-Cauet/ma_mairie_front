@@ -15,17 +15,24 @@ const adminApi = (store) => (next) => (action) => {
   switch (action.type) {
     case GET_ADMIN_REPORTS:
       console.log('GET Admin Reports');
-      instance.get('/admin/reporting/1')
+      instance.get('/admin/reporting/1', {
+        headers: {
+          Authorization: `Bearer ${localStorage.getItem('accessToken')}`,
+        },
+      })
+
         .then((response) => {
           console.log(response);
           // store.dispatch(login());
           // store.dispatch(redirect('/'));
-          const { accessToken } = response.data;
-          console.log(accessToken);
-          instance.defaults.headers.common.Authorization = `bearer ${accessToken}`;
-          localStorage.getItem('accessToken', accessToken);
+          //   const { accessToken } = response.data;
+          //   console.log(accessToken);
+          //   instance.defaults.headers.common.Authorization = `bearer ${accessToken}`;
+          // localStorage.getItem('accessToken', accessToken);
           store.dispatch(saveAdminReports(response.data));
+          console.log(response.data);
         })
+
         .catch((error) => {
           // message d'erreur à faire
           // store.dispatch(setLoginMessage('Email et/ou Mot de passe incorrect', false));
