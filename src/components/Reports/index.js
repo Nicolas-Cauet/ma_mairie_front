@@ -19,6 +19,15 @@ function Reports() {
 
   const { logged } = useSelector((state) => state.login);
 
+  const { selectedCategory } = useSelector((state) => state.reports);
+
+  const reports = useSelector((state) => {
+    if (window.location.pathname.includes('admin') && logged) {
+      return state.reports.reportsAdminList;
+    }
+    return state.reports.reportsList;
+  });
+
   // GET with Axios in visitor Reports or admin
   useEffect(() => {
     if (window.location.pathname.includes('admin') && logged) {
@@ -26,16 +35,15 @@ function Reports() {
     } else {
       dispatch(getReports());
     }
-  // eslint-disable-next-line react-hooks/exhaustive-deps
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   // View admin or visitor reports
-  const reports = useSelector((state) => {
-    if (window.location.pathname.includes('admin') && logged) {
-      return state.reports.reportsAdminList;
-    }
-    return state.reports.reportsList;
-  });
+
+  // eslint-disable-next-line max-len
+  const filteredReports = reports.filter((report) => report.reporting_category === selectedCategory);
+  console.log('REPORTS', reports);
+  console.log('FILTER', filteredReports);
 
   const handleChangeFilter = (event) => {
     const key = event.target.closest('.filter-dropdown').getAttribute('name');
@@ -71,6 +79,7 @@ function Reports() {
           title="Mois"
           fluid
           selection
+          onChange={handleChangeFilter}
           options={monthOptions}
         />
         <Dropdown
@@ -80,6 +89,7 @@ function Reports() {
           title="Année"
           fluid
           selection
+          onChange={handleChangeFilter}
           options={yearOptions}
         />
       </section>

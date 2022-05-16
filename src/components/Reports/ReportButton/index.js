@@ -12,8 +12,7 @@ function ReportButton() {
     dispatch((toggleReporting()));
   };
 
-  const reports = useSelector((state) => state.reports.reportsList);
-  console.log(reports);
+  // const reports = useSelector((state) => state.reports.reportsList);
 
   return (
     <>

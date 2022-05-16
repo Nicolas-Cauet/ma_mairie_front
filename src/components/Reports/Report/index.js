@@ -21,8 +21,7 @@ function Report({
   const { activeIndex } = useSelector((state) => state.reports);
   const { logged } = useSelector((state) => state.login);
 
-  const reports = useSelector((state) => state.reports.reportsList);
-  console.log(reports);
+  // const reports = useSelector((state) => state.reports.reportsList);
 
   const handleClickAccordion = (e, titleProps) => {
     const { index } = titleProps;
