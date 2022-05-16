@@ -56,10 +56,10 @@ function Report({
             <div className="accordion-title-container">
               <h1>{title}</h1>
               <h2><Moment format="DD/MM/YYYY">{created_at}</Moment></h2>
-              <Label color="yellow">
-                Catégorie : {reporting_category}
+              <Label className={reporting_category}>
+                {reporting_category}
               </Label>
-              <Label color="red">
+              <Label className={reporting_statut}>
                 Statut : {reporting_statut}
               </Label>
               <div>
@@ -90,7 +90,6 @@ function Report({
               />
             </div>
             )}
-
           </Accordion.Content>
         </>
       </Accordion>

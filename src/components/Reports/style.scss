@@ -63,25 +63,35 @@
   & .ui.label {
     color: black!important;
   }
-
-  & .ui.green.label {
-    background-color: vars.$statusOkColor!important;
-  }
-
-  & .ui.orange.label {
-    background-color: vars.$statusInProgressColor!important;
-  }
-
-  & .ui.red.label {
-    background-color: vars.$statusRefusedColor!important;
-  }
-
-  & .ui.blue.label {
+  & .ui.label {
     background-color: vars.$categoryRoute!important;
   }
-
-  & .ui.yellow.label {
+  & .ui.label.Voirie {
+    background-color: vars.$categoryRoute!important;
+  }
+  & .ui.label.Eclairage.public {
+    background-color: vars.$categoryLight!important;
+  }
+  & .ui.label.Voisinage {
     background-color: vars.$categoryNeighboord!important;
+  }
+  & .ui.label.Ramassage.des.déchets {
+    background-color: vars.$categoryWaste!important;
+  }
+  & .ui.label.Objets.trouvés.ou.perdu {
+    background-color: vars.$categoryObject!important;
+  }
+  & .ui.label.Autre {
+    background-color: vars.$categoryOther!important;
+  }
+  & .ui.label.Non.validé {
+    background-color: vars.$statusRefusedColor!important;
+  }
+  & .ui.label.En.cours {
+    background-color: vars.$statusInProgressColor!important;
+  }
+  & .ui.label.Terminé {
+    background-color: vars.$statusOkColor!important;
   }
 }
 

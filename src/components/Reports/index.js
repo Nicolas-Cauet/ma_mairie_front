@@ -53,9 +53,6 @@ function Reports() {
     ],
   });
 
-  console.log('LOG = ', selectedMonth);
-  console.log(moment().locale('fr').format('MMMM'));
-
   if ((selectedCategory === '' || selectedCategory === 'Catégories')
   && (selectedYear === '' || selectedYear === 'Année')
   && (selectedMonth === '' || selectedMonth === 'Mois')) {
@@ -74,52 +71,22 @@ function Reports() {
       report.reporting_category === selectedCategory);
   } else if (selectedMonth === '' || selectedMonth === 'Mois') {
     filteredReports = reports.filter((report) =>
-      report.reporting_category === selectedCategory && moment(report.created_at).format('YYYY') === selectedYear);
+      report.reporting_category === selectedCategory
+      && moment(report.created_at).format('YYYY') === selectedYear);
   } else if (selectedYear === '' || selectedYear === 'Année') {
     filteredReports = reports.filter((report) =>
-      report.reporting_category === selectedCategory && moment(report.created_at).locale('fr').format('MMMM') === selectedMonth);
+      report.reporting_category === selectedCategory
+      && moment(report.created_at).locale('fr').format('MMMM') === selectedMonth);
   } else if (selectedCategory === '' || selectedCategory === 'Catégories') {
     filteredReports = reports.filter((report) =>
-      moment(report.created_at).format('YYYY') === selectedYear && moment(report.created_at).locale('fr').format('MMMM') === selectedMonth);
+      moment(report.created_at).format('YYYY') === selectedYear
+      && moment(report.created_at).locale('fr').format('MMMM') === selectedMonth);
   } else {
     filteredReports = reports.filter((report) =>
       report.reporting_category === selectedCategory
       && moment(report.created_at).locale('fr').format('MMMM') === selectedMonth
       && moment(report.created_at).format('YYYY') === selectedYear);
   }
-
-  // if (/* (selectedYear === '' || selectedYear === 'Année')
-  //   && (selectedMonth === '' || selectedMonth === 'Mois')
-  //   && */ (selectedCategory === ' ' || selectedCategory === 'Catégories')) {
-  //   console.log('all');
-  //   dispatch(updateFilteredReports(reports));
-  // }
-  // if (selectedCategory === '' || selectedCategory === 'Catégories') {
-  //   console.log('all');
-  //   dispatch(updateFilteredReports(reports));
-  //   console.log(reportsFiltered);
-  // }
-
-  // if (selectedCategory === '' || selectedCategory === 'Catégories') {
-  //   // dispatch(updateFilteredReports(reports));
-  //   // filteredReports = reports;
-  // }
-
-  // if ((selectedYear === '' || selectedYear === 'Année')
-  //   && (selectedMonth === '' || selectedMonth === 'Mois')) {
-  //   filteredReports = reports.filter((report) =>
-  //     report.reporting_category === selectedCategory);
-  // }
-
-  // if (selectedMonth === '' || selectedMonth === 'Mois') {
-  //   // filteredReports = reports.filter((report) =>
-  //   // eslint-disable-next-line max-len
-  // eslint-disable-next-line max-len
-  //   //   report.reporting_category === selectedCategory && moment(report.created_at).format('YYYY') === selectedYear);
-  // }
-
-  console.log('REPORTS', reports);
-  console.log('FILTER', filteredReports);
 
   const handleChangeFilter = (event) => {
     const key = event.target.closest('.filter-dropdown').getAttribute('name');
@@ -176,7 +143,7 @@ function Reports() {
       <section className="reports-container">
         {filteredReports.map((report) => (
           <Report key={report.reporting_id} {...report} />
-        ))};
+        ))}
       </section>
       )}
     </>

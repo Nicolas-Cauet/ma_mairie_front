@@ -50,7 +50,7 @@ export const initialState = {
     {
       // key: 'Objets trouvé/perdu',
       text: (<Icon className="dropdown-icon" name="key"> Objets trouvé/perdu</Icon>),
-      value: 'Objets trouvé/perdu',
+      value: 'Objets trouvé ou perdu',
     },
     {
       // key: 'Autre',
