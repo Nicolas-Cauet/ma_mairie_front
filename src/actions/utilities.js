@@ -19,3 +19,9 @@ export const changeCurrentCategory = (value) => ({
   type: CHANGE_CURRENT_CATEGORY,
   reporting_category: value,
 });
+
+export const LOADING = 'LOADING';
+export const loading = (value) => ({
+  type: LOADING,
+  value: value,
+});

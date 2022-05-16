@@ -6,6 +6,7 @@ import {
   GET_ADMIN_REPORTS,
   saveAdminReports,
 } from '../actions/reports';
+import { loading } from '../actions/utilities';
 
 const instance = axios.create({
   baseURL: 'https://mamairie.herokuapp.com',
@@ -17,6 +18,7 @@ const instance = axios.create({
 const adminApi = (store) => (next) => (action) => {
   switch (action.type) {
     case GET_ADMIN_REPORTS:
+      store.dispatch(loading(true));
       console.log('GET Admin Reports');
       instance.get('/admin/reporting/1')
         .then((response) => {
@@ -29,6 +31,9 @@ const adminApi = (store) => (next) => (action) => {
           // message d'erreur à faire
           // store.dispatch(setLoginMessage('Email et/ou Mot de passe incorrect', false));
           console.log(error);
+        })
+        .finally(() => {
+          store.dispatch(loading(false));
         });
       break;
     case DELETE_SELECTED_REPORT: {

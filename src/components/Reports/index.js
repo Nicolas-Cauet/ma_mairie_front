@@ -2,7 +2,7 @@ import PropTypes from 'prop-types';
 import { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import {
-  Dropdown,
+  Dropdown, Loader,
 } from 'semantic-ui-react';
 import { getAdminReports, getReports } from '../../actions/reports';
 import Reporting from '../Reporting';
@@ -16,6 +16,8 @@ function Reports() {
   const {
     isReporting, categoriesOptions, monthOptions, yearOptions,
   } = useSelector((state) => state.reports);
+
+  const { loading } = useSelector((state) => state.utilities);
 
   const { logged } = useSelector((state) => state.login);
 
@@ -78,7 +80,10 @@ function Reports() {
       )}
 
       {/* Section for reports list */}
-      {!isReporting && (
+      { loading && (
+        <Loader active inline="centered" />
+      )}
+      {!isReporting && !loading && (
         <section className="reports-container">
           {reports.map((report) => <Report key={report.reporting_id} {...report} />)}
         </section>
