@@ -18,7 +18,7 @@
   align-items: center;
   justify-content: center;
   padding: 1.5rem;
-  margin: 1.5rem 1rem;
+  margin: 1.5rem 1rem 0.5rem;
   width: 70%;
 
   &:hover {
@@ -89,7 +89,7 @@
   display: flex;
   flex-direction: row;
   justify-content: space-evenly;
-  margin-bottom: 1.5rem;
+  margin: 1.5rem 0;
 
   & .ui.fluid.dropdown {
     width: 22%;

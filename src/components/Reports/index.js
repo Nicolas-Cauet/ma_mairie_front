@@ -48,7 +48,9 @@ function Reports() {
       {/* Section for reporting action */}
       {isReporting && (<Reporting />)}
 
-      <ReportButton />
+      {logged && (
+        <ReportButton />
+      )}
 
       {/* Section to filter reports list */}
       {!isReporting && (
