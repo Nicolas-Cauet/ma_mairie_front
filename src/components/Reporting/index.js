@@ -31,6 +31,7 @@ function Reporting() {
     reporting_phone,
     reporting_checkBox,
   } = useSelector((state) => state.utilities);
+
   const handleClick = (e, titleProps) => {
     const { index } = titleProps;
     const newIndex = activeIndexTerms === index ? -1 : index;

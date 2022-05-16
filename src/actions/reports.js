@@ -59,3 +59,14 @@ export const changeReportsFilter = (value, key) => ({
   value,
   key,
 });
+
+export const RESET_REPORTS_FILTER = 'RESET_REPORTS_FILTER';
+export const resetReportsFilter = () => ({
+  type: RESET_REPORTS_FILTER,
+});
+
+export const UPDATE_FILTERED_REPORTS = 'UPDATE_FILTERED_REPORTS';
+export const updateFilteredReports = (filteredReports) => ({
+  type: UPDATE_FILTERED_REPORTS,
+  filteredReports,
+});

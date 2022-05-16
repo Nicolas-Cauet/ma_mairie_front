@@ -7,6 +7,8 @@ import {
   SAVE_ADMIN_REPORTS,
   DELETE_SELECTED_REPORT,
   CHANGE_REPORTS_FILTER,
+  RESET_REPORTS_FILTER,
+  UPDATE_FILTERED_REPORTS,
 } from '../actions/reports';
 
 export const initialState = {
@@ -15,6 +17,7 @@ export const initialState = {
   isReporting: false,
   reportsList: [],
   reportsAdminList: [],
+  filteredReports: [],
   selectedCategory: '',
   selectedMonth: '',
   selectedYear: '',
@@ -176,10 +179,21 @@ const reducer = (state = initialState, action = {}) => {
         id: action.id,
       };
     case CHANGE_REPORTS_FILTER:
-      console.log(action.value, action.key);
       return {
         ...state,
         [action.key]: action.value,
+      };
+    case RESET_REPORTS_FILTER:
+      return {
+        ...state,
+        selectedCategory: '',
+        selectedMonth: '',
+        selectedYear: '',
+      };
+    case UPDATE_FILTERED_REPORTS:
+      return {
+        ...state,
+        filteredReports: action.filteredReports,
       };
     default:
       return state;
