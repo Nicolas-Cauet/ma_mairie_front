@@ -207,7 +207,7 @@ function Login() {
 }
 
 Login.propTypes = {
-  // email: PropTypes.string.is,
+  // email: PropTypes.string,
   // password: PropTypes.string,
   // inseeCode: PropTypes.number,
   // logged: PropTypes.bool,

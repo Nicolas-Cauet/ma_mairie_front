@@ -52,3 +52,10 @@ export const DELETE_REPORT = 'DELETE_REPORT';
 export const deleteReport = () => ({
   type: DELETE_REPORT,
 });
+
+export const CHANGE_REPORTS_FILTER = 'CHANGE_REPORTS_FILTER';
+export const changeReportsFilter = (value, key) => ({
+  type: CHANGE_REPORTS_FILTER,
+  value,
+  key,
+});

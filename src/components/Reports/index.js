@@ -4,7 +4,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import {
   Dropdown,
 } from 'semantic-ui-react';
-import { getAdminReports, getReports } from '../../actions/reports';
+import { changeReportsFilter, getAdminReports, getReports } from '../../actions/reports';
 import Reporting from '../Reporting';
 import Report from './Report';
 import ReportButton from './ReportButton';
@@ -29,12 +29,6 @@ function Reports() {
   // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
-  // const handleClickAccordion = (e, titleProps) => {
-  //   const { index } = titleProps
-  //   const newIndex = activeIndex === index ? -1 : index
-  //   dispatch(setActiveIndex(newIndex))
-  // }
-
   // View admin or visitor reports
   const reports = useSelector((state) => {
     if (window.location.pathname.includes('admin') && logged) {
@@ -42,6 +36,11 @@ function Reports() {
     }
     return state.reports.reportsList;
   });
+
+  const handleChangeFilter = (event) => {
+    const key = event.target.closest('.filter-dropdown').getAttribute('name');
+    dispatch(changeReportsFilter(event.target.textContent, key));
+  };
 
   return (
     <>
@@ -58,13 +57,18 @@ function Reports() {
         <Dropdown
           className="filter-dropdown categories"
           placeholder="Catégories"
+          name="selectedCategory"
+          title="Catégories"
           fluid
           selection
+          onChange={handleChangeFilter}
           options={categoriesOptions}
         />
         <Dropdown
           className="filter-dropdown"
           placeholder="Mois"
+          name="selectedMonth"
+          title="Mois"
           fluid
           selection
           options={monthOptions}
@@ -72,6 +76,8 @@ function Reports() {
         <Dropdown
           className="filter-dropdown"
           placeholder="Année"
+          name="selectedYear"
+          title="Année"
           fluid
           selection
           options={yearOptions}

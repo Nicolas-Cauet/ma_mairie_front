@@ -6,6 +6,7 @@ import {
   SAVE_REPORTS,
   SAVE_ADMIN_REPORTS,
   DELETE_SELECTED_REPORT,
+  CHANGE_REPORTS_FILTER,
 } from '../actions/reports';
 
 export const initialState = {
@@ -14,7 +15,9 @@ export const initialState = {
   isReporting: false,
   reportsList: [],
   reportsAdminList: [],
-  id: '',
+  selectedCategory: '',
+  selectedMonth: '',
+  selectedYear: '',
   categoriesOptions: [
     {
       // key: 'Catégories',
@@ -62,13 +65,61 @@ export const initialState = {
       key: 'Janvier',
       text: 'Janvier',
       value: 'Janvier',
-      // image: { avatar: true, src: '/images/avatar/small/jenny.jpg' },
     },
     {
       key: 'Février',
       text: 'Février',
       value: 'Février',
-      // image: { avatar: true, src: '/images/avatar/small/elliot.jpg' },
+    },
+    {
+      key: 'Mars',
+      text: 'Mars',
+      value: 'Mars',
+    },
+    {
+      key: 'Avril',
+      text: 'Avril',
+      value: 'Avril',
+    },
+    {
+      key: 'Mai',
+      text: 'Mai',
+      value: 'Mai',
+    },
+    {
+      key: 'Juin',
+      text: 'Juin',
+      value: 'Juin',
+    },
+    {
+      key: 'Juillet',
+      text: 'Juillet',
+      value: 'Juillet',
+    },
+    {
+      key: 'Aout',
+      text: 'Aout',
+      value: 'Aout',
+    },
+    {
+      key: 'Septembre',
+      text: 'Septembre',
+      value: 'Septembre',
+    },
+    {
+      key: 'Octobre',
+      text: 'Octobre',
+      value: 'Octobre',
+    },
+    {
+      key: 'Novembre',
+      text: 'Novembre',
+      value: 'Novembre',
+    },
+    {
+      key: 'Décembre',
+      text: 'Décembre',
+      value: 'Décembre',
     },
   ],
   yearOptions: [
@@ -76,19 +127,16 @@ export const initialState = {
       key: 'Année',
       text: 'Année',
       value: 'Année',
-      // image: { avatar: true, src: '/images/avatar/small/jenny.jpg' },
     },
     {
       key: '2021',
       text: '2021',
       value: '2021',
-      // image: { avatar: true, src: '/images/avatar/small/jenny.jpg' },
     },
     {
       key: '2022',
       text: '2022',
       value: '2022',
-      // image: { avatar: true, src: '/images/avatar/small/elliot.jpg' },
     },
   ],
 };
@@ -126,6 +174,12 @@ const reducer = (state = initialState, action = {}) => {
       return {
         ...state,
         id: action.id,
+      };
+    case CHANGE_REPORTS_FILTER:
+      console.log(action.value, action.key);
+      return {
+        ...state,
+        [action.key]: action.value,
       };
     default:
       return state;
