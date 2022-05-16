@@ -10,7 +10,7 @@ import {
 import { REDIRECT } from '../actions/utilities';
 
 export const initialState = {
-  logged: false,
+  logged: true,
   isOpenSignup: false,
   isOpenLogin: false,
   loginMessage: '',

@@ -10,7 +10,7 @@ import {
 } from 'semantic-ui-react';
 import { Link } from 'react-router-dom';
 import Moment from 'react-moment';
-import { deleteReport, deleteSelectedReport, setActiveIndex } from '../../../actions/reports';
+import { deleteSelectedReport, setActiveIndex } from '../../../actions/reports';
 
 // import './style.scss';
 
@@ -24,10 +24,6 @@ function Report({
   const reports = useSelector((state) => state.reports.reportsList);
   console.log(reports);
 
-  //   useEffect (() =>{
-  //     dispatch((getReports()));
-  //   })
-
   const handleClickAccordion = (e, titleProps) => {
     const { index } = titleProps;
     const newIndex = activeIndex === index ? -1 : index;
@@ -40,16 +36,9 @@ function Report({
     setConfirm(!confirm);
   };
 
-  const confirmDeleteReport = (id) => {
-    dispatch(deleteSelectedReport(id));
-    console.log(id);
-    dispatch(deleteReport());
+  const confirmDeleteReport = () => {
+    dispatch(deleteSelectedReport(reporting_id));
   };
-
-  // const confirmDeleteReport = () => {
-  //   const toto = reports.filter((report) => reporting_id !== report.reporting_id);
-  //   console.log(toto)
-  // }
 
   return (
     <>
@@ -91,13 +80,14 @@ function Report({
               </Link>
               <Button onClick={toggleDeleteConfirm}>Supprimer</Button>
               <Confirm
+                report="coucou"
                 content="Êtes-vous sûr de vouloir supprimer ce signalement ?"
                 cancelButton="Annuler"
                 confirmButton="Supprimer"
                 open={confirm}
                 onCancel={toggleDeleteConfirm}
-                onConfirm={() => confirmDeleteReport(reporting_id)}
-              />
+                onConfirm={confirmDeleteReport}
+git add              />
             </div>
             )}
 

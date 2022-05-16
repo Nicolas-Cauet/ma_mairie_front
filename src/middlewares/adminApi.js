@@ -1,26 +1,24 @@
 import axios from 'axios';
 
-import { DELETE_SELECTED_REPORT, GET_ADMIN_REPORTS, saveAdminReports } from '../actions/reports';
+import {
+  deleteReport,
+  DELETE_SELECTED_REPORT,
+  GET_ADMIN_REPORTS,
+  saveAdminReports,
+} from '../actions/reports';
 
 const instance = axios.create({
   baseURL: 'https://mamairie.herokuapp.com',
+  headers: {
+    Authorization: `Bearer ${localStorage.getItem('accessToken')}`,
+  },
 });
-
-// if (localStorage.getItem('accessToken')) {
-//   const accessToken = localStorage.getItem('accessToken');
-//   instance.defaults.headers.common.Authorization = `bearer ${accessToken}`;
-// }
 
 const adminApi = (store) => (next) => (action) => {
   switch (action.type) {
     case GET_ADMIN_REPORTS:
       console.log('GET Admin Reports');
-      instance.get('/admin/reporting/1', {
-        headers: {
-          Authorization: `Bearer ${localStorage.getItem('accessToken')}`,
-        },
-      })
-
+      instance.get('/admin/reporting/1')
         .then((response) => {
           console.log(response);
           store.dispatch(saveAdminReports(response.data));
@@ -34,16 +32,10 @@ const adminApi = (store) => (next) => (action) => {
         });
       break;
     case DELETE_SELECTED_REPORT: {
-      const { id } = store.getState();
-      console.log(id);
-      console.log('DELETE Report');
-      instance.delete(`/admin/reporting/1/${id}`, {
-        headers: {
-          Authorization: `Bearer ${localStorage.getItem('accessToken')}`,
-        },
-      })
+      instance.delete(`/admin/reporting/1/${action.id}`)
 
         .then((response) => {
+          store.dispatch(deleteReport(action.id));
           console.log(response);
         })
         .catch((error) => {
