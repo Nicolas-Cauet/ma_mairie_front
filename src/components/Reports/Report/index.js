@@ -10,7 +10,7 @@ import {
 } from 'semantic-ui-react';
 import { Link } from 'react-router-dom';
 import Moment from 'react-moment';
-import { deleteSelectedReport, setActiveIndex } from '../../../actions/reports';
+import { deleteSelectedReport, getAdminReports, setActiveIndex } from '../../../actions/reports';
 
 // import './style.scss';
 
@@ -38,6 +38,8 @@ function Report({
 
   const confirmDeleteReport = () => {
     dispatch(deleteSelectedReport(reporting_id));
+    setConfirm(false);
+    dispatch(getAdminReports());
   };
 
   return (

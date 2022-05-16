@@ -36,7 +36,7 @@ const adminApi = (store) => (next) => (action) => {
 
         .then((response) => {
           store.dispatch(deleteReport(action.id));
-          console.log(response);
+          console.log(response.data);
         })
         .catch((error) => {
           // message d'erreur à faire

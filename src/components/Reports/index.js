@@ -26,7 +26,7 @@ function Reports() {
     } else {
       dispatch(getReports());
     }
-  // eslint-disable-next-line react-hooks/exhaustive-deps
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   // const handleClickAccordion = (e, titleProps) => {
@@ -52,36 +52,36 @@ function Reports() {
 
       {/* Section to filter reports list */}
       {!isReporting && (
-      <section className="filter-section">
-        <Dropdown
-          className="filter-dropdown categories"
-          placeholder="Catégories"
-          fluid
-          selection
-          options={categoriesOptions}
-        />
-        <Dropdown
-          className="filter-dropdown"
-          placeholder="Mois"
-          fluid
-          selection
-          options={monthOptions}
-        />
-        <Dropdown
-          className="filter-dropdown"
-          placeholder="Année"
-          fluid
-          selection
-          options={yearOptions}
-        />
-      </section>
+        <section className="filter-section">
+          <Dropdown
+            className="filter-dropdown categories"
+            placeholder="Catégories"
+            fluid
+            selection
+            options={categoriesOptions}
+          />
+          <Dropdown
+            className="filter-dropdown"
+            placeholder="Mois"
+            fluid
+            selection
+            options={monthOptions}
+          />
+          <Dropdown
+            className="filter-dropdown"
+            placeholder="Année"
+            fluid
+            selection
+            options={yearOptions}
+          />
+        </section>
       )}
 
       {/* Section for reports list */}
       {!isReporting && (
-      <section className="reports-container">
-        {reports.map((report) => <Report key={report.reporting_id} {...report} />)}
-      </section>
+        <section className="reports-container">
+          {reports.map((report) => <Report key={report.reporting_id} {...report} />)}
+        </section>
       )}
     </>
   );
