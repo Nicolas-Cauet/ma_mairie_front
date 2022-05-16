@@ -21,6 +21,11 @@
 
     & .ui.input{
       width: 80%;;
+
+      &.error input {
+        border: 2px solid #c33e3e;
+        color: #c33e3e ;
+      }
     }
   }
 
@@ -50,3 +55,4 @@
 .ui.button.logout-button {
   background-color: vars.$statusRefusedColor;
 }
+

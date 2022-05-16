@@ -1,5 +1,6 @@
 .reporting-form {
-  
+  margin-bottom: 2rem;
+
   & h1 {
     text-align: center;
 
@@ -32,7 +33,12 @@
   
     & .ui.input {
       margin-bottom: 1rem;
-
+      
+      &.error {
+        border: 2px solid #c33e3e;
+        color: #c33e3e ;
+      }
+      
       &.field-reporting_title {
         width: 75%;
       }
@@ -96,5 +102,5 @@
   text-align: center;
   margin: 1rem auto;
   width: 80%;
+  margin-bottom: 2rem;
 }
-

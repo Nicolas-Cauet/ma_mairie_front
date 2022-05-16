@@ -2,7 +2,12 @@ import axios from 'axios';
 
 // import { toggleMenu } from '../actions/menu';
 import { eraseReportingFields, SUBMIT_REPORTING } from '../actions/reporting';
-import { GET_REPORTS, saveReports, toggleReporting } from '../actions/reports';
+import {
+  GET_REPORTS,
+  saveAdminReports,
+  saveReports,
+  toggleReporting,
+} from '../actions/reports';
 
 const instance = axios.create({
   baseURL: 'https://mamairie.herokuapp.com',
@@ -43,6 +48,7 @@ const api = (store) => (next) => (action) => {
           console.log(response);
           store.dispatch(toggleReporting());
           store.dispatch(eraseReportingFields());
+          store.dispatch(saveAdminReports());
           // store.dispatch(toggleMenu());
 
           // message de succès

@@ -6,7 +6,7 @@ import {
 } from 'semantic-ui-react';
 import { submitReporting, changeCurrentCheckBoxReporting } from '../../actions/reporting';
 import { changeCurrentCategory, changeCurrentField } from '../../actions/utilities';
-import { setActiveIndexTerms, toggleReporting } from '../../actions/reports';
+import { setActiveIndexTerms, toggleReporting, setReportingError } from '../../actions/reports';
 import { setLoginMessage } from '../../actions/login';
 
 import Field from '../Field';
@@ -30,6 +30,7 @@ function Reporting() {
     reporting_lastName,
     reporting_phone,
     reporting_checkBox,
+    reporting_error,
   } = useSelector((state) => state.utilities);
 
   const handleClick = (e, titleProps) => {
@@ -39,6 +40,7 @@ function Reporting() {
   };
 
   const handleSubmit = () => {
+    dispatch(setReportingError(false));
     if (reporting_checkBox
       && reporting_category !== ''
       && reporting_title !== ''
@@ -60,6 +62,7 @@ function Reporting() {
       dispatch(setLoginMessage('Vous devez accepter les termes et conditions pour pouvoir signaler un événement', false));
     } else {
       dispatch(setLoginMessage('Vous devez décrire votre événement, lui donner un titre, renseignez votre prénom et votre nom, ainsi que votre email. Le numéros de téléphone est facultatif', false));
+      dispatch(setReportingError(true));
     }
   };
 
@@ -93,6 +96,7 @@ function Reporting() {
               selection
               options={categoriesOptions}
               onChange={handleChangeCategory}
+              inputError={reporting_error}
             />
           </section>
           <Field
@@ -103,6 +107,7 @@ function Reporting() {
             title="Titre"
             name="reporting_title"
             icon="comment alternate"
+            inputError={reporting_error}
           />
           <Form.TextArea
             value={reporting_description}
@@ -111,6 +116,7 @@ function Reporting() {
             className="reporting-form-textarea"
             placeholder="Description : Que souhaitez vous signaler ?"
             onChange={handleChangeDescription}
+            inputError={reporting_error}
           />
           <Field
             type="email"
@@ -120,6 +126,7 @@ function Reporting() {
             title="Email"
             name="reporting_email"
             icon="at"
+            inputError={reporting_error}
           />
           <Field
             type="text"
@@ -129,6 +136,7 @@ function Reporting() {
             name="reporting_firstName"
             title="Prénom"
             icon="user"
+            inputError={reporting_error}
           />
           <Field
             type="text"
@@ -138,6 +146,7 @@ function Reporting() {
             name="reporting_lastName"
             title="Nom"
             icon="user"
+            inputError={reporting_error}
           />
           <Field
             type="tel"
@@ -176,7 +185,7 @@ function Reporting() {
               </Accordion.Content>
             </Accordion>
           </Form.Field>
-          <Form.Field>
+          <Form.Field className="button-validation">
             <Button
               type="submit"
               className="form-submit"
@@ -193,8 +202,8 @@ function Reporting() {
         </Form>
         {loginMessage && (
           loginMessageColor
-            ? <Message positive>  <p>{loginMessage}</p> </Message>
-            : <Message negative>  <p>{loginMessage}</p> </Message>
+            ? <Message className="reports-message" positive>  <p>{loginMessage}</p> </Message>
+            : <Message className="reports-message" negative>  <p>{loginMessage}</p> </Message>
         )}
 
       </section>

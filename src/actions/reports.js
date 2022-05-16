@@ -70,3 +70,9 @@ export const updateFilteredReports = (filteredReports) => ({
   type: UPDATE_FILTERED_REPORTS,
   filteredReports,
 });
+
+export const SET_REPORTING_ERROR = 'SET_REPORTING_ERROR';
+export const setReportingError = (bool) => ({
+  type: SET_REPORTING_ERROR,
+  reporting_error: bool,
+});
