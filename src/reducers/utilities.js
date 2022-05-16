@@ -16,6 +16,8 @@ export const initialState = {
   reporting_lastName: '',
   reporting_phone: '',
   reporting_checkBox: false,
+  admin_text: '',
+  reporting_statut: '',
   loading: false,
 };
 

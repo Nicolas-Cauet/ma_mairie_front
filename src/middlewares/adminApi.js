@@ -5,6 +5,7 @@ import {
   DELETE_SELECTED_REPORT,
   GET_ADMIN_REPORTS,
   saveAdminReports,
+  SUBMIT_MODERATE_REPORTING,
 } from '../actions/reports';
 import { loading } from '../actions/utilities';
 
@@ -47,6 +48,32 @@ const adminApi = (store) => (next) => (action) => {
           // message d'erreur à faire
           // store.dispatch(setLoginMessage('Email et/ou Mot de passe incorrect', false));
           console.log(error);
+        });
+      break;
+    }
+    case SUBMIT_MODERATE_REPORTING: {
+      instance.patch(`/admin/reporting/1/${action.id}`, {
+        // admin_image: action.admin_image,
+        email: action.email,
+        title: action.title,
+        admin_text: action.admin_text,
+        reporting_statut: action.reporting_statut,
+        // ...action.report,
+      })
+      // console.log(action.admin_text);
+      // console.log(action.title);
+      // console.log(action.reporting_statut);
+      // console.log(action.email);
+      // console.log(action.report)
+
+        .then((response) => {
+          // store.dispatch(getReports(response.data));
+          console.log(response.data);
+        })
+        .catch((error) => {
+          // message d'erreur à faire
+          // store.dispatch(setLoginMessage('Email et/ou Mot de passe incorrect', false));
+          console.log(error, "je suis dans l'erreur");
         });
       break;
     }
