@@ -1,6 +1,43 @@
-.response {
+@use 'src/styles/vars';
+
+.report {
+    margin: 1rem, 1.5rem;
+
+    &-title {
+        text-align: center;
+    }
+
+    &-toto {
+        display: flex;
+        justify-content: space-around;
+        margin-bottom: 1rem;
+    }
+    &-statut{
+        text-align: center;
+    }
     &-checkbox {
         display: flex;
         flex-direction: column;
+        margin-bottom: 1rem;
+    }
+
+    &-info {
+        background-color: vars.$backgroundBlocColor;
+        width: 80%;
+        margin: auto;
+        margin-bottom: 2rem;
+        padding: 1rem;
+        border-radius: 1rem;
+    }
+    &-image {
+        display: flex;
+        align-items: center;
+        text-align: center;
+        justify-content: center;
+    }
+    & .ui.input {
+        display: flex;
+        width: 100%;
+        margin-bottom: 1rem
     }
 }

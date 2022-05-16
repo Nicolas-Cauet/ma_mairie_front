@@ -52,47 +52,52 @@ function ReportAdmin() {
   };
 
   return (
-    <div>
-      <h2>{report.reporting_statut}</h2>
-      <h3>{report.title}</h3>
-      <div>
-        <Label color="yellow">Catégorie:
+    <div className="report">
+      <h2 className="report-title">{report.title}</h2>
+      {/* <h2 className="report-statut">{report.reporting_statut}</h2> */}
+      <div className="report-toto">
+        <Label color="yellow" className="report-category">Catégorie:
           {report.reporting_category}
         </Label>
-        <Moment format="DD/MM/YYYY">{report.created_at}</Moment>
+        <Moment format="DD/MM/YYYY" className="report-date">{report.created_at}</Moment>
       </div>
-      <div>
-        <h4>Coordonnées du signalant</h4>
-        <p>Prénom : {report.first_name}</p>
-        <p>Nom : {report.last_name}</p>
-        <p>Numéro de téléphone : {report.phonenumber}</p>
-        <p value={report.email}>Adresse mail : {report.email}</p>
-      </div>
-      <p>Description : {report.user_text}</p>
-      <img
-        src={report.user_image}
-        alt={report.title}
-      />
-      <Form>
-        <Field
-          type="text"
-          className="response-text"
-          placeholder="Votre réponse..."
-          value={report.admin_text}
-          title="Réponse"
-          name="admin_text"
+      <div className="report-info">
+        <h3>Coordonnées du signalant :</h3>
+        {/* <h3 className="report-title">{report.title}</h3> */}
+        <p className="report-firstName">Prénom : {report.first_name}</p>
+        <p className="report-lastName">Nom : {report.last_name}</p>
+        <p className="report-phone">Numéro de téléphone : {report.phonenumber}</p>
+        <p value={report.email} className="report-mail">Adresse mail : {report.email}</p>
+        <p className="report-description">Description : {report.user_text}</p>
+        <img
+          className="report-image"
+          src={report.user_image}
+          alt={report.title}
         />
-        <div className="response-checkbox">
-          <Checkbox name="reporting_statut" value="En cours" label="En cours" onChange={handleCheckbox} />
-          <Checkbox name="reporting_statut" value="Terminé" label="Terminé" onChange={handleCheckbox} />
-        </div>
-        <Button
-          type="submit"
-          className="form-submit"
-          onClick={handleSubmit}
-        >Envoyer
-        </Button>
-      </Form>
+      </div>
+      <div className="report-info">
+        <h3>Traitement du signalement :</h3>
+        <Form>
+          <Field
+            type="text"
+            className="report-response"
+            placeholder="Votre réponse..."
+            value={report.admin_text}
+            title="Réponse"
+            name="admin_text"
+          />
+          <div className="report-checkbox">
+            <Checkbox name="reporting_statut" value="En cours" label="En cours" onChange={handleCheckbox} />
+            <Checkbox name="reporting_statut" value="Terminé" label="Terminé" onChange={handleCheckbox} />
+          </div>
+          <Button
+            type="submit"
+            className="report-submit"
+            onClick={handleSubmit}
+          >Envoyer
+          </Button>
+        </Form>
+      </div>
     </div>
   );
 }
