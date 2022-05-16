@@ -87,7 +87,7 @@ function Report({
                 open={confirm}
                 onCancel={toggleDeleteConfirm}
                 onConfirm={confirmDeleteReport}
-git add              />
+              />
             </div>
             )}
 
