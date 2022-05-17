@@ -111,6 +111,7 @@ function Reports() {
             placeholder="Catégories"
             fluid
             selection
+            onChange={handleChangeFilter}
             options={categoriesOptions}
           />
           <Dropdown
@@ -118,6 +119,7 @@ function Reports() {
             placeholder="Mois"
             fluid
             selection
+            onChange={handleChangeFilter}
             options={monthOptions}
           />
           <Dropdown
@@ -125,6 +127,7 @@ function Reports() {
             placeholder="Année"
             fluid
             selection
+            onChange={handleChangeFilter}
             options={yearOptions}
           />
         </section>
