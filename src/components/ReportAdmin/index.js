@@ -56,13 +56,15 @@ function ReportAdmin() {
 
   return (
     <div className="report">
-      <h2 className="report-title">{report.title}</h2>
-      {/* <h2 className="report-statut">{report.reporting_statut}</h2> */}
-      <div className="report-toto">
-        <Label color="yellow" className="report-category">Catégorie:
-          {report.reporting_category}
-        </Label>
-        <Moment format="DD/MM/YYYY" className="report-date">{report.created_at}</Moment>
+      <div className="report-header">
+        <h2 className="report-title">{report.title}</h2>
+        {/* <h2 className="report-statut">{report.reporting_statut}</h2> */}
+        <div className="report-date">
+          <Label color="yellow" className="report-category">Catégorie:
+            {report.reporting_category}
+          </Label>
+          <Moment format="DD/MM/YYYY" className="report-date">{report.created_at}</Moment>
+        </div>
       </div>
       <div className="report-info">
         <h3>Coordonnées du signalant :</h3>
@@ -72,11 +74,14 @@ function ReportAdmin() {
         <p className="report-phone">Numéro de téléphone : {report.phonenumber}</p>
         <p value={report.email} className="report-mail">Adresse mail : {report.email}</p>
         <p className="report-description">Description : {report.user_text}</p>
-        <img
-          className="report-image"
-          src={report.user_image}
-          alt={report.title}
-        />
+        { report.user_image && (
+          <img
+            className="report-image"
+            src={report.user_image}
+            alt={report.title}
+          />
+        )}
+
       </div>
       <div className="report-info">
         <h3>Traitement du signalement :</h3>
@@ -93,14 +98,15 @@ function ReportAdmin() {
             <Checkbox option="statut" name="reporting_statut" value="En cours" label="En cours" onChange={handleCheckbox} />
             <Checkbox option="statut" name="reporting_statut" value="Terminé" label="Terminé" onChange={handleCheckbox} />
           </div>
-          <Button
-            type="submit"
-            className="report-submit"
-            onClick={handleSubmit}
-          >Envoyer
-          </Button>
         </Form>
+        <Button
+          type="submit"
+          className="report-submit"
+          onClick={handleSubmit}
+        >Envoyer
+        </Button>
       </div>
+
       { successMessage && (
       <Message positive>
         <p>Le signalement "{report.title}" a bien été mis à jour</p>
