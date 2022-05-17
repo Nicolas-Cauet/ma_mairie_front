@@ -61,8 +61,10 @@ function Admin() {
           <div className="admin-content">
             <div className="admin-button">
               <h3>Conseil municipal</h3>
-              <Button className="create" icon="plus" content="Créer" />
-              <Button className="edit" icon="edit" content="Editer" />
+              {/* <Button className="create" icon="plus" content="Créer" /> */}
+              <Link to="/admin/council/1">
+                <Button className="edit" icon="edit" content="Editer" />
+              </Link>
             </div>
           </div>
 
@@ -74,7 +76,6 @@ function Admin() {
                   type="text"
                   className="admin-form-input"
                   placeholder="URL facebook"
-                        // value={facebook}
                   title="facebook"
                   icon="facebook"
                 />

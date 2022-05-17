@@ -9,12 +9,13 @@ const councilApi = (store) => (next) => (action) => {
   switch (action.type) {
     case GET_COUNCIL_MEMBERS:
       console.log('GET Council');
-      instance.get('council/1')
+      instance.get('/council/1')
         .then((response) => {
           console.log(response);
           store.dispatch(setCouncilMembers(response.data));
         })
         .catch((error) => {
+          // Make error
           console.log(error);
         });
       break;

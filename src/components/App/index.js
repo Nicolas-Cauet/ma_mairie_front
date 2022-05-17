@@ -32,6 +32,8 @@ function App() {
           <>
             <Route path="/admin/reports/1" element={<Reports />} />
             <Route path="/admin/reports/1/:reporting_id" element={<ReportAdmin />} />
+            <Route path="/admin/council/1" element={<Council />} />
+
           </>
         )};
         <Route path="*" element={<p>route inconnue</p>} />
