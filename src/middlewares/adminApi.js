@@ -53,18 +53,10 @@ const adminApi = (store) => (next) => (action) => {
     }
     case SUBMIT_MODERATE_REPORTING: {
       instance.patch(`/admin/reporting/1/${action.id}`, {
-        // admin_image: action.admin_image,
-        email: action.email,
         title: action.title,
         admin_text: action.admin_text,
         reporting_statut: action.reporting_statut,
-        // ...action.report,
       })
-      // console.log(action.admin_text);
-      // console.log(action.title);
-      // console.log(action.reporting_statut);
-      // console.log(action.email);
-      // console.log(action.report)
 
         .then((response) => {
           // store.dispatch(getReports(response.data));

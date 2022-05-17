@@ -1,6 +1,12 @@
 import { LOGIN, SET_LOGOUT } from '../actions/action';
 import { CHANGE_CURRENT_CHECKBOX_REPORTING, ERASE_REPORTING_FIELDS } from '../actions/reporting';
-import { CHANGE_CURRENT_CATEGORY, CHANGE_CURRENT_FIELD, LOADING } from '../actions/utilities';
+import {
+  CHANGE_CURRENT_CATEGORY,
+  CHANGE_CURRENT_FIELD,
+  LOADING,
+  RETURN_MESSAGE_ERROR,
+  RETURN_MESSAGE_SUCCESS,
+} from '../actions/utilities';
 
 export const initialState = {
   pseudo: '',
@@ -19,6 +25,8 @@ export const initialState = {
   admin_text: '',
   reporting_statut: '',
   loading: false,
+  errorMessage: '',
+  successMessage: '',
 };
 
 const reducer = (state = initialState, action = {}) => {
@@ -67,6 +75,16 @@ const reducer = (state = initialState, action = {}) => {
       return {
         ...state,
         loading: action.value,
+      };
+    case RETURN_MESSAGE_ERROR:
+      return {
+        ...state,
+        errorMessage: action.value,
+      };
+    case RETURN_MESSAGE_SUCCESS:
+      return {
+        ...state,
+        successMessage: action.value,
       };
     default:
       return state;
