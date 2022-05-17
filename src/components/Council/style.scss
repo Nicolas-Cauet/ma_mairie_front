@@ -5,9 +5,17 @@
   flex-wrap: wrap;
   justify-content: center;
 
+  & .editingSection {
+    position: absolute;
+    right: 0.2rem;
+    bottom: 0.2rem;
+  }
+
   & h1 {
+    text-align: center;
     margin: 1rem 0;
     font-size: 1.5rem;
+    width: 100%;
   }
 
   & .ui.card {
@@ -15,6 +23,7 @@
     margin: 0 1rem 1rem;
 
     & .content {
+      position: relative;
       padding: 0;
       display: flex;
       flex-direction: column;
@@ -32,8 +41,6 @@
           font-size: 1rem;
         }
       }
-
-    
     }
 
     &>.content>.card-header {

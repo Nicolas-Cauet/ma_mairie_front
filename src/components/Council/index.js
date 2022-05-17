@@ -20,17 +20,7 @@ function Council() {
 
   const adminLogged = useSelector((state) => state.login.logged);
   const { councilMembers } = useSelector((state) => state.council);
-
-  // console.log('card',cardList);
-  console.log('council',councilMembers);
-
-  const cardList = councilMembers.map((card) => (
-    <CardModel key={card.town_hall_staff_id} imageName={whiteImage} name={`${card.first_name} ${card.last_name}`} role={card.role} />
-  ))
-  // dispatch(addCouncilMembers(cardList))
-
-
-
+  
   //Click on Plus button
   const handleClick = () => {
     dispatch(addCouncilMembers());
@@ -45,7 +35,9 @@ function Council() {
   return (
     <section className="card-container">
       <h1>Présentation du conseil Municipal</h1>
-      {cardList}
+      {councilMembers.map((card) => (
+        <CardModel key={card.town_hall_staff_id} imageName={card.photo} name={`${card.first_name} ${card.last_name}`} role={card.role} />
+      ))}
       {adminLogged && (
         <Card className="card">
           <Image src={whiteImage} wrapped ui={false} />
