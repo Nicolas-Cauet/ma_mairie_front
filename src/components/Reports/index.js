@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import moment from 'moment';
-import { Dropdown, Loader} from 'semantic-ui-react';
+import { Dropdown, Loader } from 'semantic-ui-react';
 import {
   changeReportsFilter,
   getAdminReports, getReports,

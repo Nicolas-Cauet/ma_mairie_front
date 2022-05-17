@@ -53,7 +53,6 @@ export const deleteReport = () => ({
   type: DELETE_REPORT,
 });
 
-<<<<<<< HEAD
 export const CHANGE_REPORTS_FILTER = 'CHANGE_REPORTS_FILTER';
 export const changeReportsFilter = (value, key) => ({
   type: CHANGE_REPORTS_FILTER,
@@ -76,7 +75,8 @@ export const SET_REPORTING_ERROR = 'SET_REPORTING_ERROR';
 export const setReportingError = (bool) => ({
   type: SET_REPORTING_ERROR,
   reporting_error: bool,
-=======
+});
+
 export const SUBMIT_MODERATE_REPORTING = 'SUBMIT_MODERATE_REPORTING';
 export const submitModerateReporting = (id, title, admin_text, reporting_statut, email) => ({
   type: SUBMIT_MODERATE_REPORTING,
@@ -91,5 +91,4 @@ export const CHANGE_CHECKBOX_ADMIN_REPORTING = 'CHANGE_CHECKBOX_ADMIN_REPORTING'
 export const changeCheckboxAdminReporting = (value) => ({
   type: CHANGE_CHECKBOX_ADMIN_REPORTING,
   reporting_statut: value,
->>>>>>> reportAdmin
 });
