@@ -10,7 +10,7 @@ import photo3 from '../../assets/images/council/secondCouncil.jpg';
 import photo4 from '../../assets/images/council/thirdCouncil.jpg';
 import whiteImage from '../../assets/images/council/whiteImage.png';
 
-import { getCouncilMembers } from '../../actions/council';
+import { getCouncilMembers, postCouncilMembers } from '../../actions/council';
 
 import './style.scss';
 
@@ -21,8 +21,8 @@ function Council() {
 
   // Click on Plus button
   const handleClick = () => {
-    // dispatch(());
-    console.log('coucou');
+    dispatch(postCouncilMembers());
+    // console.log('coucou');
   };
 
   // GET council members
