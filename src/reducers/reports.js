@@ -5,14 +5,11 @@ import {
   TOGGLE_REPORTING,
   SAVE_REPORTS,
   SAVE_ADMIN_REPORTS,
-<<<<<<< HEAD
-  DELETE_SELECTED_REPORT,
+  // DELETE_SELECTED_REPORT,
   CHANGE_REPORTS_FILTER,
   RESET_REPORTS_FILTER,
   UPDATE_FILTERED_REPORTS,
-=======
   CHANGE_CHECKBOX_ADMIN_REPORTING,
->>>>>>> reportAdmin
 } from '../actions/reports';
 
 export const initialState = {
@@ -21,15 +18,12 @@ export const initialState = {
   isReporting: false,
   reportsList: [],
   reportsAdminList: [],
-<<<<<<< HEAD
   filteredReports: [],
   selectedCategory: '',
   selectedMonth: '',
   selectedYear: '',
-=======
   text: '',
   // reporting_statut: '',
->>>>>>> reportAdmin
   categoriesOptions: [
     {
       // key: 'Catégories',

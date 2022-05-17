@@ -3,18 +3,12 @@ import PropTypes from 'prop-types';
 import { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import moment from 'moment';
-import { Dropdown } from 'semantic-ui-react';
+import { Dropdown, Loader} from 'semantic-ui-react';
 import {
-<<<<<<< HEAD
   changeReportsFilter,
   getAdminReports, getReports,
   // updateFilteredReports,
 } from '../../actions/reports';
-=======
-  Dropdown, Loader,
-} from 'semantic-ui-react';
-import { getAdminReports, getReports } from '../../actions/reports';
->>>>>>> reportAdmin
 import Reporting from '../Reporting';
 import Report from './Report';
 import ReportButton from './ReportButton';
@@ -112,49 +106,6 @@ function Reports() {
 
       {/* Section to filter reports list */}
       {!isReporting && (
-<<<<<<< HEAD
-      <section className="filter-section">
-        <Dropdown
-          className="filter-dropdown categories"
-          placeholder="Catégories"
-          name="selectedCategory"
-          title="Catégories"
-          fluid
-          selection
-          onChange={handleChangeFilter}
-          options={categoriesOptions}
-        />
-        <Dropdown
-          className="filter-dropdown"
-          placeholder="Mois"
-          name="selectedMonth"
-          title="Mois"
-          fluid
-          selection
-          onChange={handleChangeFilter}
-          options={monthOptions}
-        />
-        <Dropdown
-          className="filter-dropdown"
-          placeholder="Année"
-          name="selectedYear"
-          title="Année"
-          fluid
-          selection
-          onChange={handleChangeFilter}
-          options={yearOptions}
-        />
-      </section>
-      )}
-
-      {/* Section for reports list */}
-      {!isReporting && (
-      <section className="reports-container">
-        {filteredReports.map((report) => (
-          <Report key={report.reporting_id} {...report} />
-        ))}
-      </section>
-=======
         <section className="filter-section">
           <Dropdown
             className="filter-dropdown categories"
@@ -188,7 +139,6 @@ function Reports() {
         <section className="reports-container">
           {reports.map((report) => <Report key={report.reporting_id} {...report} />)}
         </section>
->>>>>>> reportAdmin
       )}
     </>
   );
