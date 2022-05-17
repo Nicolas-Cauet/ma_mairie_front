@@ -3,8 +3,9 @@ import { useSelector, useDispatch } from 'react-redux';
 import { NavLink } from 'react-router-dom';
 import { Button, Icon } from 'semantic-ui-react';
 
-import './style.scss';
 import { toggleMenu } from '../../actions/menu';
+
+import './style.scss';
 
 function Menu() {
   const { isOpen } = useSelector((state) => state.menu);
@@ -36,7 +37,7 @@ function Menu() {
             </section>
           </Button>
         </NavLink>
-        <NavLink className="menu-item" to="/council/:mairie_id" onClick={hideMenu}>
+        <NavLink className="menu-item" to="/council/1" onClick={hideMenu}>
           <Button className="council">
             <section className="buttonMenu-container">
               <Icon className="council" name="building outline" />
