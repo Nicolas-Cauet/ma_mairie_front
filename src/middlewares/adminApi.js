@@ -57,7 +57,6 @@ const adminApi = (store) => (next) => (action) => {
         admin_text: action.admin_text,
         reporting_statut: action.reporting_statut,
       })
-
         .then((response) => {
           // store.dispatch(getReports(response.data));
           console.log(response.data);
