@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import moment from 'moment';
-import { Dropdown } from 'semantic-ui-react';
+import { Dropdown, Loader } from 'semantic-ui-react';
 import {
   changeReportsFilter,
   getAdminReports, getReports,
@@ -20,6 +20,8 @@ function Reports() {
   const {
     isReporting, categoriesOptions, monthOptions, yearOptions,
   } = useSelector((state) => state.reports);
+
+  const { loading } = useSelector((state) => state.utilities);
 
   const { logged } = useSelector((state) => state.login);
 
@@ -103,47 +105,39 @@ function Reports() {
 
       {/* Section to filter reports list */}
       {!isReporting && (
-      <section className="filter-section">
-        <Dropdown
-          className="filter-dropdown categories"
-          placeholder="Catégories"
-          name="selectedCategory"
-          title="Catégories"
-          fluid
-          selection
-          onChange={handleChangeFilter}
-          options={categoriesOptions}
-        />
-        <Dropdown
-          className="filter-dropdown"
-          placeholder="Mois"
-          name="selectedMonth"
-          title="Mois"
-          fluid
-          selection
-          onChange={handleChangeFilter}
-          options={monthOptions}
-        />
-        <Dropdown
-          className="filter-dropdown"
-          placeholder="Année"
-          name="selectedYear"
-          title="Année"
-          fluid
-          selection
-          onChange={handleChangeFilter}
-          options={yearOptions}
-        />
-      </section>
+        <section className="filter-section">
+          <Dropdown
+            className="filter-dropdown categories"
+            placeholder="Catégories"
+            fluid
+            selection
+            options={categoriesOptions}
+          />
+          <Dropdown
+            className="filter-dropdown"
+            placeholder="Mois"
+            fluid
+            selection
+            options={monthOptions}
+          />
+          <Dropdown
+            className="filter-dropdown"
+            placeholder="Année"
+            fluid
+            selection
+            options={yearOptions}
+          />
+        </section>
       )}
 
       {/* Section for reports list */}
-      {!isReporting && (
-      <section className="reports-container">
-        {filteredReports.map((report) => (
-          <Report key={report.reporting_id} {...report} />
-        ))}
-      </section>
+      { loading && (
+        <Loader active inline="centered" />
+      )}
+      {!isReporting && !loading && (
+        <section className="reports-container">
+          {reports.map((report) => <Report key={report.reporting_id} {...report} />)}
+        </section>
       )}
     </>
   );

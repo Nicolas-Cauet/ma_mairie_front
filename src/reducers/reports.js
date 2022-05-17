@@ -5,10 +5,11 @@ import {
   TOGGLE_REPORTING,
   SAVE_REPORTS,
   SAVE_ADMIN_REPORTS,
-  DELETE_SELECTED_REPORT,
+  // DELETE_SELECTED_REPORT,
   CHANGE_REPORTS_FILTER,
   RESET_REPORTS_FILTER,
   UPDATE_FILTERED_REPORTS,
+  CHANGE_CHECKBOX_ADMIN_REPORTING,
 } from '../actions/reports';
 
 export const initialState = {
@@ -21,6 +22,8 @@ export const initialState = {
   selectedCategory: '',
   selectedMonth: '',
   selectedYear: '',
+  text: '',
+  // reporting_statut: '',
   categoriesOptions: [
     {
       // key: 'Catégories',
@@ -173,10 +176,10 @@ const reducer = (state = initialState, action = {}) => {
         ...state,
         reportsAdminList: action.payload,
       };
-    case DELETE_SELECTED_REPORT:
+    case CHANGE_CHECKBOX_ADMIN_REPORTING:
       return {
         ...state,
-        id: action.id,
+        reporting_statut: action.reporting_statut,
       };
     case CHANGE_REPORTS_FILTER:
       return {

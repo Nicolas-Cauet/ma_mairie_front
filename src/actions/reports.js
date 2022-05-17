@@ -76,3 +76,19 @@ export const setReportingError = (bool) => ({
   type: SET_REPORTING_ERROR,
   reporting_error: bool,
 });
+
+export const SUBMIT_MODERATE_REPORTING = 'SUBMIT_MODERATE_REPORTING';
+export const submitModerateReporting = (id, title, admin_text, reporting_statut, email) => ({
+  type: SUBMIT_MODERATE_REPORTING,
+  id,
+  title,
+  admin_text,
+  reporting_statut,
+  email,
+});
+
+export const CHANGE_CHECKBOX_ADMIN_REPORTING = 'CHANGE_CHECKBOX_ADMIN_REPORTING';
+export const changeCheckboxAdminReporting = (value) => ({
+  type: CHANGE_CHECKBOX_ADMIN_REPORTING,
+  reporting_statut: value,
+});

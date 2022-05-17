@@ -11,12 +11,12 @@ import {
 } from 'semantic-ui-react';
 import { Link } from 'react-router-dom';
 import Moment from 'react-moment';
-import { deleteSelectedReport, setActiveIndex } from '../../../actions/reports';
+import { deleteSelectedReport, getAdminReports, setActiveIndex } from '../../../actions/reports';
 
 // import './style.scss';
 
 function Report({
-  reporting_id, title, created_at, reporting_category, user_text, reporting_statut,
+  reporting_id, title, created_at, reporting_category, user_text, reporting_statut, admin_text,
 }) {
   const dispatch = useDispatch();
   const { activeIndex } = useSelector((state) => state.reports);
@@ -38,6 +38,8 @@ function Report({
 
   const confirmDeleteReport = () => {
     dispatch(deleteSelectedReport(reporting_id));
+    setConfirm(false);
+    dispatch(getAdminReports());
   };
 
   return (
@@ -64,31 +66,34 @@ function Report({
               </Label>
               <div>
                 <Icon name="caret square down outline" />
-                Description
+                En savoir plus
               </div>
             </div>
           </Accordion.Title>
 
           <Accordion.Content active={activeIndex === reporting_id}>
             <p>
-              {user_text}
+              Description : {user_text}
             </p>
-            { logged && window.location.pathname.includes('admin') && (
-            <div className="reports-button">
-              <Link to={`/admin/reports/1/${reporting_id}`}>
-                <Button>Traiter le signalement</Button>
-              </Link>
-              <Button onClick={toggleDeleteConfirm}>Supprimer</Button>
-              <Confirm
-                report="coucou"
-                content="Êtes-vous sûr de vouloir supprimer ce signalement ?"
-                cancelButton="Annuler"
-                confirmButton="Supprimer"
-                open={confirm}
-                onCancel={toggleDeleteConfirm}
-                onConfirm={confirmDeleteReport}
-              />
-            </div>
+            <p>
+              Réponse de la mairie : {admin_text}
+            </p>
+            {logged && window.location.pathname.includes('admin') && (
+              <div className="reports-button">
+                <Link to={`/admin/reports/1/${reporting_id}`}>
+                  <Button>Traiter le signalement</Button>
+                </Link>
+                <Button onClick={toggleDeleteConfirm}>Supprimer</Button>
+                <Confirm
+                  report="coucou"
+                  content="Êtes-vous sûr de vouloir supprimer ce signalement ?"
+                  cancelButton="Annuler"
+                  confirmButton="Supprimer"
+                  open={confirm}
+                  onCancel={toggleDeleteConfirm}
+                  onConfirm={confirmDeleteReport}
+                />
+              </div>
             )}
           </Accordion.Content>
         </>
@@ -104,6 +109,11 @@ Report.propTypes = {
   reporting_category: PropTypes.string.isRequired,
   user_text: PropTypes.string.isRequired,
   reporting_statut: PropTypes.string.isRequired,
+  admin_text: PropTypes.string,
+};
+
+Report.defaultProps = {
+  admin_text: null,
 };
 
 export default Report;
