@@ -4,14 +4,17 @@ import {
   Checkbox,
   Form,
   Label,
+  Message,
 } from 'semantic-ui-react';
+// import { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { useParams } from 'react-router-dom';
+import { useParams, useNavigate } from 'react-router-dom';
 import Moment from 'react-moment';
 
 import './style.scss';
 import Field from '../Field';
 import { changeCheckboxAdminReporting, submitModerateReporting } from '../../actions/reports';
+import { returnMessageError, returnMessageSuccess } from '../../actions/utilities';
 
 function ReportAdmin() {
   const params = useParams();
@@ -21,34 +24,34 @@ function ReportAdmin() {
 
   const dispatch = useDispatch();
 
-  const { admin_text } = useSelector((state) => state.utilities);
+  const { admin_text, successMessage, errorMessage } = useSelector((state) => state.utilities);
   const { reporting_statut } = useSelector((state) => state.reports);
+
+  // useEffect(() => {
+  // dispatch(returnMessageSuccess(false));
+  // dispatch(returnMessageError(false));
+  // });
 
   const handleCheckbox = (event) => {
     dispatch(changeCheckboxAdminReporting(event.target.textContent));
     console.log(event.target.textContent);
   };
 
-  // const handleChangeText = (event) => {
-  //   dispatch(changeCurrentField(event.target.value, event.target.name));
-  // };
-
-  // const handleSubmitModerateReporting = (event) => {
-  //   event.preventDefault();
-  //   dispatch(submitModerateReporting(text));
-  //   dispatch(submitForm());
-  // };
-
   const handleSubmit = () => {
     dispatch(submitModerateReporting(
-      // ...report,
       report.reporting_id,
       report.title,
       admin_text,
       reporting_statut,
-      // report.email,
-      // report.admin_image,
     ));
+  };
+
+  const navigate = useNavigate();
+
+  const backToReportList = () => {
+    dispatch(returnMessageSuccess(false));
+    dispatch(returnMessageError(false));
+    navigate('/admin/reports/1');
   };
 
   return (
@@ -82,13 +85,13 @@ function ReportAdmin() {
             type="text"
             className="report-response"
             placeholder="Votre réponse..."
-            value={report.admin_text}
+            value={admin_text}
             title="Réponse"
             name="admin_text"
           />
           <div className="report-checkbox">
-            <Checkbox name="reporting_statut" value="En cours" label="En cours" onChange={handleCheckbox} />
-            <Checkbox name="reporting_statut" value="Terminé" label="Terminé" onChange={handleCheckbox} />
+            <Checkbox option="statut" name="reporting_statut" value="En cours" label="En cours" onChange={handleCheckbox} />
+            <Checkbox option="statut" name="reporting_statut" value="Terminé" label="Terminé" onChange={handleCheckbox} />
           </div>
           <Button
             type="submit"
@@ -98,6 +101,18 @@ function ReportAdmin() {
           </Button>
         </Form>
       </div>
+      { successMessage && (
+      <Message positive>
+        <p>Le signalement "{report.title}" a bien été mis à jour</p>
+        <Button content="Retour au signalements" onClick={backToReportList} />
+      </Message>
+      )}
+      { errorMessage && (
+      <Message negative>
+        <p>Erreur lors de l'enregistrement</p>
+        <Button content="Retour au signalements" onClick={backToReportList} />
+      </Message>
+      )}
     </div>
   );
 }

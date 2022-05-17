@@ -25,8 +25,8 @@ export const initialState = {
   admin_text: '',
   reporting_statut: '',
   loading: false,
-  errorMessage: '',
-  successMessage: '',
+  errorMessage: false,
+  successMessage: false,
 };
 
 const reducer = (state = initialState, action = {}) => {
