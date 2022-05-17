@@ -5,7 +5,9 @@ import {
   DELETE_SELECTED_REPORT,
   GET_ADMIN_REPORTS,
   saveAdminReports,
+  SUBMIT_MODERATE_REPORTING,
 } from '../actions/reports';
+import { loading, returnMessageError, returnMessageSuccess } from '../actions/utilities';
 
 const instance = axios.create({
   baseURL: 'https://mamairie.herokuapp.com',
@@ -17,6 +19,7 @@ const instance = axios.create({
 const adminApi = (store) => (next) => (action) => {
   switch (action.type) {
     case GET_ADMIN_REPORTS:
+      store.dispatch(loading(true));
       console.log('GET Admin Reports');
       instance.get('/admin/reporting/1')
         .then((response) => {
@@ -29,6 +32,9 @@ const adminApi = (store) => (next) => (action) => {
           // message d'erreur à faire
           // store.dispatch(setLoginMessage('Email et/ou Mot de passe incorrect', false));
           console.log(error);
+        })
+        .finally(() => {
+          store.dispatch(loading(false));
         });
       break;
     case DELETE_SELECTED_REPORT: {
@@ -36,12 +42,31 @@ const adminApi = (store) => (next) => (action) => {
 
         .then((response) => {
           store.dispatch(deleteReport(action.id));
-          console.log(response);
+          console.log(response.data);
         })
         .catch((error) => {
           // message d'erreur à faire
           // store.dispatch(setLoginMessage('Email et/ou Mot de passe incorrect', false));
           console.log(error);
+        });
+      break;
+    }
+    case SUBMIT_MODERATE_REPORTING: {
+      instance.patch(`/admin/reporting/1/${action.id}`, {
+        title: action.title,
+        admin_text: action.admin_text,
+        reporting_statut: action.reporting_statut,
+      })
+        .then((response) => {
+          // store.dispatch(getReports(response.data));
+          console.log(response.data);
+          store.dispatch(returnMessageSuccess(true));
+        })
+        .catch((error) => {
+          // message d'erreur à faire
+          // store.dispatch(setLoginMessage('Email et/ou Mot de passe incorrect', false));
+          console.log(error, "je suis dans l'erreur");
+          store.dispatch(returnMessageError(true));
         });
       break;
     }

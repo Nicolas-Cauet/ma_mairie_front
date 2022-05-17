@@ -5,10 +5,16 @@ import { useDispatch, useSelector } from 'react-redux';
 import moment from 'moment';
 import { Dropdown } from 'semantic-ui-react';
 import {
+<<<<<<< HEAD
   changeReportsFilter,
   getAdminReports, getReports,
   // updateFilteredReports,
 } from '../../actions/reports';
+=======
+  Dropdown, Loader,
+} from 'semantic-ui-react';
+import { getAdminReports, getReports } from '../../actions/reports';
+>>>>>>> reportAdmin
 import Reporting from '../Reporting';
 import Report from './Report';
 import ReportButton from './ReportButton';
@@ -20,6 +26,8 @@ function Reports() {
   const {
     isReporting, categoriesOptions, monthOptions, yearOptions,
   } = useSelector((state) => state.reports);
+
+  const { loading } = useSelector((state) => state.utilities);
 
   const { logged } = useSelector((state) => state.login);
 
@@ -104,6 +112,7 @@ function Reports() {
 
       {/* Section to filter reports list */}
       {!isReporting && (
+<<<<<<< HEAD
       <section className="filter-section">
         <Dropdown
           className="filter-dropdown categories"
@@ -145,6 +154,41 @@ function Reports() {
           <Report key={report.reporting_id} {...report} />
         ))}
       </section>
+=======
+        <section className="filter-section">
+          <Dropdown
+            className="filter-dropdown categories"
+            placeholder="Catégories"
+            fluid
+            selection
+            options={categoriesOptions}
+          />
+          <Dropdown
+            className="filter-dropdown"
+            placeholder="Mois"
+            fluid
+            selection
+            options={monthOptions}
+          />
+          <Dropdown
+            className="filter-dropdown"
+            placeholder="Année"
+            fluid
+            selection
+            options={yearOptions}
+          />
+        </section>
+      )}
+
+      {/* Section for reports list */}
+      { loading && (
+        <Loader active inline="centered" />
+      )}
+      {!isReporting && !loading && (
+        <section className="reports-container">
+          {reports.map((report) => <Report key={report.reporting_id} {...report} />)}
+        </section>
+>>>>>>> reportAdmin
       )}
     </>
   );
