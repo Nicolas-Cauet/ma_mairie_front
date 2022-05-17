@@ -28,3 +28,9 @@ export const DELETE_COUNCIL_MEMBERS = 'DELETE_COUNCIL_MEMBERS';
 export const deleteCouncilMembers = () => ({
   type: DELETE_COUNCIL_MEMBERS,
 });
+
+// add council members to council page
+export const ADD_COUNCIL_MEMBERS = 'ADD_COUNCIL_MEMBERS';
+export const addCouncilMembers = () => ({
+  type: ADD_COUNCIL_MEMBERS,
+});

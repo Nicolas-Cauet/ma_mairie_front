@@ -9,8 +9,9 @@ import photo2 from '../../assets/images/council/firstCouncil.jpg';
 import photo3 from '../../assets/images/council/secondCouncil.jpg';
 import photo4 from '../../assets/images/council/thirdCouncil.jpg';
 import whiteImage from '../../assets/images/council/whiteImage.png';
+import CardModel from './CardModel';
 
-import { getCouncilMembers, postCouncilMembers } from '../../actions/council';
+import { addCouncilMembers, getCouncilMembers /* , postCouncilMembers */ } from '../../actions/council';
 
 import './style.scss';
 
@@ -18,11 +19,14 @@ function Council() {
   const dispatch = useDispatch();
 
   const adminLogged = useSelector((state) => state.login.logged);
+  const { cardList } = useSelector((state) => state.council);
 
-  // Click on Plus button
+  console.log('card',cardList);
+
+  //Click on Plus button
   const handleClick = () => {
-    dispatch(postCouncilMembers());
-    // console.log('coucou');
+    dispatch(addCouncilMembers());
+    console.log('coucou');
   };
 
   // GET council members
@@ -33,42 +37,9 @@ function Council() {
   return (
     <section className="card-container">
       <h1>Présentation du conseil Municipal</h1>
-      <Card className="card">
-        <Image src={photo} wrapped ui={false} />
-        <Card.Content>
-          <Card.Header className="card-header">Marie Mairie</Card.Header>
-          <Card.Meta>
-            <span className="fonction">Mairesse</span>
-          </Card.Meta>
-        </Card.Content>
-      </Card>
-      <Card className="card">
-        <Image src={photo2} wrapped ui={false} />
-        <Card.Content>
-          <Card.Header className="card-header">Marc Mairie</Card.Header>
-          <Card.Meta>
-            <span className="fonction">1er Conseiller</span>
-          </Card.Meta>
-        </Card.Content>
-      </Card>
-      <Card className="card">
-        <Image src={photo3} wrapped ui={false} />
-        <Card.Content>
-          <Card.Header className="card-header">Marie-Jeanne Mairie</Card.Header>
-          <Card.Meta>
-            <span className="fonction">2ème Conseillière</span>
-          </Card.Meta>
-        </Card.Content>
-      </Card>
-      <Card className="card">
-        <Image src={photo4} wrapped ui={false} />
-        <Card.Content>
-          <Card.Header className="card-header">Mathilde Mairie</Card.Header>
-          <Card.Meta>
-            <span className="fonction">3éme Conseillière</span>
-          </Card.Meta>
-        </Card.Content>
-      </Card>
+      <div>
+        { cardList }
+      </div>
       {adminLogged && (
         <Card className="card">
           <Image src={whiteImage} wrapped ui={false} />

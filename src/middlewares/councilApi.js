@@ -24,7 +24,7 @@ const councilApi = (store) => (next) => (action) => {
       break;
     case POST_COUNCIL_MEMBERS:
       console.log('POST Council');
-      instance.post('/council/1', {
+      instance.post('/admin/council/1', {
         first_name: 'Père',
         last_name: 'Noël',
         photo: null,
@@ -41,8 +41,8 @@ const councilApi = (store) => (next) => (action) => {
         });
       break;
     case PATCH_COUNCIL_MEMBERS:
-      console.log('POST Council');
-      instance.patch('/council/1/2', {
+      console.log('PATCH Council');
+      instance.patch('/admin/council/1/2', {
         first_name: 'Mère',
         last_name: 'Noël',
         photo: null,
@@ -59,8 +59,8 @@ const councilApi = (store) => (next) => (action) => {
         });
       break;
     case DELETE_COUNCIL_MEMBERS:
-      console.log('POST Council');
-      instance.delete('/council/1/2')
+      console.log('DELETE Council');
+      instance.delete('/admin/council/1/2')
         .then((response) => {
           console.log(response);
           // store.dispatch(setCouncilMembers(response.data));

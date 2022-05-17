@@ -40,7 +40,6 @@ function Reports() {
     } else {
       dispatch(getReports());
     }
-    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   moment.updateLocale('fr', {
