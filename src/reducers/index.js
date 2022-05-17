@@ -6,8 +6,10 @@ import infosReducer from './infos';
 import reportsReducer from './reports';
 import reportingReducer from './reporting';
 import utilitiesReducer from './utilities';
+import councilReducer from './council';
 
 const rootReducer = combineReducers({
+  council: councilReducer,
   utilities: utilitiesReducer,
   reporting: reportingReducer,
   reports: reportsReducer,

@@ -4,6 +4,7 @@ import { SET_REPORTING_ERROR } from '../actions/reports';
 import {
   CHANGE_CURRENT_CATEGORY,
   CHANGE_CURRENT_FIELD,
+  SET_VALUE_EDITING_MEMBER,
   LOADING,
   RETURN_MESSAGE_ERROR,
   RETURN_MESSAGE_SUCCESS,
@@ -29,6 +30,8 @@ export const initialState = {
   loading: false,
   errorMessage: false,
   successMessage: false,
+  editingMemberName: '',
+  editingMemberRole: '',
 };
 
 const reducer = (state = initialState, action = {}) => {
@@ -96,6 +99,12 @@ const reducer = (state = initialState, action = {}) => {
         successMessage: action.value,
       };
     default:
+    case SET_VALUE_EDITING_MEMBER:
+      return {
+        ...state,
+        editingMemberName: action.editingMemberName,
+        editingMemberRole: action.editingMemberRole,
+      }
       return state;
   }
 };

@@ -25,10 +25,7 @@ function Reports() {
 
   const { logged } = useSelector((state) => state.login);
 
-  // eslint-disable-next-line max-len
   const { selectedCategory, selectedMonth, selectedYear } = useSelector((state) => state.reports);
-
-  // const { filteredReports } = useSelector((state) => state.reports);
 
   // View admin or visitor reports
   const reports = useSelector((state) => {

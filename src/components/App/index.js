@@ -14,6 +14,7 @@ import ReportAdmin from '../ReportAdmin';
 
 import 'semantic-ui-css/semantic.min.css';
 import './style.scss';
+import Council from '../Council';
 
 function App() {
   const adminlogged = useSelector((state) => state.login.logged);
@@ -26,10 +27,13 @@ function App() {
         <Route path="/" element={<Home />} />
         <Route path="/admin" element={(<Admin />)} />
         <Route path="/reports/1" element={<Reports />} />
+        <Route path="/council/1" element={<Council />} />
         { adminlogged && (
           <>
             <Route path="/admin/reports/1" element={<Reports />} />
             <Route path="/admin/reports/1/:reporting_id" element={<ReportAdmin />} />
+            <Route path="/admin/council/1" element={<Council />} />
+
           </>
         )};
         <Route path="*" element={<p>route inconnue</p>} />

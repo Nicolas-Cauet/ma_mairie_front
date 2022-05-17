@@ -1,0 +1,60 @@
+.card-container {
+  
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: center;
+
+  & .editingSection {
+    position: absolute;
+    right: 0.2rem;
+    bottom: 0.2rem;
+  }
+
+  & h1 {
+    text-align: center;
+    margin: 1rem 0;
+    font-size: 1.5rem;
+    width: 100%;
+  }
+
+  & .ui.card {
+    width: 25%;
+    margin: 0 1rem 1rem;
+
+    & .content {
+      position: relative;
+      padding: 0;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+
+      &.content-circle {
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        align-items: center;
+        color: rgba(0,0,0,.6);
+        & h2 {
+          margin: 0;
+          text-align: center;
+          font-size: 1rem;
+        }
+      }
+    }
+
+    &>.content>.card-header {
+      text-align: center;
+      font-size: 0.8rem;
+      margin: 0.33rem 0;
+      padding: 0;
+    }
+
+    &>.content>.meta {
+      text-align: center;
+      font-size: 1rem;
+      margin: 0.33rem 0;
+      padding: 0;
+    }
+  }
+}

@@ -37,3 +37,11 @@ export const returnMessageSuccess = (value) => ({
   type: RETURN_MESSAGE_SUCCESS,
   value,
 });
+
+// Set value of editing member to state
+export const SET_VALUE_EDITING_MEMBER = 'SET_VALUE_EDITING_MEMBER';
+export const setValueEditingMember = (name, role) => ({
+  type: SET_VALUE_EDITING_MEMBER,
+  editingMemberName: name,
+  editingMemberRole: role,
+});

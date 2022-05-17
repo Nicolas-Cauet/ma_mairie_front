@@ -36,3 +36,14 @@ const data = [
     user_text: null,
   }
 ],
+
+const council = {
+  created_at: "2022-05-16T20:02:41.843Z",
+  first_name: "Aleks",
+  last_name: "BigBoss",
+  photo: null,
+  role: "Dieu",
+  town_hall_id: 1,
+  town_hall_staff_id: 1,
+  updated_at: null,
+}
