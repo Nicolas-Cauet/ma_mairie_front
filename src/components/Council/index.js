@@ -36,7 +36,7 @@ function Council() {
     <section className="card-container">
       <h1>Présentation du conseil Municipal</h1>
       {councilMembers.map((card) => (
-        <CardModel key={card.town_hall_staff_id} imageName={card.photo} name={`${card.first_name} ${card.last_name}`} role={card.role} />
+        <CardModel key={card.town_hall_staff_id} imageName={card.photo} name={`${card.first_name} ${card.last_name}`} role={card.role} {...card} />
       ))}
       {adminLogged && (
         <Card className="card">

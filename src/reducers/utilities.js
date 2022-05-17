@@ -1,7 +1,7 @@
 import { LOGIN, SET_LOGOUT } from '../actions/action';
 import { CHANGE_CURRENT_CHECKBOX_REPORTING, ERASE_REPORTING_FIELDS } from '../actions/reporting';
 import { SET_REPORTING_ERROR } from '../actions/reports';
-import { CHANGE_CURRENT_CATEGORY, CHANGE_CURRENT_FIELD } from '../actions/utilities';
+import { CHANGE_CURRENT_CATEGORY, CHANGE_CURRENT_FIELD, SET_VALUE_EDITING_MEMBER } from '../actions/utilities';
 
 export const initialState = {
   pseudo: '',
@@ -18,6 +18,8 @@ export const initialState = {
   reporting_phone: '',
   reporting_checkBox: false,
   reporting_error: false,
+  editingMemberName: '',
+  editingMemberRole: '',
 };
 
 const reducer = (state = initialState, action = {}) => {
@@ -70,6 +72,12 @@ const reducer = (state = initialState, action = {}) => {
         reporting_error: action.reporting_error,
       };
     default:
+    case SET_VALUE_EDITING_MEMBER:
+      return {
+        ...state,
+        editingMemberName: action.editingMemberName,
+        editingMemberRole: action.editingMemberRole,
+      }
       return state;
   }
 };
