@@ -1,7 +1,7 @@
+/* eslint-disable jsx-a11y/label-has-associated-control */
 // import PropTypes from 'prop-types';
 import {
   Button,
-  Checkbox,
   Form,
   Label,
   Message,
@@ -92,6 +92,26 @@ function ReportAdmin() {
       <div className="report-info">
         <h3>Traitement du signalement :</h3>
         <Form>
+          <div className="report-newStatut">
+            <div className="report-checkbox">
+              <input type="radio" option="statut" id="inProgress" name="reporting_statut" value="En cours" label="inProgress" onChange={handleCheckbox} />
+              <label htmlFor="inProgress">
+                En cours
+              </label>
+            </div>
+            <div className="report-checkbox">
+              <input type="radio" option="statut" id="done" name="reporting_statut" value="Résolu" label="done" onChange={handleCheckbox} />
+              <label htmlFor="done">
+                Résolu
+              </label>
+            </div>
+            <div className="report-checkbox">
+              <input type="radio" option="statut" id="abort" name="reporting_statut" value="Non résolu" label="abort" onChange={handleCheckbox} />
+              <label htmlFor="abort">
+                Non résolu
+              </label>
+            </div>
+          </div>
           <Field
             type="text"
             className="report-response"
@@ -100,16 +120,6 @@ function ReportAdmin() {
             title="Réponse"
             name="admin_text"
           />
-          <div className="report-newStatut">
-            <label htmlFor="inProgress" className="report-checkbox">
-              <input type="radio" option="statut" id="inProgress" name="reporting_statut" value="En cours" label="inProgress" onChange={handleCheckbox} />
-              En cours
-            </label>
-            <label htmlFor="done" className="report-checkbox">
-              <input type="radio" option="statut" id="done" name="reporting_statut" value="Terminé" label="done" onChange={handleCheckbox} />
-              Terminé
-            </label>
-          </div>
         </Form>
 
       </div>

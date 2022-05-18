@@ -13,7 +13,7 @@ import { Link } from 'react-router-dom';
 import Moment from 'react-moment';
 import { deleteSelectedReport, getAdminReports, setActiveIndex } from '../../../actions/reports';
 
-// import './style.scss';
+import './style.scss';
 
 function Report({
   reporting_id, title, created_at, reporting_category, user_text, reporting_statut, admin_text,
@@ -55,16 +55,26 @@ function Report({
             onClick={handleClickAccordion}
             className="accordion-title"
           >
-            <div className="accordion-title-container">
-              <h1>{title}</h1>
-              <h2><Moment format="DD/MM/YYYY">{created_at}</Moment></h2>
-              <Label className={reporting_category}>
-                {reporting_category}
-              </Label>
-              <Label className={reporting_statut}>
+            <div className="accordion-content">
+              <Label className={reporting_statut} size="large">
                 Statut : {reporting_statut}
               </Label>
-              <div>
+              <div className="accordion-header">
+                <h1>{title}</h1>
+                <Label className={reporting_category} size="small">
+                  {reporting_category}
+                </Label>
+                {/* <Label className={reporting_statut}>
+                  Statut : {reporting_statut}
+                </Label> */}
+              </div>
+              <div className="accordion-info">
+                <h2>Créé le <Moment format="DD/MM/YYYY">{created_at}</Moment></h2>
+                {/* <Label className={reporting_category}>
+                  {reporting_category}
+                </Label> */}
+              </div>
+              <div className="accordion-moreInfo">
                 <Icon name="caret square down outline" />
                 En savoir plus
               </div>
@@ -73,7 +83,7 @@ function Report({
 
           <Accordion.Content active={activeIndex === reporting_id}>
             <p>
-              Description : {user_text}
+              Message du signalant : {user_text}
             </p>
             <p>
               Réponse de la mairie : {admin_text}

@@ -39,17 +39,16 @@
   }
 }
 
-.accordion-title-container {
+.accordion-content {
   color: black;
-  display: flex;
   flex-direction: row;
   flex-wrap: wrap;
-  justify-content: space-around;
+  // justify-content: space-around;
   align-items: center;
 
   & h1 {
     font-size: 1.5rem;
-    width: 90%;
+    // width: 90%;
     margin: 0;
   }
 
@@ -57,7 +56,7 @@
     font-size: 0.75rem;
     margin: 0;
     margin-bottom: 0.5rem;
-    width: 90%;
+    // width: 90%;
   }
     
   & .ui.label {

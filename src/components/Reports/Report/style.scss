@@ -1,0 +1,23 @@
+.accordion {
+    text-align: center;
+    border-style: dashed solid 0.1rem grey;
+    border: 0.1rem grey;
+    border-style: dashed solid;
+
+    &-header {
+        margin-top: 1rem;
+        display: flex;
+        flex-wrap: no-wrap;
+        justify-content: space-between;
+    
+    }
+    
+    &-info {
+        display: flex;
+        justify-content: space-between;
+    }
+
+    // &-moreInfo {
+    //     background-color: rgb(209, 209, 209);
+    // }
+}

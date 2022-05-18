@@ -8,6 +8,7 @@ import {
   saveReports,
   toggleReporting,
 } from '../actions/reports';
+import { loading } from '../actions/utilities';
 
 const instance = axios.create({
   baseURL: 'https://mamairie.herokuapp.com',
@@ -21,6 +22,7 @@ const instance = axios.create({
 const api = (store) => (next) => (action) => {
   switch (action.type) {
     case GET_REPORTS:
+      store.dispatch(loading(true));
       console.log('GET Reports');
       instance.get('/reporting/1')
         .then((response) => {
@@ -29,6 +31,9 @@ const api = (store) => (next) => (action) => {
         })
         .catch((error) => {
           console.log(error);
+        })
+        .finally(() => {
+          store.dispatch(loading(false));
         });
       break;
     case SUBMIT_REPORTING:

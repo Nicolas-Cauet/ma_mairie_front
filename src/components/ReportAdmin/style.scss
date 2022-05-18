@@ -18,13 +18,16 @@
         padding: 0.2rem;
         border-radius: 0.3rem;
         font-size: smaller;
-        &--Terminé {
+        &--Résolu {
             background-color: vars.$statusOkColor;
         }
         &--En_cours {
             background-color: vars.$statusInProgressColor;
         }
         &--Non_validé {
+            background-color: vars.$statusRefusedColor;
+        }
+        &--Non_résolu {
             background-color: vars.$statusRefusedColor;
         }
     }
@@ -44,20 +47,21 @@
         display: flex;
         margin-bottom: 1rem;
         justify-content: space-around;
+        flex-wrap: wrap;
     }
 
-    &-checkbox {
-        padding: 0.8rem 2rem;
-        background-color: #a6c8c7;
-        border-radius: 0.5rem;
-        cursor: pointer;
+    // &-checkbox {
+    //     padding: 0.8rem 2rem;
+    //     background-color: #a6c8c7;
+    //     border-radius: 0.5rem;
+    //     cursor: pointer;
 
-        input {
-            display: inline;
-            margin: 0.3rem;
-            justify-content: space-between;
-        }
-    }
+    //     input {
+    //         display: inline;
+    //         margin: 0.3rem;
+    //         justify-content: space-between;
+    //     }
+    // }
 
     &-info {
         //background-color: vars.$backgroundBlocColor;
@@ -96,7 +100,31 @@ button.ui.button.report-submit {
 button.ui.button.report-abort {
     background-color: vars.$statusRefusedColor;
 }
-//[type="radio"] {
-   // clip: rect(0 0 0 0); 
-   // position: absolute; 
-//}
+[type="radio"] {
+   clip: rect(0 0 0 0); 
+   position: absolute; 
+}
+
+input[type="radio"] {
+    display: none;
+  }
+  input[type="radio"] + label {
+    padding: 0.5rem 1rem;
+    font-size: 1.25rem;
+    line-height: 1.5;
+    border-radius: 0.3rem;
+    color: #fff;
+    background-color: #6c757d;
+    border: 1px solid transparent;
+    transition: all 0.5s ease-in-out;
+  }
+  input[type="radio"]:hover + label {
+    background-color: #c82333;
+    border-color: #bd2130;
+    cursor: pointer;
+  }
+  input[type="radio"]:checked + label {
+    background-color: #dc3545;
+    border-color: #dc3545;
+  }
+ 
