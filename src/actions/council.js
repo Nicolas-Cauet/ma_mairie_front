@@ -48,3 +48,19 @@ export const createEditingMember = (name) => ({
   type: CREATE_EDITING_MEMBER,
   name,
 });
+
+// Create
+export const CREATE_EDITING_MEMBER_NAME = 'CREATE_EDITING_MEMBER_NAME';
+export const createEditingMemberName = (value, key) => ({
+  type: CREATE_EDITING_MEMBER_NAME,
+  value,
+  key,
+});
+
+// Create
+export const CREATE_EDITING_MEMBER_ROLE = 'CREATE_EDITING_MEMBER_ROLE';
+export const createEditingMemberRole = (value, key) => ({
+  type: CREATE_EDITING_MEMBER_ROLE,
+  value,
+  key,
+});

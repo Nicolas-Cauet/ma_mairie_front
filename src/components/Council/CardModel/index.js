@@ -2,28 +2,27 @@
 import { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { Card, Image,Icon, Button } from 'semantic-ui-react';
+import { changeCurrentField } from '../../../actions/action';
 
-import { createEditingMember, toggleEditingMember } from '../../../actions/council';
-import { setValueEditingMember } from '../../../actions/utilities';
-
+import { createEditingMember, createEditingMemberName, createEditingMemberRole, toggleEditingMember } from '../../../actions/council';
 import Field from '../../Field'
 
 
 function CardModel({ imageName, name, role, ...card }) {
   const dispatch = useDispatch();
   const adminLogged = useSelector((state) => state.login.logged);
-  const { isOpenEditingMember } = useSelector((state) => state.council);
-  const { editingMemberName, editingMemberRole } = useSelector((state) => state.utilities);
-  
-  const isOpenModal = useSelector((state) => state.council[`id-${card.last_name}`]);
-  console.log('modal', isOpenModal);
+  // const { councilEditingName, councilEditingRole } = useSelector((state) => state.utilities);
+  const isOpenModal = useSelector((state) => state.council[`isOpenModalMember-${card.town_hall_staff_id}`]);
 
   const coucou = useSelector((state) => state.council);
   console.log(coucou);
+  
+  const nameValue = useSelector((state) => state.utilities[`nameMember-${card.town_hall_staff_id}`]);
+  const roleValue = useSelector((state) => state.utilities[`roleMember-${card.town_hall_staff_id}`]);
+  console.log(nameValue, roleValue); 
 
-  const handleClick = (event) => {
-    console.log(event.target.getAttribute('name_id'));
-    dispatch(toggleEditingMember(`id-${card.last_name}`));
+  const handleClick = () => {
+    dispatch(toggleEditingMember(`isOpenModalMember-${card.town_hall_staff_id}`));
   }
 
   const handleSubmit = (event) => {
@@ -31,9 +30,13 @@ function CardModel({ imageName, name, role, ...card }) {
     console.log(editingMemberName);
     console.log(editingMemberRole);
   }
-
+  
   useEffect(() => {
-    dispatch(createEditingMember(`id-${card.last_name}`)
+    dispatch(createEditingMember(`isOpenModalMember-${card.town_hall_staff_id}`),
+
+    dispatch(createEditingMemberName(`${card.first_name} ${card.last_name}`, `nameMember-${card.town_hall_staff_id}`)),
+    dispatch(createEditingMemberRole(role, `roleMember-${card.town_hall_staff_id}`)),
+    // dispatch(changeCurrentField(role, "councilEditingRole"))
   )}, [])
 
   return (
@@ -46,9 +49,9 @@ function CardModel({ imageName, name, role, ...card }) {
             error
             type="text"
             className="memberEditing-input"
-            placeholder={editingMemberName}
-            value={editingMemberName}
-            name="editingMemberName"
+            placeholder={`${card.first_name} ${card.last_name}`}
+            value={nameValue}
+            name={`nameMember-${card.town_hall_staff_id}`}
             title="Nom et prénom"
             icon=""
           />
@@ -57,8 +60,8 @@ function CardModel({ imageName, name, role, ...card }) {
             type="text"
             className="memberEditing-input"
             placeholder="Fonction"
-            value={editingMemberRole}
-            name="editingMemberRole"
+            value={roleValue}
+            name={`roleMember-${card.town_hall_staff_id}`}
             title="Fonction"
             icon=""
           />
@@ -83,7 +86,7 @@ function CardModel({ imageName, name, role, ...card }) {
       {adminLogged && (
         <>
           <div className="editingSection">
-            <Icon name='pencil alternate' onClick={handleClick} name_id={card.first_name} />
+            <Icon name='pencil alternate' onClick={handleClick} />
           </div>
         </>
       )}

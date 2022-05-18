@@ -11,7 +11,8 @@ import photo4 from '../../assets/images/council/thirdCouncil.jpg';
 import whiteImage from '../../assets/images/council/whiteImage.png';
 import CardModel from './CardModel';
 
-import { addCouncilMembers, createEditingMember, getCouncilMembers /* , postCouncilMembers */ } from '../../actions/council';
+import { addCouncilMembers, createEditingMember, deleteCouncilMembers, getCouncilMembers, patchCouncilMembers, /* , postCouncilMembers */ 
+postCouncilMembers} from '../../actions/council';
 
 import './style.scss';
 
@@ -23,14 +24,14 @@ function Council() {
   
   //Click on Plus button
   const handleClick = () => {
-    dispatch(addCouncilMembers());
+    // dispatch(postCouncilMembers());
     console.log('coucou');
   };
 
-  // GET council members
-  // useEffect(() => {
-  //   dispatch(getCouncilMembers());
-  // }, []);
+ // GET council members
+  useEffect(() => {
+    dispatch(getCouncilMembers());
+  }, []);
 
 
 

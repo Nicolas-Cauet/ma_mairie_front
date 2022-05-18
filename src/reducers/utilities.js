@@ -1,4 +1,5 @@
 import { LOGIN, SET_LOGOUT } from '../actions/action';
+import { CREATE_EDITING_MEMBER_NAME } from '../actions/council';
 import { CHANGE_CURRENT_CHECKBOX_REPORTING, ERASE_REPORTING_FIELDS } from '../actions/reporting';
 import { SET_REPORTING_ERROR } from '../actions/reports';
 import {
@@ -30,8 +31,8 @@ export const initialState = {
   loading: false,
   errorMessage: false,
   successMessage: false,
-  editingMemberName: '',
-  editingMemberRole: '',
+  councilEditingName: '',
+  councilEditingRole: '',
 };
 
 const reducer = (state = initialState, action = {}) => {
@@ -104,6 +105,11 @@ const reducer = (state = initialState, action = {}) => {
         ...state,
         editingMemberName: action.editingMemberName,
         editingMemberRole: action.editingMemberRole,
+      };
+    case CREATE_EDITING_MEMBER_NAME: 
+      return {
+        ...state,
+        [action.key]: action.value,
       }
       return state;
   }

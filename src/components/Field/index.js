@@ -11,7 +11,7 @@ function Field({
   type, value, title, placeholder, icon, inputError, name,
 }) {
   const dispatch = useDispatch();
-
+  console.log(name);
   const handleChange = (event) => {
     dispatch(changeCurrentField(event.target.value, name));
   };
