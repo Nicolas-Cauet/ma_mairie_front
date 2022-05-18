@@ -88,6 +88,8 @@ function Reports() {
 
   const handleChangeFilter = (event) => {
     const key = event.target.closest('.filter-dropdown').getAttribute('name');
+    console.log('target',event.target.closest('.filter-dropdown'));
+    console.log('coucou',event.target.textContent, key);
     dispatch(changeReportsFilter(event.target.textContent, key));
   };
 
@@ -106,26 +108,32 @@ function Reports() {
           <Dropdown
             className="filter-dropdown categories"
             placeholder="Catégories"
+            title="Catégories"
             fluid
             selection
             onChange={handleChangeFilter}
             options={categoriesOptions}
+            name="selectedCategory"
           />
           <Dropdown
             className="filter-dropdown"
             placeholder="Mois"
+            title="Mois"
             fluid
             selection
             onChange={handleChangeFilter}
             options={monthOptions}
+            name="selectedMonth"
           />
           <Dropdown
             className="filter-dropdown"
             placeholder="Année"
+            title="Année"
             fluid
             selection
             onChange={handleChangeFilter}
             options={yearOptions}
+            name="selectedYear"
           />
         </section>
       )}

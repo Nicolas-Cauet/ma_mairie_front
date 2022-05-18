@@ -3,7 +3,7 @@ import { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { Card, Image,Icon, Button } from 'semantic-ui-react';
 
-import { toggleEditingMember } from '../../../actions/council';
+import { createEditingMember, toggleEditingMember } from '../../../actions/council';
 import { setValueEditingMember } from '../../../actions/utilities';
 
 import Field from '../../Field'
@@ -14,10 +14,13 @@ function CardModel({ imageName, name, role, ...card }) {
   const adminLogged = useSelector((state) => state.login.logged);
   const { isOpenEditingMember } = useSelector((state) => state.council);
   const { editingMemberName, editingMemberRole } = useSelector((state) => state.utilities);
+  
+  // dispatch(createEditingMember(card.last_name))
 
-  const handleClick = () => {
-    dispatch(toggleEditingMember())
-    console.log('coucou');
+  const handleClick = (event) => {
+    console.log(event.target.getAttribute('name_id'));
+    dispatch(toggleEditingMember(card.last_name));
+    // console.log('coucou');
   }
   const handleSubmit = (event) => {
     event.preventDefault();
@@ -25,11 +28,12 @@ function CardModel({ imageName, name, role, ...card }) {
     console.log(editingMemberRole);
   }
 
-  useEffect(() => {
-    dispatch(setValueEditingMember(name, role))
-  }, [])
+  // useEffect(() => {
+  //   dispatch(setValueEditingMember(name, role))
+  // }, [])
+
   return (
-    <Card className="card">
+    <Card className={`card-${card.town_hall_staff_id}`} name={card.first_name}>
 
       {isOpenEditingMember && (
         <form className='memberEditing-form' onSubmit={handleSubmit}>
@@ -75,7 +79,7 @@ function CardModel({ imageName, name, role, ...card }) {
       {adminLogged && (
         <>
           <div className="editingSection">
-            <Icon name='pencil alternate' onClick={handleClick} />
+            <Icon name='pencil alternate' onClick={handleClick} name_id={card.first_name} />
           </div>
         </>
       )}

@@ -1,4 +1,4 @@
-import { ADD_COUNCIL_MEMBERS, SET_COUNCIL_MEMBERS, TOGGLE_EDITING_MEMBER } from '../actions/council';
+import { ADD_COUNCIL_MEMBERS, CREATE_EDITING_MEMBER, SET_COUNCIL_MEMBERS, TOGGLE_EDITING_MEMBER } from '../actions/council';
 import CardModel from '../components/Council/CardModel';
 import whiteImage from '../assets/images/council/whiteImage.png';
 
@@ -45,10 +45,15 @@ const reducer = (state = initialState, action = {}) => {
           },
         ]
       };
+    case CREATE_EDITING_MEMBER:
+      return {
+        ...state,
+        [action.name]: false
+      }
     case TOGGLE_EDITING_MEMBER:
       return {
         ...state,
-        isOpenEditingMember: !state.isOpenEditingMember,
+        [action.name]: !([action.name]),
       };
     default:
       return state;
