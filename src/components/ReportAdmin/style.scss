@@ -18,13 +18,18 @@
         display: flex;
         justify-content: space-around;
     }
-    &-statut{
-        text-align: center;
-    }
-    &-checkbox {
+    
+    &-statut {
         display: flex;
-        flex-direction: column;
         margin-bottom: 1rem;
+        justify-content: space-around;
+    }
+
+    &-checkbox {
+        padding: 0.8rem 2rem;
+        background-color: #a6c8c7;
+        border-radius: 1rem;
+        cursor: pointer;
     }
 
     &-info {
@@ -48,6 +53,11 @@
     } 
 }
 .report .ui.button {
+    margin-top: 1rem;
     width: 100%;
-    background-color: vars.$createColor;
+    background-color: #a6c8c7;
 }
+//[type="radio"] {
+   // clip: rect(0 0 0 0); 
+   // position: absolute; 
+//}

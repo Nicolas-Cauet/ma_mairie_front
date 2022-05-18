@@ -33,8 +33,8 @@ function ReportAdmin() {
   // });
 
   const handleCheckbox = (event) => {
-    dispatch(changeCheckboxAdminReporting(event.target.textContent));
-    console.log(event.target.textContent);
+    dispatch(changeCheckboxAdminReporting(event.target.value));
+    console.log(event.target.value);
   };
 
   const handleSubmit = () => {
@@ -94,9 +94,15 @@ function ReportAdmin() {
             title="Réponse"
             name="admin_text"
           />
-          <div className="report-checkbox">
-            <Checkbox option="statut" name="reporting_statut" value="En cours" label="En cours" onChange={handleCheckbox} />
-            <Checkbox option="statut" name="reporting_statut" value="Terminé" label="Terminé" onChange={handleCheckbox} />
+          <div className="report-statut">
+            <label htmlFor="inProgress" className="report-checkbox">
+              <input type="radio" option="statut" id="inProgress" name="reporting_statut" value="En cours" label="inProgress" onChange={handleCheckbox} />
+              En cours
+            </label>
+            <label htmlFor="done" className="report-checkbox">
+              <input type="radio" option="statut" id="done" name="reporting_statut" value="Terminé" label="done" onChange={handleCheckbox} />
+              Terminé
+            </label>
           </div>
         </Form>
         <Button
