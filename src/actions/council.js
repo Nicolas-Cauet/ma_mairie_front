@@ -19,8 +19,11 @@ export const postCouncilMembers = () => ({
 
 // PATCH council members to council page
 export const PATCH_COUNCIL_MEMBERS = 'PATCH_COUNCIL_MEMBERS';
-export const patchCouncilMembers = (id) => ({
+export const patchCouncilMembers = (firstName, lastName, role, id) => ({
   type: PATCH_COUNCIL_MEMBERS,
+  firstName,
+  lastName,
+  role,
   id,
 });
 

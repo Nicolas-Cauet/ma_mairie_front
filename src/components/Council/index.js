@@ -4,11 +4,6 @@ import { useDispatch, useSelector } from 'react-redux';
 
 import { Card, Image, Icon } from 'semantic-ui-react';
 
-import photo from '../../assets/images/council/maire.jpg';
-import photo2 from '../../assets/images/council/firstCouncil.jpg';
-import photo3 from '../../assets/images/council/secondCouncil.jpg';
-import photo4 from '../../assets/images/council/thirdCouncil.jpg';
-import whiteImage from '../../assets/images/council/whiteImage.png';
 import CardModel from './CardModel';
 
 import { addCouncilMembers, createEditingMember, deleteCouncilMembers, getCouncilMembers, patchCouncilMembers, /* , postCouncilMembers */ 
@@ -24,7 +19,8 @@ function Council() {
   
   //Click on Plus button
   const handleClick = () => {
-    dispatch(addCouncilMembers());
+    // dispatch(addCouncilMembers());
+    dispatch(postCouncilMembers()),
     console.log('coucou');
   };
 
