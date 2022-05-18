@@ -11,7 +11,7 @@ import photo4 from '../../assets/images/council/thirdCouncil.jpg';
 import whiteImage from '../../assets/images/council/whiteImage.png';
 import CardModel from './CardModel';
 
-import { addCouncilMembers, getCouncilMembers /* , postCouncilMembers */ } from '../../actions/council';
+import { addCouncilMembers, createEditingMember, getCouncilMembers /* , postCouncilMembers */ } from '../../actions/council';
 
 import './style.scss';
 
@@ -31,6 +31,8 @@ function Council() {
   // useEffect(() => {
   //   dispatch(getCouncilMembers());
   // }, []);
+
+
 
   return (
     <section className="card-container">

@@ -51,7 +51,6 @@ function Login() {
   const handleLogout = () => {
     dispatch(logout());
   };
-
   const handleSubmitSignup = (event) => {
     event.preventDefault();
     if (password !== confirmPassword) {

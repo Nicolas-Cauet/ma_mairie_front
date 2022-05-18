@@ -47,3 +47,7 @@ const council = {
   town_hall_staff_id: 1,
   updated_at: null,
 }
+
+const regex = {
+  /^([a-zA-Z0-9@*#!?]{8,15})$/,
+}

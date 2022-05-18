@@ -53,7 +53,7 @@ const reducer = (state = initialState, action = {}) => {
     case TOGGLE_EDITING_MEMBER:
       return {
         ...state,
-        [action.name]: !([action.name]),
+        [action.name]: !state[action.name],
       };
     default:
       return state;

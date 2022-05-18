@@ -15,34 +15,38 @@ function CardModel({ imageName, name, role, ...card }) {
   const { isOpenEditingMember } = useSelector((state) => state.council);
   const { editingMemberName, editingMemberRole } = useSelector((state) => state.utilities);
   
-  // dispatch(createEditingMember(card.last_name))
+  const isOpenModal = useSelector((state) => state.council[`id-${card.last_name}`]);
+  console.log('modal', isOpenModal);
+
+  const coucou = useSelector((state) => state.council);
+  console.log(coucou);
 
   const handleClick = (event) => {
     console.log(event.target.getAttribute('name_id'));
-    dispatch(toggleEditingMember(card.last_name));
-    // console.log('coucou');
+    dispatch(toggleEditingMember(`id-${card.last_name}`));
   }
+
   const handleSubmit = (event) => {
     event.preventDefault();
     console.log(editingMemberName);
     console.log(editingMemberRole);
   }
 
-  // useEffect(() => {
-  //   dispatch(setValueEditingMember(name, role))
-  // }, [])
+  useEffect(() => {
+    dispatch(createEditingMember(`id-${card.last_name}`)
+  )}, [])
 
   return (
     <Card className={`card-${card.town_hall_staff_id}`} name={card.first_name}>
 
-      {isOpenEditingMember && (
+      {isOpenModal && (
         <form className='memberEditing-form' onSubmit={handleSubmit}>
           <Button className="memberEditing-button">Charger une photo</Button>
           <Field 
             error
             type="text"
             className="memberEditing-input"
-            placeholder="Nom et prénom"
+            placeholder={editingMemberName}
             value={editingMemberName}
             name="editingMemberName"
             title="Nom et prénom"
@@ -64,7 +68,7 @@ function CardModel({ imageName, name, role, ...card }) {
         </form>
       )}
 
-      {!isOpenEditingMember && (
+      {!isOpenModal && (
         <>
           <Image src={imageName} wrapped ui={false} />
           <Card.Content>
