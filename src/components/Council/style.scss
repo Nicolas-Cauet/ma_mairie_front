@@ -5,10 +5,17 @@
   flex-wrap: wrap;
   justify-content: center;
 
-  & .editingSection {
+  & .editingIcon {
     position: absolute;
-    right: 0.2rem;
-    bottom: 0.2rem;
+    right: 0.05rem;
+    bottom: 0.05rem;
+  }
+
+  & .deleteIcon {
+    color: red;
+    position: absolute;
+    right: 0.05rem;
+    top: 0.05rem;
   }
 
   & h1 {
@@ -21,6 +28,29 @@
   & .ui.card {
     width: 25%;
     margin: 0 1rem 1rem;
+   
+    &.card- {
+
+      & .image {  
+        height: 109px;
+
+        & img {
+        height: 109px;
+
+        }
+      }
+    }
+
+    &.card {
+      & .image {  
+        height: 109px;
+
+        & img {
+        height: 109px;
+
+        }
+      }
+    }
 
     & .content {
       position: relative;

@@ -63,7 +63,7 @@ const councilApi = (store) => (next) => (action) => {
       break;
     case DELETE_COUNCIL_MEMBERS:
       console.log('DELETE Council');
-      instance.delete('/admin/council/1/5')
+      instance.delete(`/admin/council/1/${action.id}`)
         .then((response) => {
           console.log(response);
           // store.dispatch(setCouncilMembers(response.data));

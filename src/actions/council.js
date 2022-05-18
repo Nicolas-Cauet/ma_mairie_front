@@ -19,14 +19,16 @@ export const postCouncilMembers = () => ({
 
 // PATCH council members to council page
 export const PATCH_COUNCIL_MEMBERS = 'PATCH_COUNCIL_MEMBERS';
-export const patchCouncilMembers = () => ({
+export const patchCouncilMembers = (id) => ({
   type: PATCH_COUNCIL_MEMBERS,
+  id,
 });
 
 // DELETE council members to council page
 export const DELETE_COUNCIL_MEMBERS = 'DELETE_COUNCIL_MEMBERS';
-export const deleteCouncilMembers = () => ({
+export const deleteCouncilMembers = (id) => ({
   type: DELETE_COUNCIL_MEMBERS,
+  id,
 });
 
 // Add council members to council page

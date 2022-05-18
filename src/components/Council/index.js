@@ -24,7 +24,7 @@ function Council() {
   
   //Click on Plus button
   const handleClick = () => {
-    // dispatch(postCouncilMembers());
+    dispatch(addCouncilMembers());
     console.log('coucou');
   };
 
@@ -43,7 +43,7 @@ function Council() {
       ))}
       {adminLogged && (
         <Card className="card">
-          <Image src={whiteImage} wrapped ui={false} />
+          <Image src={'https://react.semantic-ui.com/images/wireframe/image.png'} wrapped ui={false} />
           <Card.Content as="button" className="content-circle" onClick={handleClick}>
             <div>
               <Icon size="big" name="plus circle" />
