@@ -48,6 +48,10 @@ function ReportAdmin() {
 
   const navigate = useNavigate();
 
+  const handleAbortProgress = () => {
+    navigate('/admin/reports/1');
+  };
+
   const backToReportList = () => {
     dispatch(returnMessageSuccess(false));
     dispatch(returnMessageError(false));
@@ -57,8 +61,10 @@ function ReportAdmin() {
   return (
     <div className="report">
       <div className="report-header">
-        <h2 className="report-title">{report.title}</h2>
-        {/* <h2 className="report-statut">{report.reporting_statut}</h2> */}
+        <div className="report-title">
+          <h2>{report.title}</h2>
+          <span className={`report-statut report-statut--${report.reporting_statut.replace(' ', '_')}`}>{report.reporting_statut}</span>
+        </div>
         <div className="report-date">
           <Label color="yellow" className="report-category">Catégorie:
             {report.reporting_category}
@@ -94,7 +100,7 @@ function ReportAdmin() {
             title="Réponse"
             name="admin_text"
           />
-          <div className="report-statut">
+          <div className="report-newStatut">
             <label htmlFor="inProgress" className="report-checkbox">
               <input type="radio" option="statut" id="inProgress" name="reporting_statut" value="En cours" label="inProgress" onChange={handleCheckbox} />
               En cours
@@ -105,6 +111,15 @@ function ReportAdmin() {
             </label>
           </div>
         </Form>
+
+      </div>
+      <div className="report-button">
+        <Button
+          type="button"
+          className="report-abort"
+          onClick={handleAbortProgress}
+        >Annuler
+        </Button>
         <Button
           type="submit"
           className="report-submit"
