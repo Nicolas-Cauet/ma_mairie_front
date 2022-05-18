@@ -50,6 +50,7 @@ const api = (store) => (next) => (action) => {
           store.dispatch(eraseReportingFields());
           store.dispatch(saveAdminReports());
           // store.dispatch(toggleMenu());
+          // message de succ_s pour le user
 
           // message de succès
         })
