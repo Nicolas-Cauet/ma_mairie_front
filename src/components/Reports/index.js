@@ -88,8 +88,6 @@ function Reports() {
 
   const handleChangeFilter = (event) => {
     const key = event.target.closest('.filter-dropdown').getAttribute('name');
-    console.log('target',event.target.closest('.filter-dropdown'));
-    console.log('coucou',event.target.textContent, key);
     dispatch(changeReportsFilter(event.target.textContent, key));
   };
 
