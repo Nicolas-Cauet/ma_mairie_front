@@ -1,20 +1,54 @@
-.accordion {
+@use 'src/styles/vars';
+
+.report {
     text-align: center;
     border-style: dashed solid 0.1rem grey;
     border: 0.1rem grey;
     border-style: dashed solid;
 
     &-header {
-        margin-top: 1rem;
         display: flex;
         flex-wrap: no-wrap;
         justify-content: space-between;
     
     }
-    
-    &-info {
-        display: flex;
-        justify-content: space-between;
+
+    &-content {
+        color: black;
+        flex-direction: row;
+        flex-wrap: wrap;
+      
+        & h2 {
+          font-size: 1.5rem;
+          // width: 90%;
+          margin: 0.3rem 0 0.6rem;
+        }
+      
+        & h3 {
+          font-size: 0.75rem;
+          margin: 0;
+          margin-bottom: 0.5rem;
+          // width: 90%;
+        }
+    }
+
+    &-statut {
+        display: block;
+        font-weight: bolder;
+        text-align: right;
+
+        &--Résolu {
+            color: vars.$statusOkColor;
+        }
+        &--En_cours {
+            color: vars.$statusInProgressColor;
+        }
+        &--Non_validé {
+            color: vars.$statusRefusedColor;
+        }
+        &--Non_résolu {
+            color: vars.$statusRefusedColor;
+        }
     }
 
     // &-moreInfo {

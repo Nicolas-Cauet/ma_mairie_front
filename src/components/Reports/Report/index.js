@@ -45,7 +45,7 @@ function Report({
   return (
     <>
       {/* Accordion list of reports */}
-      <Accordion fluid styled className="accordion">
+      <Accordion fluid styled className="report">
 
         {/* Accordion modele */}
         <>
@@ -53,28 +53,18 @@ function Report({
             active={activeIndex === reporting_id}
             index={reporting_id}
             onClick={handleClickAccordion}
-            className="accordion-title"
+            className="report-title"
           >
-            <div className="accordion-content">
-              <Label className={reporting_statut} size="large">
-                Statut : {reporting_statut}
-              </Label>
-              <div className="accordion-header">
-                <h1>{title}</h1>
+            <div className="report-content">
+              <div className="report-header">
                 <Label className={reporting_category} size="small">
                   {reporting_category}
                 </Label>
-                {/* <Label className={reporting_statut}>
-                  Statut : {reporting_statut}
-                </Label> */}
+                <h3>Créé le <Moment format="DD/MM/YYYY">{created_at}</Moment></h3>
               </div>
-              <div className="accordion-info">
-                <h2>Créé le <Moment format="DD/MM/YYYY">{created_at}</Moment></h2>
-                {/* <Label className={reporting_category}>
-                  {reporting_category}
-                </Label> */}
-              </div>
-              <div className="accordion-moreInfo">
+              <span className={`report-statut report-statut--${reporting_statut.replace(' ', '_')}`}>{reporting_statut}</span>
+              <h2>{title}</h2>
+              <div className="report-moreInfo">
                 <Icon name="caret square down outline" />
                 En savoir plus
               </div>
@@ -89,7 +79,7 @@ function Report({
               Réponse de la mairie : {admin_text}
             </p>
             {logged && window.location.pathname.includes('admin') && (
-              <div className="reports-button">
+              <div className="report-button">
                 <Link to={`/admin/reports/1/${reporting_id}`}>
                   <Button>Traiter le signalement</Button>
                 </Link>

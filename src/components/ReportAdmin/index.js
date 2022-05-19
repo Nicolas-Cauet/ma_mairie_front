@@ -59,53 +59,53 @@ function ReportAdmin() {
   };
 
   return (
-    <div className="report">
-      <div className="report-header">
-        <div className="report-title">
+    <div className="reportAdmin">
+      <div className="reportAdmin-header">
+        <div className="reportAdmin-title">
           <h2>{report.title}</h2>
-          <span className={`report-statut report-statut--${report.reporting_statut.replace(' ', '_')}`}>{report.reporting_statut}</span>
+          <span className={`reportAdmin-statut reportAdmin-statut--${report.reporting_statut.replace(' ', '_')}`}>{report.reporting_statut}</span>
         </div>
-        <div className="report-date">
-          <Label color="yellow" className="report-category">Catégorie:
+        <div className="reportAdmin-date">
+          <Label color="yellow" className="reportAdmin-category">Catégorie:
             {report.reporting_category}
           </Label>
-          <Moment format="DD/MM/YYYY" className="report-date">{report.created_at}</Moment>
+          <Moment format="DD/MM/YYYY" className="reportAdmin-date">{report.created_at}</Moment>
         </div>
       </div>
-      <div className="report-info">
+      <div className="reportAdmin-info">
         <h3>Coordonnées du signalant :</h3>
         {/* <h3 className="report-title">{report.title}</h3> */}
-        <p className="report-firstName">Prénom : {report.first_name}</p>
-        <p className="report-lastName">Nom : {report.last_name}</p>
-        <p className="report-phone">Numéro de téléphone : {report.phonenumber}</p>
-        <p value={report.email} className="report-mail">Adresse mail : {report.email}</p>
-        <p className="report-description">Description : {report.user_text}</p>
+        <p className="reportAdmin-firstName">Prénom : {report.first_name}</p>
+        <p className="reportAdmin-lastName">Nom : {report.last_name}</p>
+        <p className="reportAdmin-phone">Numéro de téléphone : {report.phonenumber}</p>
+        <p value={report.email} className="reportAdmin-mail">Adresse mail : {report.email}</p>
+        <p className="reportAdmin-description">Description : {report.user_text}</p>
         { report.user_image && (
           <img
-            className="report-image"
+            className="reportAdmin-image"
             src={report.user_image}
             alt={report.title}
           />
         )}
 
       </div>
-      <div className="report-info">
+      <div className="reportAdmin-info">
         <h3>Traitement du signalement :</h3>
         <Form>
-          <div className="report-newStatut">
-            <div className="report-checkbox">
+          <div className="reportAdmin-newStatut">
+            <div className="reportAdmin-checkbox">
               <input type="radio" option="statut" id="inProgress" name="reporting_statut" value="En cours" label="inProgress" onChange={handleCheckbox} />
               <label htmlFor="inProgress">
                 En cours
               </label>
             </div>
-            <div className="report-checkbox">
+            <div className="reportAdmin-checkbox">
               <input type="radio" option="statut" id="done" name="reporting_statut" value="Résolu" label="done" onChange={handleCheckbox} />
               <label htmlFor="done">
                 Résolu
               </label>
             </div>
-            <div className="report-checkbox">
+            <div className="reportAdmin-checkbox">
               <input type="radio" option="statut" id="abort" name="reporting_statut" value="Non résolu" label="abort" onChange={handleCheckbox} />
               <label htmlFor="abort">
                 Non résolu
@@ -114,7 +114,7 @@ function ReportAdmin() {
           </div>
           <Field
             type="text"
-            className="report-response"
+            className="reportAdmin-response"
             placeholder="Votre réponse..."
             value={admin_text}
             title="Réponse"
@@ -123,16 +123,16 @@ function ReportAdmin() {
         </Form>
 
       </div>
-      <div className="report-button">
+      <div className="reportAdmin-button">
         <Button
           type="button"
-          className="report-abort"
+          className="reportAdmin-abort"
           onClick={handleAbortProgress}
         >Annuler
         </Button>
         <Button
           type="submit"
-          className="report-submit"
+          className="reportAdmin-submit"
           onClick={handleSubmit}
         >Envoyer
         </Button>
