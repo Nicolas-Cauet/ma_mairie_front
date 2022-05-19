@@ -2,7 +2,14 @@
 // import PropTypes from 'prop-types';
 import { useDispatch, useSelector } from 'react-redux';
 import {
-  Button, Checkbox, Form, Accordion, Icon, Message, Dropdown,
+  Button,
+  Checkbox,
+  Form,
+  Accordion,
+  Icon,
+  Message,
+  Dropdown,
+  Label,
 } from 'semantic-ui-react';
 import { submitReporting, changeCurrentCheckBoxReporting } from '../../actions/reporting';
 import { changeCurrentCategory, changeCurrentField } from '../../actions/utilities';
@@ -30,6 +37,7 @@ function Reporting() {
     reporting_lastName,
     reporting_phone,
     reporting_checkBox,
+    // eslint-disable-next-line no-unused-vars
     reporting_error,
   } = useSelector((state) => state.utilities);
 
@@ -39,15 +47,25 @@ function Reporting() {
     dispatch(setActiveIndexTerms(newIndex));
   };
 
+  switch (reporting_error) {
+    case reporting_checkBox:
+      console.log('checkbox');
+      break;
+    case reporting_category !== '':
+      console.log('category');
+      break;
+    default:
+  }
+
   const handleSubmit = () => {
     dispatch(setReportingError(false));
     if (reporting_checkBox
-      && reporting_category !== ''
-      && reporting_title !== ''
-      && reporting_description !== ''
-      && reporting_email !== ''
-      && reporting_firstName !== ''
-      && reporting_lastName !== ''
+      || reporting_category !== ''
+      || reporting_title !== ''
+      || reporting_description !== ''
+      || reporting_email !== ''
+      || reporting_firstName !== ''
+      || reporting_lastName !== ''
     ) {
       dispatch(submitReporting(
         reporting_category,
@@ -96,9 +114,11 @@ function Reporting() {
               selection
               options={categoriesOptions}
               onChange={handleChangeCategory}
-              inputError={reporting_error}
             />
           </section>
+          <Label basic color="red" pointing>
+            Please enter a value
+          </Label>
           <Field
             type="text"
             className="reporting-title ddd"
@@ -107,7 +127,6 @@ function Reporting() {
             title="Titre"
             name="reporting_title"
             icon="comment alternate"
-            inputError={reporting_error}
           />
           <Form.TextArea
             value={reporting_description}
@@ -116,7 +135,6 @@ function Reporting() {
             className="reporting-form-textarea"
             placeholder="Description : Que souhaitez vous signaler ? *"
             onChange={handleChangeDescription}
-            inputError={reporting_error}
           />
           <Field
             type="email"
@@ -126,7 +144,6 @@ function Reporting() {
             title="Email"
             name="reporting_email"
             icon="at"
-            inputError={reporting_error}
           />
           <Field
             type="text"
@@ -136,7 +153,6 @@ function Reporting() {
             name="reporting_firstName"
             title="Prénom"
             icon="user"
-            inputError={reporting_error}
           />
           <Field
             type="text"
@@ -146,7 +162,6 @@ function Reporting() {
             name="reporting_lastName"
             title="Nom"
             icon="user"
-            inputError={reporting_error}
           />
           <Field
             type="tel"
