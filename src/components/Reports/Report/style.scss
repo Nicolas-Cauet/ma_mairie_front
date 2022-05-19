@@ -1,0 +1,57 @@
+@use 'src/styles/vars';
+
+.report {
+    text-align: center;
+    border-style: dashed solid 0.1rem grey;
+    border: 0.1rem grey;
+    border-style: dashed solid;
+
+    &-header {
+        display: flex;
+        flex-wrap: no-wrap;
+        justify-content: space-between;
+    
+    }
+
+    &-content {
+        color: black;
+        flex-direction: row;
+        flex-wrap: wrap;
+      
+        & h2 {
+          font-size: 1.5rem;
+          // width: 90%;
+          margin: 0 0 1rem;
+        }
+      
+        & h3 {
+          font-size: 0.75rem;
+          margin: 0;
+          margin-bottom: 0.5rem;
+          // width: 90%;
+        }
+    }
+
+    &-statut {
+        display: block;
+        font-weight: bolder;
+        text-align: right;
+
+        &--Résolu {
+            color: vars.$statusOkColor;
+        }
+        &--En_cours {
+            color: vars.$statusInProgressColor;
+        }
+        &--Non_validé {
+            color: vars.$statusRefusedColor;
+        }
+        &--Non_résolu {
+            color: vars.$statusRefusedColor;
+        }
+    }
+
+    // &-moreInfo {
+    //     background-color: rgb(209, 209, 209);
+    // }
+}

@@ -125,6 +125,7 @@ function Login() {
             title="email"
             icon="at"
           />
+          <p className="login-info">exemple : john.doe@gmail.com</p>
           <Field
             type="password"
             className="login-input"
@@ -135,6 +136,7 @@ function Login() {
             icon="key"
             inputError={!samePassword}
           />
+          <p className="login-info">Doit contenir 8 caractères minimum, une majuscule et un caractère spécial (-@?!)</p>
           <Field
             error
             type="password"

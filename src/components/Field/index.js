@@ -39,12 +39,13 @@ Field.propTypes = {
   title: PropTypes.string.isRequired,
   placeholder: PropTypes.string.isRequired,
   inputError: PropTypes.bool,
-  icon: PropTypes.string.isRequired,
+  icon: PropTypes.string,
   name: PropTypes.string.isRequired,
 };
 
 Field.defaultProps = {
   inputError: false,
+  icon: null,
 };
 
 export default Field;

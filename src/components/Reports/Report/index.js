@@ -8,12 +8,13 @@ import {
   Icon,
   Label,
   Confirm,
+  Message,
 } from 'semantic-ui-react';
 import { Link } from 'react-router-dom';
 import Moment from 'react-moment';
 import { deleteSelectedReport, getAdminReports, setActiveIndex } from '../../../actions/reports';
 
-// import './style.scss';
+import './style.scss';
 
 function Report({
   reporting_id, title, created_at, reporting_category, user_text, reporting_statut, admin_text,
@@ -45,7 +46,7 @@ function Report({
   return (
     <>
       {/* Accordion list of reports */}
-      <Accordion fluid styled className="accordion">
+      <Accordion fluid styled className="report">
 
         {/* Accordion modele */}
         <>
@@ -53,18 +54,18 @@ function Report({
             active={activeIndex === reporting_id}
             index={reporting_id}
             onClick={handleClickAccordion}
-            className="accordion-title"
+            className="report-title"
           >
-            <div className="accordion-title-container">
-              <h1>{title}</h1>
-              <h2><Moment format="DD/MM/YYYY">{created_at}</Moment></h2>
-              <Label className={reporting_category}>
-                {reporting_category}
-              </Label>
-              <Label className={reporting_statut}>
-                Statut : {reporting_statut}
-              </Label>
-              <div>
+            <div className="report-content">
+              <div className="report-header">
+                <Label className={reporting_category} size="small">
+                  {reporting_category}
+                </Label>
+                <h3>Créé le <Moment format="DD/MM/YYYY">{created_at}</Moment></h3>
+              </div>
+              <span className={`report-statut report-statut--${reporting_statut.replace(' ', '_')}`}>{reporting_statut}</span>
+              <h2>{title}</h2>
+              <div className="report-moreInfo">
                 <Icon name="caret square down outline" />
                 En savoir plus
               </div>
@@ -72,14 +73,18 @@ function Report({
           </Accordion.Title>
 
           <Accordion.Content active={activeIndex === reporting_id}>
-            <p>
-              Description : {user_text}
-            </p>
-            <p>
-              Réponse de la mairie : {admin_text}
-            </p>
+            <Message color="grey">
+              <p>
+                Message du signalant : {user_text}
+              </p>
+            </Message>
+            <Message>
+              <p>
+                Réponse de la mairie : {admin_text}
+              </p>
+            </Message>
             {logged && window.location.pathname.includes('admin') && (
-              <div className="reports-button">
+              <div className="report-button">
                 <Link to={`/admin/reports/1/${reporting_id}`}>
                   <Button>Traiter le signalement</Button>
                 </Link>

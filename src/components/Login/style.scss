@@ -14,19 +14,25 @@
         flex-direction: column;
         align-items: center;
 
-    &-message {
-        padding: 1rem 2rem;
-        font-size: 1rem;
+      &-message {
+          padding: 1rem 2rem;
+          font-size: 1rem;
       }
 
-    & .ui.input{
-      width: 80%;;
+      & .ui.input{
+        width: 80%;;
 
-      &.error input {
-        border: 2px solid #c33e3e;
-        color: #c33e3e ;
+        &.error input {
+          border: 2px solid #c33e3e;
+          color: #c33e3e ;
+        }
       }
     }
+
+  &-info{
+    color: grey;
+    font-size: smaller;
+    margin: 0 0 0;
   }
 
 }

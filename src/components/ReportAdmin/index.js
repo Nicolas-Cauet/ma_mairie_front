@@ -1,10 +1,11 @@
+/* eslint-disable jsx-a11y/label-has-associated-control */
 // import PropTypes from 'prop-types';
 import {
   Button,
-  Checkbox,
   Form,
   Label,
   Message,
+  TextArea,
 } from 'semantic-ui-react';
 // import { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
@@ -12,9 +13,9 @@ import { useParams, useNavigate } from 'react-router-dom';
 import Moment from 'react-moment';
 
 import './style.scss';
-import Field from '../Field';
 import { changeCheckboxAdminReporting, submitModerateReporting } from '../../actions/reports';
-import { returnMessageError, returnMessageSuccess } from '../../actions/utilities';
+import { changeCurrentField, returnMessageError, returnMessageSuccess } from '../../actions/utilities';
+// import InfoMessage from '../InfoMessage';
 
 function ReportAdmin() {
   const params = useParams();
@@ -33,8 +34,8 @@ function ReportAdmin() {
   // });
 
   const handleCheckbox = (event) => {
-    dispatch(changeCheckboxAdminReporting(event.target.textContent));
-    console.log(event.target.textContent);
+    dispatch(changeCheckboxAdminReporting(event.target.value));
+    console.log(event.target.value);
   };
 
   const handleSubmit = () => {
@@ -48,70 +49,107 @@ function ReportAdmin() {
 
   const navigate = useNavigate();
 
+  const handleAbortProgress = () => {
+    navigate('/admin/reports/1');
+  };
+
   const backToReportList = () => {
     dispatch(returnMessageSuccess(false));
     dispatch(returnMessageError(false));
     navigate('/admin/reports/1');
   };
 
+  const handleChange = (event) => {
+    dispatch(changeCurrentField(event.target.value, event.target.name));
+  };
+
   return (
-    <div className="report">
-      <div className="report-header">
-        <h2 className="report-title">{report.title}</h2>
-        {/* <h2 className="report-statut">{report.reporting_statut}</h2> */}
-        <div className="report-date">
-          <Label color="yellow" className="report-category">Catégorie:
-            {report.reporting_category}
-          </Label>
-          <Moment format="DD/MM/YYYY" className="report-date">{report.created_at}</Moment>
+    <div className="reportAdmin">
+      <div className="reportAdmin-date">
+        <Label color="yellow" className="reportAdmin-category">Catégorie:
+          {report.reporting_category}
+        </Label>
+        <Moment format="DD/MM/YYYY" className="reportAdmin-date">{report.created_at}</Moment>
+      </div>
+      <div className="reportAdmin-header">
+        <div className="reportAdmin-title">
+          <h2>{report.title}</h2>
+          <span className={`reportAdmin-statut reportAdmin-statut--${report.reporting_statut.replace(' ', '_')}`}>{report.reporting_statut}</span>
         </div>
       </div>
-      <div className="report-info">
+      <div className="reportAdmin-info">
         <h3>Coordonnées du signalant :</h3>
         {/* <h3 className="report-title">{report.title}</h3> */}
-        <p className="report-firstName">Prénom : {report.first_name}</p>
-        <p className="report-lastName">Nom : {report.last_name}</p>
-        <p className="report-phone">Numéro de téléphone : {report.phonenumber}</p>
-        <p value={report.email} className="report-mail">Adresse mail : {report.email}</p>
-        <p className="report-description">Description : {report.user_text}</p>
+        <p className="reportAdmin-firstName">Prénom : {report.first_name}</p>
+        <p className="reportAdmin-lastName">Nom : {report.last_name}</p>
+        <p className="reportAdmin-phone">Numéro de téléphone : {report.phonenumber}</p>
+        <p value={report.email} className="reportAdmin-mail">Adresse mail : {report.email}</p>
+        <p className="reportAdmin-description">Description : {report.user_text}</p>
         { report.user_image && (
           <img
-            className="report-image"
+            className="reportAdmin-image"
             src={report.user_image}
             alt={report.title}
           />
         )}
 
       </div>
-      <div className="report-info">
+      <div className="reportAdmin-info">
         <h3>Traitement du signalement :</h3>
         <Form>
-          <Field
-            type="text"
-            className="report-response"
+          <div className="reportAdmin-newStatut">
+            <div className="reportAdmin-checkbox">
+              <input type="radio" option="statut" id="inProgress" name="reporting_statut" value="En cours" label="inProgress" onChange={handleCheckbox} />
+              <label htmlFor="inProgress">
+                En cours
+              </label>
+            </div>
+            <div className="reportAdmin-checkbox">
+              <input type="radio" option="statut" id="done" name="reporting_statut" value="Résolu" label="done" onChange={handleCheckbox} />
+              <label htmlFor="done">
+                Résolu
+              </label>
+            </div>
+            <div className="reportAdmin-checkbox">
+              <input type="radio" option="statut" id="abort" name="reporting_statut" value="Non résolu" label="abort" onChange={handleCheckbox} />
+              <label htmlFor="abort">
+                Non résolu
+              </label>
+            </div>
+          </div>
+          <TextArea
+            // type="text"
+            className="reportAdmin-response"
             placeholder="Votre réponse..."
             value={admin_text}
-            title="Réponse"
+            onChange={handleChange}
+            // title="Réponse"
             name="admin_text"
           />
-          <div className="report-checkbox">
-            <Checkbox option="statut" name="reporting_statut" value="En cours" label="En cours" onChange={handleCheckbox} />
-            <Checkbox option="statut" name="reporting_statut" value="Terminé" label="Terminé" onChange={handleCheckbox} />
-          </div>
         </Form>
+
+      </div>
+      <div className="reportAdmin-button">
+        <Button
+          type="button"
+          className="reportAdmin-abort"
+          onClick={handleAbortProgress}
+        >Annuler
+        </Button>
         <Button
           type="submit"
-          className="report-submit"
+          className="reportAdmin-submit"
           onClick={handleSubmit}
         >Envoyer
         </Button>
       </div>
 
       { successMessage && (
-      <Message positive>
-        <p>Le signalement "{report.title}" a bien été mis à jour</p>
-        <Button content="Retour au signalements" onClick={backToReportList} />
-      </Message>
+        <Message>
+          {/* // <InfoMessage type={positive}> */}
+          <p>Le signalement "{report.title}" a bien été mis à jour</p>
+          <Button content="Retour au signalements" onClick={backToReportList} />
+        </Message>
       )}
       { errorMessage && (
       <Message negative>
