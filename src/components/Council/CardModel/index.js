@@ -51,13 +51,11 @@ function CardModel({ ...card }) {
   };
 
   useEffect(() => {
-    dispatch(
-      createEditingMember(`isOpenModalMember-${card.town_hall_staff_id}`),
-      dispatch(createEditingMemberLastName(card.last_name, `lastNameMember-${card.town_hall_staff_id}`)),
-      dispatch(createEditingMemberFirstName(card.first_name, `firstNameMember-${card.town_hall_staff_id}`)),
-      dispatch(createEditingMemberRole(card.role, `roleMember-${card.town_hall_staff_id}`)),
-      dispatch(createEditingMemberPhoto(card.photo, `photoMember-${card.town_hall_staff_id}`)),
-    );
+    dispatch(createEditingMember(`isOpenModalMember-${card.town_hall_staff_id}`));
+    dispatch(createEditingMemberLastName(card.last_name, `lastNameMember-${card.town_hall_staff_id}`));
+    dispatch(createEditingMemberFirstName(card.first_name, `firstNameMember-${card.town_hall_staff_id}`));
+    dispatch(createEditingMemberRole(card.role, `roleMember-${card.town_hall_staff_id}`));
+    dispatch(createEditingMemberPhoto(card.photo, `photoMember-${card.town_hall_staff_id}`));
   }, []);
 
   return (

@@ -41,6 +41,15 @@ function Reporting() {
     reporting_error,
   } = useSelector((state) => state.utilities);
 
+  const coucou = [
+    reporting_title,
+    reporting_description,
+    reporting_email,
+    reporting_firstName,
+    reporting_lastName,
+    reporting_phone,
+  ];
+
   const handleClick = (titleProps) => {
     const { index } = titleProps;
     const newIndex = activeIndexTerms === index ? -1 : index;
@@ -48,6 +57,12 @@ function Reporting() {
   };
 
   const handleSubmit = () => {
+    const coucou2 = coucou.filter((object) => {
+      if (object.key === '') {
+        return object.name;
+      }
+    });
+    console.log(coucou);
     // if (reporting_checkBox
     //   || reporting_category !== ''
     //   || reporting_title !== ''
