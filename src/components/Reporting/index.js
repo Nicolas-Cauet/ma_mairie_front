@@ -11,10 +11,10 @@ import {
   Dropdown,
   Label,
 } from 'semantic-ui-react';
-import { submitReporting, changeCurrentCheckBoxReporting } from '../../actions/reporting';
+import { /* submitReporting, */ changeCurrentCheckBoxReporting } from '../../actions/reporting';
 import { changeCurrentCategory, changeCurrentField } from '../../actions/utilities';
-import { setActiveIndexTerms, toggleReporting, setReportingError } from '../../actions/reports';
-import { setLoginMessage } from '../../actions/login';
+import { setActiveIndexTerms, toggleReporting /* , setReportingError */ } from '../../actions/reports';
+// import { setLoginMessage } from '../../actions/login';
 
 import Field from '../Field';
 
@@ -29,7 +29,7 @@ function Reporting() {
   } = useSelector((state) => state.reports);
   const { loginMessage, loginMessageColor } = useSelector((state) => state.login);
   const {
-    reporting_category,
+    // reporting_category,
     reporting_title,
     reporting_description,
     reporting_email,
@@ -41,47 +41,44 @@ function Reporting() {
     reporting_error,
   } = useSelector((state) => state.utilities);
 
-  const handleClick = (e, titleProps) => {
+  const handleClick = (titleProps) => {
     const { index } = titleProps;
     const newIndex = activeIndexTerms === index ? -1 : index;
     dispatch(setActiveIndexTerms(newIndex));
   };
 
-  switch (reporting_error) {
-    case reporting_checkBox:
-      console.log('checkbox');
-      break;
-    case reporting_category !== '':
-      console.log('category');
-      break;
-    default:
-  }
-
   const handleSubmit = () => {
-    dispatch(setReportingError(false));
-    if (reporting_checkBox
-      || reporting_category !== ''
-      || reporting_title !== ''
-      || reporting_description !== ''
-      || reporting_email !== ''
-      || reporting_firstName !== ''
-      || reporting_lastName !== ''
-    ) {
-      dispatch(submitReporting(
-        reporting_category,
-        reporting_title,
-        reporting_description,
-        reporting_email,
-        reporting_firstName,
-        reporting_lastName,
-        reporting_phone,
-      ));
-    } else if (!reporting_checkBox) {
-      dispatch(setLoginMessage('Vous devez accepter les termes et conditions pour pouvoir signaler un événement', false));
-    } else {
-      dispatch(setLoginMessage('Vous devez décrire votre événement, lui donner un titre, renseignez votre prénom et votre nom, ainsi que votre email. Le numéros de téléphone est facultatif', false));
-      dispatch(setReportingError(true));
-    }
+    // if (reporting_checkBox
+    //   || reporting_category !== ''
+    //   || reporting_title !== ''
+    //   || reporting_description !== ''
+    //   || reporting_email !== ''
+    //   || reporting_firstName !== ''
+    //   || reporting_lastName !== ''
+    // ) {
+    //   console.log('dans condition');
+    //   dispatch(setReportingError(true));
+    //   dispatch(setLoginMessage('Les champs indiqués ne peuvent pas être vide ', false));
+
+    //   if (reporting_category !== '') {
+    //     dispatch(actionquichangeisErrorReporting_category());
+    //   }
+    //   reporting_category !== '' ? false : true;
+
+    // } else if (!reporting_checkBox) {
+    // eslint-disable-next-line max-len
+    //   dispatch(setLoginMessage('Vous devez accepter les termes et conditions pour pouvoir signaler un événement', false));
+    // } else {
+    //   dispatch(submitReporting(
+    //     reporting_category,
+    //     reporting_title,
+    //     reporting_description,
+    //     reporting_email,
+    //     reporting_firstName,
+    //     reporting_lastName,
+    //     reporting_phone,
+    //   ));
+    // }
   };
 
   const handleClickBack = () => {
