@@ -6,7 +6,6 @@ import {
   Message,
   TextArea,
 } from 'semantic-ui-react';
-// import { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { useParams, useNavigate } from 'react-router-dom';
 import Moment from 'react-moment';
@@ -14,7 +13,6 @@ import Moment from 'react-moment';
 import './style.scss';
 import { changeCheckboxAdminReporting, submitModerateReporting } from '../../actions/reports';
 import { changeCurrentField, returnMessageError, returnMessageSuccess } from '../../actions/utilities';
-// import InfoMessage from '../InfoMessage';
 
 function ReportAdmin() {
   const params = useParams();
@@ -145,7 +143,6 @@ function ReportAdmin() {
 
       { successMessage && (
         <Message>
-          {/* // <InfoMessage type={positive}> */}
           <p>Le signalement "{report.title}" a bien été mis à jour</p>
           <Button content="Retour au signalements" onClick={backToReportList} />
         </Message>
