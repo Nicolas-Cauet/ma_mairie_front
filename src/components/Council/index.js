@@ -4,11 +4,9 @@ import { useDispatch, useSelector } from 'react-redux';
 
 import { Card, Image, Icon } from 'semantic-ui-react';
 
-
 import CardModel from './CardModel';
 
-import { addCouncilMembers, createEditingMember, deleteCouncilMembers, getCouncilMembers, patchCouncilMembers, /* , postCouncilMembers */ 
-postCouncilMembers} from '../../actions/council';
+import { getCouncilMembers, postCouncilMembers } from '../../actions/council';
 
 import './style.scss';
 
@@ -17,20 +15,18 @@ function Council() {
 
   const adminLogged = useSelector((state) => state.login.logged);
   const { councilMembers } = useSelector((state) => state.council);
-  
-  //Click on Plus button
+
+  // Click on Plus button
   const handleClick = () => {
     // dispatch(addCouncilMembers());
-    dispatch(postCouncilMembers()),
+    dispatch(postCouncilMembers());
     console.log('coucou');
   };
 
- // GET council members
+  // GET council members
   useEffect(() => {
     dispatch(getCouncilMembers());
   }, []);
-
-
 
   return (
     <section className="card-container">
@@ -40,7 +36,7 @@ function Council() {
       ))}
       {adminLogged && (
         <Card className="card">
-          <Image src={'https://react.semantic-ui.com/images/wireframe/image.png'} wrapped ui={false} />
+          <Image src="https://react.semantic-ui.com/images/wireframe/image.png" wrapped ui={false} />
           <Card.Content as="button" className="content-circle" onClick={handleClick}>
             <div>
               <Icon size="big" name="plus circle" />
