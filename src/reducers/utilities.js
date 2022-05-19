@@ -13,6 +13,7 @@ import {
   LOADING,
   RETURN_MESSAGE_ERROR,
   RETURN_MESSAGE_SUCCESS,
+  SET_MESSAGE,
 } from '../actions/utilities';
 
 export const initialState = {
@@ -37,6 +38,8 @@ export const initialState = {
   successMessage: false,
   councilEditingName: '',
   councilEditingRole: '',
+  message: '',
+  messageColor: '',
 };
 
 const reducer = (state = initialState, action = {}) => {
@@ -123,6 +126,13 @@ const reducer = (state = initialState, action = {}) => {
         ...state,
         [action.key]: action.value,
       };
+    case SET_MESSAGE: {
+      return {
+        ...state,
+        message: action.message,
+        messageColor: action.messageColor,
+      };
+    }
     default:
       return state;
   }

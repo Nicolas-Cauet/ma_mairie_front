@@ -45,3 +45,10 @@ export const setValueEditingMember = (name, role) => ({
   editingMemberName: name,
   editingMemberRole: role,
 });
+
+export const SET_MESSAGE = 'SET_MESSAGE';
+export const setMessage = (message, color) => ({
+  type: SET_MESSAGE,
+  message: message,
+  messageColor: color,
+});

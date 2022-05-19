@@ -62,7 +62,7 @@ const api = (store) => (next) => (action) => {
         .catch((error) => {
           console.log(error);
           // message d'echec
-          // store.dispatch(setLoginMessage
+          // store.dispatch(setMessage
           // ('Une erreur est survenue, veuillez recommencer', false));
         });
       break;

@@ -5,9 +5,8 @@ import {
   Button, Checkbox, Form, Accordion, Icon, Message, Dropdown,
 } from 'semantic-ui-react';
 import { submitReporting, changeCurrentCheckBoxReporting } from '../../actions/reporting';
-import { changeCurrentCategory, changeCurrentField } from '../../actions/utilities';
+import { changeCurrentCategory, changeCurrentField, setMessage } from '../../actions/utilities';
 import { setActiveIndexTerms, toggleReporting, setReportingError } from '../../actions/reports';
-import { setLoginMessage } from '../../actions/login';
 
 import Field from '../Field';
 
@@ -20,7 +19,6 @@ function Reporting() {
     activeIndexTerms,
     categoriesOptions,
   } = useSelector((state) => state.reports);
-  const { loginMessage, loginMessageColor } = useSelector((state) => state.login);
   const {
     reporting_category,
     reporting_title,
@@ -31,6 +29,8 @@ function Reporting() {
     reporting_phone,
     reporting_checkBox,
     reporting_error,
+    message,
+    messageColor,
   } = useSelector((state) => state.utilities);
 
   const handleClick = (e, titleProps) => {
@@ -59,9 +59,9 @@ function Reporting() {
         reporting_phone,
       ));
     } else if (!reporting_checkBox) {
-      dispatch(setLoginMessage('Vous devez accepter les termes et conditions pour pouvoir signaler un événement', false));
+      dispatch(setMessage('Vous devez accepter les termes et conditions pour pouvoir signaler un événement', false));
     } else {
-      dispatch(setLoginMessage('Vous devez décrire votre événement, lui donner un titre, renseignez votre prénom et votre nom, ainsi que votre email. Le numéros de téléphone est facultatif', false));
+      dispatch(setMessage('Vous devez décrire votre événement, lui donner un titre, renseignez votre prénom et votre nom, ainsi que votre email. Le numéros de téléphone est facultatif', false));
       dispatch(setReportingError(true));
     }
   };
@@ -200,10 +200,10 @@ function Reporting() {
             </Button>
           </Form.Field>
         </Form>
-        {loginMessage && (
-          loginMessageColor
-            ? <Message className="reports-message" positive>  <p>{loginMessage}</p> </Message>
-            : <Message className="reports-message" negative>  <p>{loginMessage}</p> </Message>
+        {message && (
+          messageColor
+            ? <Message className="reports-message" positive>  <p>{message}</p> </Message>
+            : <Message className="reports-message" negative>  <p>{message}</p> </Message>
         )}
 
       </section>

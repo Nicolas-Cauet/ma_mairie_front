@@ -36,12 +36,15 @@ function ReportAdmin() {
   };
 
   const handleSubmit = () => {
-    dispatch(submitModerateReporting(
-      report.reporting_id,
-      report.title,
-      admin_text,
-      reporting_statut,
-    ));
+    if (admin_text) {
+      dispatch(submitModerateReporting(
+        report.reporting_id,
+        report.title,
+        admin_text,
+        reporting_statut,
+      ));
+    }
+    return console.log('toto');
   };
 
   const navigate = useNavigate();

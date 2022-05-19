@@ -30,7 +30,7 @@ const adminApi = (store) => (next) => (action) => {
 
         .catch((error) => {
           // message d'erreur à faire
-          // store.dispatch(setLoginMessage('Email et/ou Mot de passe incorrect', false));
+          // store.dispatch(setMessage('Email et/ou Mot de passe incorrect', false));
           console.log(error);
         })
         .finally(() => {
@@ -46,7 +46,7 @@ const adminApi = (store) => (next) => (action) => {
         })
         .catch((error) => {
           // message d'erreur à faire
-          // store.dispatch(setLoginMessage('Email et/ou Mot de passe incorrect', false));
+          // store.dispatch(setMessage('Email et/ou Mot de passe incorrect', false));
           console.log(error);
         });
       break;
@@ -64,7 +64,7 @@ const adminApi = (store) => (next) => (action) => {
         })
         .catch((error) => {
           // message d'erreur à faire
-          // store.dispatch(setLoginMessage('Email et/ou Mot de passe incorrect', false));
+          // store.dispatch(setMessage('Email et/ou Mot de passe incorrect', false));
           console.log(error, "je suis dans l'erreur");
           store.dispatch(returnMessageError(true));
         });

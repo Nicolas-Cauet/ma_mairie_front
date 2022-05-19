@@ -3,7 +3,6 @@ import {
   TOGGLE_SIGNUP,
   LOGIN,
   SET_LOGOUT,
-  SET_LOGIN_MESSAGE,
   ACTIVE_CONNECTION_BUTTON,
 } from '../actions/action';
 
@@ -13,8 +12,6 @@ export const initialState = {
   logged: true,
   isOpenSignup: false,
   isOpenLogin: false,
-  loginMessage: '',
-  loginMessageColor: false,
   activeConnectionButton: false,
   redirectTo: '',
 };
@@ -27,7 +24,7 @@ const reducer = (state = initialState, action = {}) => {
         isOpenLogin: !state.isOpenLogin,
         isOpenSignup: false,
         activeConnectionButton: !state.activeConnectionButton,
-        loginMessage: '',
+        // loginMessage: '',
       };
     }
     case TOGGLE_SIGNUP: {
@@ -36,14 +33,14 @@ const reducer = (state = initialState, action = {}) => {
         isOpenSignup: !state.isOpenSignup,
         isOpenLogin: false,
         activeConnectionButton: false,
-        loginMessage: '',
+        // loginMessage: '',
       };
     }
     case LOGIN: {
       return {
         ...state,
         logged: true,
-        loginMessage: '',
+        // loginMessage: '',
         email: '',
         password: '',
         confirmPassword: '',
@@ -55,16 +52,9 @@ const reducer = (state = initialState, action = {}) => {
         logged: false,
         pseudo: '',
         inseeCode: '',
-        loginMessage: '',
-        loginMessageColor: false,
+        // loginMessage: '',
+        // loginMessageColor: false,
         activeConnectionButton: false,
-      };
-    }
-    case SET_LOGIN_MESSAGE: {
-      return {
-        ...state,
-        loginMessage: action.loginMessage,
-        loginMessageColor: action.loginMessageColor,
       };
     }
     case ACTIVE_CONNECTION_BUTTON: {

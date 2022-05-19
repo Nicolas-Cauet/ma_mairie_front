@@ -47,13 +47,6 @@ export const submitLogin = (email, password) => ({
   password,
 });
 
-export const SET_LOGIN_MESSAGE = 'SET_LOGIN_MESSAGE';
-export const setLoginMessage = (message, color) => ({
-  type: SET_LOGIN_MESSAGE,
-  loginMessage: message,
-  loginMessageColor: color,
-});
-
 export const ACTIVE_CONNECTION_BUTTON = 'ACTIVE_CONNECTION_BUTTON';
 export const activeConnectionButton = () => ({
   type: ACTIVE_CONNECTION_BUTTON,

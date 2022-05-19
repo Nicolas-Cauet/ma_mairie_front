@@ -20,8 +20,6 @@ function Login() {
     logged,
     isOpenSignup,
     isOpenLogin,
-    loginMessage,
-    loginMessageColor,
     activeConnectionButton,
     redirectTo,
   } = useSelector((state) => state.login);
@@ -32,6 +30,8 @@ function Login() {
     password,
     confirmPassword,
     inseeCode,
+    message,
+    messageColor,
   } = useSelector((state) => state.utilities);
 
   const [samePassword, setSamePassword] = useState();
@@ -197,10 +197,10 @@ function Login() {
         </form>
       )}
 
-      { loginMessage && (
-        loginMessageColor
-          ? <Message positive>  <p>{loginMessage}</p> </Message>
-          : <Message negative>  <p>{loginMessage}</p> </Message>
+      { message && (
+        messageColor
+          ? <Message positive>  <p>{message}</p> </Message>
+          : <Message negative>  <p>{message}</p> </Message>
       )}
 
     </div>
@@ -214,7 +214,7 @@ Login.propTypes = {
   // logged: PropTypes.bool,
   // isOpenSignup: PropTypes.bool,
   // isOpenLogin: PropTypes.bool,
-  // loginMessage: PropTypes.string,
+  // message: PropTypes.string,
   // activeConnectionButton: PropTypes.bool,
 };
 

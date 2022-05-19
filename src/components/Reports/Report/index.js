@@ -74,15 +74,23 @@ function Report({
 
           <Accordion.Content active={activeIndex === reporting_id}>
             <Message color="grey">
+              <Message.Header>Message du signalant :</Message.Header>
               <p>
-                Message du signalant : {user_text}
+                {user_text}
               </p>
             </Message>
-            <Message>
-              <p>
-                Réponse de la mairie : {admin_text}
-              </p>
-            </Message>
+            { admin_text ? (
+              <Message>
+                <Message.Header>Réponse de la mairie :</Message.Header>
+                <p>
+                  {admin_text}
+                </p>
+              </Message>
+            ) : (
+              <Message negative>
+                <p>Vous n'avez pas encore traité ce signalement</p>
+              </Message>
+            )}
             {logged && window.location.pathname.includes('admin') && (
               <div className="report-button">
                 <Link to={`/admin/reports/1/${reporting_id}`}>
