@@ -1,5 +1,5 @@
 import { LOGIN, SET_LOGOUT } from '../actions/action';
-import { CREATE_EDITING_MEMBER_NAME, CREATE_EDITING_MEMBER_ROLE } from '../actions/council';
+import { CREATE_EDITING_MEMBER_FIRSTNAME, CREATE_EDITING_MEMBER_LASTNAME, CREATE_EDITING_MEMBER_NAME, CREATE_EDITING_MEMBER_PHOTO, CREATE_EDITING_MEMBER_ROLE } from '../actions/council';
 import { CHANGE_CURRENT_CHECKBOX_REPORTING, ERASE_REPORTING_FIELDS } from '../actions/reporting';
 import { SET_REPORTING_ERROR } from '../actions/reports';
 import {
@@ -99,23 +99,27 @@ const reducer = (state = initialState, action = {}) => {
         ...state,
         successMessage: action.value,
       };
-    default:
-    case SET_VALUE_EDITING_MEMBER:
-      return {
-        ...state,
-        editingMemberName: action.editingMemberName,
-        editingMemberRole: action.editingMemberRole,
-      };
-    case CREATE_EDITING_MEMBER_NAME: 
-      return {
-        ...state,
-        [action.key]: action.value,
-      };
-    case CREATE_EDITING_MEMBER_ROLE:
-      return {
-        ...state,
-        [action.key]: action.value
-      };
+      case CREATE_EDITING_MEMBER_LASTNAME:
+        return {
+          ...state,
+          [action.key]: action.value
+        };
+      case CREATE_EDITING_MEMBER_FIRSTNAME:
+        return {
+          ...state,
+          [action.key]: action.value
+        };
+      case CREATE_EDITING_MEMBER_ROLE:
+        return {
+          ...state,
+          [action.key]: action.value
+        };
+      case CREATE_EDITING_MEMBER_PHOTO:
+        return {
+          ...state,
+          [action.key]: action.value
+        };
+      default:
       return state;
   }
 };

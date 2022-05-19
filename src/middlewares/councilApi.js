@@ -49,7 +49,7 @@ const councilApi = (store) => (next) => (action) => {
       instance.patch(`/admin/council/1/${action.id}`, {
         first_name: action.firstName,
         last_name: action.lastName,
-        photo: 'https://images.generated.photos/pUdPEX9EX1AY-gbcRKI5nJ8H7fKlthV5oJS4lGhFJlc/rs:fit:512:512/wm:0.95:sowe:18:18:0.33/czM6Ly9pY29uczgu/Z3Bob3Rvcy1wcm9k/LnBob3Rvcy92M18w/MjI5NDQzLmpwZw.jpg',
+        photo: action.photo,
         role: action.role,
         town_hall_id: 1,
       })

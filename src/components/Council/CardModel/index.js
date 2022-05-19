@@ -1,9 +1,9 @@
 // import PropTypes from 'prop-types';
 import { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { Card, Image,Icon, Button, Confirm } from 'semantic-ui-react';
+import { Card, Image,Icon, Button, Confirm, Header, Modal, Input } from 'semantic-ui-react';
 
-import { createEditingMember, createEditingMemberName, createEditingMemberRole, deleteCouncilMembers, patchCouncilMembers, toggleEditingMember } from '../../../actions/council';
+import { createEditingMember, createEditingMemberFirstName, createEditingMemberLastName, createEditingMemberName, createEditingMemberPhoto, createEditingMemberRole, deleteCouncilMembers, patchCouncilMembers, toggleEditingMember } from '../../../actions/council';
 import Field from '../../Field'
 
 
@@ -11,8 +11,10 @@ function CardModel({ imageName, name, role, ...card }) {
   const dispatch = useDispatch();
   const adminLogged = useSelector((state) => state.login.logged);
   const isOpenModal = useSelector((state) => state.council[`isOpenModalMember-${card.town_hall_staff_id}`]);
-  const nameValue = useSelector((state) => state.utilities[`nameMember-${card.town_hall_staff_id}`]);
+  const lastNameValue = useSelector((state) => state.utilities[`lastNameMember-${card.town_hall_staff_id}`]);
+  const firstNameValue = useSelector((state) => state.utilities[`firstNameMember-${card.town_hall_staff_id}`]);
   const roleValue = useSelector((state) => state.utilities[`roleMember-${card.town_hall_staff_id}`]);
+  const photoValue = useSelector((state) => state.utilities[`photoMember-${card.town_hall_staff_id}`])
   // const coucou = useSelector((state) => state.council);
   // console.log(coucou);
   
@@ -22,73 +24,111 @@ function CardModel({ imageName, name, role, ...card }) {
     console.log('coucou');
     setConfirm(!confirm);
   };
-
+  // Management of opening editing member
+  function ModalExampleModal() {
+    const [open, setOpen] = useState(false)
+  }
+  /**
+   *  Trigger opening editing member
+   *  @open modal corresponding at id member staff
+   */ 
   const handleClick = () => {
     dispatch(toggleEditingMember(`isOpenModalMember-${card.town_hall_staff_id}`));
   }
 
   const confirmDeleteClick = (event) => {
     const id = event.target.closest('.dimmable').querySelector(`.card-${card.town_hall_staff_id}`).getAttribute('name');
-    console.log(id);
     dispatch(deleteCouncilMembers(id));
   }
 
   const handleSubmit = (event) => {
     event.preventDefault();
-    const id = event.target.closest(`.card-${card.town_hall_staff_id}`).getAttribute('name');
-    let firstName, lastName;
-    const nameValueSplit = nameValue.split(" ");
-    if (nameValueSplit.length > 2) {
-        firstName = `${nameValueSplit[0]} ${nameValueSplit[1]}`;
-        lastName = `${nameValueSplit[2]}` 
-      } else {
-          firstName = `${nameValueSplit[0]}`;
-          lastName = `${nameValueSplit[1]}`
-        }
-    console.log(isOpenModal);
+    // const id = event.target.closest(`.card-${card.town_hall_staff_id}`).getAttribute('name');
+    const id = event.target.closest('.dimmable').querySelector(`.card-${card.town_hall_staff_id}`).getAttribute('name');
+    console.log(id);
+    // let firstName, lastName;
+    // const nameValueSplit = nameValue.split(" ");
+    // if (nameValueSplit.length > 2) {
+    //     firstName = `${nameValueSplit[0]} ${nameValueSplit[1]}`;
+    //     lastName = `${nameValueSplit[2]}` 
+    //   } else {
+    //       firstName = `${nameValueSplit[0]}`;
+    //       lastName = `${nameValueSplit[1]}`
+    //     }
+    // console.log(isOpenModal);
     dispatch(toggleEditingMember(`isOpenModalMember-${card.town_hall_staff_id}`)),
-    dispatch(patchCouncilMembers(firstName, lastName, roleValue, id));
+    dispatch(patchCouncilMembers(photoValue, firstNameValue, lastNameValue, roleValue, id));
   }
   
   useEffect(() => {
     dispatch(createEditingMember(`isOpenModalMember-${card.town_hall_staff_id}`),
-    dispatch(createEditingMemberName(`${card.first_name} ${card.last_name}`, `nameMember-${card.town_hall_staff_id}`)),
+    dispatch(createEditingMemberLastName(card.last_name, `lastNameMember-${card.town_hall_staff_id}`)),
+    dispatch(createEditingMemberFirstName(card.first_name, `firstNameMember-${card.town_hall_staff_id}`)),
     dispatch(createEditingMemberRole(role, `roleMember-${card.town_hall_staff_id}`)),
+    dispatch(createEditingMemberPhoto(card.photo, `photoMember-${card.town_hall_staff_id}`)),
   )}, [])
 
   return (
     <Card className={`card-${card.town_hall_staff_id}`} name={card.town_hall_staff_id}>
 
       {isOpenModal && (
-          <form className='memberEditing-form' onSubmit={handleSubmit}>
-          <Button className="memberEditing-button">Charger une photo</Button>
-          <Field 
-            error
-            type="text"
-            className="memberEditing-input"
-            placeholder="Prénom Nom"
-            value={nameValue}
-            name={`nameMember-${card.town_hall_staff_id}`}
-            title="Nom et prénom"
-            icon=""
-          />
-          <Field 
-            error
-            type="text"
-            className="memberEditing-input"
-            placeholder="Fonction"
-            value={roleValue}
-            name={`roleMember-${card.town_hall_staff_id}`}
-            title="Fonction"
-            icon=""
-          />
-          <Button
-            className="memberEditing-button"
-          >
-            Valider
+      <Modal
+        className='modalEditingCouncilMember'
+        onClose={() => setOpen(false)}
+        onOpen={() => setOpen(true)}
+        open={open}
+      >
+      <Modal.Header>Editer ce membre</Modal.Header>
+        <Modal.Content image>
+          <Image size='medium' src={photoValue} wrapped />
+          <div className="modal-inputs">
+            <Field
+              icon='picture'
+              iconPosition='left'
+              value={photoValue}
+              name={`photoMember-${card.town_hall_staff_id}`}
+              placeholder='URL de la photo'
+              title='Photo'
+            />
+            <Field
+              icon='user'
+              iconPosition='left'
+              value={firstNameValue}
+              name={`firstNameMember-${card.town_hall_staff_id}`}
+              placeholder='Prénom du membre'
+              title='Prénom'
+            />
+            <Field
+              icon='user'
+              iconPosition='left'
+              value={lastNameValue}
+              name={`lastNameMember-${card.town_hall_staff_id}`}
+              placeholder='Nom du membre'
+              title='Nom'
+            />
+            <Field
+              icon='book'
+              iconPosition='left'
+              value={roleValue}
+              name={`roleMember-${card.town_hall_staff_id}`}
+              placeholder='Fonction du membre'
+              title='Fonction'
+            />
+          </div>
+        </Modal.Content>
+        <Modal.Actions className='modalEditingCouncilMember-buttons'>
+          <Button color='red' onClick={handleClick}>
+            Annuler
           </Button>
-          
-        </form>
+          <Button
+            content="Mettre à jour"
+            labelPosition='right'
+            icon='checkmark'
+            onClick={handleSubmit}
+            positive
+          />
+        </Modal.Actions>
+      </Modal>
       )}
 
       {!isOpenModal && (

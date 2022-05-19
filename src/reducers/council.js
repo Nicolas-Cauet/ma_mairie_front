@@ -1,4 +1,4 @@
-import { ADD_COUNCIL_MEMBERS, CREATE_EDITING_MEMBER, CREATE_EDITING_MEMBER_NAME, CREATE_EDITING_MEMBER_ROLE, SET_COUNCIL_MEMBERS, TOGGLE_EDITING_MEMBER } from '../actions/council';
+import { ADD_COUNCIL_MEMBERS, CREATE_EDITING_MEMBER, CREATE_EDITING_MEMBER_FIRSTNAME, CREATE_EDITING_MEMBER_LASTNAME, CREATE_EDITING_MEMBER_NAME, CREATE_EDITING_MEMBER_PHOTO, CREATE_EDITING_MEMBER_ROLE, SET_COUNCIL_MEMBERS, TOGGLE_EDITING_MEMBER } from '../actions/council';
 import CardModel from '../components/Council/CardModel';
 import whiteImage from '../assets/images/council/whiteImage.png';
 
@@ -55,12 +55,22 @@ const reducer = (state = initialState, action = {}) => {
         ...state,
         [action.name]: !state[action.name],
       };
-    case CREATE_EDITING_MEMBER_NAME:
+    case CREATE_EDITING_MEMBER_LASTNAME:
+      return {
+        ...state,
+        [action.key]: action.value
+      };
+    case CREATE_EDITING_MEMBER_FIRSTNAME:
       return {
         ...state,
         [action.key]: action.value
       };
     case CREATE_EDITING_MEMBER_ROLE:
+      return {
+        ...state,
+        [action.key]: action.value
+      };
+    case CREATE_EDITING_MEMBER_PHOTO:
       return {
         ...state,
         [action.key]: action.value

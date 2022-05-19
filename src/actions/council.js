@@ -19,8 +19,9 @@ export const postCouncilMembers = () => ({
 
 // PATCH council members to council page
 export const PATCH_COUNCIL_MEMBERS = 'PATCH_COUNCIL_MEMBERS';
-export const patchCouncilMembers = (firstName, lastName, role, id) => ({
+export const patchCouncilMembers = (photo, firstName, lastName, role, id) => ({
   type: PATCH_COUNCIL_MEMBERS,
+  photo,
   firstName,
   lastName,
   role,
@@ -55,9 +56,17 @@ export const createEditingMember = (name) => ({
 });
 
 // Create
-export const CREATE_EDITING_MEMBER_NAME = 'CREATE_EDITING_MEMBER_NAME';
-export const createEditingMemberName = (value, key) => ({
-  type: CREATE_EDITING_MEMBER_NAME,
+export const CREATE_EDITING_MEMBER_LASTNAME = 'CREATE_EDITING_MEMBER_LASTNAME';
+export const createEditingMemberLastName = (value, key) => ({
+  type: CREATE_EDITING_MEMBER_LASTNAME,
+  value,
+  key,
+});
+
+// Create
+export const CREATE_EDITING_MEMBER_FIRSTNAME = 'CREATE_EDITING_MEMBER_FIRSTNAME';
+export const createEditingMemberFirstName = (value, key) => ({
+  type: CREATE_EDITING_MEMBER_FIRSTNAME,
   value,
   key,
 });
@@ -66,6 +75,14 @@ export const createEditingMemberName = (value, key) => ({
 export const CREATE_EDITING_MEMBER_ROLE = 'CREATE_EDITING_MEMBER_ROLE';
 export const createEditingMemberRole = (value, key) => ({
   type: CREATE_EDITING_MEMBER_ROLE,
+  value,
+  key,
+});
+
+// Create
+export const CREATE_EDITING_MEMBER_PHOTO = 'CREATE_EDITING_MEMBER_PHOTO';
+export const createEditingMemberPhoto = (value, key) => ({
+  type: CREATE_EDITING_MEMBER_PHOTO,
   value,
   key,
 });
