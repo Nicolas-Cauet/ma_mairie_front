@@ -39,6 +39,10 @@
     display: flex;
     flex-direction: column;
     align-items: center;
+
+    &>p {
+      margin: -1rem 0 0.5rem;
+    }
   
     & .ui.input {
       margin-bottom: 1rem;
@@ -54,7 +58,7 @@
     }
   
     & .reporting-form-checkbox {
-      width: 90%;
+      width: 85%;
       margin: 1.5rem 0 0.5rem;
       display: flex ;
       flex-direction: column;
@@ -78,8 +82,16 @@
             margin: 0;
           }
         }
-  
+        & .ui.message.retail-message {
+          margin-bottom: 0.6rem;
+        }
+        & .content.active {
+          width: 100%;
+        }
         & .ui.message {
+          text-align: center;
+          width: 100%;
+          margin-bottom: 2rem;
           padding: 1rem;
         }
       }
@@ -107,13 +119,7 @@
   }
 }
 
-.ui.message {
-  text-align: center;
-  margin: 1rem auto;
-  width: 80%;
-  margin-bottom: 2rem;
-}
-
 .ui.form>p {
   margin: -1rem 0 0.5rem;
 }
+
