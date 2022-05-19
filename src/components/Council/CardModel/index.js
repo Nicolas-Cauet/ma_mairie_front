@@ -60,7 +60,7 @@ function CardModel({ imageName, name, role, ...card }) {
     <Card className={`card-${card.town_hall_staff_id}`} name={card.town_hall_staff_id}>
 
       {isOpenModal && (
-        <form className='memberEditing-form' onSubmit={handleSubmit}>
+          <form className='memberEditing-form' onSubmit={handleSubmit}>
           <Button className="memberEditing-button">Charger une photo</Button>
           <Field 
             error
@@ -100,7 +100,7 @@ function CardModel({ imageName, name, role, ...card }) {
               <span className="fonction">{role}</span>
             </Card.Meta>
           </Card.Content>
-        </> 
+        </>  
       )}
 
       {adminLogged && (

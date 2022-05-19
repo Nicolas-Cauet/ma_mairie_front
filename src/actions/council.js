@@ -40,14 +40,14 @@ export const addCouncilMembers = () => ({
   type: ADD_COUNCIL_MEMBERS,
 });
 
-// open council member editing menu
+// Open council member editing menu
 export const TOGGLE_EDITING_MEMBER = 'TOGGLE_EDITING_MEMBER';
 export const toggleEditingMember = (name) => ({
   type: TOGGLE_EDITING_MEMBER,
   name,
 });
 
-// open council member editing menu
+// Open council member editing menu
 export const CREATE_EDITING_MEMBER = 'CREATE_EDITING_MEMBER';
 export const createEditingMember = (name) => ({
   type: CREATE_EDITING_MEMBER,
