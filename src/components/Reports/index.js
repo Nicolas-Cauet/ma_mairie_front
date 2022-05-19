@@ -96,7 +96,7 @@ function Reports() {
       {/* Section for reporting action */}
       {isReporting && (<Reporting />)}
 
-      {/* !logged && */(
+      { !logged && (
         <ReportButton />
       )}
 
