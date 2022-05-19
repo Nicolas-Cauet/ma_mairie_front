@@ -5,6 +5,7 @@ import {
   Form,
   Label,
   Message,
+  TextArea,
 } from 'semantic-ui-react';
 // import { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
@@ -12,11 +13,11 @@ import { useParams, useNavigate } from 'react-router-dom';
 import Moment from 'react-moment';
 
 import './style.scss';
-import Field from '../Field';
 import { changeCheckboxAdminReporting, submitModerateReporting } from '../../actions/reports';
-import { returnMessageError, returnMessageSuccess } from '../../actions/utilities';
+import { changeCurrentField, returnMessageError, returnMessageSuccess } from '../../actions/utilities';
+// import InfoMessage from '../InfoMessage';
 
-function ReportAdmin() {
+function ReportAdmin({ type }) {
   const params = useParams();
   const report = useSelector((state) => state.reports.reportsAdminList
     // eslint-disable-next-line eqeqeq
@@ -58,18 +59,22 @@ function ReportAdmin() {
     navigate('/admin/reports/1');
   };
 
+  const handleChange = (event) => {
+    dispatch(changeCurrentField(event.target.value, event.target.name));
+  };
+
   return (
     <div className="reportAdmin">
+      <div className="reportAdmin-date">
+        <Label color="yellow" className="reportAdmin-category">Catégorie:
+          {report.reporting_category}
+        </Label>
+        <Moment format="DD/MM/YYYY" className="reportAdmin-date">{report.created_at}</Moment>
+      </div>
       <div className="reportAdmin-header">
         <div className="reportAdmin-title">
           <h2>{report.title}</h2>
           <span className={`reportAdmin-statut reportAdmin-statut--${report.reporting_statut.replace(' ', '_')}`}>{report.reporting_statut}</span>
-        </div>
-        <div className="reportAdmin-date">
-          <Label color="yellow" className="reportAdmin-category">Catégorie:
-            {report.reporting_category}
-          </Label>
-          <Moment format="DD/MM/YYYY" className="reportAdmin-date">{report.created_at}</Moment>
         </div>
       </div>
       <div className="reportAdmin-info">
@@ -112,12 +117,13 @@ function ReportAdmin() {
               </label>
             </div>
           </div>
-          <Field
-            type="text"
+          <TextArea
+            // type="text"
             className="reportAdmin-response"
             placeholder="Votre réponse..."
             value={admin_text}
-            title="Réponse"
+            onChange={handleChange}
+            // title="Réponse"
             name="admin_text"
           />
         </Form>
@@ -139,10 +145,11 @@ function ReportAdmin() {
       </div>
 
       { successMessage && (
-      <Message positive>
-        <p>Le signalement "{report.title}" a bien été mis à jour</p>
-        <Button content="Retour au signalements" onClick={backToReportList} />
-      </Message>
+        <Message>
+          {/* // <InfoMessage type={positive}> */}
+          <p>Le signalement "{report.title}" a bien été mis à jour</p>
+          <Button content="Retour au signalements" onClick={backToReportList} />
+        </Message>
       )}
       { errorMessage && (
       <Message negative>

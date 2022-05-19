@@ -2,6 +2,7 @@
 import PropTypes from 'prop-types';
 import { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
+// eslint-disable-next-line import/no-extraneous-dependencies
 import moment from 'moment';
 import { Dropdown, Loader } from 'semantic-ui-react';
 import {

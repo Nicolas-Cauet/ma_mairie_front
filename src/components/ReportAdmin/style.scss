@@ -10,12 +10,12 @@
         display: flex;
         justify-content: center;
         align-items: center;
-        margin: 2rem 0 3rem;
+        margin: 2rem 0 0;
     }
 
     &-statut {
         color: white;
-        padding: 0.4rem;
+        padding: 0.3rem;
         border-radius: 0.3rem;
         &--Résolu {
             background-color: vars.$statusOkColor;
@@ -40,6 +40,8 @@
     &-date {
         display: flex;
         justify-content: space-around;
+        margin-top: 1rem;
+        align-items: self-end;
     }
     
     &-newStatut {

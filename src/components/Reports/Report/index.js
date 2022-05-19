@@ -1,5 +1,5 @@
 import PropTypes from 'prop-types';
-import { useEffect, useState } from 'react';
+import { useState } from 'react';
 
 import { useDispatch, useSelector } from 'react-redux';
 import {
@@ -8,6 +8,7 @@ import {
   Icon,
   Label,
   Confirm,
+  Message,
 } from 'semantic-ui-react';
 import { Link } from 'react-router-dom';
 import Moment from 'react-moment';
@@ -72,12 +73,16 @@ function Report({
           </Accordion.Title>
 
           <Accordion.Content active={activeIndex === reporting_id}>
-            <p>
-              Message du signalant : {user_text}
-            </p>
-            <p>
-              Réponse de la mairie : {admin_text}
-            </p>
+            <Message color="grey">
+              <p>
+                Message du signalant : {user_text}
+              </p>
+            </Message>
+            <Message>
+              <p>
+                Réponse de la mairie : {admin_text}
+              </p>
+            </Message>
             {logged && window.location.pathname.includes('admin') && (
               <div className="report-button">
                 <Link to={`/admin/reports/1/${reporting_id}`}>
