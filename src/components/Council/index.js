@@ -18,7 +18,6 @@ function Council() {
 
   // Click on Plus button
   const handleClick = () => {
-    // dispatch(addCouncilMembers());
     dispatch(postCouncilMembers());
     console.log('coucou');
   };
