@@ -8,7 +8,13 @@ import { changeCurrentField } from '../../actions/utilities';
 import './style.scss';
 
 function Field({
-  type, value, title, placeholder, icon, inputError, name,
+  type,
+  value,
+  title,
+  placeholder,
+  icon,
+  inputError,
+  name,
 }) {
   const dispatch = useDispatch();
   const handleChange = (event) => {

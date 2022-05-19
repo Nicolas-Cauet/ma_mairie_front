@@ -1,4 +1,3 @@
-// import PropTypes from 'prop-types';
 import { Message } from 'semantic-ui-react';
 
 import './style.scss';
@@ -13,9 +12,5 @@ function InProgress() {
     />
   );
 }
-
-// InProgress.propTypes = {
-
-// };
 
 export default InProgress;
