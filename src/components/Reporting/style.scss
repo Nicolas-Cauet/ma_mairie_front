@@ -1,6 +1,15 @@
 .reporting-form {
   margin-bottom: 2rem;
 
+  & .message-container {
+    display: flex;
+    justify-content: center;
+    & .ui.negative.message {
+      text-align: center;
+      width: 85%;
+    }
+  }
+
   & .ui.basic.label {
     color: #af0202;
     border-color: #af0202;

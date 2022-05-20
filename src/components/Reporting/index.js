@@ -259,11 +259,13 @@ function Reporting() {
             </Button>
           </Form.Field>
         </Form>
-        {loginMessage && (
-          loginMessageColor
-            ? <Message className="reports-message" positive>  <p>{loginMessage}</p> </Message>
-            : <Message className="reports-message" negative>  <p>{loginMessage}</p> </Message>
-        )}
+        <div className="message-container">
+          {loginMessage && (
+            loginMessageColor
+              ? <Message className="reports-message" positive>  <p>{loginMessage}</p> </Message>
+              : <Message className="reports-message" negative>  <p>{loginMessage}</p> </Message>
+          )}
+        </div>
 
       </section>
       )}
