@@ -36,3 +36,45 @@ export const CHANGE_CURRENT_CHECKBOX_REPORTING = 'CHANGE_CURRENT_CHECKBOX_REPORT
 export const changeCurrentCheckBoxReporting = () => ({
   type: CHANGE_CURRENT_CHECKBOX_REPORTING,
 });
+
+// e
+export const RESET_ERROR_REPORTING = 'RESET_ERROR_REPORTING';
+export const resetErrorReporting = () => ({
+  type: RESET_ERROR_REPORTING,
+});
+
+// e
+export const ERROR_REPORTING_CATEGORY = 'ERROR_REPORTING_CATEGORY';
+export const errorReportingCategory = () => ({
+  type: ERROR_REPORTING_CATEGORY,
+});
+
+// e
+export const ERROR_REPORTING_TITLE = 'ERROR_REPORTING_TITLE';
+export const errorReportingTitle = () => ({
+  type: ERROR_REPORTING_TITLE,
+});
+
+// e
+export const ERROR_REPORTING_DESCRIPTION = 'ERROR_REPORTING_DESCRIPTION';
+export const errorReportingDescription = () => ({
+  type: ERROR_REPORTING_DESCRIPTION,
+});
+
+// e
+export const ERROR_REPORTING_EMAIL = 'ERROR_REPORTING_EMAIL';
+export const errorReportingEmail = () => ({
+  type: ERROR_REPORTING_EMAIL,
+});
+
+// e
+export const ERROR_REPORTING_FIRSTNAME = 'ERROR_REPORTING_FIRSTNAME';
+export const errorReportingFirstname = () => ({
+  type: ERROR_REPORTING_FIRSTNAME,
+});
+
+// e
+export const ERROR_REPORTING_LASTNAME = 'ERROR_REPORTING_LASTNAME';
+export const errorReportingLastname = () => ({
+  type: ERROR_REPORTING_LASTNAME,
+});

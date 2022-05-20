@@ -2,19 +2,22 @@
 // import PropTypes from 'prop-types';
 import { useDispatch, useSelector } from 'react-redux';
 import {
-  Button,
-  Checkbox,
-  Form,
-  Accordion,
-  Icon,
-  Message,
-  Dropdown,
-  Label,
+  Button, Checkbox, Form, Accordion, Icon, Message, Dropdown, Label,
 } from 'semantic-ui-react';
-import { /* submitReporting, */ changeCurrentCheckBoxReporting } from '../../actions/reporting';
+import {
+  submitReporting,
+  changeCurrentCheckBoxReporting,
+  errorReportingCategory,
+  resetErrorReporting,
+  errorReportingTitle,
+  errorReportingDescription,
+  errorReportingEmail,
+  errorReportingLastname,
+  errorReportingFirstname,
+} from '../../actions/reporting';
 import { changeCurrentCategory, changeCurrentField } from '../../actions/utilities';
-import { setActiveIndexTerms, toggleReporting /* , setReportingError */ } from '../../actions/reports';
-// import { setLoginMessage } from '../../actions/login';
+import { setActiveIndexTerms, toggleReporting } from '../../actions/reports';
+import { setLoginMessage } from '../../actions/login';
 
 import Field from '../Field';
 
@@ -29,7 +32,7 @@ function Reporting() {
   } = useSelector((state) => state.reports);
   const { loginMessage, loginMessageColor } = useSelector((state) => state.login);
   const {
-    // reporting_category,
+    reporting_category,
     reporting_title,
     reporting_description,
     reporting_email,
@@ -37,63 +40,65 @@ function Reporting() {
     reporting_lastName,
     reporting_phone,
     reporting_checkBox,
-    // eslint-disable-next-line no-unused-vars
-    reporting_error,
   } = useSelector((state) => state.utilities);
+  const {
+    isReporting_categoryError,
+    isReporting_titleError,
+    isReporting_descriptionError,
+    isReporting_emailError,
+    isReporting_firstnameError,
+    isReporting_lastnameError,
+  } = useSelector((state) => state.reporting);
 
-  const coucou = [
-    reporting_title,
-    reporting_description,
-    reporting_email,
-    reporting_firstName,
-    reporting_lastName,
-    reporting_phone,
-  ];
-
-  const handleClick = (titleProps) => {
+  const handleClick = (e, titleProps) => {
     const { index } = titleProps;
     const newIndex = activeIndexTerms === index ? -1 : index;
     dispatch(setActiveIndexTerms(newIndex));
   };
 
   const handleSubmit = () => {
-    const coucou2 = coucou.filter((object) => {
-      if (object.key === '') {
-        return object.name;
+    dispatch(resetErrorReporting());
+    if (reporting_checkBox
+      && reporting_category !== ''
+      && reporting_title !== ''
+      && reporting_description !== ''
+      && reporting_email !== ''
+      && reporting_firstName !== ''
+      && reporting_lastName !== ''
+    ) {
+      dispatch(submitReporting(
+        reporting_category,
+        reporting_title,
+        reporting_description,
+        reporting_email,
+        reporting_firstName,
+        reporting_lastName,
+        reporting_phone,
+      ));
+    } else if (!reporting_checkBox) {
+      dispatch(setLoginMessage('Vous devez accepter les termes et conditions pour pouvoir signaler un événement', false));
+    } else {
+      dispatch(setLoginMessage('Vous devez compléter les champs obligatoires', false));
+
+      if (reporting_category === '') {
+        dispatch(errorReportingCategory());
       }
-    });
-    console.log(coucou);
-    // if (reporting_checkBox
-    //   || reporting_category !== ''
-    //   || reporting_title !== ''
-    //   || reporting_description !== ''
-    //   || reporting_email !== ''
-    //   || reporting_firstName !== ''
-    //   || reporting_lastName !== ''
-    // ) {
-    //   console.log('dans condition');
-    //   dispatch(setReportingError(true));
-    //   dispatch(setLoginMessage('Les champs indiqués ne peuvent pas être vide ', false));
-
-    //   if (reporting_category !== '') {
-    //     dispatch(actionquichangeisErrorReporting_category());
-    //   }
-    //   reporting_category !== '' ? false : true;
-
-    // } else if (!reporting_checkBox) {
-    // eslint-disable-next-line max-len
-    //   dispatch(setLoginMessage('Vous devez accepter les termes et conditions pour pouvoir signaler un événement', false));
-    // } else {
-    //   dispatch(submitReporting(
-    //     reporting_category,
-    //     reporting_title,
-    //     reporting_description,
-    //     reporting_email,
-    //     reporting_firstName,
-    //     reporting_lastName,
-    //     reporting_phone,
-    //   ));
-    // }
+      if (reporting_title === '') {
+        dispatch(errorReportingTitle());
+      }
+      if (reporting_description === '') {
+        dispatch(errorReportingDescription());
+      }
+      if (reporting_email === '') {
+        dispatch(errorReportingEmail());
+      }
+      if (reporting_lastName === '') {
+        dispatch(errorReportingLastname());
+      }
+      if (reporting_firstName === '') {
+        dispatch(errorReportingFirstname());
+      }
+    }
   };
 
   const handleClickBack = () => {
@@ -121,60 +126,87 @@ function Reporting() {
           <section className="filter-section">
             <Dropdown
               className="filter-dropdown categories"
-              placeholder="Catégories *"
+              placeholder="Catégories"
               fluid
               selection
               options={categoriesOptions}
               onChange={handleChangeCategory}
             />
           </section>
+          {isReporting_categoryError && (
           <Label basic color="red" pointing>
             Please enter a value
           </Label>
+          )}
           <Field
             type="text"
             className="reporting-title ddd"
-            placeholder="Titre *"
+            placeholder="Titre"
             value={reporting_title}
             title="Titre"
             name="reporting_title"
             icon="comment alternate"
           />
+          {isReporting_titleError && (
+          <Label basic color="red" pointing>
+            Please enter a value
+          </Label>
+          )}
           <Form.TextArea
             value={reporting_description}
             title="Description"
             name="reporting_description"
             className="reporting-form-textarea"
-            placeholder="Description : Que souhaitez vous signaler ? *"
+            placeholder="Description : Que souhaitez vous signaler ?"
             onChange={handleChangeDescription}
           />
+          {isReporting_descriptionError && (
+          <Label basic color="red" pointing>
+            Please enter a value
+          </Label>
+          )}
           <Field
             type="email"
             className="reporting-email"
-            placeholder="Email *"
+            placeholder="Email"
             value={reporting_email}
             title="Email"
             name="reporting_email"
             icon="at"
           />
+          {isReporting_emailError && (
+          <Label basic color="red" pointing>
+            Please enter a value
+          </Label>
+          )}
           <Field
             type="text"
             className="reporting-firstname"
-            placeholder="Prénom *"
+            placeholder="Prénom"
             value={reporting_firstName}
             name="reporting_firstName"
             title="Prénom"
             icon="user"
           />
+          {isReporting_firstnameError && (
+          <Label basic color="red" pointing>
+            Please enter a value
+          </Label>
+          )}
           <Field
             type="text"
             className="reporting-lastname"
-            placeholder="Nom *"
+            placeholder="Nom"
             value={reporting_lastName}
             name="reporting_lastName"
             title="Nom"
             icon="user"
           />
+          {isReporting_lastnameError && (
+          <Label basic color="red" pointing>
+            Please enter a value
+          </Label>
+          )}
           <Field
             type="tel"
             className="reporting-phone"
@@ -184,7 +216,6 @@ function Reporting() {
             name="reporting_phone"
             icon="phone"
           />
-          <p className="reporting-rule">Les champs suivis d'une étoile sont obligatoires</p>
           <Form.Field className="reporting-form-checkbox">
             <Checkbox
               label="J'accepte les termes et conditions"
@@ -207,9 +238,8 @@ function Reporting() {
               <Accordion.Content active={activeIndexTerms === 0}>
 
                 <Message
-                  className="retail-message"
-                  content="En acceptant les termes et les conditions de ce formulaire, j'autorise
-                mamairie.fr à stocker mon addresse IP durant 30j, afin que mamairie.fr puisse se prém.unir en cas d'événement pouvant compromettre la sécurité du site."
+                  content="En acceptant les termes et les conditions de ce formualire, j'autorise
+                mamairie.fr à stocker mon addresse IP durant 30j, afin de ...."
                 />
               </Accordion.Content>
             </Accordion>

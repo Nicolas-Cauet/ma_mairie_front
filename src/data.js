@@ -72,183 +72,237 @@ councilMembers: [
   // ],
 
 
-  // import PropTypes from 'prop-types';
-import { useEffect, useState } from 'react';
+ // import PropTypes from 'prop-types';
 import { useDispatch, useSelector } from 'react-redux';
 import {
-  Card,
-  Image,
-  Icon,
   Button,
-  Confirm,
-  Modal,
+  Checkbox,
+  Form,
+  Accordion,
+  Icon,
+  Message,
+  Dropdown,
+  Label,
 } from 'semantic-ui-react';
+import { changeCurrentCheckBoxReporting, submitReporting } from '../../actions/reporting';
+import { changeCurrentCategory, changeCurrentField } from '../../actions/utilities';
+import { setActiveIndexTerms, setReportingError, toggleReporting } from '../../actions/reports';
+import { setLoginMessage } from '../../actions/login';
+import { setLoginMessage } from '../../actions/action';
 
-import {
-  createEditingMember,
-  createEditingMemberFirstName,
-  createEditingMemberLastName,
-  createEditingMemberPhoto,
-  createEditingMemberRole,
-  deleteCouncilMembers,
-  patchCouncilMembers,
-  toggleEditingMember,
-} from '../../../actions/council';
+import Field from '../Field';
 
-import Field from '../../Field';
+import './style.scss';
 
-function CardModel({ ...card }) {
+function Reporting() {
   const dispatch = useDispatch();
-  const adminLogged = useSelector((state) => state.login.logged);
-  const isOpenModal = useSelector((state) => state.council[`isOpenModalMember-${card.town_hall_staff_id}`]);
-  const lastNameValue = useSelector((state) => state.utilities[`lastNameMember-${card.town_hall_staff_id}`]);
-  const firstNameValue = useSelector((state) => state.utilities[`firstNameMember-${card.town_hall_staff_id}`]);
-  const roleValue = useSelector((state) => state.utilities[`roleMember-${card.town_hall_staff_id}`]);
-  const photoValue = useSelector((state) => state.utilities[`photoMember-${card.town_hall_staff_id}`]);
-  // const coucou = useSelector((state) => state.council);
-  // console.log(coucou);
-  console.log(isOpenModal);
-  // Confirm component to delete a card member
-  const [confirm, setConfirm] = useState(false);
-  const toggleDeleteConfirm = () => {
-    console.log('coucou');
-    setConfirm(!confirm);
-  };
-  // Management of opening editing member
-  // function ModalExampleModal() {
-  //   const [open, setOpen] = useState(false)
-  // }
-  /**
-   *  Trigger opening editing member
-   *  @open modal corresponding at id member staff
-   */
-  const handleClick = () => {
-    dispatch(toggleEditingMember(`isOpenModalMember-${card.town_hall_staff_id}`));
+  const {
+    isReporting,
+    activeIndexTerms,
+    categoriesOptions,
+  } = useSelector((state) => state.reports);
+  const { loginMessage, loginMessageColor } = useSelector((state) => state.login);
+  
+  const {
+    reporting_category,
+    reporting_title,
+    reporting_description,
+    reporting_email,
+    reporting_firstName,
+    reporting_lastName,
+    reporting_phone,
+    reporting_checkBox,
+    reporting_error,
+  } = useSelector((state) => state.utilities);
+
+  const coucou = useSelector((state) => state.reports);
+  console.log(coucou);
+
+  const handleClick = (titleProps) => {
+    const { index } = titleProps;
+    const newIndex = activeIndexTerms === index ? -1 : index;
+    dispatch(setActiveIndexTerms(newIndex));
   };
 
-  const confirmDeleteClick = (event) => {
-    const id = event.target.closest('.dimmable').querySelector(`.card-${card.town_hall_staff_id}`).getAttribute('name');
-    dispatch(deleteCouncilMembers(id));
+  const handleSubmit = () => {
+    if (reporting_checkBox
+      || reporting_category !== ''
+      || reporting_title !== ''
+      || reporting_description !== ''
+      || reporting_email !== ''
+      || reporting_firstName !== ''
+      || reporting_lastName !== ''
+    ) {
+      console.log('dans condition');
+      dispatch(setReportingError(true));
+      dispatch(setLoginMessage('Les champs indiqués ne peuvent pas être vide ', false));
+
+      if (reporting_category !== '') {
+        dispatch(actionquichangeisErrorReporting_category());
+      };
+
+    } else if (!reporting_checkBox) {
+      dispatch(setLoginMessage('Vous devez accepter les termes et conditions pour pouvoir signaler un événement', false));
+    } else {
+      dispatch(submitReporting(
+        reporting_category,
+        reporting_title,
+        reporting_description,
+        reporting_email,
+        reporting_firstName,
+        reporting_lastName,
+        reporting_phone,
+      ));
+    }
   };
 
-  const handleSubmit = (event) => {
-    event.preventDefault();
-    // const id = event.target.closest(`.card-${card.town_hall_staff_id}`).getAttribute('name');
-    const id = event.target.closest('.dimmable').querySelector(`.card-${card.town_hall_staff_id}`).getAttribute('name');
-    console.log(id);
-    dispatch(toggleEditingMember(`isOpenModalMember-${card.town_hall_staff_id}`));
-    dispatch(patchCouncilMembers(photoValue, firstNameValue, lastNameValue, roleValue, id));
+  const handleClickBack = () => {
+    dispatch(toggleReporting());
   };
 
-  useEffect(() => {
-    dispatch(createEditingMember(`isOpenModalMember-${card.town_hall_staff_id}`));
-    dispatch(createEditingMemberLastName(card.last_name, `lastNameMember-${card.town_hall_staff_id}`));
-    dispatch(createEditingMemberFirstName(card.first_name, `firstNameMember-${card.town_hall_staff_id}`));
-    dispatch(createEditingMemberRole(card.role, `roleMember-${card.town_hall_staff_id}`));
-    dispatch(createEditingMemberPhoto(card.photo, `photoMember-${card.town_hall_staff_id}`));
-  }, []);
+  const handleChangeCategory = (event) => {
+    dispatch(changeCurrentCategory(event.target.textContent));
+  };
+
+  const handleChangeDescription = (event) => {
+    dispatch(changeCurrentField(event.target.value, event.target.name));
+  };
+
+  const handleCheckBox = () => {
+    dispatch(changeCurrentCheckBoxReporting());
+  };
 
   return (
-    <Card className={`card-${card.town_hall_staff_id}`} name={card.town_hall_staff_id}>
-
-      {isOpenModal && (
-      <Modal
-        className="modalEditingCouncilMember"
-        // onClose={() => setOpen(false)}
-        // onOpen={() => setOpen(true)}
-        // open={open}
-      >
-        <Modal.Header>Editer ce membre</Modal.Header>
-        <Modal.Content image>
-          <Image size="medium" src={photoValue} wrapped />
-          <div className="modal-inputs">
-            <Field
-              icon="picture"
-              iconPosition="left"
-              value={photoValue}
-              name={`photoMember-${card.town_hall_staff_id}`}
-              placeholder="URL de la photo"
-              title="Photo"
+    <>
+      {isReporting && (
+      <section className="reporting-form">
+        <h1>Signaler un événement</h1>
+        <Form className="reporting-form">
+          <section className="filter-section">
+            <Dropdown
+              className="filter-dropdown categories"
+              placeholder="Catégories *"
+              fluid
+              selection
+              options={categoriesOptions}
+              onChange={handleChangeCategory}
             />
-            <Field
-              icon="user"
-              iconPosition="left"
-              value={firstNameValue}
-              name={`firstNameMember-${card.town_hall_staff_id}`}
-              placeholder="Prénom du membre"
-              title="Prénom"
-            />
-            <Field
-              icon="user"
-              iconPosition="left"
-              value={lastNameValue}
-              name={`lastNameMember-${card.town_hall_staff_id}`}
-              placeholder="Nom du membre"
-              title="Nom"
-            />
-            <Field
-              icon="book"
-              iconPosition="left"
-              value={roleValue}
-              name={`roleMember-${card.town_hall_staff_id}`}
-              placeholder="Fonction du membre"
-              title="Fonction"
-            />
-          </div>
-        </Modal.Content>
-        <Modal.Actions className="modalEditingCouncilMember-buttons">
-          <Button color="red" onClick={handleClick}>
-            Annuler
-          </Button>
-          <Button
-            content="Mettre à jour"
-            labelPosition="right"
-            icon="checkmark"
-            onClick={handleSubmit}
-            positive
+          </section>
+          <Label basic color="red" pointing>
+            Please enter a value
+          </Label>
+          <Field
+            type="text"
+            className="reporting-title ddd"
+            placeholder="Titre *"
+            value={reporting_title}
+            title="Titre"
+            name="reporting_title"
+            icon="comment alternate"
           />
-        </Modal.Actions>
-      </Modal>
-      )}
-
-      {!isOpenModal && (
-        <>
-          <Image src={photoValue} wrapped ui={false} />
-          <Card.Content>
-            <Card.Header className="card-header">{`${firstNameValue} ${lastNameValue}`}</Card.Header>
-            <Card.Meta>
-              <span className="fonction">{roleValue}</span>
-            </Card.Meta>
-          </Card.Content>
-        </>
-      )}
-
-      {adminLogged && (
-        <>
-          <div className="editingIcon">
-            <Icon name="pencil alternate" onClick={handleClick} />
-          </div>
-          <div className="deleteIcon">
-            <Icon name="close" onClick={toggleDeleteConfirm} />
-            <Confirm
-            // report="coucou"
-              content="Êtes-vous sûr de vouloir supprimer ce membre ?"
-              cancelButton="Annuler"
-              confirmButton="Supprimer"
-              open={confirm}
-              onCancel={toggleDeleteConfirm}
-              onConfirm={confirmDeleteClick}
+          <Form.TextArea
+            value={reporting_description}
+            title="Description"
+            name="reporting_description"
+            className="reporting-form-textarea"
+            placeholder="Description : Que souhaitez vous signaler ? *"
+            onChange={handleChangeDescription}
+          />
+          <Field
+            type="email"
+            className="reporting-email"
+            placeholder="Email *"
+            value={reporting_email}
+            title="Email"
+            name="reporting_email"
+            icon="at"
+          />
+          <Field
+            type="text"
+            className="reporting-firstname"
+            placeholder="Prénom *"
+            value={reporting_firstName}
+            name="reporting_firstName"
+            title="Prénom"
+            icon="user"
+          />
+          <Field
+            type="text"
+            className="reporting-lastname"
+            placeholder="Nom *"
+            value={reporting_lastName}
+            name="reporting_lastName"
+            title="Nom"
+            icon="user"
+          />
+          <Field
+            type="tel"
+            className="reporting-phone"
+            placeholder="Téléphone"
+            value={reporting_phone}
+            title="Téléphone"
+            name="reporting_phone"
+            icon="phone"
+          />
+          <p className="reporting-rule">Les champs suivis d'une étoile sont obligatoires</p>
+          <Form.Field className="reporting-form-checkbox">
+            <Checkbox
+              label="J'accepte les termes et conditions"
+              name="reporting_checkBox"
+              title="Accepter les conditions"
+              checked={reporting_checkBox}
+              onChange={handleCheckBox}
             />
-          </div>
-        </>
+            <Accordion>
+              <Accordion.Title
+                active={activeIndexTerms === 0}
+                index={0}
+                onClick={handleClick}
+              >
+                <div className="retail-container">
+                  <p>Détails</p>
+                  <Icon name="dropdown" />
+                </div>
+              </Accordion.Title>
+              <Accordion.Content active={activeIndexTerms === 0}>
+
+                <Message
+                  className="retail-message"
+                  content="En acceptant les termes et les conditions de ce formulaire, j'autorise
+                mamairie.fr à stocker mon addresse IP durant 30j, afin que mamairie.fr puisse se prém.unir en cas d'événement pouvant compromettre la sécurité du site."
+                />
+              </Accordion.Content>
+            </Accordion>
+          </Form.Field>
+          <Form.Field className="button-validation">
+            <Button
+              type="submit"
+              className="form-submit"
+              onClick={handleSubmit}
+            >Envoyer
+            </Button>
+            <Button
+              type="button"
+              className="form-back"
+              onClick={handleClickBack}
+            >Retour
+            </Button>
+          </Form.Field>
+        </Form>
+        {loginMessage && (
+          loginMessageColor
+            ? <Message className="reports-message" positive>  <p>{loginMessage}</p> </Message>
+            : <Message className="reports-message" negative>  <p>{loginMessage}</p> </Message>
+        )}
+
+      </section>
       )}
-    </Card>
+    </>
   );
 }
 
-CardModel.propTypes = {
+// Reporting.propTypes = {
 
-};
+// };
 
-export default CardModel;
-
+export default Reporting;
