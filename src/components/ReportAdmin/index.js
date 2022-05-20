@@ -6,13 +6,16 @@ import {
   Message,
   TextArea,
 } from 'semantic-ui-react';
+import { useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { useParams, useNavigate } from 'react-router-dom';
 import Moment from 'react-moment';
 
 import './style.scss';
 import { changeCheckboxAdminReporting, submitModerateReporting } from '../../actions/reports';
-import { changeCurrentField, returnMessageError, returnMessageSuccess } from '../../actions/utilities';
+import {
+  changeCurrentField, setMessage,
+} from '../../actions/utilities';
 
 function ReportAdmin() {
   const params = useParams();
@@ -22,12 +25,13 @@ function ReportAdmin() {
 
   const dispatch = useDispatch();
 
-  const { admin_text, successMessage, errorMessage } = useSelector((state) => state.utilities);
+  const {
+    admin_text, message, messageColor,
+  } = useSelector((state) => state.utilities);
   const { reporting_statut } = useSelector((state) => state.reports);
 
   // useEffect(() => {
-  // dispatch(returnMessageSuccess(false));
-  // dispatch(returnMessageError(false));
+  //   dispatch(setMessage(''));
   // });
 
   const handleCheckbox = (event) => {
@@ -35,29 +39,40 @@ function ReportAdmin() {
     console.log(event.target.value);
   };
 
+  const [missingText, setMissingText] = useState(false);
+
+  const navigate = useNavigate();
+
   const handleSubmit = () => {
-    if (admin_text) {
+    if (admin_text && reporting_statut) {
+      setMissingText(false);
+      dispatch(changeCheckboxAdminReporting(''));
       dispatch(submitModerateReporting(
         report.reporting_id,
         report.title,
         admin_text,
         reporting_statut,
       ));
+      navigate('/admin/reports/1');
+    } else {
+      setMissingText(true);
+      dispatch(setMessage("Erreur lors de l'envoi des données", false));
     }
-    return console.log('toto');
   };
-
-  const navigate = useNavigate();
 
   const handleAbortProgress = () => {
+    setMessage(false);
+    dispatch(setMessage(''));
+    dispatch(changeCheckboxAdminReporting(''));
     navigate('/admin/reports/1');
   };
 
-  const backToReportList = () => {
-    dispatch(returnMessageSuccess(false));
-    dispatch(returnMessageError(false));
-    navigate('/admin/reports/1');
-  };
+  // const backToReportList = () => {
+  //   dispatch(setMessage(''));
+  //   // dispatch(returnMessageSuccess(false));
+  //   // dispatch(returnMessageError(false));
+  //   navigate('/admin/reports/1');
+  // };
 
   const handleChange = (event) => {
     dispatch(changeCurrentField(event.target.value, event.target.name));
@@ -116,18 +131,27 @@ function ReportAdmin() {
                 Non résolu
               </label>
             </div>
+            { missingText && !reporting_statut ? (
+              <Label pointing basic color="red">
+                Champ obligatoire
+              </Label>
+            ) : ('')}
           </div>
           <TextArea
-            // type="text"
+            type="text"
             className="reportAdmin-response"
             placeholder="Votre réponse..."
             value={admin_text}
             onChange={handleChange}
-            // title="Réponse"
+            title="Réponse"
             name="admin_text"
           />
+          { missingText && !admin_text ? (
+            <Label pointing basic color="red">
+              Champ obligatoire
+            </Label>
+          ) : ('')}
         </Form>
-
       </div>
       <div className="reportAdmin-button">
         <Button
@@ -144,17 +168,10 @@ function ReportAdmin() {
         </Button>
       </div>
 
-      { successMessage && (
-        <Message>
-          <p>Le signalement "{report.title}" a bien été mis à jour</p>
-          <Button content="Retour au signalements" onClick={backToReportList} />
-        </Message>
-      )}
-      { errorMessage && (
-      <Message negative>
-        <p>Erreur lors de l'enregistrement</p>
-        <Button content="Retour au signalements" onClick={backToReportList} />
-      </Message>
+      { message && (
+        messageColor
+          ? <Message positive>  <p>{message}</p> </Message>
+          : <Message negative>  <p>{message}</p> </Message>
       )}
     </div>
   );

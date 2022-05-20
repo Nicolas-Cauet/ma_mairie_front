@@ -7,7 +7,7 @@ import {
   saveAdminReports,
   SUBMIT_MODERATE_REPORTING,
 } from '../actions/reports';
-import { loading, returnMessageError, returnMessageSuccess } from '../actions/utilities';
+import { loading, setMessage } from '../actions/utilities';
 
 const instance = axios.create({
   baseURL: 'https://mamairie.herokuapp.com',
@@ -46,7 +46,7 @@ const adminApi = (store) => (next) => (action) => {
         })
         .catch((error) => {
           // message d'erreur à faire
-          // store.dispatch(setMessage('Email et/ou Mot de passe incorrect', false));
+          store.dispatch(setMessage('Email et/ou Mot de passe incorrect', false));
           console.log(error);
         });
       break;
@@ -60,13 +60,14 @@ const adminApi = (store) => (next) => (action) => {
         .then((response) => {
           // store.dispatch(getReports(response.data));
           console.log(response.data);
-          store.dispatch(returnMessageSuccess(true));
+          store.dispatch(setMessage(`Le signalement "${action.title}" a bien été mis à jour`, true));
         })
         .catch((error) => {
           // message d'erreur à faire
           // store.dispatch(setMessage('Email et/ou Mot de passe incorrect', false));
           console.log(error, "je suis dans l'erreur");
-          store.dispatch(returnMessageError(true));
+          // store.dispatch(returnMessageError(true));
+          store.dispatch(setMessage("Erreur lors de l'enregistrement", false));
         });
       break;
     }

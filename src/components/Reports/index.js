@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import moment from 'moment';
-import { Dropdown, Loader } from 'semantic-ui-react';
+import { Dropdown, Loader, Message } from 'semantic-ui-react';
 import {
   changeReportsFilter,
   getAdminReports, getReports,
@@ -21,7 +21,7 @@ function Reports() {
     isReporting, categoriesOptions, monthOptions, yearOptions,
   } = useSelector((state) => state.reports);
 
-  const { loading } = useSelector((state) => state.utilities);
+  const { loading, message } = useSelector((state) => state.utilities);
 
   const { logged } = useSelector((state) => state.login);
 
@@ -98,6 +98,10 @@ function Reports() {
 
       { !logged && (
         <ReportButton />
+      )}
+
+      { message && (
+        <Message positive>  <p>{message}</p> </Message>
       )}
 
       {/* Section to filter reports list */}

@@ -23,7 +23,7 @@ export const initialState = {
   selectedMonth: '',
   selectedYear: '',
   text: '',
-  // reporting_statut: '',
+  reporting_statut: '',
   categoriesOptions: [
     {
       // key: 'Catégories',
