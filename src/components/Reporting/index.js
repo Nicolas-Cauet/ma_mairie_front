@@ -68,7 +68,6 @@ function Reporting() {
       && reporting_firstName !== ''
       && reporting_lastName !== ''
     ) {
-      console.log('fist if');
       dispatch(submitReporting(
         reporting_category,
         reporting_title,
@@ -106,6 +105,7 @@ function Reporting() {
 
   const handleClickBack = () => {
     dispatch(toggleReporting());
+    dispatch(setMessage(''));
   };
 
   const handleChangeCategory = (event) => {

@@ -4,6 +4,7 @@ import { Button } from 'semantic-ui-react';
 import { useDispatch, useSelector } from 'react-redux';
 import { Link } from 'react-router-dom';
 import { toggleMenu } from '../../actions/menu';
+import { setMessage } from '../../actions/utilities';
 
 import photo from '../../assets/images/logo2.png';
 import logo from '../../assets/images/favicon-64.png';
@@ -17,6 +18,7 @@ function Header() {
 
   const HandleToggle = () => {
     dispatch(toggleMenu());
+    dispatch(setMessage(''));
   };
 
   return (

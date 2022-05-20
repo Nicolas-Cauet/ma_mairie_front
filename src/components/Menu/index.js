@@ -5,6 +5,7 @@ import { Button, Icon } from 'semantic-ui-react';
 
 import { toggleMenu } from '../../actions/menu';
 import { toggleReporting } from '../../actions/reports';
+// import { setMessage } from '../../actions/utilities';
 
 import './style.scss';
 
