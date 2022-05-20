@@ -241,8 +241,8 @@ function Reporting() {
               <Accordion.Content active={activeIndexTerms === 0}>
 
                 <Message
-                  content="En acceptant les termes et les conditions de ce formualire, j'autorise
-                mamairie.fr à stocker mon addresse IP durant 30j, afin de ...."
+                  content="En acceptant les termes et les conditions de ce formulaire, j'autorise
+                mamairie.fr à stocker mon addresse IP durant 30j, afin que mamairie.fr puisse se prém.unir en cas d'événement pouvant compromettre la sécurité du site."
                 />
               </Accordion.Content>
             </Accordion>
