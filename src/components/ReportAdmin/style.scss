@@ -108,6 +108,7 @@ button.ui.button.reportAdmin-abort {
 
   input[type="radio"] + label {
     padding: 0.5rem 1rem;
+    display: flex;
     margin: 0.5rem;
     font-size: 1.25rem;
     line-height: 1.5;
@@ -117,12 +118,33 @@ button.ui.button.reportAdmin-abort {
     border: 1px solid transparent;
     transition: all 0.5s ease-in-out;
   }
-  input[type="radio"]:hover + label {
-    background-color: vars.$createColor;
-    border-color: vars.$createColor;
+  input[type="radio"].inProgress:hover + label {
+    background-color: vars.$statusInProgressColor;
+    border-color: vars.$statusInProgressColor;
     cursor: pointer;
   }
-  input[type="radio"]:checked + label {
-    background-color: vars.$createColor;
-    border-color: vars.$createColor;
+input[type="radio"].inProgress:checked + label {
+    background-color: vars.$statusInProgressColor;
+    border-color: vars.$statusInProgressColor;
+    cursor: pointer;
+  }
+
+  input[type="radio"].done:hover + label {
+    background-color: vars.$statusOkColor;
+    border-color: vars.$statusOkColor;
+    cursor: pointer;
+  }
+  input[type="radio"].done:checked + label {
+    background-color: vars.$statusOkColor;
+    border-color: vars.$statusOkColor;
+  }
+
+  input[type="radio"].abort:hover + label {
+    background-color: vars.$statusRefusedColor;
+    border-color: vars.$statusRefusedColor;
+    cursor: pointer;
+  }
+  input[type="radio"].abort:checked + label {
+    background-color: vars.$statusRefusedColor;
+    border-color: vars.$statusRefusedColor;
   }

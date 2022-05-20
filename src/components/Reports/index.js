@@ -98,9 +98,10 @@ function Reports() {
 
       <ReportButton />
 
-      { /*  ============================= ICI =================== ??????? */ }
       {(message && !isReporting) && (
-        <Message positive>  <p>{message}</p> </Message>
+        <div className="message-container">
+          <Message positive>  <p>{message}</p> </Message>
+        </div>
       )}
 
       {/* Section to filter reports list */}

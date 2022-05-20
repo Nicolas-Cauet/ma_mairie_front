@@ -114,19 +114,19 @@ function ReportAdmin() {
         <Form>
           <div className="reportAdmin-newStatut">
             <div className="reportAdmin-checkbox">
-              <input type="radio" option="statut" id="inProgress" name="reporting_statut" value="En cours" label="inProgress" onChange={handleCheckbox} />
+              <input className="inProgress" type="radio" option="statut" id="inProgress" name="reporting_statut" value="En cours" label="inProgress" onChange={handleCheckbox} />
               <label htmlFor="inProgress">
                 En cours
               </label>
             </div>
             <div className="reportAdmin-checkbox">
-              <input type="radio" option="statut" id="done" name="reporting_statut" value="Résolu" label="done" onChange={handleCheckbox} />
+              <input className="done" type="radio" option="statut" id="done" name="reporting_statut" value="Résolu" label="done" onChange={handleCheckbox} />
               <label htmlFor="done">
                 Résolu
               </label>
             </div>
             <div className="reportAdmin-checkbox">
-              <input type="radio" option="statut" id="abort" name="reporting_statut" value="Non résolu" label="abort" onChange={handleCheckbox} />
+              <input className="abort" type="radio" option="statut" id="abort" name="reporting_statut" value="Non résolu" label="abort" onChange={handleCheckbox} />
               <label htmlFor="abort">
                 Non résolu
               </label>
