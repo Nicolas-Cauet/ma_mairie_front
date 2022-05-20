@@ -52,7 +52,6 @@ function Reporting() {
     isReporting_lastnameError,
   } = useSelector((state) => state.reporting);
 
-  console.log(message, messageColor);
   const handleClick = (e, titleProps) => {
     const { index } = titleProps;
     const newIndex = activeIndexTerms === index ? -1 : index;
@@ -69,6 +68,7 @@ function Reporting() {
       && reporting_firstName !== ''
       && reporting_lastName !== ''
     ) {
+      console.log('fist if');
       dispatch(submitReporting(
         reporting_category,
         reporting_title,
