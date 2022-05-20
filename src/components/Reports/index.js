@@ -100,9 +100,10 @@ function Reports() {
         <ReportButton />
       )}
 
-      { message && (
+      { /*  ============================= ICI =================== ??????? */ }
+      {/* { message && (
         <Message positive>  <p>{message}</p> </Message>
-      )}
+      )} */}
 
       {/* Section to filter reports list */}
       {!isReporting && (
