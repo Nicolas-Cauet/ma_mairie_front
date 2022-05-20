@@ -96,11 +96,10 @@ function Reports() {
       {/* Section for reporting action */}
       {isReporting && (<Reporting />)}
 
-      { !logged && (
-        <ReportButton />
-      )}
+      <ReportButton />
 
-      { message && (
+      { /*  ============================= ICI =================== ??????? */ }
+      {(message && !isReporting) && (
         <Message positive>  <p>{message}</p> </Message>
       )}
 

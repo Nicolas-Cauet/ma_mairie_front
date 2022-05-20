@@ -269,7 +269,6 @@ function Reporting() {
               : <Message className="reports-message" negative>  <p>{message}</p> </Message>
           )}
         </div>
-
       </section>
       )}
     </>

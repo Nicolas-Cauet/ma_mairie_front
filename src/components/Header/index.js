@@ -10,6 +10,7 @@ import photo from '../../assets/images/logo2.png';
 import logo from '../../assets/images/favicon-64.png';
 
 import './style.scss';
+import { resetErrorReporting } from '../../actions/reporting';
 
 function Header() {
   const { isOpen } = useSelector((state) => state.menu);
@@ -19,6 +20,7 @@ function Header() {
   const HandleToggle = () => {
     dispatch(toggleMenu());
     dispatch(setMessage(''));
+    dispatch(resetErrorReporting());
   };
 
   return (

@@ -3,6 +3,7 @@ import {
   Button, Icon,
 } from 'semantic-ui-react';
 import { toggleReporting } from '../../../actions/reports';
+import { setMessage } from '../../../actions/utilities';
 
 function ReportButton() {
   const dispatch = useDispatch();
@@ -10,6 +11,7 @@ function ReportButton() {
 
   const handleClick = () => {
     dispatch((toggleReporting()));
+    dispatch((setMessage('')));
   };
 
   // const reports = useSelector((state) => state.reports.reportsList);

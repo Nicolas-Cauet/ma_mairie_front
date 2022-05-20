@@ -133,11 +133,7 @@ function ReportAdmin() {
             </div>
             { missingText && !reporting_statut ? (
               <Label pointing basic color="red">
-                Champ obligatoire{ message && (
-                messageColor
-                  ? <Message positive>  <p>{message}</p> </Message>
-                  : <Message negative>  <p>{message}</p> </Message>
-              )}
+                Champ obligatoire
               </Label>
             ) : ('')}
           </div>
@@ -171,12 +167,6 @@ function ReportAdmin() {
         >Envoyer
         </Button>
       </div>
-
-      { message && (
-        messageColor
-          ? <Message positive>  <p>{message}</p> </Message>
-          : <Message negative>  <p>{message}</p> </Message>
-      )}
     </div>
   );
 }
