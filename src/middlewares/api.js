@@ -6,9 +6,8 @@ import {
   GET_REPORTS,
   saveAdminReports,
   saveReports,
-  toggleReporting,
 } from '../actions/reports';
-import { loading } from '../actions/utilities';
+import { loading, setMessage } from '../actions/utilities';
 
 const instance = axios.create({
   baseURL: 'https://mamairie.herokuapp.com',
@@ -51,19 +50,13 @@ const api = (store) => (next) => (action) => {
         .then((response) => {
           console.log('POST Reporting OK');
           console.log(response);
-          store.dispatch(toggleReporting());
           store.dispatch(eraseReportingFields());
           store.dispatch(saveAdminReports());
-          // store.dispatch(toggleMenu());
-          // message de succ_s pour le user
-
-          // message de succès
+          store.dispatch(setMessage('Votre signalement a été envoyé à l\'équipe municipale, il sera traiter dès que possible', true));
         })
         .catch((error) => {
           console.log(error);
-          // message d'echec
-          // store.dispatch(setMessage
-          // ('Une erreur est survenue, veuillez recommencer', false));
+          store.dispatch(setMessage('Une erreur est survenue, veuillez recommencer', false));
         });
       break;
     default:

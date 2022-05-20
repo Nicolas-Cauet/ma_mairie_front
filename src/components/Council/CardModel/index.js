@@ -2,25 +2,15 @@
 import { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import {
-  Card,
-  Image,
-  Icon,
-  Button,
-  Confirm,
-  Modal,
+  Card, Image, Icon, Button, Confirm, Modal,
 } from 'semantic-ui-react';
 
 import {
-  createEditingMember,
-  createEditingMemberFirstName,
+  createEditingMember, createEditingMemberFirstName,
   createEditingMemberLastName,
-  createEditingMemberPhoto,
-  createEditingMemberRole,
-  deleteCouncilMembers,
-  patchCouncilMembers,
-  toggleEditingMember,
+  createEditingMemberPhoto, createEditingMemberRole,
+  deleteCouncilMembers, patchCouncilMembers, toggleEditingMember,
 } from '../../../actions/council';
-
 import Field from '../../Field';
 
 function CardModel({ ...card }) {
@@ -40,10 +30,6 @@ function CardModel({ ...card }) {
     console.log('coucou');
     setConfirm(!confirm);
   };
-  // Management of opening editing member
-  // function ModalExampleModal() {
-  //   const [open, setOpen] = useState(false)
-  // }
   /**
    *  Trigger opening editing member
    *  @open modal corresponding at id member staff
@@ -59,9 +45,7 @@ function CardModel({ ...card }) {
 
   const handleSubmit = (event) => {
     event.preventDefault();
-    // const id = event.target.closest(`.card-${card.town_hall_staff_id}`).getAttribute('name');
     const id = event.target.closest('.dimmable').querySelector(`.card-${card.town_hall_staff_id}`).getAttribute('name');
-    console.log(id);
     dispatch(toggleEditingMember(`isOpenModalMember-${card.town_hall_staff_id}`));
     dispatch(patchCouncilMembers(photoValue, firstNameValue, lastNameValue, roleValue, id));
   };
@@ -80,15 +64,16 @@ function CardModel({ ...card }) {
       {isOpenModal && (
       <Modal
         className="modalEditingCouncilMember"
-        // onClose={() => setOpen(false)}
-        // onOpen={() => setOpen(true)}
-        // open={open}
+        onClose={handleClick}
+        onOpen={handleClick}
+        open
       >
         <Modal.Header>Editer ce membre</Modal.Header>
         <Modal.Content image>
           <Image size="medium" src={photoValue} wrapped />
           <div className="modal-inputs">
             <Field
+              type="text"
               icon="picture"
               iconPosition="left"
               value={photoValue}
@@ -97,6 +82,7 @@ function CardModel({ ...card }) {
               title="Photo"
             />
             <Field
+              type="text"
               icon="user"
               iconPosition="left"
               value={firstNameValue}
@@ -105,6 +91,7 @@ function CardModel({ ...card }) {
               title="Prénom"
             />
             <Field
+              type="text"
               icon="user"
               iconPosition="left"
               value={lastNameValue}
@@ -113,6 +100,7 @@ function CardModel({ ...card }) {
               title="Nom"
             />
             <Field
+              type="text"
               icon="book"
               iconPosition="left"
               value={roleValue}
@@ -136,19 +124,13 @@ function CardModel({ ...card }) {
         </Modal.Actions>
       </Modal>
       )}
-
-      {!isOpenModal && (
-        <>
-          <Image src={photoValue} wrapped ui={false} />
-          <Card.Content>
-            <Card.Header className="card-header">{`${firstNameValue} ${lastNameValue}`}</Card.Header>
-            <Card.Meta>
-              <span className="fonction">{roleValue}</span>
-            </Card.Meta>
-          </Card.Content>
-        </>
-      )}
-
+      <Image src={photoValue} wrapped ui={false} />
+      <Card.Content>
+        <Card.Header className="card-header">{`${firstNameValue} ${lastNameValue}`}</Card.Header>
+        <Card.Meta>
+          <span className="fonction">{roleValue}</span>
+        </Card.Meta>
+      </Card.Content>
       {adminLogged && (
         <>
           <div className="editingIcon">
@@ -157,7 +139,6 @@ function CardModel({ ...card }) {
           <div className="deleteIcon">
             <Icon name="close" onClick={toggleDeleteConfirm} />
             <Confirm
-            // report="coucou"
               content="Êtes-vous sûr de vouloir supprimer ce membre ?"
               cancelButton="Annuler"
               confirmButton="Supprimer"

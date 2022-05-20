@@ -1,18 +1,43 @@
 .reporting-form {
   margin-bottom: 2rem;
 
+  & .message-container {
+    display: flex;
+    justify-content: center;
+    & .ui.negative.message {
+      text-align: center;
+      width: 85%;
+    }
+  }
+
+  & .ui.basic.label {
+    color: #af0202;
+    border-color: #af0202;
+    margin: -0.5rem 0 0.5rem;
+  }
+
+
+  & .reporting-rule {
+    font-size: 0.75rem;
+    margin: 0 ;
+  }
+
   & h1 {
     text-align: center;
 
   }
 
   & .filter-section {
-    width: 150%;
+    width: 100%;
     margin-bottom: 1rem;
+
+    & .ui.fluid.dropdown.categories {
+      width: 86%;
+    }
   }
 
   & .reporting-form-textarea {
-    width: 90%;
+    width: 86%;
   }
 
   & .ui.button {
@@ -30,6 +55,10 @@
     display: flex;
     flex-direction: column;
     align-items: center;
+
+    &>p {
+      margin: -1rem 0 0.5rem;
+    }
   
     & .ui.input {
       margin-bottom: 1rem;
@@ -40,12 +69,13 @@
       }
       
       &.field-reporting_title {
-        width: 75%;
+        width: 86%;
       }
     }
   
     & .reporting-form-checkbox {
-      width: 90%;
+      width: 85%;
+      margin: 1.5rem 0 0.5rem;
       display: flex ;
       flex-direction: column;
       flex-wrap: wrap;
@@ -68,8 +98,16 @@
             margin: 0;
           }
         }
-  
+        & .ui.message.retail-message {
+          margin-bottom: 0.6rem;
+        }
+        & .content.active {
+          width: 100%;
+        }
         & .ui.message {
+          text-align: center;
+          width: 100%;
+          margin-bottom: 2rem;
           padding: 1rem;
         }
       }
@@ -78,7 +116,6 @@
 }
 
 .ui.dropdown {
-
   font-size: 1rem;
 
   &>.text>.icon {
@@ -98,9 +135,6 @@
   }
 }
 
-.ui.message {
-  text-align: center;
-  margin: 1rem auto;
-  width: 80%;
-  margin-bottom: 2rem;
+.ui.form>p {
+  margin: -1rem 0 0.5rem;
 }

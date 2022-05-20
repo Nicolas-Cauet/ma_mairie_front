@@ -10,7 +10,7 @@ import Footer from '../Footer';
 import Admin from '../Admin';
 import Reports from '../Reports';
 import ReportAdmin from '../ReportAdmin';
-// import Forbidden from '../Forbidden';
+import InProgress from '../InProgress';
 
 import 'semantic-ui-css/semantic.min.css';
 import './style.scss';
@@ -28,6 +28,9 @@ function App() {
         <Route path="/admin" element={(<Admin />)} />
         <Route path="/reports/1" element={<Reports />} />
         <Route path="/council/1" element={<Council />} />
+        <Route path="/articles/1" element={<InProgress />} />
+        <Route path="/school/1" element={<InProgress />} />
+
         { adminlogged && (
           <>
             <Route path="/admin/reports/1" element={<Reports />} />

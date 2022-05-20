@@ -4,6 +4,7 @@ import { NavLink } from 'react-router-dom';
 import { Button, Icon } from 'semantic-ui-react';
 
 import { toggleMenu } from '../../actions/menu';
+import { toggleReporting } from '../../actions/reports';
 
 import './style.scss';
 
@@ -15,13 +16,14 @@ function Menu() {
   // After redirect, hide menu on click
   const hideMenu = () => {
     dispatch(toggleMenu());
+    dispatch(toggleReporting());
   };
 
   return (
     <div className="menu">
       { isOpen && (
       <nav className="menu-list">
-        <NavLink className="menu-item" to="/articles/:mairie_id" onClick={hideMenu}>
+        <NavLink className="menu-item" to="/articles/1" onClick={hideMenu}>
           <Button className="article">
             <section className="buttonMenu-container">
               <Icon name="newspaper outline" />
@@ -45,7 +47,7 @@ function Menu() {
             </section>
           </Button>
         </NavLink>
-        <NavLink className="menu-item" to="/school/:mairie_id" onClick={hideMenu}>
+        <NavLink className="menu-item" to="/school/1" onClick={hideMenu}>
           <Button className="school">
             <section className="buttonMenu-container">
               <Icon name="student" />
