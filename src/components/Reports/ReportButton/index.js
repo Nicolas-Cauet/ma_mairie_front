@@ -10,7 +10,7 @@ function ReportButton() {
   const { isReporting } = useSelector((state) => state.reports);
 
   const handleClick = () => {
-    dispatch((toggleReporting()));
+    dispatch((toggleReporting(true)));
     dispatch((setMessage('')));
   };
 

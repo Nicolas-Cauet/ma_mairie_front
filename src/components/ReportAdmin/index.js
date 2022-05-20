@@ -6,15 +6,20 @@ import {
   Message,
   TextArea,
 } from 'semantic-ui-react';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { useParams, useNavigate } from 'react-router-dom';
 import Moment from 'react-moment';
 
 import './style.scss';
-import { changeCheckboxAdminReporting, submitModerateReporting } from '../../actions/reports';
 import {
-  changeCurrentField, setMessage,
+  changeCheckboxAdminReporting,
+  changeCurrentTextAreaAdminReport,
+  createStateTextAreaAdminReport,
+  submitModerateReporting,
+} from '../../actions/reports';
+import {
+  setMessage,
 } from '../../actions/utilities';
 
 function ReportAdmin() {
@@ -22,7 +27,6 @@ function ReportAdmin() {
   const report = useSelector((state) => state.reports.reportsAdminList
     // eslint-disable-next-line eqeqeq
     .find((p) => p.reporting_id == params.reporting_id));
-
   const dispatch = useDispatch();
 
   const {
@@ -30,33 +34,36 @@ function ReportAdmin() {
   } = useSelector((state) => state.utilities);
   const { reporting_statut } = useSelector((state) => state.reports);
 
-  // useEffect(() => {
-  //   dispatch(setMessage(''));
-  // });
+  const textAreaValue = useSelector((state) => state.reports[`textArea-${report.reporting_id}`]);
+
+  useEffect(() => {
+    dispatch(setMessage(''));
+    dispatch(createStateTextAreaAdminReport(report.admin_text, `textArea-${report.reporting_id}`));
+  }, []);
 
   const handleCheckbox = (event) => {
     dispatch(changeCheckboxAdminReporting(event.target.value));
-    console.log(event.target.value);
   };
 
-  const [missingText, setMissingText] = useState(false);
+  // const [missingText, setMissingText] = useState(false);
 
   const navigate = useNavigate();
 
+  console.log('text', textAreaValue);
   const handleSubmit = () => {
-    if (admin_text && reporting_statut) {
-      setMissingText(false);
+    if (textAreaValue && reporting_statut) {
+      // setMissingText(false);
       dispatch(changeCheckboxAdminReporting(''));
       dispatch(submitModerateReporting(
         report.reporting_id,
         report.title,
-        admin_text,
+        textAreaValue,
         reporting_statut,
       ));
       navigate('/admin/reports/1');
     } else {
-      setMissingText(true);
-      dispatch(setMessage("Erreur lors de l'envoi des données", false));
+      // setMissingText(true);
+      dispatch(setMessage('Tous les champs doivent être renseignés', false));
     }
   };
 
@@ -75,7 +82,8 @@ function ReportAdmin() {
   // };
 
   const handleChange = (event) => {
-    dispatch(changeCurrentField(event.target.value, event.target.name));
+    console.log(event.target.value, event.target.name);
+    dispatch(changeCurrentTextAreaAdminReport(event.target.value, event.target.name));
   };
 
   return (
@@ -112,6 +120,20 @@ function ReportAdmin() {
       <div className="reportAdmin-info">
         <h3>Traitement du signalement :</h3>
         <Form>
+          <TextArea
+            type="text"
+            className="reportAdmin-response"
+            placeholder="Votre réponse..."
+            value={textAreaValue}
+            onChange={handleChange}
+            title="Réponse"
+            name={`textArea-${report.reporting_id}`}
+          />
+          {/* { missingText && !admin_text ? (
+            <Label pointing basic color="red">
+              Champ obligatoire
+            </Label>
+          ) : ('')} */}
           <div className="reportAdmin-newStatut">
             <div className="reportAdmin-checkbox">
               <input className="inProgress" type="radio" option="statut" id="inProgress" name="reporting_statut" value="En cours" label="inProgress" onChange={handleCheckbox} />
@@ -131,27 +153,18 @@ function ReportAdmin() {
                 Non résolu
               </label>
             </div>
-            { missingText && !reporting_statut ? (
-              <Label pointing basic color="red">
-                Champ obligatoire
-              </Label>
-            ) : ('')}
           </div>
-          <TextArea
-            type="text"
-            className="reportAdmin-response"
-            placeholder="Votre réponse..."
-            value={admin_text}
-            onChange={handleChange}
-            title="Réponse"
-            name="admin_text"
-          />
-          { missingText && !admin_text ? (
+          {/* { missingText && !reporting_statut ? (
             <Label pointing basic color="red">
               Champ obligatoire
             </Label>
-          ) : ('')}
+          ) : ('')} */}
         </Form>
+        { message && (
+          messageColor
+            ? <Message positive>  <p>{message}</p> </Message>
+            : <Message negative>  <p>{message}</p> </Message>
+        )}
       </div>
       <div className="reportAdmin-button">
         <Button

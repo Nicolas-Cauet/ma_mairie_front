@@ -104,7 +104,7 @@ function Reporting() {
   };
 
   const handleClickBack = () => {
-    dispatch(toggleReporting());
+    dispatch(toggleReporting(false));
     dispatch(setMessage(''));
   };
 

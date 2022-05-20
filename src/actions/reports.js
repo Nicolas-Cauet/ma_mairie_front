@@ -26,8 +26,9 @@ export const getAdminReports = () => ({
 
 // Switch reports/reporting component
 export const TOGGLE_REPORTING = 'TOGGLE_REPORTING';
-export const toggleReporting = () => ({
+export const toggleReporting = (value) => ({
   type: TOGGLE_REPORTING,
+  value,
 });
 
 export const SAVE_REPORTS = 'SAVE_REPORTS';
@@ -71,12 +72,6 @@ export const updateFilteredReports = (filteredReports) => ({
   filteredReports,
 });
 
-// export const SET_REPORTING_ERROR = 'SET_REPORTING_ERROR';
-// export const setReportingError = (bool) => ({
-//   type: SET_REPORTING_ERROR,
-//   reporting_error: bool,
-// });
-
 export const SUBMIT_MODERATE_REPORTING = 'SUBMIT_MODERATE_REPORTING';
 export const submitModerateReporting = (id, title, admin_text, reporting_statut, email) => ({
   type: SUBMIT_MODERATE_REPORTING,
@@ -91,4 +86,20 @@ export const CHANGE_CHECKBOX_ADMIN_REPORTING = 'CHANGE_CHECKBOX_ADMIN_REPORTING'
 export const changeCheckboxAdminReporting = (value) => ({
   type: CHANGE_CHECKBOX_ADMIN_REPORTING,
   reporting_statut: value,
+});
+
+// Create dynamic state for text area of AdminReport component
+export const CREATE_STATE_TEXTAREA_ADMINREPORT = 'CREATE_STATE_TEXTAREA_ADMINREPORT';
+export const createStateTextAreaAdminReport = (value, key) => ({
+  type: CREATE_STATE_TEXTAREA_ADMINREPORT,
+  value,
+  key,
+});
+
+// Controlled field for text area of AdminReport component
+export const CHANGE_CURRENT_TEXTAREA_ADMINREPORT = 'CHANGE_CURRENT_TEXTAREA_ADMINREPORT';
+export const changeCurrentTextAreaAdminReport = (value, key) => ({
+  type: CHANGE_CURRENT_TEXTAREA_ADMINREPORT,
+  value,
+  key,
 });

@@ -157,7 +157,7 @@ function Reporting() {
   };
 
   const handleClickBack = () => {
-    dispatch(toggleReporting());
+    dispatch(toggleReporting(false));
   };
 
   const handleChangeCategory = (event) => {

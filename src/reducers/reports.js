@@ -9,6 +9,8 @@ import {
   RESET_REPORTS_FILTER,
   UPDATE_FILTERED_REPORTS,
   CHANGE_CHECKBOX_ADMIN_REPORTING,
+  CREATE_STATE_TEXTAREA_ADMINREPORT,
+  CHANGE_CURRENT_TEXTAREA_ADMINREPORT,
 } from '../actions/reports';
 
 export const initialState = {
@@ -21,7 +23,6 @@ export const initialState = {
   selectedCategory: '',
   selectedMonth: '',
   selectedYear: '',
-  text: '',
   reporting_statut: '',
   categoriesOptions: [
     {
@@ -163,7 +164,7 @@ const reducer = (state = initialState, action = {}) => {
     case TOGGLE_REPORTING:
       return {
         ...state,
-        isReporting: !state.isReporting,
+        isReporting: action.value,
       };
     case SAVE_REPORTS:
       return {
@@ -196,6 +197,16 @@ const reducer = (state = initialState, action = {}) => {
       return {
         ...state,
         filteredReports: action.filteredReports,
+      };
+    case CREATE_STATE_TEXTAREA_ADMINREPORT:
+      return {
+        ...state,
+        [action.key]: action.value,
+      };
+    case CHANGE_CURRENT_TEXTAREA_ADMINREPORT:
+      return {
+        ...state,
+        [action.key]: action.value,
       };
     default:
       return state;
