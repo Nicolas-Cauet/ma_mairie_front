@@ -6,7 +6,6 @@ import {
   CREATE_EDITING_MEMBER_ROLE,
 } from '../actions/council';
 import { CHANGE_CURRENT_CHECKBOX_REPORTING, ERASE_REPORTING_FIELDS } from '../actions/reporting';
-import { SET_REPORTING_ERROR } from '../actions/reports';
 import {
   CHANGE_CURRENT_CATEGORY,
   CHANGE_CURRENT_FIELD,
@@ -85,11 +84,6 @@ const reducer = (state = initialState, action = {}) => {
       return {
         ...state,
         reporting_checkBox: !state.reporting_checkBox,
-      };
-    case SET_REPORTING_ERROR:
-      return {
-        ...state,
-        reporting_error: action.reporting_error,
       };
     case LOADING:
       return {

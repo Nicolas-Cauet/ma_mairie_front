@@ -1,12 +1,24 @@
 /* eslint-disable react/jsx-no-useless-fragment */
 // import PropTypes from 'prop-types';
+// import { useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import {
-  Button, Checkbox, Form, Accordion, Icon, Message, Dropdown,
+  Button, Checkbox, Form, Accordion, Icon, Message, Dropdown, Label,
 } from 'semantic-ui-react';
-import { submitReporting, changeCurrentCheckBoxReporting } from '../../actions/reporting';
 import { changeCurrentCategory, changeCurrentField, setMessage } from '../../actions/utilities';
-import { setActiveIndexTerms, toggleReporting, setReportingError } from '../../actions/reports';
+import { setActiveIndexTerms, toggleReporting } from '../../actions/reports';
+import {
+  submitReporting,
+  changeCurrentCheckBoxReporting,
+  errorReportingCategory,
+  resetErrorReporting,
+  errorReportingTitle,
+  errorReportingDescription,
+  errorReportingEmail,
+  errorReportingLastname,
+  errorReportingFirstname,
+} from '../../actions/reporting';
+// import { setLoginMessage } from '../../actions/login';
 
 import Field from '../Field';
 
@@ -28,11 +40,19 @@ function Reporting() {
     reporting_lastName,
     reporting_phone,
     reporting_checkBox,
-    reporting_error,
     message,
     messageColor,
   } = useSelector((state) => state.utilities);
+  const {
+    isReporting_categoryError,
+    isReporting_titleError,
+    isReporting_descriptionError,
+    isReporting_emailError,
+    isReporting_firstnameError,
+    isReporting_lastnameError,
+  } = useSelector((state) => state.reporting);
 
+  console.log(message, messageColor);
   const handleClick = (e, titleProps) => {
     const { index } = titleProps;
     const newIndex = activeIndexTerms === index ? -1 : index;
@@ -40,7 +60,7 @@ function Reporting() {
   };
 
   const handleSubmit = () => {
-    dispatch(setReportingError(false));
+    dispatch(resetErrorReporting());
     if (reporting_checkBox
       && reporting_category !== ''
       && reporting_title !== ''
@@ -61,8 +81,26 @@ function Reporting() {
     } else if (!reporting_checkBox) {
       dispatch(setMessage('Vous devez accepter les termes et conditions pour pouvoir signaler un événement', false));
     } else {
-      dispatch(setMessage('Vous devez décrire votre événement, lui donner un titre, renseignez votre prénom et votre nom, ainsi que votre email. Le numéros de téléphone est facultatif', false));
-      dispatch(setReportingError(true));
+      dispatch(setMessage('Vous devez compléter les champs obligatoires', false));
+
+      if (reporting_category === '') {
+        dispatch(errorReportingCategory());
+      }
+      if (reporting_title === '') {
+        dispatch(errorReportingTitle());
+      }
+      if (reporting_description === '') {
+        dispatch(errorReportingDescription());
+      }
+      if (reporting_email === '') {
+        dispatch(errorReportingEmail());
+      }
+      if (reporting_lastName === '') {
+        dispatch(errorReportingLastname());
+      }
+      if (reporting_firstName === '') {
+        dispatch(errorReportingFirstname());
+      }
     }
   };
 
@@ -96,9 +134,13 @@ function Reporting() {
               selection
               options={categoriesOptions}
               onChange={handleChangeCategory}
-              inputError={reporting_error}
             />
           </section>
+          {isReporting_categoryError && (
+          <Label basic pointing>
+            Champ à compléter SVP
+          </Label>
+          )}
           <Field
             type="text"
             className="reporting-title ddd"
@@ -107,8 +149,12 @@ function Reporting() {
             title="Titre"
             name="reporting_title"
             icon="comment alternate"
-            inputError={reporting_error}
           />
+          {isReporting_titleError && (
+            <Label basic pointing>
+              Champ à compléter SVP
+            </Label>
+          )}
           <Form.TextArea
             value={reporting_description}
             title="Description"
@@ -116,8 +162,12 @@ function Reporting() {
             className="reporting-form-textarea"
             placeholder="Description : Que souhaitez vous signaler ?"
             onChange={handleChangeDescription}
-            inputError={reporting_error}
           />
+          {isReporting_descriptionError && (
+            <Label basic pointing>
+              Champ à compléter SVP
+            </Label>
+          )}
           <Field
             type="email"
             className="reporting-email"
@@ -126,8 +176,12 @@ function Reporting() {
             title="Email"
             name="reporting_email"
             icon="at"
-            inputError={reporting_error}
           />
+          {isReporting_emailError && (
+            <Label basic pointing>
+              Champ à compléter SVP
+            </Label>
+          )}
           <Field
             type="text"
             className="reporting-firstname"
@@ -136,8 +190,12 @@ function Reporting() {
             name="reporting_firstName"
             title="Prénom"
             icon="user"
-            inputError={reporting_error}
           />
+          {isReporting_firstnameError && (
+            <Label basic pointing>
+              Champ à compléter SVP
+            </Label>
+          )}
           <Field
             type="text"
             className="reporting-lastname"
@@ -146,8 +204,12 @@ function Reporting() {
             name="reporting_lastName"
             title="Nom"
             icon="user"
-            inputError={reporting_error}
           />
+          {isReporting_lastnameError && (
+            <Label basic pointing>
+              Champ à compléter SVP
+            </Label>
+          )}
           <Field
             type="tel"
             className="reporting-phone"
@@ -200,11 +262,13 @@ function Reporting() {
             </Button>
           </Form.Field>
         </Form>
-        {message && (
-          messageColor
-            ? <Message className="reports-message" positive>  <p>{message}</p> </Message>
-            : <Message className="reports-message" negative>  <p>{message}</p> </Message>
-        )}
+        <div className="message-container">
+          {message && (
+            messageColor
+              ? <Message className="reports-message" positive>  <p>{message}</p> </Message>
+              : <Message className="reports-message" negative>  <p>{message}</p> </Message>
+          )}
+        </div>
 
       </section>
       )}

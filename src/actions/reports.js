@@ -71,11 +71,11 @@ export const updateFilteredReports = (filteredReports) => ({
   filteredReports,
 });
 
-export const SET_REPORTING_ERROR = 'SET_REPORTING_ERROR';
-export const setReportingError = (bool) => ({
-  type: SET_REPORTING_ERROR,
-  reporting_error: bool,
-});
+// export const SET_REPORTING_ERROR = 'SET_REPORTING_ERROR';
+// export const setReportingError = (bool) => ({
+//   type: SET_REPORTING_ERROR,
+//   reporting_error: bool,
+// });
 
 export const SUBMIT_MODERATE_REPORTING = 'SUBMIT_MODERATE_REPORTING';
 export const submitModerateReporting = (id, title, admin_text, reporting_statut, email) => ({
