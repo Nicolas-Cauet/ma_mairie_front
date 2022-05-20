@@ -134,8 +134,8 @@ function Reporting() {
             />
           </section>
           {isReporting_categoryError && (
-          <Label basic color="red" pointing>
-            Please enter a value
+          <Label basic pointing>
+            Champ à compléter SVP
           </Label>
           )}
           <Field
@@ -148,9 +148,9 @@ function Reporting() {
             icon="comment alternate"
           />
           {isReporting_titleError && (
-          <Label basic color="red" pointing>
-            Please enter a value
-          </Label>
+            <Label basic pointing>
+              Champ à compléter SVP
+            </Label>
           )}
           <Form.TextArea
             value={reporting_description}
@@ -161,9 +161,9 @@ function Reporting() {
             onChange={handleChangeDescription}
           />
           {isReporting_descriptionError && (
-          <Label basic color="red" pointing>
-            Please enter a value
-          </Label>
+            <Label basic pointing>
+              Champ à compléter SVP
+            </Label>
           )}
           <Field
             type="email"
@@ -175,9 +175,9 @@ function Reporting() {
             icon="at"
           />
           {isReporting_emailError && (
-          <Label basic color="red" pointing>
-            Please enter a value
-          </Label>
+            <Label basic pointing>
+              Champ à compléter SVP
+            </Label>
           )}
           <Field
             type="text"
@@ -189,9 +189,9 @@ function Reporting() {
             icon="user"
           />
           {isReporting_firstnameError && (
-          <Label basic color="red" pointing>
-            Please enter a value
-          </Label>
+            <Label basic pointing>
+              Champ à compléter SVP
+            </Label>
           )}
           <Field
             type="text"
@@ -203,9 +203,9 @@ function Reporting() {
             icon="user"
           />
           {isReporting_lastnameError && (
-          <Label basic color="red" pointing>
-            Please enter a value
-          </Label>
+            <Label basic pointing>
+              Champ à compléter SVP
+            </Label>
           )}
           <Field
             type="tel"

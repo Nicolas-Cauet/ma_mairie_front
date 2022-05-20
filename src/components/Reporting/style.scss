@@ -1,6 +1,13 @@
 .reporting-form {
   margin-bottom: 2rem;
 
+  & .ui.basic.label {
+    color: #af0202;
+    border-color: #af0202;
+    margin: -0.5rem 0 0.5rem;
+  }
+
+
   & .reporting-rule {
     font-size: 0.75rem;
     margin: 0 ;
@@ -122,4 +129,3 @@
 .ui.form>p {
   margin: -1rem 0 0.5rem;
 }
-
