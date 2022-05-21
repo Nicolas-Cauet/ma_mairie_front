@@ -14,7 +14,7 @@ const instance = axios.create({
 });
 
 const councilApi = (store) => (next) => (action) => {
-  const townHallId = store.getState((state) => state.login.townHallId);
+  const { townHallId } = store.getState().login;
   switch (action.type) {
     case GET_COUNCIL_MEMBERS:
       console.log('GET Council');

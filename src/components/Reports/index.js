@@ -17,14 +17,15 @@ import './style.scss';
 
 function Reports() {
   const dispatch = useDispatch();
+
   const {
-    isReporting, categoriesOptions, monthOptions, yearOptions,
+    isReporting,
+    categoriesOptions,
+    monthOptions,
+    yearOptions,
   } = useSelector((state) => state.reports);
-
   const { loading, message } = useSelector((state) => state.utilities);
-
   const { logged } = useSelector((state) => state.login);
-
   const { selectedCategory, selectedMonth, selectedYear } = useSelector((state) => state.reports);
 
   // View admin or visitor reports
@@ -51,6 +52,7 @@ function Reports() {
     ],
   });
 
+  /** Conditions fo filter reports in function dropdown values */
   if ((selectedCategory === '' || selectedCategory === 'Catégories')
   && (selectedYear === '' || selectedYear === 'Année')
   && (selectedMonth === '' || selectedMonth === 'Mois')) {

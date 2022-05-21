@@ -19,11 +19,12 @@ const instance = axios.create({
 // }
 
 const api = (store) => (next) => (action) => {
-  const townHallId = store.getState((state) => state.login.townHallId);
+  const { townHallId } = store.getState().login;
   switch (action.type) {
     case GET_REPORTS:
       store.dispatch(loading(true));
       console.log('GET Reports');
+      console.log(townHallId);
       instance.get(`/reporting/${townHallId}`)
         .then((response) => {
           console.log(response);
@@ -54,7 +55,7 @@ const api = (store) => (next) => (action) => {
           console.log(response);
           store.dispatch(eraseReportingFields());
           store.dispatch(saveAdminReports());
-          store.dispatch(setMessage('Votre signalement a été envoyé à l\'équipe municipale, il sera traiter dès que possible', true));
+          store.dispatch(setMessage('Votre signalement a été envoyé à l\'équipe municipale, il sera traité dès que possible', true));
         })
         .catch((error) => {
           console.log(error);

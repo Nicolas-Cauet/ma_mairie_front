@@ -17,7 +17,7 @@ const instance = axios.create({
 });
 
 const adminApi = (store) => (next) => (action) => {
-  const townHallId = store.getState((state) => state.login.townHallId);
+  const { townHallId } = store.getState().login;
   switch (action.type) {
     case GET_ADMIN_REPORTS:
       store.dispatch(loading(true));

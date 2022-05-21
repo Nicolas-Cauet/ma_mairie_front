@@ -11,6 +11,7 @@ import {
   CHANGE_CHECKBOX_ADMIN_REPORTING,
   CREATE_STATE_TEXTAREA_ADMINREPORT,
   CHANGE_CURRENT_TEXTAREA_ADMINREPORT,
+  ERASE_VALUE_ACTIVE_INDEX,
 } from '../actions/reports';
 
 export const initialState = {
@@ -53,7 +54,7 @@ export const initialState = {
     {
       // key: 'Objets trouvé/perdu',
       text: (<Icon className="dropdown-icon" name="key"> Objets trouvé ou perdu</Icon>),
-      value: 'Objets trouvé ou perdu',
+      value: 'Objet trouvé ou perdu',
     },
     {
       // key: 'Autre',
@@ -207,6 +208,11 @@ const reducer = (state = initialState, action = {}) => {
       return {
         ...state,
         [action.key]: action.value,
+      };
+    case ERASE_VALUE_ACTIVE_INDEX:
+      return {
+        ...state,
+        activeIndex: -1,
       };
     default:
       return state;

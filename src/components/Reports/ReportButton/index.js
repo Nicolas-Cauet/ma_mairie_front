@@ -2,7 +2,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import {
   Button, Icon,
 } from 'semantic-ui-react';
-import { toggleReporting } from '../../../actions/reports';
+import { eraseValueActiveIndex, toggleReporting } from '../../../actions/reports';
 import { setMessage } from '../../../actions/utilities';
 
 function ReportButton() {
@@ -12,6 +12,7 @@ function ReportButton() {
   const handleClick = () => {
     dispatch((toggleReporting(true)));
     dispatch((setMessage('')));
+    dispatch(eraseValueActiveIndex());
   };
 
   // const reports = useSelector((state) => state.reports.reportsList);

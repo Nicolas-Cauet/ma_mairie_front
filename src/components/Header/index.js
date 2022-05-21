@@ -3,14 +3,16 @@
 import { Button } from 'semantic-ui-react';
 import { useDispatch, useSelector } from 'react-redux';
 import { Link } from 'react-router-dom';
+
 import { toggleMenu } from '../../actions/menu';
 import { setMessage } from '../../actions/utilities';
+import { resetErrorReporting } from '../../actions/reporting';
+import { eraseValueActiveIndex } from '../../actions/reports';
 
 import photo from '../../assets/images/logo2.png';
 import logo from '../../assets/images/favicon-64.png';
 
 import './style.scss';
-import { resetErrorReporting } from '../../actions/reporting';
 
 function Header() {
   const { isOpen } = useSelector((state) => state.menu);
@@ -21,6 +23,7 @@ function Header() {
     dispatch(toggleMenu());
     dispatch(setMessage(''));
     dispatch(resetErrorReporting());
+    dispatch(eraseValueActiveIndex());
   };
 
   return (

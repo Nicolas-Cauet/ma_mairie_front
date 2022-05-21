@@ -16,6 +16,7 @@ import {
   changeCheckboxAdminReporting,
   changeCurrentTextAreaAdminReport,
   createStateTextAreaAdminReport,
+  eraseValueActiveIndex,
   submitModerateReporting,
 } from '../../actions/reports';
 import {
@@ -84,6 +85,7 @@ function ReportAdmin() {
   const handleChange = (event) => {
     console.log(event.target.value, event.target.name);
     dispatch(changeCurrentTextAreaAdminReport(event.target.value, event.target.name));
+    dispatch(eraseValueActiveIndex());
   };
 
   return (

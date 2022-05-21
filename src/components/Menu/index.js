@@ -4,7 +4,7 @@ import { NavLink } from 'react-router-dom';
 import { Button, Icon } from 'semantic-ui-react';
 
 import { toggleMenu } from '../../actions/menu';
-import { toggleReporting } from '../../actions/reports';
+import { eraseValueActiveIndex, toggleReporting } from '../../actions/reports';
 
 import './style.scss';
 
@@ -32,7 +32,7 @@ function Menu() {
           </Button>
         </NavLink>
         <NavLink className="menu-item" to="/reports/1" onClick={hideMenu}>
-          <Button className="warning">
+          <Button className="warning" onClick={() => dispatch(eraseValueActiveIndex())}>
             <section className="buttonMenu-container">
               <Icon name="warning sign" />
               <p>Signaler</p>

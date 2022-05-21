@@ -96,10 +96,16 @@ export const createStateTextAreaAdminReport = (value, key) => ({
   key,
 });
 
-// Controlled field for text area of AdminReport component
+/**  Controlled field for text area of AdminReport component */
 export const CHANGE_CURRENT_TEXTAREA_ADMINREPORT = 'CHANGE_CURRENT_TEXTAREA_ADMINREPORT';
 export const changeCurrentTextAreaAdminReport = (value, key) => ({
   type: CHANGE_CURRENT_TEXTAREA_ADMINREPORT,
   value,
   key,
+});
+
+/**  Erase state value of activeIndex for accordion */
+export const ERASE_VALUE_ACTIVE_INDEX = 'ERASE_VALUE_ACTIVE_INDEX';
+export const eraseValueActiveIndex = () => ({
+  type: ERASE_VALUE_ACTIVE_INDEX,
 });
