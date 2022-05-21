@@ -3,6 +3,7 @@ import axios from 'axios';
 import {
   deleteReport,
   DELETE_SELECTED_REPORT,
+  getAdminReports,
   GET_ADMIN_REPORTS,
   saveAdminReports,
   SUBMIT_MODERATE_REPORTING,
@@ -59,6 +60,7 @@ const adminApi = (store) => (next) => (action) => {
         .then((response) => {
           console.log(response.data);
           store.dispatch(setMessage(`Le signalement "${action.title}" a bien été mis à jour`, true));
+          store.dispatch(getAdminReports());
         })
         .catch((error) => {
           console.log(error);

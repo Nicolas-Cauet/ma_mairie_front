@@ -34,7 +34,7 @@ const auth = (store) => (next) => (action) => {
           console.log(response);
           store.dispatch(toggleLogin());
           store.dispatch(activeConnectionButton());
-          store.dispatch(setMessage('Votre inscription c\'est déroulée avec succès, vous pouvez vous connecter', true));
+          store.dispatch(setMessage('Votre inscription s\'est déroulée avec succès, vous pouvez vous connecter', true));
         })
         .catch((error) => {
           console.log(error);

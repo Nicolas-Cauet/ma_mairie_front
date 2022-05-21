@@ -36,16 +36,16 @@ function App() {
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/admin" element={(<Admin />)} />
-        <Route path={`/reports/${townHallId}`} element={<Reports />} />
-        <Route path={`/council/${townHallId}`} element={<Council />} />
-        <Route path={`/articles/${townHallId}`} element={<InProgress />} />
-        <Route path={`/school/${townHallId}`} element={<InProgress />} />
+        <Route path={`/reports/:${townHallId}`} element={<Reports />} />
+        <Route path={`/council/:${townHallId}`} element={<Council />} />
+        <Route path={`/articles/:${townHallId}`} element={<InProgress />} />
+        <Route path={`/school/:${townHallId}`} element={<InProgress />} />
 
         { adminlogged && (
           <>
-            <Route path={`/admin/reports/${townHallId}`} element={<Reports />} />
-            <Route path={`/admin/reports/${townHallId}/:reporting_id`} element={<ReportAdmin />} />
-            <Route path={`/admin/council/${townHallId}`} element={<Council />} />
+            <Route path={`/admin/reports/:${townHallId}`} element={<Reports />} />
+            <Route path={`/admin/reports/:${townHallId}/:reporting_id`} element={<ReportAdmin />} />
+            <Route path={`/admin/council/:${townHallId}`} element={<Council />} />
 
           </>
         )};

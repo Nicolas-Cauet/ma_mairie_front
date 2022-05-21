@@ -62,9 +62,12 @@ function ReportAdmin() {
         reporting_statut,
       ));
       navigate('/admin/reports/1');
+    } else if (!textAreaValue && !reporting_statut) {
+      dispatch(setMessage('Vous devez donner une réponse et choisir un status', false));
+    } else if (!reporting_statut) {
+      dispatch(setMessage('Vous devez choisir un status', false));
     } else {
-      // setMissingText(true);
-      dispatch(setMessage('Tous les champs doivent être renseignés', false));
+      dispatch(setMessage('Vous devez remplir la réponse de la mairie', false));
     }
   };
 
