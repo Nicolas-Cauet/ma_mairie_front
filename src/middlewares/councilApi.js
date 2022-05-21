@@ -4,6 +4,7 @@ import {
   getCouncilMembers,
   GET_COUNCIL_MEMBERS, PATCH_COUNCIL_MEMBERS, POST_COUNCIL_MEMBERS, setCouncilMembers,
 } from '../actions/council';
+import { setMessage } from '../actions/utilities';
 
 const instance = axios.create({
   baseURL: 'https://mamairie.herokuapp.com',
@@ -22,7 +23,7 @@ const councilApi = (store) => (next) => (action) => {
           store.dispatch(setCouncilMembers(response.data));
         })
         .catch((error) => {
-          // Make error
+          store.dispatch(setMessage('Les données concernant les membres du conseil ne sont pas pour le moment disponible', false));
           console.log(error);
         });
       break;
@@ -40,7 +41,7 @@ const councilApi = (store) => (next) => (action) => {
           store.dispatch(getCouncilMembers());
         })
         .catch((error) => {
-          // Make error
+          store.dispatch(setMessage(error.response.data.error.message, false));
           console.log(error);
         });
       break;
@@ -58,7 +59,7 @@ const councilApi = (store) => (next) => (action) => {
           store.dispatch(getCouncilMembers());
         })
         .catch((error) => {
-          // Make error
+          store.dispatch(setMessage(error.response.data.error.message, false));
           console.log(error);
         });
       break;
@@ -70,7 +71,7 @@ const councilApi = (store) => (next) => (action) => {
           store.dispatch(getCouncilMembers());
         })
         .catch((error) => {
-          // Make error
+          store.dispatch(setMessage('Les modifications concernant les signalements ne sont pas possible pour le moment', false));
           console.log(error);
         });
       break;

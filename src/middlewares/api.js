@@ -30,6 +30,7 @@ const api = (store) => (next) => (action) => {
         })
         .catch((error) => {
           console.log(error);
+          store.dispatch(setMessage('Les données concernant les signalements ne sont pas pour le moment disponible', false));
         })
         .finally(() => {
           store.dispatch(loading(false));
