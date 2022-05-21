@@ -69,6 +69,7 @@ const auth = (store) => (next) => (action) => {
       localStorage.removeItem('token');
       console.log('token deleted');
       store.dispatch(setLogout());
+      store.dispatch(setMessage('Vous êtes déconnecté', true));
       break;
     }
     default:

@@ -11,6 +11,7 @@ import {
 } from '../../actions/action';
 
 import './style.scss';
+import { setMessage } from '../../actions/utilities';
 
 function Login() {
   const dispatch = useDispatch();
@@ -42,10 +43,12 @@ function Login() {
 
   const handleToggleLogin = () => {
     dispatch(toggleLogin());
+    dispatch(setMessage(''));
   };
 
   const handleToggleSignup = () => {
     dispatch(toggleSignup());
+    dispatch(setMessage(''));
   };
 
   const handleLogout = () => {
