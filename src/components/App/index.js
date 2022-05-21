@@ -11,10 +11,11 @@ import Admin from '../Admin';
 import Reports from '../Reports';
 import ReportAdmin from '../ReportAdmin';
 import InProgress from '../InProgress';
+import Council from '../Council';
+import NotFound from '../NotFound';
 
 import 'semantic-ui-css/semantic.min.css';
 import './style.scss';
-import Council from '../Council';
 
 function App() {
   const adminlogged = useSelector((state) => state.login.logged);
@@ -39,7 +40,7 @@ function App() {
 
           </>
         )};
-        <Route path="*" element={<p>route inconnue</p>} />
+        <Route path="*" element={<NotFound />} />
       </Routes>
       <Footer />
     </div>
