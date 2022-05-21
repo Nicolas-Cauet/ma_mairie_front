@@ -20,18 +20,14 @@ const adminApi = (store) => (next) => (action) => {
   switch (action.type) {
     case GET_ADMIN_REPORTS:
       store.dispatch(loading(true));
-      console.log('GET Admin Reports');
       instance.get('/admin/reporting/1')
         .then((response) => {
-          console.log(response);
           store.dispatch(saveAdminReports(response.data));
           console.log(response.data);
         })
 
         .catch((error) => {
-          // message d'erreur à faire
-          // store.dispatch(setMessage('Email et/ou Mot de passe incorrect', false));
-          console.log(error);
+          store.dispatch(setMessage(error.response.data.error.message, false));
         })
         .finally(() => {
           store.dispatch(loading(false));
@@ -42,12 +38,10 @@ const adminApi = (store) => (next) => (action) => {
 
         .then((response) => {
           store.dispatch(deleteReport(action.id));
-          console.log(response.data);
+          store.dispatch(setMessage(response.data, true));
         })
         .catch((error) => {
-          // message d'erreur à faire
-          store.dispatch(setMessage('Email et/ou Mot de passe incorrect', false));
-          console.log(error);
+          store.dispatch(setMessage(error.data, false));
         });
       break;
     }
@@ -58,16 +52,10 @@ const adminApi = (store) => (next) => (action) => {
         reporting_statut: action.reporting_statut,
       })
         .then((response) => {
-          // store.dispatch(getReports(response.data));
-          console.log(response.data);
-          store.dispatch(setMessage(`Le signalement "${action.title}" a bien été mis à jour`, true));
+          store.dispatch(setMessage(response.data, true));
         })
         .catch((error) => {
-          // message d'erreur à faire
-          // store.dispatch(setMessage('Email et/ou Mot de passe incorrect', false));
-          console.log(error, "je suis dans l'erreur");
-          // store.dispatch(returnMessageError(true));
-          store.dispatch(setMessage("Erreur lors de l'enregistrement", false));
+          store.dispatch(setMessage(error.response.data.error.message, false));
         });
       break;
     }

@@ -21,7 +21,7 @@ function Reports() {
     isReporting, categoriesOptions, monthOptions, yearOptions,
   } = useSelector((state) => state.reports);
 
-  const { loading, message } = useSelector((state) => state.utilities);
+  const { loading, message, messageColor } = useSelector((state) => state.utilities);
 
   const { logged } = useSelector((state) => state.login);
 
@@ -98,11 +98,13 @@ function Reports() {
 
       <ReportButton />
 
-      {(message && !isReporting) && (
-        <div className="message-container">
-          <Message positive>  <p>{message}</p> </Message>
-        </div>
-      )}
+      <div className="message-container">
+        {(message && !isReporting) && (
+          messageColor
+            ? <Message positive>  <p>{message}</p> </Message>
+            : <Message negative>  <p>{message}</p> </Message>
+        )}
+      </div>
 
       {/* Section to filter reports list */}
       {!isReporting && (

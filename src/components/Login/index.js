@@ -11,6 +11,7 @@ import {
 } from '../../actions/action';
 
 import './style.scss';
+import { setMessage } from '../../actions/utilities';
 
 function Login() {
   const dispatch = useDispatch();
@@ -41,10 +42,12 @@ function Login() {
   }, []);
 
   const handleToggleLogin = () => {
+    dispatch(setMessage(''));
     dispatch(toggleLogin());
   };
 
   const handleToggleSignup = () => {
+    dispatch(setMessage(''));
     dispatch(toggleSignup());
   };
 
@@ -136,7 +139,7 @@ function Login() {
             icon="key"
             inputError={!samePassword}
           />
-          <p className="login-info">Doit contenir 8 caractères minimum, une majuscule et un caractère spécial (-@?!)</p>
+          <p className="login-info">Doit contenir entre 8 et 15 caractères, une majuscule et un caractère spécial (-@?!)</p>
           <Field
             error
             type="password"
