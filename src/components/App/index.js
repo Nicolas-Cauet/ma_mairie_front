@@ -15,6 +15,7 @@ import InProgress from '../InProgress';
 import Council from '../Council';
 
 import { setTownHallId } from '../../actions/action';
+import NotFound from '../NotFound';
 
 import 'semantic-ui-css/semantic.min.css';
 import './style.scss';
@@ -49,7 +50,7 @@ function App() {
 
           </>
         )};
-        <Route path="*" element={<p>route inconnue</p>} />
+        <Route path="*" element={<NotFound />} />
       </Routes>
       <Footer />
     </div>

@@ -6,7 +6,7 @@ import {
   Message,
   TextArea,
 } from 'semantic-ui-react';
-import { useEffect, useState } from 'react';
+import { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { useParams, useNavigate } from 'react-router-dom';
 import Moment from 'react-moment';
@@ -31,7 +31,7 @@ function ReportAdmin() {
   const dispatch = useDispatch();
 
   const {
-    admin_text, message, messageColor,
+    message, messageColor,
   } = useSelector((state) => state.utilities);
   const { reporting_statut } = useSelector((state) => state.reports);
 

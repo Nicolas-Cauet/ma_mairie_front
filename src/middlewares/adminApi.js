@@ -25,14 +25,12 @@ const adminApi = (store) => (next) => (action) => {
       console.log('GET Admin Reports');
       instance.get(`/admin/reporting/${townHallId}`)
         .then((response) => {
-          console.log(response);
           store.dispatch(saveAdminReports(response.data));
           console.log(response.data);
         })
 
         .catch((error) => {
           store.dispatch(setMessage(error.response.data.error.message, false));
-          console.log(error);
         })
         .finally(() => {
           store.dispatch(loading(false));
@@ -43,7 +41,7 @@ const adminApi = (store) => (next) => (action) => {
 
         .then((response) => {
           store.dispatch(deleteReport(action.id));
-          console.log(response.data);
+          store.dispatch(setMessage(response.data, true));
         })
         .catch((error) => {
           store.dispatch(setMessage(error.response.data.error.message, false));
@@ -58,12 +56,10 @@ const adminApi = (store) => (next) => (action) => {
         reporting_statut: action.reporting_statut,
       })
         .then((response) => {
-          console.log(response.data);
-          store.dispatch(setMessage(`Le signalement "${action.title}" a bien été mis à jour`, true));
+          store.dispatch(setMessage(response.data, true));
           store.dispatch(getAdminReports());
         })
         .catch((error) => {
-          console.log(error);
           store.dispatch(setMessage(error.response.data.error.message, false));
         });
       break;

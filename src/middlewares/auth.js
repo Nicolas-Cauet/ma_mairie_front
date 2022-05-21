@@ -34,7 +34,7 @@ const auth = (store) => (next) => (action) => {
           console.log(response);
           store.dispatch(toggleLogin());
           store.dispatch(activeConnectionButton());
-          store.dispatch(setMessage('Votre inscription s\'est déroulée avec succès, vous pouvez vous connecter', true));
+          store.dispatch(setMessage(response.data, true));
         })
         .catch((error) => {
           console.log(error);
@@ -49,6 +49,7 @@ const auth = (store) => (next) => (action) => {
         .then((response) => {
           console.log('User login');
           console.log(response);
+          // store.dispatch(setMessage(response.data, true));
           store.dispatch(login());
           store.dispatch(redirect('/'));
 
@@ -59,7 +60,7 @@ const auth = (store) => (next) => (action) => {
           localStorage.setItem('accessToken', accessToken);
         })
         .catch((error) => {
-          store.dispatch(setMessage('Email et/ou Mot de passe incorrect', false));
+          store.dispatch(setMessage(error.response.data.error.message, false));
           console.log(error);
         });
       break;
