@@ -38,7 +38,7 @@ const auth = (store) => (next) => (action) => {
         })
         .catch((error) => {
           console.log(error);
-          store.dispatch(setMessage('Une erreur est survenue, veuillez recommencer', false));
+          store.dispatch(setMessage(error.response.data.error.message, false));
         });
       break;
     case SUBMIT_LOGIN:
