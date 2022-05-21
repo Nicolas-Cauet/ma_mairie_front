@@ -129,7 +129,7 @@ function Reporting() {
           <section className="filter-section">
             <Dropdown
               className="filter-dropdown categories"
-              placeholder="Catégories"
+              placeholder="Catégories *"
               fluid
               selection
               options={categoriesOptions}
@@ -144,7 +144,7 @@ function Reporting() {
           <Field
             type="text"
             className="reporting-title ddd"
-            placeholder="Titre"
+            placeholder="Titre *"
             value={reporting_title}
             title="Titre"
             name="reporting_title"
@@ -160,7 +160,7 @@ function Reporting() {
             title="Description"
             name="reporting_description"
             className="reporting-form-textarea"
-            placeholder="Description : Que souhaitez vous signaler ?"
+            placeholder="Description : Que souhaitez vous signaler ? *"
             onChange={handleChangeDescription}
           />
           {isReporting_descriptionError && (
@@ -171,7 +171,7 @@ function Reporting() {
           <Field
             type="email"
             className="reporting-email"
-            placeholder="Email"
+            placeholder="Email *"
             value={reporting_email}
             title="Email"
             name="reporting_email"
@@ -185,7 +185,7 @@ function Reporting() {
           <Field
             type="text"
             className="reporting-firstname"
-            placeholder="Prénom"
+            placeholder="Prénom *"
             value={reporting_firstName}
             name="reporting_firstName"
             title="Prénom"
@@ -199,7 +199,7 @@ function Reporting() {
           <Field
             type="text"
             className="reporting-lastname"
-            placeholder="Nom"
+            placeholder="Nom *"
             value={reporting_lastName}
             name="reporting_lastName"
             title="Nom"
@@ -219,6 +219,7 @@ function Reporting() {
             name="reporting_phone"
             icon="phone"
           />
+          <p className="obligateFields">*  Champs obligatoires</p>
           <Form.Field className="reporting-form-checkbox">
             <Checkbox
               label="J'accepte les termes et conditions"
