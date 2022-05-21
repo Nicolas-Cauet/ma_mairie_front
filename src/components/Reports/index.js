@@ -24,13 +24,9 @@ function Reports() {
     monthOptions,
     yearOptions,
   } = useSelector((state) => state.reports);
-<<<<<<< HEAD
-  const { loading, message } = useSelector((state) => state.utilities);
-=======
 
   const { loading, message, messageColor } = useSelector((state) => state.utilities);
 
->>>>>>> user-message
   const { logged } = useSelector((state) => state.login);
   const { selectedCategory, selectedMonth, selectedYear } = useSelector((state) => state.reports);
 
