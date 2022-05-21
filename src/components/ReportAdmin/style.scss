@@ -48,7 +48,7 @@
         display: flex;
         margin-bottom: 1rem;
         flex-wrap: wrap;
-        justify-content: space-evenly;
+        justify-content: space-between;
     }
 
     // &-checkbox {
@@ -107,45 +107,49 @@ button.ui.button.reportAdmin-abort {
    position: absolute; 
 }
 
-  input[type="radio"] + label {
-    padding: 0.5rem 1rem;
-    display: flex;
-    margin: 0.5rem;
-    font-size: 1.25rem;
-    line-height: 1.5;
-    border-radius: 0.3rem;
-    color: #fff;
-    background-color: #6c757d;
-    border: 1px solid transparent;
-    transition: all 0.5s ease-in-out;
-  }
-  input[type="radio"].inProgress:hover + label {
-    background-color: vars.$statusInProgressColor;
-    border-color: vars.$statusInProgressColor;
-    cursor: pointer;
-  }
+input[type="radio"] + label {
+  padding: 0.75rem 1rem;
+  display: flex;
+  margin: 1.5rem 0 0.5rem;
+  font-size: 1rem;
+  line-height: 1.5;
+  border-radius: 0.3rem;
+  color: #fff;
+  background-color: #6c757d;
+  border: 1px solid transparent;
+  transition: all 0.5s ease-in-out;
+}
+input[type="radio"].inProgress:hover + label {
+  background-color: vars.$statusInProgressColor;
+  border-color: vars.$statusInProgressColor;
+  cursor: pointer;
+}
 input[type="radio"].inProgress:checked + label {
-    background-color: vars.$statusInProgressColor;
-    border-color: vars.$statusInProgressColor;
-    cursor: pointer;
-  }
+  background-color: vars.$statusInProgressColor;
+  border-color: vars.$statusInProgressColor;
+  cursor: pointer;
+}
 
-  input[type="radio"].done:hover + label {
-    background-color: vars.$statusOkColor;
-    border-color: vars.$statusOkColor;
-    cursor: pointer;
-  }
-  input[type="radio"].done:checked + label {
-    background-color: vars.$statusOkColor;
-    border-color: vars.$statusOkColor;
-  }
+input[type="radio"].done:hover + label {
+  background-color: vars.$statusOkColor;
+  border-color: vars.$statusOkColor;
+  cursor: pointer;
+}
+input[type="radio"].done:checked + label {
+  background-color: vars.$statusOkColor;
+  border-color: vars.$statusOkColor;
+}
 
-  input[type="radio"].abort:hover + label {
-    background-color: vars.$statusRefusedColor;
-    border-color: vars.$statusRefusedColor;
-    cursor: pointer;
-  }
-  input[type="radio"].abort:checked + label {
-    background-color: vars.$statusRefusedColor;
-    border-color: vars.$statusRefusedColor;
-  }
+input[type="radio"].abort:hover + label {
+  background-color: vars.$statusRefusedColor;
+  border-color: vars.$statusRefusedColor;
+  cursor: pointer;
+}
+input[type="radio"].abort:checked + label {
+  background-color: vars.$statusRefusedColor;
+  border-color: vars.$statusRefusedColor;
+}
+
+.ui.negative.message, .ui.positive.message {
+    text-align: center;
+}
