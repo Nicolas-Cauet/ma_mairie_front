@@ -1,7 +1,8 @@
 // import PropTypes from 'prop-types';
 
 import { Routes, Route } from 'react-router-dom';
-import { useSelector } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
+import { useEffect } from 'react';
 
 import Header from '../Header';
 import Menu from '../Menu';
@@ -11,13 +12,22 @@ import Admin from '../Admin';
 import Reports from '../Reports';
 import ReportAdmin from '../ReportAdmin';
 import InProgress from '../InProgress';
+import Council from '../Council';
+
+import { setTownHallId } from '../../actions/action';
 
 import 'semantic-ui-css/semantic.min.css';
 import './style.scss';
-import Council from '../Council';
 
 function App() {
+  const dispatch = useDispatch();
+
+  const townHallId = useSelector((state) => state.login.townHallId);
   const adminlogged = useSelector((state) => state.login.logged);
+
+  useEffect(() => {
+    dispatch(setTownHallId(1));
+  }, []);
 
   return (
     <div className="app">
@@ -26,16 +36,16 @@ function App() {
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/admin" element={(<Admin />)} />
-        <Route path="/reports/1" element={<Reports />} />
-        <Route path="/council/1" element={<Council />} />
-        <Route path="/articles/1" element={<InProgress />} />
-        <Route path="/school/1" element={<InProgress />} />
+        <Route path={`/reports/${townHallId}`} element={<Reports />} />
+        <Route path={`/council/${townHallId}`} element={<Council />} />
+        <Route path={`/articles/${townHallId}`} element={<InProgress />} />
+        <Route path={`/school/${townHallId}`} element={<InProgress />} />
 
         { adminlogged && (
           <>
-            <Route path="/admin/reports/1" element={<Reports />} />
-            <Route path="/admin/reports/1/:reporting_id" element={<ReportAdmin />} />
-            <Route path="/admin/council/1" element={<Council />} />
+            <Route path={`/admin/reports/${townHallId}`} element={<Reports />} />
+            <Route path={`/admin/reports/${townHallId}/:reporting_id`} element={<ReportAdmin />} />
+            <Route path={`/admin/council/${townHallId}`} element={<Council />} />
 
           </>
         )};

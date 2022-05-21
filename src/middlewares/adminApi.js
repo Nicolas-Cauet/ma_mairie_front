@@ -17,11 +17,12 @@ const instance = axios.create({
 });
 
 const adminApi = (store) => (next) => (action) => {
+  const townHallId = store.getState((state) => state.login.townHallId);
   switch (action.type) {
     case GET_ADMIN_REPORTS:
       store.dispatch(loading(true));
       console.log('GET Admin Reports');
-      instance.get('/admin/reporting/1')
+      instance.get(`/admin/reporting/${townHallId}`)
         .then((response) => {
           console.log(response);
           store.dispatch(saveAdminReports(response.data));
@@ -37,7 +38,7 @@ const adminApi = (store) => (next) => (action) => {
         });
       break;
     case DELETE_SELECTED_REPORT: {
-      instance.delete(`/admin/reporting/1/${action.id}`)
+      instance.delete(`/admin/reporting/${townHallId}/${action.id}`)
 
         .then((response) => {
           store.dispatch(deleteReport(action.id));
@@ -50,7 +51,7 @@ const adminApi = (store) => (next) => (action) => {
       break;
     }
     case SUBMIT_MODERATE_REPORTING: {
-      instance.patch(`/admin/reporting/1/${action.id}`, {
+      instance.patch(`/admin/reporting/${townHallId}/${action.id}`, {
         title: action.title,
         admin_text: action.admin_text,
         reporting_statut: action.reporting_statut,

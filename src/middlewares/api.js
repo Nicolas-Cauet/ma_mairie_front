@@ -19,11 +19,12 @@ const instance = axios.create({
 // }
 
 const api = (store) => (next) => (action) => {
+  const townHallId = store.getState((state) => state.login.townHallId);
   switch (action.type) {
     case GET_REPORTS:
       store.dispatch(loading(true));
       console.log('GET Reports');
-      instance.get('/reporting/1')
+      instance.get(`/reporting/${townHallId}`)
         .then((response) => {
           console.log(response);
           store.dispatch(saveReports(response.data));
@@ -38,7 +39,7 @@ const api = (store) => (next) => (action) => {
       break;
     case SUBMIT_REPORTING:
       console.log('POST Reporting');
-      instance.post('/reporting/1', {
+      instance.post(`/reporting/${townHallId}`, {
         reporting_category: action.reporting_category,
         title: action.reporting_title,
         user_text: action.reporting_description,
@@ -46,7 +47,7 @@ const api = (store) => (next) => (action) => {
         first_name: action.reporting_firstName,
         last_name: action.reporting_lastName,
         phonenumber: action.reporting_phone,
-        town_hall_id: 1,
+        town_hall_id: townHallId,
       })
         .then((response) => {
           console.log('POST Reporting OK');

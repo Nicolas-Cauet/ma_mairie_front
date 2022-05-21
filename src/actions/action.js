@@ -51,3 +51,10 @@ export const ACTIVE_CONNECTION_BUTTON = 'ACTIVE_CONNECTION_BUTTON';
 export const activeConnectionButton = () => ({
   type: ACTIVE_CONNECTION_BUTTON,
 });
+
+/** Assign value to townHallId */
+export const SET_TOWNHALL_ID = 'SET_TOWNHALL_ID';
+export const setTownHallId = (townHallId) => ({
+  type: SET_TOWNHALL_ID,
+  townHallId,
+});

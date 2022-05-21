@@ -14,10 +14,11 @@ const instance = axios.create({
 });
 
 const councilApi = (store) => (next) => (action) => {
+  const townHallId = store.getState((state) => state.login.townHallId);
   switch (action.type) {
     case GET_COUNCIL_MEMBERS:
       console.log('GET Council');
-      instance.get('/council/1')
+      instance.get(`/council/${townHallId}`)
         .then((response) => {
           console.log(response);
           store.dispatch(setCouncilMembers(response.data));
@@ -29,12 +30,12 @@ const councilApi = (store) => (next) => (action) => {
       break;
     case POST_COUNCIL_MEMBERS:
       console.log('POST Council');
-      instance.post('/admin/council/1', {
+      instance.post(`/admin/council/${townHallId}`, {
         first_name: 'Prénom',
         last_name: 'Nom',
         photo: 'https://react.semantic-ui.com/images/wireframe/image.png',
         role: 'Fonction',
-        town_hall_id: 1,
+        town_hall_id: townHallId,
       })
         .then((response) => {
           console.log(response);
@@ -47,12 +48,12 @@ const councilApi = (store) => (next) => (action) => {
       break;
     case PATCH_COUNCIL_MEMBERS:
       console.log('PATCH Council');
-      instance.patch(`/admin/council/1/${action.id}`, {
+      instance.patch(`/admin/council/${townHallId}/${action.id}`, {
         first_name: action.firstName,
         last_name: action.lastName,
         photo: action.photo,
         role: action.role,
-        town_hall_id: 1,
+        town_hall_id: townHallId,
       })
         .then((response) => {
           console.log(response);
@@ -65,7 +66,7 @@ const councilApi = (store) => (next) => (action) => {
       break;
     case DELETE_COUNCIL_MEMBERS:
       console.log('DELETE Council');
-      instance.delete(`/admin/council/1/${action.id}`)
+      instance.delete(`/admin/council/${townHallId}/${action.id}`)
         .then((response) => {
           console.log(response);
           store.dispatch(getCouncilMembers());

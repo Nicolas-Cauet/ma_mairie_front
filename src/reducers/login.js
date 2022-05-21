@@ -4,6 +4,7 @@ import {
   LOGIN,
   SET_LOGOUT,
   ACTIVE_CONNECTION_BUTTON,
+  SET_TOWNHALL_ID,
 } from '../actions/action';
 
 import { REDIRECT } from '../actions/utilities';
@@ -14,6 +15,7 @@ export const initialState = {
   isOpenLogin: false,
   activeConnectionButton: false,
   redirectTo: '',
+  townHallId: '',
 };
 
 const reducer = (state = initialState, action = {}) => {
@@ -69,6 +71,11 @@ const reducer = (state = initialState, action = {}) => {
         redirectTo: action.redirectTo,
       };
     }
+    case SET_TOWNHALL_ID:
+      return {
+        ...state,
+        townHallId: action.townHallId,
+      };
     default:
       return state;
   }
