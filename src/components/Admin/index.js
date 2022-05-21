@@ -1,7 +1,7 @@
 // import './style.scss';
 import { useSelector } from 'react-redux';
 import { Link } from 'react-router-dom';
-import { Button } from 'semantic-ui-react';
+import { Button, Message } from 'semantic-ui-react';
 
 import Field from '../Field';
 import Login from '../Login';
@@ -20,11 +20,15 @@ function Admin() {
           <div className="admin-articles admin-content">
             <div className="admin-button">
               <h3>Articles</h3>
+              <Message
+                className="inprogress-adminMessage"
+                icon="cogs"
+                content="Service bientôt disponible"
+              />
               <Button className="create" icon="plus" content="Créer" />
               <Button className="edit" icon="edit" content="Editer" />
             </div>
           </div>
-
           <div className="admin-content">
             <div className="admin-button">
               <h3>Signalements</h3>
@@ -37,6 +41,11 @@ function Admin() {
           <div className="admin-content">
             <div className="admin-button">
               <h3>Services</h3>
+              <Message
+                className="inprogress-adminMessage"
+                icon="cogs"
+                content="Service bientôt disponible"
+              />
               <Button className="create" icon="plus" content="Créer" />
               <Button className="edit" icon="edit" content="Editer" />
             </div>
@@ -45,6 +54,11 @@ function Admin() {
           <div className="admin-content">
             <div className="admin-button">
               <h3>Ramassage des ordures</h3>
+              <Message
+                className="inprogress-adminMessage"
+                icon="cogs"
+                content="Service bientôt disponible"
+              />
               <Button className="create" icon="plus" content="Ajouter calendrier" />
               <Button className="create" icon="plus" content="Ajouter un guide" />
             </div>
@@ -53,8 +67,13 @@ function Admin() {
           <div className="admin-content">
             <div className="admin-button">
               <h3>Déchetterie</h3>
+              <Message
+                className="inprogress-adminMessage"
+                icon="cogs"
+                content="Service bientôt disponible"
+              />
               <Button className="create" icon="plus" content="Ajouter plan d'accès" />
-              <Button className="edit" icon="edit" content="Editer les horaires" />
+              {/* <Button className="edit" icon="edit" content="Editer les horaires" /> */}
             </div>
           </div>
 
@@ -71,6 +90,11 @@ function Admin() {
           <div className="admin-content">
             <div className="admin-button">
               <h3>Réseaux sociaux</h3>
+              <Message
+                className="inprogress-adminMessage"
+                icon="cogs"
+                content="Service bientôt disponible"
+              />
               <form>
                 <Field
                   type="text"

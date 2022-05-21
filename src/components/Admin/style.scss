@@ -62,5 +62,16 @@
         flex-direction: column;
         margin: 1rem;
     }
- 
+}
+
+.ui.message.inprogress-adminMessage {
+  text-align: justify;
+  margin: 0.2rem;
+  padding: 0;
+  width: 100%;
+  border: solid 0.1rem grey;
+  & .icon {
+    transform: scale(0.75);
+  }
+
 }
