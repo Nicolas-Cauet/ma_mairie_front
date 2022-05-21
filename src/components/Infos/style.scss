@@ -5,7 +5,9 @@
   align-items: center;
   border-top: solid 0.1rem black;
 
-
+  & img {
+    width: 100%;
+  }
 
   & h2 {
     margin-top: 0.5rem;

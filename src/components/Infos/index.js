@@ -5,6 +5,7 @@ import { toggleRecycling, toggleWaste } from '../../actions/infos';
 
 import schedule from '../../assets/images/waste/schedule.jpg';
 import guide from '../../assets/images/waste/guide.png';
+import landfill from '../../assets/images/waste/landfill.png';
 
 import './style.scss';
 
@@ -40,7 +41,7 @@ function Infos() {
       {isOpenRecycling && (
         <div className="infos-recycling infos-content">
           <h3>Plan d'accès et horaires</h3>
-          <img src={schedule} className="header-logo" alt="Mairie" />
+          <img src={landfill} className="header-logo" alt="Mairie" />
         </div>
       )}
 
