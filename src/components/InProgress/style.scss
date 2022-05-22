@@ -6,3 +6,13 @@
     margin-bottom: 1rem ;
   }
 }
+
+/* Desktop */
+@media (min-width: 900px) {
+  .ui.message.inprogress-message {
+    width: 60%;
+    margin: 2rem auto;
+
+  }
+
+}

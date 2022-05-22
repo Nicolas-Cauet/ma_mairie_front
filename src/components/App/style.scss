@@ -11,9 +11,19 @@
 
 /* Desktop */
 @media (min-width: 900px) {
-    .app {
-        width: 80%;
+ 
+  
+  #root {
+    background-color: white;
+    -webkit-box-shadow: 5px 5px 15px 20px #000000; 
+    box-shadow: 5px 5px 15px 20px #000000;
+  };  
+  
+  .app {
+        width: 70%;
         margin: auto;
+        -webkit-box-shadow: 0px 0px 10px -2px #000000; 
+        box-shadow: 0px 0px 10px -2px #000000;
     }
 
     .ui.message, .ui.positive.message, .ui.negative.message{

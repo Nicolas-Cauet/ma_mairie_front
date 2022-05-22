@@ -142,3 +142,24 @@
 .ui.form>p {
   margin: -1rem 0 0.5rem;
 }
+
+/* Desktop */
+@media (min-width: 900px) {
+  .reporting-form .filter-section .ui.fluid.dropdown.categories {
+    width: 65%;
+    margin: auto;
+  }
+  .reporting-form .ui.form .ui.input.field-reporting_title {
+    width: 65%;
+  }
+
+  .ui.form .field {
+    width: 65%;
+    display:flex;
+    justify-content: center ;
+  }
+
+  .reporting-form .ui.form .ui.input {
+    width: 50%;
+  }
+}
