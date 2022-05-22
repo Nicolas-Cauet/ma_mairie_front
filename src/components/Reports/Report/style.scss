@@ -2,7 +2,6 @@
 
 .report {
     text-align: center;
-    border-style: dashed solid 0.1rem grey;
     border: 0.1rem grey;
     border-style: dashed solid;
 
@@ -54,4 +53,12 @@
     // &-moreInfo {
     //     background-color: rgb(209, 209, 209);
     // }
+}
+
+/* Desktop */
+@media (min-width: 900px) {
+    .ui.styled.accordion {
+        width: 70%;
+        margin: auto;
+    }
 }

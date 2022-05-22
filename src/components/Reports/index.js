@@ -96,7 +96,7 @@ function Reports() {
   };
 
   return (
-    <>
+    <div className="reports-content">
       {/* Section for reporting action */}
       {isReporting && (<Reporting />)}
 
@@ -155,7 +155,7 @@ function Reports() {
           {filteredReports.map((report) => <Report key={report.reporting_id} {...report} />)}
         </section>
       )}
-    </>
+    </div>
   );
 }
 

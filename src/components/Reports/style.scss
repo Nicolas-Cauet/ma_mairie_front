@@ -27,7 +27,6 @@
   align-items: center;
   justify-content: center;
   padding: 1.5rem;
-  margin: 1.5rem 1rem 0.5rem;
   width: 85%;
 
   &:hover {
@@ -94,5 +93,22 @@
     &.categories {
     width: 54%;
     }
+  }
+}
+
+/* Desktop */
+@media (min-width: 900px) {
+  .reports {
+    &-container {
+      display: flex;
+      flex-wrap: wrap;
+    }
+  }
+  .filter-section {
+    width: 50%;
+    margin: 1.5rem auto;
+  }
+  .ui.button.reporting-button {
+    width: 30%;
   }
 }

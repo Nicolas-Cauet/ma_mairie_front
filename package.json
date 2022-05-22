@@ -60,7 +60,12 @@
       "react/react-in-jsx-scope": "off",
       "react/function-component-definition": "off",
       "camelcase": "off",
-      "no-unused-vars": ["warn", { "varsIgnorePattern": "VARIABLE_NAME"}]
+      "no-unused-vars": [
+        "warn",
+        {
+          "varsIgnorePattern": "VARIABLE_NAME"
+        }
+      ]
     }
   },
   "browserslist": {

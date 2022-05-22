@@ -12,9 +12,7 @@ import {
 } from 'semantic-ui-react';
 import { Link } from 'react-router-dom';
 import Moment from 'react-moment';
-import {
-  deleteSelectedReport, eraseValueActiveIndex, getAdminReports, setActiveIndex,
-} from '../../../actions/reports';
+import { deleteSelectedReport, getAdminReports, setActiveIndex } from '../../../actions/reports';
 
 import './style.scss';
 
@@ -96,11 +94,7 @@ function Report({
             {logged && window.location.pathname.includes('admin') && (
               <div className="report-button">
                 <Link to={`/admin/reports/1/${reporting_id}`}>
-                  <Button
-                    onClick={() => { dispatch(eraseValueActiveIndex()); }}
-                  >
-                    Traiter le signalement
-                  </Button>
+                  <Button>Traiter le signalement</Button>
                 </Link>
                 <Button onClick={toggleDeleteConfirm}>Supprimer</Button>
                 <Confirm
