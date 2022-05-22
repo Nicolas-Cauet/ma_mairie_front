@@ -53,7 +53,7 @@
         border-radius: 1rem;
     }
 
-    form {
+    &-form {
         display: flex;
         flex-direction: column;
         margin: 1rem;
@@ -90,4 +90,8 @@
             width: 40%;     
         }
     }
+    .ui.message.inprogress-adminMessage {
+        width: 50%;
+        margin: 0 auto;
+      }
 }

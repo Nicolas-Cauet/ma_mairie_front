@@ -2,3 +2,21 @@
     width: 100%;
     background-color: #EEEEEE;
 }
+
+.ui.message, .ui.positive.message, .ui.negative.message{
+    width: 80%;
+    margin: 1rem auto 1rem;
+    text-align: center;
+}
+
+/* Desktop */
+@media (min-width: 900px) {
+    .app {
+        width: 70%;
+        margin: auto;
+    }
+
+    .ui.message, .ui.positive.message, .ui.negative.message{
+        width: 50%;
+    }
+}

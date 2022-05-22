@@ -4,18 +4,18 @@
   & .obligateFields {
     font-size: 0.75rem ;  }
 
-  & .message-container {
-    display: flex;
-    justify-content: center;
-    & .ui.negative.message {
-      text-align: center;
-      width: 85%;
-    }
-    & .ui.positive.message {
-      text-align: center;
-      width: 85%;
-    }
-  }
+  // & .message-container {
+  //   display: flex;
+  //   justify-content: center;
+  //   & .ui.negative.message {
+  //     text-align: center;
+  //     width: 85%;
+  //   }
+  //   & .ui.positive.message {
+  //     text-align: center;
+  //     width: 85%;
+  //   }
+  // }
 
   & .ui.basic.label {
     color: #af0202;
@@ -104,9 +104,6 @@
           & p {
             margin: 0;
           }
-        }
-        & .ui.message.retail-message {
-          margin-bottom: 0.6rem;
         }
         & .content.active {
           width: 100%;

@@ -10,6 +10,7 @@
     }
 
     &-form {
+        width: 100%;
         display: flex;
         flex-direction: column;
         align-items: center;
@@ -20,7 +21,6 @@
       }
 
       & .ui.input{
-        width: 80%;;
 
         &.error input {
           border: 2px solid #c33e3e;
@@ -28,6 +28,17 @@
         }
       }
     }
+
+  .ui.buttons {
+    width: 100%;
+    border-bottom-left-radius: 0;
+    border-bottom-right-radius: 0;
+  }
+
+  .ui.buttons .button {
+    border-bottom-left-radius: 0rem;
+    border-bottom-right-radius: 0rem;
+  }
 
   &-info{
     color: grey;
@@ -51,7 +62,6 @@
 .ui.button.login-form-button {
   background-color: vars.$createColor;
   margin: 2rem 1rem 0rem;
-  width: 50%;
 
   &:active {
     background-color: vars.$createColor;
@@ -62,7 +72,35 @@
   background-color: vars.$statusRefusedColor;
 }
 
-.ui.negative.message  .ui.positive.message {
-  margin: 0;
+.forms{
+  background-color: rgb(215, 223, 228);
+  width: 100%;
+  margin: auto;
+  padding: 0 0 1rem;
+  border-bottom-left-radius: 0.28571429rem;
+  border-bottom-right-radius: 0.28571429rem;
 }
 
+/* Desktop */
+@media (min-width: 900px) {
+  .login {
+    margin: auto;
+    &-form {
+      width: 100%;
+      margin: auto;
+    }
+    
+    & .ui.buttons{
+      width: 70%;
+    }
+
+    &-form>.ui.input {
+      width: 40%;
+    }
+  }
+
+  .forms {
+    width: 70%;
+  }
+  
+}

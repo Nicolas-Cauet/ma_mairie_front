@@ -173,10 +173,6 @@ input[type="radio"].abort:checked + label {
   border-color: vars.$statusRefusedColor;
 }
 
-.ui.negative.message, .ui.positive.message {
-    text-align: center;
-}
-
 /* Desktop */
 @media (min-width: 900px) {
     .reportAdmin {

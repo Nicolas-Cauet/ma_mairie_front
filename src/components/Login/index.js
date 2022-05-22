@@ -78,7 +78,9 @@ function Login() {
 
   return (
     <div className="login">
+      {!logged && (
       <h1>Accèder à votre espace d'administration</h1>
+      )}
       {logged && (
         <Button
           type="button"
@@ -110,96 +112,99 @@ function Login() {
       )}
 
       {(isOpenSignup && !logged) && (
-        <form className="login-form" onSubmit={handleSubmitSignup}>
-          <Field
-            type="text"
-            className="login-input"
-            placeholder="Pseudonyme"
-            value={pseudo}
-            name="pseudo"
-            title="pseudo"
-            icon="user"
+        <div className="forms">
+          <form className="login-form" onSubmit={handleSubmitSignup}>
+            <Field
+              type="text"
+              className="login-input"
+              placeholder="Pseudonyme"
+              value={pseudo}
+              name="pseudo"
+              title="pseudo"
+              icon="user"
+            />
+            <Field
+              type="email"
+              className="login-input"
+              placeholder="Email"
+              value={email}
+              name="email"
+              title="email"
+              icon="at"
+            />
+            <p className="login-info">exemple : john.doe@gmail.com</p>
+            <Field
+              type="password"
+              className="login-input"
+              placeholder="Mot de passe"
+              value={password}
+              name="password"
+              title="password"
+              icon="key"
+              inputError={!samePassword}
+            />
+            <p className="login-info">Doit contenir entre 8 et 15 caractères, une majuscule et un caractère spécial (-@?!)</p>
+            <Field
+              error
+              type="password"
+              className="login-input"
+              placeholder="Confirmation mot de passe"
+              value={confirmPassword}
+              name="confirmPassword"
+              title="Confirmer password"
+              icon="key"
+              inputError={!samePassword}
+            />
+            {samePassword ? '' : <p className="red">Les mots de passe sont différents</p>}
 
-          />
-          <Field
-            type="email"
-            className="login-input"
-            placeholder="Email"
-            value={email}
-            name="email"
-            title="email"
-            icon="at"
-          />
-          <p className="login-info">exemple : john.doe@gmail.com</p>
-          <Field
-            type="password"
-            className="login-input"
-            placeholder="Mot de passe"
-            value={password}
-            name="password"
-            title="password"
-            icon="key"
-            inputError={!samePassword}
-          />
-          <p className="login-info">Doit contenir entre 8 et 15 caractères, une majuscule et un caractère spécial (-@?!)</p>
-          <Field
-            error
-            type="password"
-            className="login-input"
-            placeholder="Confirmation mot de passe"
-            value={confirmPassword}
-            name="confirmPassword"
-            title="Confirmer password"
-            icon="key"
-            inputError={!samePassword}
-          />
-          {samePassword ? '' : <p className="red">Les mots de passe sont différents</p>}
-
-          <Field
-            type="tel"
-            className="login-input"
-            placeholder="Code INSEE"
-            value={inseeCode}
-            name="inseeCode"
-            title="inseeCode"
-            icon="building"
-          />
-          <Button
-            type="submit"
-            className="login-form-button"
-          >
-            S'inscrire
-          </Button>
-        </form>
+            <Field
+              type="tel"
+              className="login-input"
+              placeholder="Code INSEE"
+              value={inseeCode}
+              name="inseeCode"
+              title="inseeCode"
+              icon="building"
+            />
+            <Button
+              type="submit"
+              className="login-form-button"
+            >
+              S'inscrire
+            </Button>
+          </form>
+        </div>
       )}
 
       {(isOpenLogin && !logged) && (
-        <form className="login-form" onSubmit={handleSubmitLogin}>
-          <Field
-            type="email"
-            className="login-input"
-            placeholder="Email"
-            value={email}
-            name="email"
-            title="email"
-            icon="at"
-          />
-          <Field
-            type="password"
-            className="login-input"
-            placeholder="Mot de passe"
-            value={password}
-            name="password"
-            title="password"
-            icon="key"
-          />
-          <Button
-            type="submit"
-            className="login-form-button"
-          >
-            Se connecter
-          </Button>
-        </form>
+        <div className="forms">
+          <form className="login-form" onSubmit={handleSubmitLogin}>
+            <Field
+              type="email"
+              className="login-input"
+              placeholder="Email"
+              value={email}
+              name="email"
+              title="email"
+              icon="at"
+            />
+            <Field
+              type="password"
+              className="login-input"
+              placeholder="Mot de passe"
+              value={password}
+              name="password"
+              title="password"
+              icon="key"
+            />
+            <Button
+              type="submit"
+              className="login-form-button"
+            >
+              Se connecter
+            </Button>
+          </form>
+        </div>
       )}
 
       { message && (

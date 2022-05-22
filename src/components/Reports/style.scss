@@ -6,16 +6,16 @@
   justify-content: center;
   flex-wrap: wrap;
 }
-.message-container {
-  display: flex;
-  justify-content: center;
-  margin: 1rem 0;
+// .message-container {
+//   display: flex;
+//   justify-content: center;
+//   margin: 1rem 0;
 
-  &>.ui.positive.message {
-    text-align: center;
-    width: 85%;
-  }
-}
+//   &>.ui.positive.message {
+//     text-align: center;
+//     width: 85%;
+//   }
+// }
 
 .ui.button.reporting-button {
   background-color: vars.$warningButtonColor;
@@ -47,8 +47,8 @@
   }
     
   & .ui.label {
-    color: black!important;
-    width: 20%;
+  color: black!important;
+  width: 20%;
   }
   & .ui.label {
     background-color: vars.$categoryRoute!important;
