@@ -84,14 +84,28 @@
             justify-content: space-evenly;
         }
         &-content {
-            width: 40rem;
-        }
-        &-button .ui.button {
-            width: 40%;     
+            width: 45%;
+            
+          
+          & .admin-button {
+            min-height: 10rem;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-evenly;
+
+            &.waste, &.landfill {
+              min-height: 16rem;
+            }
+          }
         }
     }
     .ui.message.inprogress-adminMessage {
         width: 50%;
         margin: 0 auto;
-      }
+    }
+
+    .ui.message.inprogress-adminMessage {
+      margin: 0.2rem;
+      width: 100%;
+    }
 }

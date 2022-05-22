@@ -20,6 +20,23 @@ function Admin() {
           <div className="admin-container">
             <div className="admin-articles admin-content">
               <div className="admin-button">
+                <h3>Signalements</h3>
+                <Link to="/admin/reports/1">
+                  <Button className="process" icon="pencil alternate" content="Traiter" />
+                </Link>
+              </div>
+            </div>
+            <div className="admin-content">
+              <div className="admin-button">
+                <h3>Conseil municipal</h3>
+                {/* <Button className="create" icon="plus" content="Créer" /> */}
+                <Link to="/admin/council/1">
+                  <Button className="edit" icon="edit" content="Editer" />
+                </Link>
+              </div>
+            </div>
+            <div className="admin-content">
+              <div className="admin-button">
                 <h3>Articles</h3>
                 <Message
                   className="inprogress-adminMessage"
@@ -30,15 +47,6 @@ function Admin() {
                 <Button className="edit" icon="edit" content="Editer" />
               </div>
             </div>
-            <div className="admin-content">
-              <div className="admin-button">
-                <h3>Signalements</h3>
-                <Link to="/admin/reports/1">
-                  <Button className="process" icon="pencil alternate" content="Traiter" />
-                </Link>
-              </div>
-            </div>
-
             <div className="admin-content">
               <div className="admin-button">
                 <h3>Services</h3>
@@ -53,7 +61,7 @@ function Admin() {
             </div>
 
             <div className="admin-content">
-              <div className="admin-button">
+              <div className="admin-button waste">
                 <h3>Ramassage des ordures</h3>
                 <Message
                   className="inprogress-adminMessage"
@@ -66,7 +74,7 @@ function Admin() {
             </div>
 
             <div className="admin-content">
-              <div className="admin-button">
+              <div className="admin-button landfill">
                 <h3>Déchetterie</h3>
                 <Message
                   className="inprogress-adminMessage"
@@ -77,17 +85,6 @@ function Admin() {
                 {/* <Button className="edit" icon="edit" content="Editer les horaires" /> */}
               </div>
             </div>
-
-            <div className="admin-content">
-              <div className="admin-button">
-                <h3>Conseil municipal</h3>
-                {/* <Button className="create" icon="plus" content="Créer" /> */}
-                <Link to="/admin/council/1">
-                  <Button className="edit" icon="edit" content="Editer" />
-                </Link>
-              </div>
-            </div>
-
             <div className="admin-content">
               <div className="admin-button">
                 <h3>Réseaux sociaux</h3>
