@@ -82,13 +82,16 @@ function Login() {
       <h1>Accèder à votre espace d'administration</h1>
       )}
       {logged && (
-        <Button
-          type="button"
-          className="logout-button"
-          onClick={handleLogout}
-        >
-          Se déconnecter
-        </Button>
+        <div>
+          <p>Vous êtes connecté à votre espace</p>
+          <Button
+            type="button"
+            className="logout-button"
+            onClick={handleLogout}
+          >
+            Se déconnecter
+          </Button>
+        </div>
       )}
       {!logged && (
         <Button.Group>
