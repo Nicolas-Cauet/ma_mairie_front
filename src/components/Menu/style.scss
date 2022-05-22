@@ -6,6 +6,7 @@
   flex-direction: row;
   flex-wrap: wrap;
   justify-content: center;
+  padding-bottom: 2rem;
 }
 
 .menu-list .ui.button {
@@ -102,3 +103,10 @@
   }
 }
 
+/* Desktop */
+@media (min-width: 900px) {
+  .menu-list .ui.button {
+    width: 20rem;
+    height: 10rem;
+  }
+}

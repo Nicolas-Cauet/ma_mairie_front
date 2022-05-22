@@ -20,7 +20,7 @@ function Header() {
   const dispatch = useDispatch();
 
   const HandleToggle = () => {
-    dispatch(toggleMenu());
+    dispatch(toggleMenu(true));
     dispatch(setMessage(''));
     dispatch(resetErrorReporting());
     dispatch(eraseValueActiveIndex());

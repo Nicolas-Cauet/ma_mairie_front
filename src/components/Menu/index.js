@@ -15,7 +15,7 @@ function Menu() {
 
   // After redirect, hide menu on click
   const hideMenu = () => {
-    dispatch(toggleMenu());
+    dispatch(toggleMenu(false));
     dispatch(toggleReporting(false));
   };
 

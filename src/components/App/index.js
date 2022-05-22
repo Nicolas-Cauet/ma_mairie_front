@@ -15,6 +15,7 @@ import InProgress from '../InProgress';
 import Council from '../Council';
 
 import { setTownHallId } from '../../actions/action';
+import { toggleMenu } from '../../actions/menu';
 import NotFound from '../NotFound';
 
 import 'semantic-ui-css/semantic.min.css';
@@ -28,6 +29,7 @@ function App() {
 
   useEffect(() => {
     dispatch(setTownHallId(1));
+    dispatch(toggleMenu(true));
   }, []);
 
   return (
