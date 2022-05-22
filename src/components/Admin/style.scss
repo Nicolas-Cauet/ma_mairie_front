@@ -8,10 +8,6 @@
         margin-top: 0rem;
     }
 
-    & .login {
-      padding: 2rem 0 1rem;
-    }
-
     &-content {
         margin-bottom: 2rem;
 
@@ -73,5 +69,25 @@
   & .icon {
     transform: scale(0.75);
   }
+}
 
+/* Desktop */
+@media (min-width: 900px) {
+    .admin {
+        &-container {
+            // display: grid;
+            // flex-wrap: wrap;
+            display: flex;
+            flex-direction: row;
+            flex-wrap: wrap;
+            justify-content: center;
+            justify-content: space-evenly;
+        }
+        &-content {
+            width: 40rem;
+        }
+        &-button .ui.button {
+            width: 40%;     
+        }
+    }
 }
