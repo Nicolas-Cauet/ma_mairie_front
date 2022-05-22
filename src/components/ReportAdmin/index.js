@@ -94,7 +94,7 @@ function ReportAdmin() {
   return (
     <div className="reportAdmin">
       <div className="reportAdmin-date">
-        <Label color="yellow" className="reportAdmin-category">Catégorie:
+        <Label className={`${report.reporting_category} reportAdmin-category`}>
           {report.reporting_category}
         </Label>
         <Moment format="DD/MM/YYYY" className="reportAdmin-date">{report.created_at}</Moment>

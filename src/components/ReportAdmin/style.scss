@@ -1,7 +1,6 @@
 @use 'src/styles/vars';
 
 .reportAdmin {
-    margin-bottom: 2rem;
     h2 {
         margin-bottom: 0;
         padding-right: 1rem;
@@ -31,6 +30,36 @@
         }
     }
 
+    & .ui.label {
+        color: black!important;
+        width: 20%;
+    }
+    & .ui.label {
+        background-color: vars.$categoryRoute!important;
+    }
+    & .ui.label.Voirie {
+        background-color: vars.$categoryRoute!important;
+    }
+    & .ui.label.Eclairage.public {
+        background-color: vars.$categoryLight!important;
+    }
+    & .ui.label.Voisinage {
+        background-color: vars.$categoryNeighboord!important;
+    }
+    & .ui.label.Ramassage.des.déchets {
+        background-color: vars.$categoryWaste!important;
+    }
+    & .ui.label.Objets.trouvés.ou.perdu {
+        background-color: vars.$categoryObject!important;
+    }
+    & .ui.label.Autre {
+        background-color: vars.$categoryOther!important;
+    }
+
+    &-category {
+        text-align: center;
+    }
+
     &-header {
         //background-color: vars.$backgroundBlocColor;
         margin: 1rem;
@@ -51,18 +80,11 @@
         justify-content: space-between;
     }
 
-    // &-checkbox {
-    //     padding: 0.8rem 2rem;
-    //     background-color: #a6c8c7;
-    //     border-radius: 0.5rem;
-    //     cursor: pointer;
-
         input {
             display: inline;
             margin: 0.3rem;
             justify-content: space-between;
         }
-    // }
 
     &-info {
         //background-color: vars.$backgroundBlocColor;
@@ -89,6 +111,7 @@
         display: flex;
         width: 90%;
         margin: auto;
+        padding-top: 2rem;
     }
     & .ui.button {
         width: 50%;
@@ -111,8 +134,8 @@ input[type="radio"] + label {
   padding: 0.75rem 1rem;
   display: flex;
   margin: 1.5rem 0 0.5rem;
-  font-size: 1rem;
   line-height: 1.5;
+  font-size: 1rem;
   border-radius: 0.3rem;
   color: #fff;
   background-color: #6c757d;
@@ -152,4 +175,35 @@ input[type="radio"].abort:checked + label {
 
 .ui.negative.message, .ui.positive.message {
     text-align: center;
+}
+
+/* Desktop */
+@media (min-width: 900px) {
+    .reportAdmin {
+        // border: 0.1rem solid black;
+        background-color: vars.$backgroundBlocColor; 
+        padding-bottom: 2rem;
+        width: 70%;
+        margin: 0 auto;
+
+        &-newStatut {
+            margin-bottom: 1rem;
+            flex-wrap: wrap;
+            justify-content: space-evenly;
+        }
+
+        & .ui.button {
+            width: 30%;
+            margin: auto;
+        }
+
+        &-date {
+            justify-content: space-between;
+            padding: 0 2rem;
+        }
+    }
+    input[type="radio"] + label {
+        padding: 1rem 2rem;
+        font-size: 1.25rem;
+    }
 }
