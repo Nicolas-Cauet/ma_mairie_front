@@ -16,13 +16,17 @@ function Council() {
   const adminLogged = useSelector((state) => state.login.logged);
   const { councilMembers } = useSelector((state) => state.council);
 
-  // Click on Plus button
+  /** Click on Plus button
+   * @postCouncilMembers post new member council to API
+   */
   const handleClick = () => {
     dispatch(postCouncilMembers());
     console.log('coucou');
   };
 
-  // GET council members
+  /**  After first page load
+   * @getCouncilMembers resquest get council member from API
+   */
   useEffect(() => {
     dispatch(getCouncilMembers());
   }, []);

@@ -8,7 +8,7 @@ import {
   login,
   LOGOUT,
   setLogout,
-} from '../actions/action';
+} from '../actions/login';
 import { redirect, setMessage } from '../actions/utilities';
 
 const instance = axios.create({

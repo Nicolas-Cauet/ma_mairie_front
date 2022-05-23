@@ -5,7 +5,7 @@ import {
   SET_LOGOUT,
   ACTIVE_CONNECTION_BUTTON,
   SET_TOWNHALL_ID,
-} from '../actions/action';
+} from '../actions/login';
 
 import { REDIRECT } from '../actions/utilities';
 

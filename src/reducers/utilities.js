@@ -1,4 +1,4 @@
-import { LOGIN, SET_LOGOUT } from '../actions/action';
+import { LOGIN, SET_LOGOUT } from '../actions/login';
 import {
   CREATE_EDITING_MEMBER_FIRSTNAME,
   CREATE_EDITING_MEMBER_LASTNAME,
@@ -10,8 +10,8 @@ import {
   CHANGE_CURRENT_CATEGORY,
   CHANGE_CURRENT_FIELD,
   LOADING,
-  RETURN_MESSAGE_ERROR,
-  RETURN_MESSAGE_SUCCESS,
+  // RETURN_MESSAGE_ERROR,
+  // RETURN_MESSAGE_SUCCESS,
   SET_MESSAGE,
 } from '../actions/utilities';
 
@@ -90,16 +90,16 @@ const reducer = (state = initialState, action = {}) => {
         ...state,
         loading: action.value,
       };
-    case RETURN_MESSAGE_ERROR:
-      return {
-        ...state,
-        errorMessage: action.value,
-      };
-    case RETURN_MESSAGE_SUCCESS:
-      return {
-        ...state,
-        successMessage: action.value,
-      };
+    // case RETURN_MESSAGE_ERROR:
+    //   return {
+    //     ...state,
+    //     errorMessage: action.value,
+    //   };
+    // case RETURN_MESSAGE_SUCCESS:
+    //   return {
+    //     ...state,
+    //     successMessage: action.value,
+      // };
     case CREATE_EDITING_MEMBER_LASTNAME:
       return {
         ...state,

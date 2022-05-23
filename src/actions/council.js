@@ -1,17 +1,19 @@
-// GET council members to council page
+/** Action for Council component */
+
+/** GET from API council members to council page */
 export const GET_COUNCIL_MEMBERS = 'GET_COUNCIL_MEMBERS';
 export const getCouncilMembers = () => ({
   type: GET_COUNCIL_MEMBERS,
 });
 
-// SET council members to state
+/** Attribute council members value to state */
 export const SET_COUNCIL_MEMBERS = 'SET_COUNCIL_MEMBERS';
 export const setCouncilMembers = (councilMembers) => ({
   type: SET_COUNCIL_MEMBERS,
   councilMembers,
 });
 
-// POST council members to council page
+/** POST council members to council page */
 export const POST_COUNCIL_MEMBERS = 'POST_COUNCIL_MEMBERS';
 export const postCouncilMembers = () => ({
   type: POST_COUNCIL_MEMBERS,
@@ -35,7 +37,7 @@ export const deleteCouncilMembers = (id) => ({
   id,
 });
 
-// Add council members to council page
+// Add a new council member to council page
 export const ADD_COUNCIL_MEMBERS = 'ADD_COUNCIL_MEMBERS';
 export const addCouncilMembers = () => ({
   type: ADD_COUNCIL_MEMBERS,
@@ -48,14 +50,14 @@ export const toggleEditingMember = (name) => ({
   name,
 });
 
-// Open council member editing menu
+/** Create a specific pair key/value to council reducer to open specically one member to edit */
 export const CREATE_EDITING_MEMBER = 'CREATE_EDITING_MEMBER';
 export const createEditingMember = (name) => ({
   type: CREATE_EDITING_MEMBER,
   name,
 });
 
-// Create
+/** Create a specific pair key/value to council reducer to change specically one member lastname */
 export const CREATE_EDITING_MEMBER_LASTNAME = 'CREATE_EDITING_MEMBER_LASTNAME';
 export const createEditingMemberLastName = (value, key) => ({
   type: CREATE_EDITING_MEMBER_LASTNAME,
@@ -63,7 +65,7 @@ export const createEditingMemberLastName = (value, key) => ({
   key,
 });
 
-// Create
+/** Create a specific pair key/value to council reducer to change specically one member firstname */
 export const CREATE_EDITING_MEMBER_FIRSTNAME = 'CREATE_EDITING_MEMBER_FIRSTNAME';
 export const createEditingMemberFirstName = (value, key) => ({
   type: CREATE_EDITING_MEMBER_FIRSTNAME,
@@ -71,7 +73,7 @@ export const createEditingMemberFirstName = (value, key) => ({
   key,
 });
 
-// Create
+/** Create a specific pair key/value to council reducer to change specically one member role */
 export const CREATE_EDITING_MEMBER_ROLE = 'CREATE_EDITING_MEMBER_ROLE';
 export const createEditingMemberRole = (value, key) => ({
   type: CREATE_EDITING_MEMBER_ROLE,
@@ -79,7 +81,7 @@ export const createEditingMemberRole = (value, key) => ({
   key,
 });
 
-// Create
+/** Create a specific pair key/value to council reducer to change specically one member photo */
 export const CREATE_EDITING_MEMBER_PHOTO = 'CREATE_EDITING_MEMBER_PHOTO';
 export const createEditingMemberPhoto = (value, key) => ({
   type: CREATE_EDITING_MEMBER_PHOTO,

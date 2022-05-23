@@ -8,7 +8,7 @@ import Field from '../Field';
 
 import {
   logout, submitSignup, submitLogin, toggleLogin, toggleSignup,
-} from '../../actions/action';
+} from '../../actions/login';
 
 import './style.scss';
 import { setMessage } from '../../actions/utilities';

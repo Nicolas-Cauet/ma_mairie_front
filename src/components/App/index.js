@@ -14,7 +14,7 @@ import ReportAdmin from '../ReportAdmin';
 import InProgress from '../InProgress';
 import Council from '../Council';
 
-import { setTownHallId } from '../../actions/action';
+import { setTownHallId } from '../../actions/login';
 import { toggleMenu } from '../../actions/menu';
 import NotFound from '../NotFound';
 
@@ -27,6 +27,10 @@ function App() {
   const townHallId = useSelector((state) => state.login.townHallId);
   const adminlogged = useSelector((state) => state.login.logged);
 
+  /** After first page load
+   * @setTownHallId attribute townHallId to state
+   * @toggleMenu open menu component
+   */
   useEffect(() => {
     dispatch(setTownHallId(1));
     dispatch(toggleMenu(true));

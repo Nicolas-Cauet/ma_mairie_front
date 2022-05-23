@@ -2,14 +2,23 @@
 import { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import {
-  Card, Image, Icon, Button, Confirm, Modal,
+  Card,
+  Image,
+  Icon,
+  Button,
+  Confirm,
+  Modal,
 } from 'semantic-ui-react';
 
 import {
-  createEditingMember, createEditingMemberFirstName,
+  createEditingMember,
+  createEditingMemberFirstName,
   createEditingMemberLastName,
-  createEditingMemberPhoto, createEditingMemberRole,
-  deleteCouncilMembers, patchCouncilMembers, toggleEditingMember,
+  createEditingMemberPhoto,
+  createEditingMemberRole,
+  deleteCouncilMembers,
+  patchCouncilMembers,
+  toggleEditingMember,
 } from '../../../actions/council';
 import Field from '../../Field';
 
@@ -26,13 +35,16 @@ function CardModel({ ...card }) {
 
   // Confirm component to delete a card member
   const [confirm, setConfirm] = useState(false);
+
+  /** Opening confirm */
   const toggleDeleteConfirm = () => {
     console.log('coucou');
     setConfirm(!confirm);
   };
+
   /**
    *  Trigger opening editing member
-   *  @open modal corresponding at id member staff
+   *  @toggleEditingMember open modal corresponding at id member staff
    */
   const handleClick = () => {
     dispatch(toggleEditingMember(`isOpenModalMember-${card.town_hall_staff_id}`));

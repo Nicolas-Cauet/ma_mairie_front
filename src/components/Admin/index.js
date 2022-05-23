@@ -9,11 +9,9 @@ import './style.scss';
 
 function Admin() {
   const { logged } = useSelector((state) => state.login);
-
   return (
     <div className="admin">
       <Login />
-
       { logged && (
         <>
           <h2>Votre espace administration</h2>
