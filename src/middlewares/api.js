@@ -4,7 +4,6 @@ import axios from 'axios';
 import { eraseReportingFields, SUBMIT_REPORTING } from '../actions/reporting';
 import {
   GET_REPORTS,
-  saveAdminReports,
   saveReports,
 } from '../actions/reports';
 import { loading, setMessage } from '../actions/utilities';
