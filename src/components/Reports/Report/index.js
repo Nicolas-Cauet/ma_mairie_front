@@ -32,7 +32,7 @@ function Report({
   /** Click to open accordion
    * @setActiveIndex change state value of opening accordion
    */
-  const handleClickAccordion = (titleProps) => {
+  const handleClickAccordion = (e, titleProps) => {
     const { index } = titleProps;
     const newIndex = activeIndex === index ? -1 : index;
     dispatch(setActiveIndex(newIndex));

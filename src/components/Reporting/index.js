@@ -52,7 +52,7 @@ function Reporting() {
   /** Clicking on accordion
    * @setActiveIndexTerms change state value to open retail of terms
    */
-  const handleClick = (titleProps) => {
+  const handleClick = (e, titleProps) => {
     const { index } = titleProps;
     const newIndex = activeIndexTerms === index ? -1 : index;
     dispatch(setActiveIndexTerms(newIndex));
