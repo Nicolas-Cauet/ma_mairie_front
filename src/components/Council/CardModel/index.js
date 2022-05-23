@@ -36,7 +36,9 @@ function CardModel({ ...card }) {
   // Confirm component to delete a card member
   const [confirm, setConfirm] = useState(false);
 
-  /** Opening confirm */
+  /** Opening confirm element
+   * @setConfirm change value of confirm local state
+   */
   const toggleDeleteConfirm = () => {
     console.log('coucou');
     setConfirm(!confirm);
@@ -50,11 +52,18 @@ function CardModel({ ...card }) {
     dispatch(toggleEditingMember(`isOpenModalMember-${card.town_hall_staff_id}`));
   };
 
+  /** Click delete button
+   * @deleteCouncilMembers delete request to API
+   */
   const confirmDeleteClick = (event) => {
     const id = event.target.closest('.dimmable').querySelector(`.card-${card.town_hall_staff_id}`).getAttribute('name');
     dispatch(deleteCouncilMembers(id));
   };
 
+  /** Click on submit editing council member
+   * @toggleEditingMember close editing modal
+   * @patchCouncilMembers send patch member council to API
+   */
   const handleSubmit = (event) => {
     event.preventDefault();
     const id = event.target.closest('.dimmable').querySelector(`.card-${card.town_hall_staff_id}`).getAttribute('name');
@@ -62,6 +71,13 @@ function CardModel({ ...card }) {
     dispatch(patchCouncilMembers(photoValue, firstNameValue, lastNameValue, roleValue, id));
   };
 
+  /** After first page load
+   * @createEditingMember create a dynamic state value for one member
+   * @createEditingMemberLastName create a dynamic state value for one member for controlled field
+   * @createEditingMemberFirstName create a dynamic state value for one member for controlled field
+   * @createEditingMemberRole create a dynamic state value for one member for controlled field
+   * @createEditingMemberPhoto create a dynamic state value for one member for controlled field
+   */
   useEffect(() => {
     dispatch(createEditingMember(`isOpenModalMember-${card.town_hall_staff_id}`));
     dispatch(createEditingMemberLastName(card.last_name, `lastNameMember-${card.town_hall_staff_id}`));
