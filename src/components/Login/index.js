@@ -33,6 +33,7 @@ function Login() {
     messageColor,
   } = useSelector((state) => state.utilities);
 
+  /** local state to compare the both password field */
   const [samePassword, setSamePassword] = useState();
 
   /** After first page load

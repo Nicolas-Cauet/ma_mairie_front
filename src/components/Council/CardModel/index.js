@@ -31,7 +31,7 @@ function CardModel({ ...card }) {
   const roleValue = useSelector((state) => state.utilities[`roleMember-${card.town_hall_staff_id}`]);
   const photoValue = useSelector((state) => state.utilities[`photoMember-${card.town_hall_staff_id}`]);
 
-  // Confirm component to delete a card member
+  /** Confirm component state to delete a card member */
   const [confirm, setConfirm] = useState(false);
 
   /** Opening confirm element

@@ -14,7 +14,6 @@ import {
   changeCheckboxAdminReporting,
   changeCurrentTextAreaAdminReport,
   createStateTextAreaAdminReport,
-  eraseValueActiveIndex,
   submitModerateReporting,
 } from '../../actions/reports';
 import {
@@ -24,30 +23,41 @@ import {
 import './style.scss';
 
 function ReportAdmin() {
-  const params = useParams();
-  const report = useSelector((state) => state.reports.reportsAdminList
-    // eslint-disable-next-line eqeqeq
-    .find((p) => p.reporting_id == params.reporting_id));
   const dispatch = useDispatch();
+  const navigate = useNavigate();
+  const params = useParams();
 
+  /** filtering report admin list by report if in params */
+  const report = useSelector((state) => state.reports.reportsAdminList
+    .find((p) => p.reporting_id === Number(params.reporting_id)));
   const {
     message, messageColor,
   } = useSelector((state) => state.utilities);
   const { reporting_statut } = useSelector((state) => state.reports);
-
   const textAreaValue = useSelector((state) => state.reports[`textArea-${report.reporting_id}`]);
 
+  /** After first page load
+   * @setMessage reset error message
+   * @createStateTextAreaAdminReport create a dynamic state for controlled field
+   */
   useEffect(() => {
-    dispatch(setMessage(''));
     dispatch(createStateTextAreaAdminReport(report.admin_text, `textArea-${report.reporting_id}`));
+    dispatch(setMessage(''));
   }, []);
 
+  /** Clicking on a status button
+   * @changeCheckboxAdminReporting reset error message
+   */
   const handleCheckbox = (event) => {
     dispatch(changeCheckboxAdminReporting(event.target.value));
   };
 
-  const navigate = useNavigate();
-
+  /** Clicking on submit button for report treatment
+   * @changeCheckboxAdminReporting reset choice of status button
+   * @submitModerateReporting path request report treatment to API
+   * @navigate redirect to value
+   * @setMessage diplay a error message
+   */
   const handleSubmit = () => {
     if (textAreaValue && reporting_statut) {
       dispatch(changeCheckboxAdminReporting(''));
@@ -67,6 +77,11 @@ function ReportAdmin() {
     }
   };
 
+  /** Clicking on submit button for report treatment
+   * @setMessage reset error message
+   * @changeCheckboxAdminReporting reset choice of status button
+   * @navigate redirect to value
+   */
   const handleAbortProgress = () => {
     setMessage(false);
     dispatch(setMessage(''));
@@ -74,9 +89,11 @@ function ReportAdmin() {
     navigate('/admin/reports/1');
   };
 
+  /** Controlled field
+   * @changeCurrentTextAreaAdminReport change state value of textarea
+   */
   const handleChange = (event) => {
     dispatch(changeCurrentTextAreaAdminReport(event.target.value, event.target.name));
-    dispatch(eraseValueActiveIndex());
   };
 
   return (

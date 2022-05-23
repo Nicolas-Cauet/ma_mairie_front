@@ -30,7 +30,7 @@ function Reports() {
   const { logged } = useSelector((state) => state.login);
   const { selectedCategory, selectedMonth, selectedYear } = useSelector((state) => state.reports);
 
-  // View admin or visitor reports
+  /** select the report in in terms of pathname */
   const reports = useSelector((state) => {
     if (window.location.pathname.includes('admin') && logged) {
       return state.reports.reportsAdminList;
@@ -38,7 +38,11 @@ function Reports() {
     return state.reports.reportsList;
   });
   let filteredReports;
-  // GET with Axios in visitor Reports or admin
+
+  /** After first page load
+   * @getAdminReports get admin reports list from API
+   * @getReports get reports list from API
+   */
   useEffect(() => {
     if (window.location.pathname.includes('admin') && logged) {
       dispatch(getAdminReports());
@@ -47,6 +51,7 @@ function Reports() {
     }
   }, []);
 
+  /** list of month in french fot moment */
   moment.updateLocale('fr', {
     months: [
       'Janvier', 'Février', 'Mars', 'Avril', 'Mai', 'Juin', 'Juillet',
@@ -90,6 +95,9 @@ function Reports() {
       && moment(report.created_at).format('YYYY') === selectedYear);
   }
 
+  /** Change a filter
+   * @changeReportsFilter change state value on controlled field
+   */
   const handleChangeFilter = (event) => {
     const key = event.target.closest('.filter-dropdown').getAttribute('name');
     dispatch(changeReportsFilter(event.target.textContent, key));

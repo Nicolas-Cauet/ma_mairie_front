@@ -1,10 +1,6 @@
 import {
   ADD_COUNCIL_MEMBERS,
   CREATE_EDITING_MEMBER,
-  CREATE_EDITING_MEMBER_FIRSTNAME,
-  CREATE_EDITING_MEMBER_LASTNAME,
-  CREATE_EDITING_MEMBER_PHOTO,
-  CREATE_EDITING_MEMBER_ROLE,
   SET_COUNCIL_MEMBERS,
   TOGGLE_EDITING_MEMBER,
 } from '../actions/council';
@@ -15,11 +11,13 @@ export const initialState = {
 
 const reducer = (state = initialState, action = {}) => {
   switch (action.type) {
+    /** Attribute council members value to state */
     case SET_COUNCIL_MEMBERS:
       return {
         ...state,
         councilMembers: action.councilMembers,
       };
+    // Add a new council member to council page
     case ADD_COUNCIL_MEMBERS:
       return {
         ...state,
@@ -34,36 +32,48 @@ const reducer = (state = initialState, action = {}) => {
           },
         ],
       };
+
+    /** Create a specific pair key/value to council reducer to open specically one member to edit */
     case CREATE_EDITING_MEMBER:
       return {
         ...state,
         [action.name]: false,
       };
+
+    // Open council member editing menu
     case TOGGLE_EDITING_MEMBER:
       return {
         ...state,
         [action.name]: !state[action.name],
       };
-    case CREATE_EDITING_MEMBER_LASTNAME:
-      return {
-        ...state,
-        [action.key]: action.value,
-      };
-    case CREATE_EDITING_MEMBER_FIRSTNAME:
-      return {
-        ...state,
-        [action.key]: action.value,
-      };
-    case CREATE_EDITING_MEMBER_ROLE:
-      return {
-        ...state,
-        [action.key]: action.value,
-      };
-    case CREATE_EDITING_MEMBER_PHOTO:
-      return {
-        ...state,
-        [action.key]: action.value,
-      };
+
+      // /** Create a specific pair key/value to council reducer to change one member lastname */
+      // case CREATE_EDITING_MEMBER_LASTNAME:
+      //   return {
+      //     ...state,
+      //     [action.key]: action.value,
+      //   };
+
+      // /** Create a specific pair key/value to council reducer to change one member firstname */
+      // case CREATE_EDITING_MEMBER_FIRSTNAME:
+      //   return {
+      //     ...state,
+      //     [action.key]: action.value,
+      //   };
+
+      // /** Create a specific pair key/value to council reducer to change one member role */
+      // case CREATE_EDITING_MEMBER_ROLE:
+      //   return {
+      //     ...state,
+      //     [action.key]: action.value,
+      //   };
+
+    // /** Create a specific pair key/value to council reducer to change one member photo */
+    // case CREATE_EDITING_MEMBER_PHOTO:
+    //   return {
+    //     ...state,
+    //     [action.key]: action.value,
+    //   };
     default:
       return state;
   }

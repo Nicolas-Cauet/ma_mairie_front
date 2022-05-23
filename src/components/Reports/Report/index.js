@@ -25,23 +25,34 @@ function Report({
   reporting_id, title, created_at, reporting_category, user_text, reporting_statut, admin_text,
 }) {
   const dispatch = useDispatch();
+
   const { activeIndex } = useSelector((state) => state.reports);
   const { logged } = useSelector((state) => state.login);
 
-  // const reports = useSelector((state) => state.reports.reportsList);
-
-  const handleClickAccordion = (e, titleProps) => {
+  /** Click to open accordion
+   * @setActiveIndex change state value of opening accordion
+   */
+  const handleClickAccordion = (titleProps) => {
     const { index } = titleProps;
     const newIndex = activeIndex === index ? -1 : index;
     dispatch(setActiveIndex(newIndex));
   };
 
+  /** locals state for opening confirm window */
   const [confirm, setConfirm] = useState(false);
 
+  /** Clicking on the delete button a confirm window will open
+   * @setConfirm open/close the confirm windows
+   */
   const toggleDeleteConfirm = () => {
     setConfirm(!confirm);
   };
 
+  /** Clicking on the delete button on confirm
+   * @deleteSelectedReport delete request to API
+   * @setConfirm close confirm window
+   * @getAdminReports get request to API to get new reports list
+   */
   const confirmDeleteReport = () => {
     dispatch(deleteSelectedReport(reporting_id));
     setConfirm(false);

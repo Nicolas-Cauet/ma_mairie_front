@@ -10,13 +10,16 @@ function ReportButton() {
   const dispatch = useDispatch();
   const { isReporting } = useSelector((state) => state.reports);
 
+  /** Clicking on the reporting button
+   * @toggleReporting open reporting element
+   * @setMessage reset error message
+   * @eraseValueActiveIndex closing accordion on reports list
+   */
   const handleClick = () => {
     dispatch((toggleReporting(true)));
     dispatch((setMessage('')));
     dispatch(eraseValueActiveIndex());
   };
-
-  // const reports = useSelector((state) => state.reports.reportsList);
 
   return (
     <>

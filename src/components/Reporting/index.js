@@ -49,12 +49,26 @@ function Reporting() {
     isReporting_lastnameError,
   } = useSelector((state) => state.reporting);
 
-  const handleClick = (e, titleProps) => {
+  /** Clicking on accordion
+   * @setActiveIndexTerms change state value to open retail of terms
+   */
+  const handleClick = (titleProps) => {
     const { index } = titleProps;
     const newIndex = activeIndexTerms === index ? -1 : index;
     dispatch(setActiveIndexTerms(newIndex));
   };
 
+  /** Clicking on submit buttton of reporting form
+   * @resetErrorReporting reset error of empty field of reporting
+   * @submitReporting submit form to a post request to API
+   * @setMessage set value to error message
+   * @errorReportingCategory set error status to true
+   * @errorReportingTitle set error status to true
+   * @errorReportingDescription set error status to true
+   * @errorReportingEmail set error status to true
+   * @errorReportingLastname set error status to true
+   * @errorReportingFirstname set error status to true
+   */
   const handleSubmit = () => {
     dispatch(resetErrorReporting());
     if (reporting_checkBox
@@ -100,19 +114,32 @@ function Reporting() {
     }
   };
 
+  /** Clicking on cancel reporting element
+   * @toggleReporting close reporting element
+   * @setMessage reset error message
+   */
   const handleClickBack = () => {
     dispatch(toggleReporting(false));
     dispatch(setMessage(''));
   };
 
+  /** Clicking dropdown category
+   * @changeCurrentCategory change state value for conrolled field
+   */
   const handleChangeCategory = (event) => {
     dispatch(changeCurrentCategory(event.target.textContent));
   };
 
+  /** Change text on textarea description
+   * @changeCurrentField change state value for conrolled field
+   */
   const handleChangeDescription = (event) => {
     dispatch(changeCurrentField(event.target.value, event.target.name));
   };
 
+  /** Change value of checkbox
+   * @changeCurrentCheckBoxReporting change state value for conrolled field
+   */
   const handleCheckBox = () => {
     dispatch(changeCurrentCheckBoxReporting());
   };

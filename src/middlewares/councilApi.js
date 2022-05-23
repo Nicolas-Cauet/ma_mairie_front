@@ -6,6 +6,7 @@ import {
 } from '../actions/council';
 import { setMessage } from '../actions/utilities';
 
+/** Instance of axios with options */
 const instance = axios.create({
   baseURL: 'https://mamairie.herokuapp.com',
   headers: {
@@ -19,9 +20,15 @@ const councilApi = (store) => (next) => (action) => {
     case GET_COUNCIL_MEMBERS:
       instance.get(`/council/${townHallId}`)
         .then((response) => {
+          /** success of get request
+           * @setCouncilMembers save member to state value
+           */
           store.dispatch(setCouncilMembers(response.data));
         })
-        .catch((error) => {
+        .catch(() => {
+          /** error on request
+           * @setMessage set a message error
+           */
           store.dispatch(setMessage('Les données concernant les membres du conseil ne sont pas pour le moment disponible', false));
         });
       break;
@@ -34,9 +41,15 @@ const councilApi = (store) => (next) => (action) => {
         town_hall_id: townHallId,
       })
         .then(() => {
+          /** success of post request
+           * @getCouncilMembers get new member list to state value
+           */
           store.dispatch(getCouncilMembers());
         })
         .catch((error) => {
+          /** error on request
+           * @setMessage set a message error
+           */
           store.dispatch(setMessage(error.response.data.error.message, false));
         });
       break;
@@ -49,18 +62,30 @@ const councilApi = (store) => (next) => (action) => {
         town_hall_id: townHallId,
       })
         .then(() => {
+          /** success of patch request
+           * @getCouncilMembers get new member list to state value
+           */
           store.dispatch(getCouncilMembers());
         })
         .catch((error) => {
+          /** error on request
+           * @setMessage set a message error
+           */
           store.dispatch(setMessage(error.response.data.error.message, false));
         });
       break;
     case DELETE_COUNCIL_MEMBERS:
       instance.delete(`/admin/council/${townHallId}/${action.id}`)
         .then(() => {
+          /** success of delete request
+           * @getCouncilMembers get new member list to state value
+           */
           store.dispatch(getCouncilMembers());
         })
         .catch(() => {
+          /** error on request
+           * @setMessage set a message error
+           */
           store.dispatch(setMessage('Les modifications concernant les signalements ne sont pas possible pour le moment', false));
         });
       break;

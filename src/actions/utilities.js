@@ -27,28 +27,6 @@ export const loading = (value) => ({
   value: value,
 });
 
-// /** Return a error message */
-// export const RETURN_MESSAGE_ERROR = 'RETURN_MESSAGE_ERROR';
-// export const returnMessageError = (value) => ({
-//   type: RETURN_MESSAGE_ERROR,
-//   value,
-// });
-
-// /** Return a succes message */
-// export const RETURN_MESSAGE_SUCCESS = 'RETURN_MESSAGE_SUCCESS';
-// export const returnMessageSuccess = (value) => ({
-//   type: RETURN_MESSAGE_SUCCESS,
-//   value,
-// });
-
-// Set value of editing member to state
-// export const SET_VALUE_EDITING_MEMBER = 'SET_VALUE_EDITING_MEMBER';
-// export const setValueEditingMember = (name, role) => ({
-//   type: SET_VALUE_EDITING_MEMBER,
-//   editingMemberName: name,
-//   editingMemberRole: role,
-// });
-
 /** Return a error or success message */
 export const SET_MESSAGE = 'SET_MESSAGE';
 export const setMessage = (message, color) => ({
