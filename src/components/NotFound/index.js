@@ -5,13 +5,20 @@ import { Button, Message } from 'semantic-ui-react';
 import './style.scss';
 
 function NotFound() {
-  const { logged } = useSelector((state) => state.login);
   const navigate = useNavigate();
 
+  const { logged } = useSelector((state) => state.login);
+
+  /** Admin page no found
+   * @navigate redirect to path
+  */
   const redirectToLogin = () => {
     navigate('/admin');
   };
 
+  /** page no found
+   * @navigate redirect to path
+  */
   const redirectToHome = () => {
     navigate('/');
   };

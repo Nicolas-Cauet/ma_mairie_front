@@ -10,6 +10,7 @@ import {
 } from '../actions/reports';
 import { loading, setMessage } from '../actions/utilities';
 
+/** Instance of axios with options */
 const instance = axios.create({
   baseURL: 'https://mamairie.herokuapp.com',
   headers: {

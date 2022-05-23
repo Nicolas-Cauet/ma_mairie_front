@@ -9,11 +9,14 @@ import { eraseValueActiveIndex, toggleReporting } from '../../actions/reports';
 import './style.scss';
 
 function Menu() {
-  const { isOpen } = useSelector((state) => state.menu);
-
   const dispatch = useDispatch();
 
-  // After redirect, hide menu on click
+  const { isOpen } = useSelector((state) => state.menu);
+
+  /** Clicking one button of menu
+   * @toggleMenu close menu
+   * @toggleReporting close reporting element
+  */
   const hideMenu = () => {
     dispatch(toggleMenu(false));
     dispatch(toggleReporting(false));
