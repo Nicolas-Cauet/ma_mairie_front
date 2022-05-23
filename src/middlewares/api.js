@@ -54,7 +54,7 @@ const api = (store) => (next) => (action) => {
           console.log('POST Reporting OK');
           console.log(response);
           store.dispatch(eraseReportingFields());
-          store.dispatch(saveAdminReports());
+          // store.dispatch(saveAdminReports());
           store.dispatch(setMessage('Votre signalement a été envoyé à l\'équipe municipale, il sera traité dès que possible', true));
         })
         .catch((error) => {
