@@ -23,23 +23,18 @@ const api = (store) => (next) => (action) => {
   switch (action.type) {
     case GET_REPORTS:
       store.dispatch(loading(true));
-      console.log('GET Reports');
-      console.log(townHallId);
       instance.get(`/reporting/${townHallId}`)
         .then((response) => {
-          console.log(response);
           store.dispatch(saveReports(response.data));
         })
-        .catch((error) => {
-          console.log(error);
-          store.dispatch(setMessage('Les données concernant les signalements ne sont pas pour le moment disponible', false));
+        .catch(() => {
+          store.dispatch(setMessage('Les données concernant les signalements ne sont pas disponible pour le moment', false));
         })
         .finally(() => {
           store.dispatch(loading(false));
         });
       break;
     case SUBMIT_REPORTING:
-      console.log('POST Reporting');
       instance.post(`/reporting/${townHallId}`, {
         reporting_category: action.reporting_category,
         title: action.reporting_title,
@@ -50,15 +45,12 @@ const api = (store) => (next) => (action) => {
         phonenumber: action.reporting_phone,
         town_hall_id: townHallId,
       })
-        .then((response) => {
-          console.log('POST Reporting OK');
-          console.log(response);
+        .then(() => {
           store.dispatch(eraseReportingFields());
           // store.dispatch(saveAdminReports());
           store.dispatch(setMessage('Votre signalement a été envoyé à l\'équipe municipale, il sera traité dès que possible', true));
         })
         .catch((error) => {
-          console.log(error);
           store.dispatch(setMessage(error.response.data.error.message, false));
         });
       break;

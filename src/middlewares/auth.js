@@ -30,14 +30,11 @@ const auth = (store) => (next) => (action) => {
         insee: action.inseeCode,
       })
         .then((response) => {
-          console.log('User signup');
-          console.log(response);
           store.dispatch(toggleLogin());
           store.dispatch(activeConnectionButton());
           store.dispatch(setMessage(response.data, true));
         })
         .catch((error) => {
-          console.log(error);
           store.dispatch(setMessage(error.response.data.error.message, false));
         });
       break;
@@ -47,28 +44,21 @@ const auth = (store) => (next) => (action) => {
         password: action.password,
       })
         .then((response) => {
-          console.log('User login');
-          console.log(response);
-          // store.dispatch(setMessage(response.data, true));
           store.dispatch(login());
           store.dispatch(redirect('/'));
 
           // Récupération du token lors du login
           const { accessToken } = response.data;
-          console.log(accessToken);
           instance.defaults.headers.common.Authorization = `bearer ${accessToken}`;
           localStorage.setItem('accessToken', accessToken);
         })
         .catch((error) => {
           store.dispatch(setMessage(error.response.data.error.message, false));
-          console.log(error);
         });
       break;
     case LOGOUT: {
-      console.log('User logout');
       delete instance.defaults.headers.common.Authorization;
       localStorage.removeItem('token');
-      console.log('token deleted');
       store.dispatch(setLogout());
       store.dispatch(setMessage('Vous êtes déconnecté', true));
       break;

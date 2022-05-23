@@ -1,4 +1,3 @@
-// import './style.scss';
 import { useSelector } from 'react-redux';
 import { Link } from 'react-router-dom';
 import { Button, Message } from 'semantic-ui-react';

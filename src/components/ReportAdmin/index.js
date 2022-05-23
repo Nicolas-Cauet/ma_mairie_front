@@ -1,4 +1,3 @@
-// import PropTypes from 'prop-types';
 import {
   Button,
   Form,
@@ -11,7 +10,6 @@ import { useDispatch, useSelector } from 'react-redux';
 import { useParams, useNavigate } from 'react-router-dom';
 import Moment from 'react-moment';
 
-import './style.scss';
 import {
   changeCheckboxAdminReporting,
   changeCurrentTextAreaAdminReport,
@@ -22,6 +20,8 @@ import {
 import {
   setMessage,
 } from '../../actions/utilities';
+
+import './style.scss';
 
 function ReportAdmin() {
   const params = useParams();
@@ -46,14 +46,10 @@ function ReportAdmin() {
     dispatch(changeCheckboxAdminReporting(event.target.value));
   };
 
-  // const [missingText, setMissingText] = useState(false);
-
   const navigate = useNavigate();
 
-  console.log('text', textAreaValue);
   const handleSubmit = () => {
     if (textAreaValue && reporting_statut) {
-      // setMissingText(false);
       dispatch(changeCheckboxAdminReporting(''));
       dispatch(submitModerateReporting(
         report.reporting_id,
@@ -78,15 +74,7 @@ function ReportAdmin() {
     navigate('/admin/reports/1');
   };
 
-  // const backToReportList = () => {
-  //   dispatch(setMessage(''));
-  //   // dispatch(returnMessageSuccess(false));
-  //   // dispatch(returnMessageError(false));
-  //   navigate('/admin/reports/1');
-  // };
-
   const handleChange = (event) => {
-    console.log(event.target.value, event.target.name);
     dispatch(changeCurrentTextAreaAdminReport(event.target.value, event.target.name));
     dispatch(eraseValueActiveIndex());
   };
@@ -107,7 +95,6 @@ function ReportAdmin() {
       </div>
       <div className="reportAdmin-info">
         <h3>Coordonnées du signalant :</h3>
-        {/* <h3 className="report-title">{report.title}</h3> */}
         <p className="reportAdmin-firstName">Prénom : {report.first_name}</p>
         <p className="reportAdmin-lastName">Nom : {report.last_name}</p>
         <p className="reportAdmin-phone">Numéro de téléphone : {report.phonenumber}</p>
@@ -129,16 +116,11 @@ function ReportAdmin() {
             type="text"
             className="reportAdmin-response"
             placeholder="Votre réponse..."
-            value={textAreaValue}
+            value={textAreaValue || undefined}
             onChange={handleChange}
             title="Réponse"
             name={`textArea-${report.reporting_id}`}
           />
-          {/* { missingText && !admin_text ? (
-            <Label pointing basic color="red">
-              Champ obligatoire
-            </Label>
-          ) : ('')} */}
           <div className="reportAdmin-newStatut">
             <div className="reportAdmin-checkbox">
               <input className="inProgress" type="radio" option="statut" id="inProgress" name="reporting_statut" value="En cours" label="inProgress" onChange={handleCheckbox} />
@@ -159,11 +141,6 @@ function ReportAdmin() {
               </label>
             </div>
           </div>
-          {/* { missingText && !reporting_statut ? (
-            <Label pointing basic color="red">
-              Champ obligatoire
-            </Label>
-          ) : ('')} */}
         </Form>
         { message && (
           messageColor
@@ -188,8 +165,5 @@ function ReportAdmin() {
     </div>
   );
 }
-
-// ReportAdmin.propTypes = {
-// };
 
 export default ReportAdmin;

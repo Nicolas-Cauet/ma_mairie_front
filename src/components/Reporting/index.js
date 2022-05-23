@@ -1,10 +1,9 @@
 /* eslint-disable react/jsx-no-useless-fragment */
-// import PropTypes from 'prop-types';
-// import { useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import {
   Button, Checkbox, Form, Accordion, Icon, Message, Dropdown, Label,
 } from 'semantic-ui-react';
+
 import { changeCurrentCategory, changeCurrentField, setMessage } from '../../actions/utilities';
 import { setActiveIndexTerms, toggleReporting } from '../../actions/reports';
 import {
@@ -18,8 +17,6 @@ import {
   errorReportingLastname,
   errorReportingFirstname,
 } from '../../actions/reporting';
-// import { setLoginMessage } from '../../actions/login';
-
 import Field from '../Field';
 
 import './style.scss';
@@ -275,9 +272,5 @@ function Reporting() {
     </>
   );
 }
-
-// Reporting.propTypes = {
-
-// };
 
 export default Reporting;

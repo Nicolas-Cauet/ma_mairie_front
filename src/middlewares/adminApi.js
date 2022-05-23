@@ -22,11 +22,9 @@ const adminApi = (store) => (next) => (action) => {
   switch (action.type) {
     case GET_ADMIN_REPORTS:
       store.dispatch(loading(true));
-      console.log('GET Admin Reports');
       instance.get(`/admin/reporting/${townHallId}`)
         .then((response) => {
           store.dispatch(saveAdminReports(response.data));
-          console.log(response.data);
         })
 
         .catch((error) => {
@@ -45,7 +43,6 @@ const adminApi = (store) => (next) => (action) => {
         })
         .catch((error) => {
           store.dispatch(setMessage(error.response.data.error.message, false));
-          console.log(error);
         });
       break;
     }

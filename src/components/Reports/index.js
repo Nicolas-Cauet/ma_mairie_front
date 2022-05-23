@@ -1,9 +1,9 @@
 /* eslint-disable implicit-arrow-linebreak */
-import PropTypes from 'prop-types';
 import { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import moment from 'moment';
 import { Dropdown, Loader, Message } from 'semantic-ui-react';
+
 import {
   changeReportsFilter,
   getAdminReports, getReports,
@@ -158,17 +158,5 @@ function Reports() {
     </div>
   );
 }
-
-Reports.propTypes = {
-  reports: PropTypes.arrayOf(
-    PropTypes.shape({
-      reporting_id: PropTypes.number.isRequired,
-    }),
-  ),
-};
-
-Reports.defaultProps = {
-  reports: null,
-};
 
 export default Reports;

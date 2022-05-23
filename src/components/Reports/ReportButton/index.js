@@ -2,6 +2,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import {
   Button, Icon,
 } from 'semantic-ui-react';
+
 import { eraseValueActiveIndex, toggleReporting } from '../../../actions/reports';
 import { setMessage } from '../../../actions/utilities';
 

@@ -30,8 +30,6 @@ function CardModel({ ...card }) {
   const firstNameValue = useSelector((state) => state.utilities[`firstNameMember-${card.town_hall_staff_id}`]);
   const roleValue = useSelector((state) => state.utilities[`roleMember-${card.town_hall_staff_id}`]);
   const photoValue = useSelector((state) => state.utilities[`photoMember-${card.town_hall_staff_id}`]);
-  // const coucou = useSelector((state) => state.council);
-  // console.log(coucou);
 
   // Confirm component to delete a card member
   const [confirm, setConfirm] = useState(false);
@@ -40,7 +38,6 @@ function CardModel({ ...card }) {
    * @setConfirm change value of confirm local state
    */
   const toggleDeleteConfirm = () => {
-    console.log('coucou');
     setConfirm(!confirm);
   };
 

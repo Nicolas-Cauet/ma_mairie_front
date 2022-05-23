@@ -1,4 +1,3 @@
-// import PropTypes from 'prop-types';
 import { useSelector, useDispatch } from 'react-redux';
 import { NavLink } from 'react-router-dom';
 import { Button, Icon } from 'semantic-ui-react';
@@ -76,9 +75,5 @@ function Menu() {
     </div>
   );
 }
-
-// Menu.propTypes = {
-
-// };
 
 export default Menu;

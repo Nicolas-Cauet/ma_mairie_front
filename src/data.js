@@ -116,7 +116,6 @@ function Reporting() {
   } = useSelector((state) => state.utilities);
 
   const coucou = useSelector((state) => state.reports);
-  console.log(coucou);
 
   const handleClick = (titleProps) => {
     const { index } = titleProps;
@@ -133,7 +132,6 @@ function Reporting() {
       || reporting_firstName !== ''
       || reporting_lastName !== ''
     ) {
-      console.log('dans condition');
       dispatch(setReportingError(true));
       dispatch(setLoginMessage('Les champs indiqués ne peuvent pas être vide ', false));
 
