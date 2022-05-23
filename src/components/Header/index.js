@@ -15,10 +15,16 @@ import logo from '../../assets/images/favicon-64.png';
 import './style.scss';
 
 function Header() {
-  const { isOpen } = useSelector((state) => state.menu);
-
   const dispatch = useDispatch();
 
+  const { isOpen } = useSelector((state) => state.menu);
+
+  /** Clicking menu button
+   * @toggleMenu open menu
+   * @setMessage reset error message
+   * @resetErrorReporting reset errors on reporting field
+   * @eraseValueActiveIndex close every report accordion
+   */
   const HandleToggle = () => {
     dispatch(toggleMenu(true));
     dispatch(setMessage(''));

@@ -17,6 +17,10 @@ function Field({
   name,
 }) {
   const dispatch = useDispatch();
+
+  /** Controlled field
+   * @changeCurrentField Change input state value
+   */
   const handleChange = (event) => {
     dispatch(changeCurrentField(event.target.value, name));
   };

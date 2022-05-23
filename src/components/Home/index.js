@@ -9,11 +9,13 @@ import './style.scss';
 function Home() {
   const dispatch = useDispatch();
 
+  /** After first page load
+   * @toggleMenu Close menu
+   * @redirect reset redirect state value
+   * @setMessage reset error message state value
+   */
   useEffect(() => {
     dispatch(toggleMenu());
-  });
-
-  useEffect(() => {
     dispatch(redirect(''));
     dispatch(setMessage(''));
   });
