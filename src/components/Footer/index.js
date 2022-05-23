@@ -1,5 +1,3 @@
-// import './style.scss';
-
 import { Button } from 'semantic-ui-react';
 
 import './style.scss';
@@ -37,9 +35,5 @@ function Footer() {
     </div>
   );
 }
-
-// App.propTypes = {
-
-// };
 
 export default Footer;
