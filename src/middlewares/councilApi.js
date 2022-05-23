@@ -6,6 +6,7 @@ import {
 } from '../actions/council';
 import { setMessage } from '../actions/utilities';
 
+/** Instance of axios with options */
 const instance = axios.create({
   baseURL: 'https://mamairie.herokuapp.com',
   headers: {
@@ -17,19 +18,22 @@ const councilApi = (store) => (next) => (action) => {
   const { townHallId } = store.getState().login;
   switch (action.type) {
     case GET_COUNCIL_MEMBERS:
-      console.log('GET Council');
       instance.get(`/council/${townHallId}`)
         .then((response) => {
-          console.log(response);
+          /** success of get request
+           * @setCouncilMembers save member to state value
+           */
           store.dispatch(setCouncilMembers(response.data));
         })
         .catch((error) => {
+          /** error on request
+           * @setMessage set a message error
+           */
           store.dispatch(setMessage('Les données concernant les membres du conseil ne sont pas pour le moment disponible', false));
           console.log(error);
         });
       break;
     case POST_COUNCIL_MEMBERS:
-      console.log('POST Council');
       instance.post(`/admin/council/${townHallId}`, {
         first_name: 'Prénom',
         last_name: 'Nom',
@@ -39,9 +43,15 @@ const councilApi = (store) => (next) => (action) => {
       })
         .then((response) => {
           console.log(response);
+          /** success of post request
+           * @getCouncilMembers get new member list to state value
+           */
           store.dispatch(getCouncilMembers());
         })
         .catch((error) => {
+          /** error on request
+           * @setMessage set a message error
+           */
           store.dispatch(setMessage(error.response.data.error.message, false));
           console.log(error);
         });
@@ -57,9 +67,15 @@ const councilApi = (store) => (next) => (action) => {
       })
         .then((response) => {
           console.log(response);
+          /** success of patch request
+           * @getCouncilMembers get new member list to state value
+           */
           store.dispatch(getCouncilMembers());
         })
         .catch((error) => {
+          /** error on request
+           * @setMessage set a message error
+           */
           store.dispatch(setMessage(error.response.data.error.message, false));
           console.log(error);
         });
@@ -69,9 +85,15 @@ const councilApi = (store) => (next) => (action) => {
       instance.delete(`/admin/council/${townHallId}/${action.id}`)
         .then((response) => {
           console.log(response);
+          /** success of delete request
+           * @getCouncilMembers get new member list to state value
+           */
           store.dispatch(getCouncilMembers());
         })
         .catch((error) => {
+          /** error on request
+           * @setMessage set a message error
+           */
           store.dispatch(setMessage('Les modifications concernant les signalements ne sont pas possible pour le moment', false));
           console.log(error);
         });

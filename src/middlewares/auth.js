@@ -11,6 +11,7 @@ import {
 } from '../actions/login';
 import { redirect, setMessage } from '../actions/utilities';
 
+/** Instance of axios with options */
 const instance = axios.create({
   baseURL: 'https://mamairie.herokuapp.com',
 });
@@ -32,12 +33,20 @@ const auth = (store) => (next) => (action) => {
         .then((response) => {
           console.log('User signup');
           console.log(response);
+          /** success of post request
+           * @toggleLogin open connection form
+           * @activeConnectionButton active connection button
+           * @setMessage set a success message
+           */
           store.dispatch(toggleLogin());
           store.dispatch(activeConnectionButton());
           store.dispatch(setMessage(response.data, true));
         })
         .catch((error) => {
           console.log(error);
+          /** error on request
+           * @setMessage set a message error
+           */
           store.dispatch(setMessage(error.response.data.error.message, false));
         });
       break;
@@ -47,28 +56,33 @@ const auth = (store) => (next) => (action) => {
         password: action.password,
       })
         .then((response) => {
-          console.log('User login');
-          console.log(response);
-          // store.dispatch(setMessage(response.data, true));
+          /** success of post request
+           * @login change value state login
+           * @redirect redirect to value
+           */
           store.dispatch(login());
           store.dispatch(redirect('/'));
 
-          // Récupération du token lors du login
+          /** Récupération du tokend d'authendification lors du login */
           const { accessToken } = response.data;
-          console.log(accessToken);
           instance.defaults.headers.common.Authorization = `bearer ${accessToken}`;
           localStorage.setItem('accessToken', accessToken);
         })
         .catch((error) => {
+          /** error on request
+           * @setMessage set a message error
+           */
           store.dispatch(setMessage(error.response.data.error.message, false));
-          console.log(error);
         });
       break;
     case LOGOUT: {
-      console.log('User logout');
+      /** On logout
+       * @delete delete token from intance and localstorage
+       * @setLogout change state value login
+       * @setMessage set a success message
+       */
       delete instance.defaults.headers.common.Authorization;
       localStorage.removeItem('token');
-      console.log('token deleted');
       store.dispatch(setLogout());
       store.dispatch(setMessage('Vous êtes déconnecté', true));
       break;

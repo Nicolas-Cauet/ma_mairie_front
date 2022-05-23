@@ -43,22 +43,29 @@ export const initialState = {
 
 const reducer = (state = initialState, action = {}) => {
   switch (action.type) {
+    /** Controlled field for Field component */
     case CHANGE_CURRENT_FIELD:
       return {
         ...state,
         [action.key]: action.value,
       };
+
+    /** Controlled dropdown for category of reporting */
     case CHANGE_CURRENT_CATEGORY:
       return {
         ...state,
         reporting_category: action.reporting_category,
       };
+
+    /** Change value logged to false when person disconnected */
     case SET_LOGOUT:
       return {
         ...state,
         pseudo: '',
         inseeCode: '',
       };
+
+    /** Change value logged to true when person logged */
     case LOGIN:
       return {
         ...state,
@@ -66,6 +73,8 @@ const reducer = (state = initialState, action = {}) => {
         password: '',
         confirmPassword: '',
       };
+
+    /** Erase fields of Reporting on succes submit */
     case ERASE_REPORTING_FIELDS:
       return {
         ...state,
@@ -80,46 +89,50 @@ const reducer = (state = initialState, action = {}) => {
         reporting_error: false,
 
       };
+
+    /** Controlled field for checkbox reporting */
     case CHANGE_CURRENT_CHECKBOX_REPORTING:
       return {
         ...state,
         reporting_checkBox: !state.reporting_checkBox,
       };
+
+    /** Loading waitind data from API */
     case LOADING:
       return {
         ...state,
         loading: action.value,
       };
-    // case RETURN_MESSAGE_ERROR:
-    //   return {
-    //     ...state,
-    //     errorMessage: action.value,
-    //   };
-    // case RETURN_MESSAGE_SUCCESS:
-    //   return {
-    //     ...state,
-    //     successMessage: action.value,
-      // };
+
+    /** Create a specific pair key/value to council reducer to change one member lastname */
     case CREATE_EDITING_MEMBER_LASTNAME:
       return {
         ...state,
         [action.key]: action.value,
       };
+
+    /** Create a specific pair key/value to council reducer to change one member firstname */
     case CREATE_EDITING_MEMBER_FIRSTNAME:
       return {
         ...state,
         [action.key]: action.value,
       };
+
+    /** Create a specific pair key/value to council reducer to change one member role */
     case CREATE_EDITING_MEMBER_ROLE:
       return {
         ...state,
         [action.key]: action.value,
       };
+
+    /** Create a specific pair key/value to council reducer to change one member photo */
     case CREATE_EDITING_MEMBER_PHOTO:
       return {
         ...state,
         [action.key]: action.value,
       };
+
+    /** Return a error or success message */
     case SET_MESSAGE: {
       return {
         ...state,

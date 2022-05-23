@@ -26,14 +26,23 @@ const adminApi = (store) => (next) => (action) => {
       console.log('GET Admin Reports');
       instance.get(`/admin/reporting/${townHallId}`)
         .then((response) => {
+          /** success of get request
+           * @saveAdminReports save admin reports to state value
+           */
           store.dispatch(saveAdminReports(response.data));
           console.log(response.data);
         })
 
         .catch((error) => {
+          /** error on request
+           * @setMessage set a message error
+           */
           store.dispatch(setMessage(error.response.data.error.message, false));
         })
         .finally(() => {
+          /** after success action
+           * @loading stop the loadng status of the element
+           */
           store.dispatch(loading(false));
         });
       break;
@@ -41,10 +50,17 @@ const adminApi = (store) => (next) => (action) => {
       instance.delete(`/admin/reporting/${townHallId}/${action.id}`)
 
         .then((response) => {
+          /** success of get request
+           * @deleteReport close confirm window
+           * @setMessage set a success message
+           */
           store.dispatch(deleteReport(action.id));
           store.dispatch(setMessage(response.data, true));
         })
         .catch((error) => {
+          /** error on request
+           * @setMessage set a message error
+           */
           store.dispatch(setMessage(error.response.data.error.message, false));
           console.log(error);
         });
@@ -57,10 +73,17 @@ const adminApi = (store) => (next) => (action) => {
         reporting_statut: action.reporting_statut,
       })
         .then((response) => {
+          /** success of get request
+           * @setMessage set a success message
+           * @getAdminReports get request to API to have update list of admin reports
+           */
           store.dispatch(setMessage(response.data, true));
           store.dispatch(getAdminReports());
         })
         .catch((error) => {
+          /** error on request
+           * @setMessage set a message error
+           */
           store.dispatch(setMessage(error.response.data.error.message, false));
         });
       break;

@@ -4,19 +4,14 @@ import axios from 'axios';
 import { eraseReportingFields, SUBMIT_REPORTING } from '../actions/reporting';
 import {
   GET_REPORTS,
-  saveAdminReports,
   saveReports,
 } from '../actions/reports';
 import { loading, setMessage } from '../actions/utilities';
 
+/** Instance of axios with options */
 const instance = axios.create({
   baseURL: 'https://mamairie.herokuapp.com',
 });
-
-// if (localStorage.getItem('accessToken')) {
-// const accessToken = localStorage.getItem('accessToken');
-//   instance.defaults.headers.common.Authorization = `bearer ${accessToken}`;
-// }
 
 const api = (store) => (next) => (action) => {
   const { townHallId } = store.getState().login;
@@ -28,13 +23,22 @@ const api = (store) => (next) => (action) => {
       instance.get(`/reporting/${townHallId}`)
         .then((response) => {
           console.log(response);
+          /** success of get request
+           * @saveReports save reports to state value
+           */
           store.dispatch(saveReports(response.data));
         })
         .catch((error) => {
           console.log(error);
+          /** error on request
+           * @setMessage set a message error
+           */
           store.dispatch(setMessage('Les données concernant les signalements ne sont pas pour le moment disponible', false));
         })
         .finally(() => {
+          /** after success action
+           * @loading stop the loadng status of the element
+           */
           store.dispatch(loading(false));
         });
       break;
@@ -53,12 +57,18 @@ const api = (store) => (next) => (action) => {
         .then((response) => {
           console.log('POST Reporting OK');
           console.log(response);
+          /** success of get request
+           * @eraseReportingFields reset field content of reporting component
+           * @setMessage set a success message
+           */
           store.dispatch(eraseReportingFields());
-          // store.dispatch(saveAdminReports());
           store.dispatch(setMessage('Votre signalement a été envoyé à l\'équipe municipale, il sera traité dès que possible', true));
         })
         .catch((error) => {
           console.log(error);
+          /** error on request
+           * @setMessage set a message error
+           */
           store.dispatch(setMessage(error.response.data.error.message, false));
         });
       break;

@@ -6,6 +6,7 @@ export const initialState = {
 
 const reducer = (state = initialState, action = {}) => {
   switch (action.type) {
+    /** Display Menu component on clicking menu button */
     case TOGGLE_MENU: {
       return {
         ...state,

@@ -150,43 +150,57 @@ export const initialState = {
 
 const reducer = (state = initialState, action = {}) => {
   switch (action.type) {
-    // Management of accordion section of report
+    /** State for opening accordion reports list */
     case SET_ACTIVE_INDEX:
       return {
         ...state,
         activeIndex: action.activeIndex,
         id: action.id,
       };
+
+    /** State for opening accordion terms and conditions */
     case SET_ACTIVE_INDEX_TERMS:
       return {
         ...state,
         activeIndexTerms: action.activeIndexTerms,
       };
+
+    /** Display Reporting component */
     case TOGGLE_REPORTING:
       return {
         ...state,
         isReporting: action.value,
       };
+
+    /** Attribute reports to her state value */
     case SAVE_REPORTS:
       return {
         ...state,
         reportsList: action.payload,
       };
+
+    /** Attribute admin reports to her state value */
     case SAVE_ADMIN_REPORTS:
       return {
         ...state,
         reportsAdminList: action.payload,
       };
+
+    /** Management radio button of status response on admin report treatment */
     case CHANGE_CHECKBOX_ADMIN_REPORTING:
       return {
         ...state,
         reporting_statut: action.reporting_statut,
       };
+
+    /** Select an option in filter */
     case CHANGE_REPORTS_FILTER:
       return {
         ...state,
         [action.key]: action.value,
       };
+
+    /** Reset filter to default value */
     case RESET_REPORTS_FILTER:
       return {
         ...state,
@@ -194,21 +208,29 @@ const reducer = (state = initialState, action = {}) => {
         selectedMonth: '',
         selectedYear: '',
       };
+
+    /** Update list of reports filtered */
     case UPDATE_FILTERED_REPORTS:
       return {
         ...state,
         filteredReports: action.filteredReports,
       };
+
+    /** Create dynamic state for text area of AdminReport component */
     case CREATE_STATE_TEXTAREA_ADMINREPORT:
       return {
         ...state,
         [action.key]: action.value,
       };
+
+    /** Create dynamic state for text area of AdminReport component */
     case CHANGE_CURRENT_TEXTAREA_ADMINREPORT:
       return {
         ...state,
         [action.key]: action.value,
       };
+
+    /**  Erase state value of activeIndex for accordion */
     case ERASE_VALUE_ACTIVE_INDEX:
       return {
         ...state,

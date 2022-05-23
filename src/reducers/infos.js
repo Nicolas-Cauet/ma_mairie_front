@@ -7,11 +7,14 @@ export const initialState = {
 
 const reducer = (state = initialState, action = {}) => {
   switch (action.type) {
+    /** Display waste information */
     case TOGGLE_WASTE:
       return {
         ...state,
         isOpenWaste: !state.isOpenWaste,
       };
+
+    /** Display waste landfill information */
     case TOGGLE_RECYCLING:
       return {
         ...state,
