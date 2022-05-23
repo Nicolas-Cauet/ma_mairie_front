@@ -27,8 +27,4 @@ function Home() {
   );
 }
 
-// App.propTypes = {
-
-// };
-
 export default Home;

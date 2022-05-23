@@ -1,17 +1,15 @@
 import { useDispatch, useSelector } from 'react-redux';
 import { useEffect, useState } from 'react';
-// import PropTypes from 'prop-types';
 import { useNavigate } from 'react-router';
-
 import { Button, Message } from 'semantic-ui-react';
-import Field from '../Field';
 
+import Field from '../Field';
 import {
   logout, submitSignup, submitLogin, toggleLogin, toggleSignup,
 } from '../../actions/login';
+import { setMessage } from '../../actions/utilities';
 
 import './style.scss';
-import { setMessage } from '../../actions/utilities';
 
 function Login() {
   const dispatch = useDispatch();
@@ -65,6 +63,7 @@ function Login() {
     dispatch(setMessage(''));
     dispatch(toggleSignup());
   };
+
   /** Clicking on disconnect button
    * @logout disconnect user
    */
@@ -237,16 +236,5 @@ function Login() {
     </div>
   );
 }
-
-Login.propTypes = {
-  // email: PropTypes.string,
-  // password: PropTypes.string,
-  // inseeCode: PropTypes.number,
-  // logged: PropTypes.bool,
-  // isOpenSignup: PropTypes.bool,
-  // isOpenLogin: PropTypes.bool,
-  // message: PropTypes.string,
-  // activeConnectionButton: PropTypes.bool,
-};
 
 export default Login;

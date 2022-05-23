@@ -1,5 +1,3 @@
-// import PropTypes from 'prop-types';
-// import Menu from './Menu'
 import { Button } from 'semantic-ui-react';
 import { useDispatch, useSelector } from 'react-redux';
 import { Link } from 'react-router-dom';
@@ -51,8 +49,5 @@ function Header() {
     </header>
   );
 }
-
-// Header.propTypes = {
-// };
 
 export default Header;

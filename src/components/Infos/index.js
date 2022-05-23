@@ -1,8 +1,7 @@
-// import PropTypes from 'prop-types';
 import { useDispatch, useSelector } from 'react-redux';
 import { Button } from 'semantic-ui-react';
-import { toggleRecycling, toggleWaste } from '../../actions/infos';
 
+import { toggleRecycling, toggleWaste } from '../../actions/infos';
 import schedule from '../../assets/images/waste/schedule.jpg';
 import guide from '../../assets/images/waste/guide.png';
 import landfill from '../../assets/images/waste/landfill.png';
@@ -54,9 +53,5 @@ function Infos() {
     </div>
   );
 }
-
-// Infos.propTypes = {
-
-// };
 
 export default Infos;
