@@ -1,6 +1,5 @@
 import PropTypes from 'prop-types';
 import { useDispatch } from 'react-redux';
-
 import { Input } from 'semantic-ui-react';
 
 import { changeCurrentField } from '../../actions/utilities';
@@ -45,17 +44,20 @@ function Field({
 
 Field.propTypes = {
   type: PropTypes.string.isRequired,
-  value: PropTypes.string.isRequired,
+  value: PropTypes.string,
   title: PropTypes.string.isRequired,
   placeholder: PropTypes.string.isRequired,
   inputError: PropTypes.bool,
   icon: PropTypes.string,
-  name: PropTypes.string.isRequired,
+  name: PropTypes.string,
 };
 
 Field.defaultProps = {
   inputError: false,
   icon: null,
+  // name & value not required for socialNetwork because it's not finished
+  name: null,
+  value: undefined,
 };
 
 export default Field;
