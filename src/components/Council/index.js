@@ -1,4 +1,3 @@
-// import PropTypes from 'prop-types'
 import { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 
@@ -21,7 +20,6 @@ function Council() {
    */
   const handleClick = () => {
     dispatch(postCouncilMembers());
-    console.log('coucou');
   };
 
   /**  After first page load
@@ -51,9 +49,5 @@ function Council() {
     </section>
   );
 }
-
-Council.propTypes = {
-
-};
 
 export default Council;

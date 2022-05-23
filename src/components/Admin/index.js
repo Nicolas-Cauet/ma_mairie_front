@@ -111,7 +111,8 @@ function Admin() {
                     type="text"
                     className="admin-form-input"
                     placeholder="URL twitter"
-                        // value={facebook}
+                    // value={facebook}
+                    // name={facebook}
                     title="twitter"
                     icon="twitter"
                   />
@@ -130,9 +131,5 @@ function Admin() {
     </div>
   );
 }
-
-// App.propTypes = {
-
-// };
 
 export default Admin;

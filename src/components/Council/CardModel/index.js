@@ -1,4 +1,4 @@
-// import PropTypes from 'prop-types';
+import PropTypes from 'prop-types';
 import { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import {
@@ -182,7 +182,12 @@ function CardModel({ ...card }) {
 }
 
 CardModel.propTypes = {
-
+  first_name: PropTypes.string.isRequired,
+  last_name: PropTypes.string.isRequired,
+  photo: PropTypes.string.isRequired,
+  role: PropTypes.string.isRequired,
+  town_hall_id: PropTypes.number.isRequired,
+  town_hall_staff_id: PropTypes.number.isRequired,
 };
 
 export default CardModel;

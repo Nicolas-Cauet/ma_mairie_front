@@ -1,5 +1,3 @@
-// import PropTypes from 'prop-types';
-
 import { Routes, Route } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 import { useEffect } from 'react';
@@ -62,9 +60,5 @@ function App() {
     </div>
   );
 }
-
-// App.propTypes = {
-
-// };
 
 export default App;
