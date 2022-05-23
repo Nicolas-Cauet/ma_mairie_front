@@ -27,12 +27,12 @@ export const loading = (value) => ({
   value: value,
 });
 
-/** Return a error message */
-export const RETURN_MESSAGE_ERROR = 'RETURN_MESSAGE_ERROR';
-export const returnMessageError = (value) => ({
-  type: RETURN_MESSAGE_ERROR,
-  value,
-});
+// /** Return a error message */
+// export const RETURN_MESSAGE_ERROR = 'RETURN_MESSAGE_ERROR';
+// export const returnMessageError = (value) => ({
+//   type: RETURN_MESSAGE_ERROR,
+//   value,
+// });
 
 // /** Return a succes message */
 // export const RETURN_MESSAGE_SUCCESS = 'RETURN_MESSAGE_SUCCESS';

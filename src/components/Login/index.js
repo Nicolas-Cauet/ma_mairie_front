@@ -37,25 +37,45 @@ function Login() {
 
   const [samePassword, setSamePassword] = useState();
 
+  /** After first page load
+   * @setSamePassword password and confirl password have same value
+   * @navigate redirect to value fo redirect
+   */
   useEffect(() => {
     setSamePassword(true);
+    if (redirectTo !== '') {
+      navigate(redirectTo);
+    }
   }, []);
 
+  /** Clicking on connection button
+   * @setMessage reset error message
+   * @toggleLogin open login element
+   */
   const handleToggleLogin = () => {
     dispatch(setMessage(''));
     dispatch(toggleLogin());
-    dispatch(setMessage(''));
   };
 
+  /** Clicking on signup button
+   * @setMessage reset error message
+   * @toggleSignup open signup element
+   */
   const handleToggleSignup = () => {
     dispatch(setMessage(''));
     dispatch(toggleSignup());
-    dispatch(setMessage(''));
   };
-
+  /** Clicking on disconnect button
+   * @logout disconnect user
+   */
   const handleLogout = () => {
     dispatch(logout());
   };
+
+  /** Clicking submit signup button
+   * @setSamePassword change value if confirmpassword is OK
+   * @submitSignup POST request to API for signup
+   */
   const handleSubmitSignup = (event) => {
     event.preventDefault();
     if (password !== confirmPassword) {
@@ -66,15 +86,13 @@ function Login() {
     }
   };
 
+  /** Clicking submit signup button
+   * @submitLogin POST request to API for login
+   */
   const handleSubmitLogin = (event) => {
     event.preventDefault();
     dispatch(submitLogin(email, password));
   };
-  useEffect(() => {
-    if (redirectTo !== '') {
-      navigate(redirectTo);
-    }
-  });
 
   return (
     <div className="login">

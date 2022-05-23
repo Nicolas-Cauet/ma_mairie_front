@@ -14,10 +14,16 @@ function Infos() {
 
   const { isOpenWaste, isOpenRecycling } = useSelector((state) => state.infos);
 
+  /** Clicking waste button
+   * @toggleWaste display clendar and infos for waste
+   */
   const handleClickWaste = () => {
     dispatch(toggleWaste());
   };
 
+  /** Clicking landfill button
+   * @toggleRecycling display landfill infos
+   */
   const handleClickRecycling = () => {
     dispatch(toggleRecycling());
   };
