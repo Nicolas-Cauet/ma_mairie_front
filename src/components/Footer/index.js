@@ -7,7 +7,7 @@ function Footer() {
     <div className="footer">
       <div className="footer-content">
         <div className="footer-infos">
-          <h2>Informations de la mairie</h2>
+          <h2 className="report-title">Informations de la mairie</h2>
           <p>Adresse de la mairie :<br />
             14 rue de la République<br />
             27000 MairieVille

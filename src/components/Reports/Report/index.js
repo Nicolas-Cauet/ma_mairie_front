@@ -80,7 +80,7 @@ function Report({
                 <h3>Créé le <Moment format="DD/MM/YYYY">{created_at}</Moment></h3>
               </div>
               <span className={`report-statut report-statut--${reporting_statut.replace(' ', '_')}`}>{reporting_statut}</span>
-              <h2>{title}</h2>
+              <h2 className="report-title">{title}</h2>
               <div className="report-moreInfo">
                 <Icon name="caret square down outline" />
                 En savoir plus
