@@ -1,6 +1,8 @@
+@use 'src/styles/vars';
+
 .app {
     width: 100%;
-    background-color: #EEEEEE;
+    background-color: vars.$thirdColor;
 }
 
 .ui.message, .ui.positive.message, .ui.negative.message{
@@ -14,7 +16,7 @@
  
   
   #root {
-    background-color: white;
+    background-color: vars.$backgroundDesktopColor;
     -webkit-box-shadow: 5px 5px 15px 20px #000000; 
     box-shadow: 5px 5px 15px 20px #000000;
   };  

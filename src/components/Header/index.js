@@ -8,7 +8,7 @@ import { resetErrorReporting } from '../../actions/reporting';
 import { eraseValueActiveIndex } from '../../actions/reports';
 
 import photo from '../../assets/images/logo2.png';
-import logo from '../../assets/images/favicon-64.png';
+// import logo from '../../assets/images/favicon-64.png';
 
 import './style.scss';
 
@@ -23,8 +23,8 @@ function Header() {
    * @resetErrorReporting reset errors on reporting field
    * @eraseValueActiveIndex close every report accordion
    */
-  const HandleToggle = () => {
-    dispatch(toggleMenu(true));
+  const handleToggle = () => {
+    dispatch(toggleMenu());
     dispatch(setMessage(''));
     dispatch(resetErrorReporting());
     dispatch(eraseValueActiveIndex());
@@ -32,11 +32,11 @@ function Header() {
 
   return (
     <header className="header">
-      <Link className="header-head" to="/">
+      {/* <Link className="header-head" to="/">
         <img src={logo} className="header-logo" alt="Mairie" />
         <h1 className="header-title">mamairie.fr</h1>
         <h2>Votre mairie vous ressemble  et vous rassemble</h2>
-      </Link>
+      </Link> */}
       <Link to="/">
         <img src={photo} className="header-photo" alt="Mairie" />
       </Link>
@@ -44,7 +44,7 @@ function Header() {
         <Link to="/">
           <h1 className="header-title">Mairie d'Apothéose sur O'Clock</h1>
         </Link>
-        <Button className={isOpen ? 'header-button header-button--open' : 'header-button'} icon="sidebar" onClick={HandleToggle} />
+        <Button className={isOpen ? 'header-button header-button--open' : 'header-button'} icon="sidebar" onClick={handleToggle} />
       </div>
     </header>
   );
