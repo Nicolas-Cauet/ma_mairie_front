@@ -28,7 +28,7 @@ function Admin() {
                 <h3>Conseil municipal</h3>
                 {/* <Button className="create" icon="plus" content="Créer" /> */}
                 <Link to="/admin/council/1">
-                  <Button className="edit" icon="edit" content="Editer" />
+                  <Button className="editCouncil" icon="edit" content="Editer" />
                 </Link>
               </div>
             </div>

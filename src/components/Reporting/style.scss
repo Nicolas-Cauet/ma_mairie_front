@@ -8,25 +8,11 @@
   & .obligateFields {
     font-size: 0.75rem ;  }
 
-  // & .message-container {
-  //   display: flex;
-  //   justify-content: center;
-  //   & .ui.negative.message {
-  //     text-align: center;
-  //     width: 85%;
-  //   }
-  //   & .ui.positive.message {
-  //     text-align: center;
-  //     width: 85%;
-  //   }
-  // }
-
   & .ui.basic.label {
     color: #af0202;
     border-color: #af0202;
     margin: -0.5rem 0 0.5rem;
   }
-
 
   & .reporting-rule {
     font-size: 0.75rem;
@@ -56,16 +42,15 @@
     transition: all .2s ease-in-out;
     
     &:hover {
-      box-shadow: 2px 2px 9px 0px rgba(0,0,0,0.7);
-      transform: scale(1.01);
+      box-shadow: 2px 2px 9px 0px rgba(0,0,0,0.3);
     }
 
     &.form-submit {
-      background-color: #7fd30042;
+      background-color: vars.$confirmButton;
       margin-right: 3rem;
     }
     &.form-back {
-      background-color: #d3258d41;
+      background-color: vars.$cancelButton;
     }
   }
 

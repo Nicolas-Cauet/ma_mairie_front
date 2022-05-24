@@ -30,16 +30,16 @@
   
   .infos-button {
   background-color: vars.$infosbutton;
+  border: 2px solid color.scale(vars.$infosbutton, $lightness: -20%);
   text-align: center;
   align-items: center;
-  border: solid 0.1rem grey;
   transition: all .2s ease-in-out;
 
 
     &:hover {
       background-color: color.scale(vars.$infosbutton, $lightness: -10%);
-      box-shadow: 2px 2px 9px 0px rgba(0,0,0,0.7);
-      transform: scale(1.01);
+      border: 2px solid color.scale(vars.$infosbutton, $lightness: -30%);
+      box-shadow: 2px 2px 9px 0px rgba(0,0,0,0.3);
         
     }
   }

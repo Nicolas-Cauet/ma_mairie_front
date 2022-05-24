@@ -6,21 +6,11 @@
   justify-content: center;
   flex-wrap: wrap;
 }
-// .message-container {
-//   display: flex;
-//   justify-content: center;
-//   margin: 1rem 0;
-
-//   &>.ui.positive.message {
-//     text-align: center;
-//     width: 85%;
-//   }
-// }
 
 .ui.button.reporting-button {
   background-color: vars.$warningButtonColor;
   border: 2px solid color.scale(vars.$warningButtonColor, $lightness: -20%);
-  color: black;
+  color: vars.$textButton;
   font-size: 2rem ;
   display: flex;
   flex-direction: row;
@@ -34,8 +24,8 @@
   &:hover {
     background-color: color.scale(vars.$warningButtonColor, $lightness: -10%);
     border: 2px solid color.scale(vars.$warningButtonColor, $lightness: -30%);
-    box-shadow: 2px 2px 9px 0px rgba(0,0,0,0.7);
-    transform: scale(1.01);
+    color: color.scale(vars.$textButton, $lightness: -60%);
+    box-shadow: 2px 2px 9px 0px rgba(0,0,0,0.3);
   }
 
   & .icon {
@@ -48,8 +38,8 @@
   transition: all .2s ease-in-out;
 
   &:hover {
-    box-shadow: 2px 2px 9px 0px rgba(0,0,0,0.7);
-    transform: scale(1.01);
+    box-shadow: 2px 2px 9px 0px rgba(0,0,0,0.3);
+    transform: scale(1.005);
   }
 
   & .title {

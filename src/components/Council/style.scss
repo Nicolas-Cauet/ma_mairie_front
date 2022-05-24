@@ -1,3 +1,6 @@
+@use 'sass:color';
+@use 'src/styles/vars';
+
 .card-container {
   
   display: flex;
@@ -20,8 +23,8 @@
 
   & h1 {
     text-align: center;
-    margin: 1rem 0;
-    font-size: 1.5rem;
+    margin: 1rem 0 2.5rem;
+    font-size: 2rem;
     width: 100%;
   }
 
@@ -32,8 +35,8 @@
 
 
     &:hover {
-      box-shadow: 2px 2px 9px 0px rgba(0,0,0,0.7);
-      transform: scale(1.01);
+      box-shadow: 2px 2px 9px 0px rgba(0,0,0,0.3);
+      transform: scale(1.005);
     }
 
     & .content {
@@ -104,7 +107,22 @@
   flex-direction: row;
   justify-content: center;
 
+  
   & .ui.button {
     padding: 1rem;
+    transition: all .2s ease-in-out;
+    
+    &:hover {
+      box-shadow: 2px 2px 9px 0px rgba(0,0,0,0.3);
+    }
+
+    &.button-cancel {
+      background-color: vars.$cancelButton;
+    }
+
+    &.button-confirm {
+      background-color: vars.$confirmButton;
+    }
+
   }
 }

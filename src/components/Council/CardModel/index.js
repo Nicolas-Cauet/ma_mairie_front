@@ -136,15 +136,15 @@ function CardModel({ ...card }) {
           </div>
         </Modal.Content>
         <Modal.Actions className="modalEditingCouncilMember-buttons">
-          <Button color="red" onClick={handleClick}>
+          <Button className="button-cancel" onClick={handleClick}>
             Annuler
           </Button>
           <Button
+            className="button-confirm"
             content="Mettre à jour"
             labelPosition="right"
             icon="checkmark"
             onClick={handleSubmit}
-            positive
           />
         </Modal.Actions>
       </Modal>

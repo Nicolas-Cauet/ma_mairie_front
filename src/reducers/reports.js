@@ -53,7 +53,7 @@ export const initialState = {
     },
     {
       // key: 'Objets trouvé/perdu',
-      text: (<Icon className="dropdown-icon" name="key"> Objets trouvé ou perdu</Icon>),
+      text: (<Icon className="dropdown-icon" name="key"> Objet trouvé ou perdu</Icon>),
       value: 'Objet trouvé ou perdu',
     },
     {

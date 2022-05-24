@@ -1,4 +1,5 @@
 @use 'sass:color';
+@use 'src/styles/vars';
 
 .admin {
     margin: 0 1.5rem 0;
@@ -12,34 +13,39 @@
         margin-bottom: 2rem;
 
         .create {
-            background-color: #8db9d7;
+          background-color: vars.$createColor;
+          border: 0.1rem solid color.scale(vars.$createColor, $lightness: -20%);
 
             &:hover {
-                background-color: #8db9d7;
+              background-color: color.scale(vars.$createColor, $lightness: -10%);
+              border-color: color.scale(vars.$createColor, $lightness: -30%);
             }
         }
-        .edit {
-            background-color: #FBE192;
+        .editCouncil {
+          background-color: vars.$edit;
+          border: 0.1rem solid color.scale(vars.$edit, $lightness: -20%);
 
             &:hover {
-                background-color: #FBE192;
+              background-color: color.scale(vars.$edit, $lightness: -10%);
+              border-color: color.scale(vars.$edit, $lightness: -30%);
             }
         }
         .process {
-            background-color: #8DD7CF;
+            background-color: vars.$process;
+            border: 0.1rem solid color.scale(vars.$process, $lightness: -20%);
 
             &:hover {
-                background-color: #8DD7CF;
+                background-color: color.scale(vars.$process, $lightness: -10%);
+                border-color: color.scale(vars.$process, $lightness: -30%);
             }
         }
 
         .ui.button {
             margin: 0.2rem;
             transition: all .2s ease-in-out;
-            
+
             &:hover {
-              box-shadow: 2px 2px 9px 0px rgba(0,0,0,0.7);
-              transform: scale(1.01);
+              box-shadow: 2px 2px 9px 0px rgba(0,0,0,0.3);
             }
 
         }
@@ -49,7 +55,6 @@
         width: 100%;
         text-align: center;
         align-items: center;
-        border: solid 0.1rem grey;
     }
 
     &-button {
@@ -62,8 +67,8 @@
 
     
       &:hover {
-        box-shadow: 2px 2px 9px 0px rgba(0,0,0,0.7);
-        transform: scale(1.01);
+        box-shadow: 2px 2px 9px 0px rgba(0,0,0,0.3);
+        transform: scale(1.005);
       }
       
     }
