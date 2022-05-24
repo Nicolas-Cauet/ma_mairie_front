@@ -1,6 +1,14 @@
 @use 'src/styles/vars';
 
 .reportAdmin {
+    
+    &-checkbox {
+      width: 28%;
+
+      & label {
+        justify-content: center;
+      }
+    }
     h2 {
         margin-bottom: 0;
         padding-right: 1rem;
@@ -9,7 +17,7 @@
         display: flex;
         justify-content: center;
         align-items: center;
-        margin: 2rem 0 0;
+        margin: 2rem auto 0;
     }
 
     &-statut {
@@ -137,20 +145,21 @@ button.ui.button.reportAdmin-abort {
 }
 
 input[type="radio"] + label {
-  padding: 0.75rem 1rem;
+  padding: 0.75rem 0.2rem;
   display: flex;
   margin: 1.5rem 0 0.5rem;
   line-height: 1.5;
   font-size: 1rem;
   border-radius: 0.3rem;
-  color: #fff;
+  color: rgb(255, 255, 255);
   background-color: #6c757d;
   border: 1px solid transparent;
-  transition: all 0.5s ease-in-out;
+  transition: all 0.2s ease-in-out;
 }
 input[type="radio"].inProgress:hover + label {
   background-color: vars.$statusInProgressColor;
   border-color: vars.$statusInProgressColor;
+  box-shadow: 2px 2px 9px 0px rgba(0,0,0,0.3);
   cursor: pointer;
 }
 input[type="radio"].inProgress:checked + label {
@@ -162,6 +171,7 @@ input[type="radio"].inProgress:checked + label {
 input[type="radio"].done:hover + label {
   background-color: vars.$statusOkColor;
   border-color: vars.$statusOkColor;
+  box-shadow: 2px 2px 9px 0px rgba(0,0,0,0.3);
   cursor: pointer;
 }
 input[type="radio"].done:checked + label {
@@ -172,6 +182,7 @@ input[type="radio"].done:checked + label {
 input[type="radio"].abort:hover + label {
   background-color: vars.$statusRefusedColor;
   border-color: vars.$statusRefusedColor;
+  box-shadow: 2px 2px 9px 0px rgba(0,0,0,0.3);
   cursor: pointer;
 }
 input[type="radio"].abort:checked + label {
@@ -187,6 +198,14 @@ input[type="radio"].abort:checked + label {
         padding-bottom: 2rem;
         width: 70%;
         margin: 0 auto;
+        
+        &-checkbox {
+          width: 30%;
+
+          & label {
+            justify-content: center;
+          }
+        }
 
         &-newStatut {
             margin-bottom: 1rem;
@@ -207,7 +226,7 @@ input[type="radio"].abort:checked + label {
     }
 
     input[type="radio"] + label {
-        padding: 1rem 2rem;
+        padding: 1rem 1rem;
         font-size: 1.25rem;
     }
     
