@@ -108,7 +108,7 @@ function Reports() {
       {/* Section for reporting action */}
       {isReporting && (<Reporting />)}
 
-      {!isReporting && (<h1 className="reports-title">Votre outils de signalement</h1>)}
+      {/* {!isReporting && (<h1 className="reports-title">Votre outils de signalement</h1>)} */}
 
       <ReportButton />
 

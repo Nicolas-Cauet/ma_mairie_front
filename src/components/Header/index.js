@@ -32,11 +32,11 @@ function Header() {
 
   return (
     <header className="header">
-      <Link className="header-head" to="/">
+      {/* <Link className="header-head" to="/">
         <img src={logo} className="header-logo" alt="Mairie" />
         <h1 className="header-title">mamairie.fr</h1>
         <h2>Votre mairie vous ressemble  et vous rassemble</h2>
-      </Link>
+      </Link> */}
       <Link to="/">
         <img src={photo} className="header-photo" alt="Mairie" />
       </Link>

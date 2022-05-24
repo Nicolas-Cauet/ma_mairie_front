@@ -35,6 +35,13 @@
 
         .ui.button {
             margin: 0.2rem;
+            transition: all .2s ease-in-out;
+            
+            &:hover {
+              box-shadow: 2px 2px 9px 0px rgba(0,0,0,0.7);
+              transform: scale(1.01);
+            }
+
         }
     }
 
@@ -51,6 +58,14 @@
         padding: 1rem;
         border: solid 0.1rem grey;
         border-radius: 1rem;
+        transition: all .2s ease-in-out;
+
+    
+      &:hover {
+        box-shadow: 2px 2px 9px 0px rgba(0,0,0,0.7);
+        transform: scale(1.01);
+      }
+      
     }
 
     &-form {

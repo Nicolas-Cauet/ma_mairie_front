@@ -1,7 +1,5 @@
 import { shallow } from 'enzyme';
 import { render } from '@testing-library/react';
-import { Provider } from 'react-redux';
-
 import Footer from '../../src/components/Footer';
 
 describe('<Footer />', () => {

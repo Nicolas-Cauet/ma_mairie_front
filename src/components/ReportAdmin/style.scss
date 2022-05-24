@@ -115,15 +115,21 @@
     }
     & .ui.button {
         width: 50%;
+        transition: all .2s ease-in-out;
+
+      &:hover {
+        box-shadow: 2px 2px 9px 0px rgba(0,0,0,0.3);
+        // transform: scale(1.01);
+      }
     }
 }
 
 button.ui.button.reportAdmin-submit {
-    background-color: vars.$createColor;
+    background-color: #7fd30042;
 }
 
 button.ui.button.reportAdmin-abort {
-    background-color: vars.$statusRefusedColor;
+    background-color: #d3258d41;
 }
 [type="radio"] {
    clip: rect(0 0 0 0); 
@@ -194,12 +200,19 @@ input[type="radio"].abort:checked + label {
         }
 
         &-date {
+          align-items: center;
             justify-content: space-between;
             padding: 0 2rem;
         }
     }
+
     input[type="radio"] + label {
         padding: 1rem 2rem;
         font-size: 1.25rem;
+    }
+    
+    .ui.label {
+      margin-top: 1rem;
+
     }
 }

@@ -37,11 +37,16 @@
     width: 100%;
     border-bottom-left-radius: 0;
     border-bottom-right-radius: 0;
+    box-shadow: 2px 2px 9px 0px rgba(0,0,0,0.7);
   }
 
   .ui.buttons .button {
     border-bottom-left-radius: 0rem;
     border-bottom-right-radius: 0rem;
+    
+    &:hover {
+      box-shadow: 2px 2px 9px 0px rgba(0,0,0,0.7);
+    }
   }
 
   &-info{
@@ -66,6 +71,14 @@
 .ui.button.login-form-button {
   background-color: vars.$createColor;
   margin: 2rem 1rem 0rem;
+  transition: all .2s ease-in-out;
+
+
+    &:hover {
+      box-shadow: 2px 2px 9px 0px rgba(0,0,0,0.7);
+      transform: scale(1.01);
+    }
+
 
   &:active {
     background-color: vars.$createColor;
@@ -74,6 +87,12 @@
 
 .ui.button.logout-button {
   background-color: vars.$statusRefusedColor;
+  transition: all .2s ease-in-out;
+  
+  &:hover {
+    box-shadow: 2px 2px 9px 0px rgba(0,0,0,0.7);
+    transform: scale(1.01);
+  }
 }
 
 .forms{
@@ -107,4 +126,13 @@
     width: 70%;
   }
   
+}
+
+.ui.button.login-button {
+  transition: all .2s ease-in-out;
+
+  &:hover {
+  box-shadow: 2px 2px 9px 0px rgba(0,0,0,0.7);
+  transform: scale(1.01);
+  }
 }

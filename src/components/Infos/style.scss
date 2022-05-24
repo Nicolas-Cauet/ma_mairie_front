@@ -1,3 +1,6 @@
+@use 'sass:color';
+@use 'src/styles/vars';
+
 .infos {
   margin: 0 1.5rem 1rem;
   display: flex;
@@ -17,6 +20,7 @@
     width: 80%;
     margin-bottom: 1rem;
     text-align: center;
+
   }
 
   &-content {
@@ -25,13 +29,18 @@
   }
   
   .infos-button {
-  background-color: #a4d78d;
+  background-color: vars.$infosbutton;
   text-align: center;
   align-items: center;
   border: solid 0.1rem grey;
+  transition: all .2s ease-in-out;
+
 
     &:hover {
-        background-color: #a4d78d;
+      background-color: color.scale(vars.$infosbutton, $lightness: -10%);
+      box-shadow: 2px 2px 9px 0px rgba(0,0,0,0.7);
+      transform: scale(1.01);
+        
     }
   }
 }

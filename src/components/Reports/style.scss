@@ -28,10 +28,14 @@
   justify-content: center;
   padding: 1.5rem;
   width: 85%;
+  transition: all .2s ease-in-out;
+
 
   &:hover {
     background-color: color.scale(vars.$warningButtonColor, $lightness: -10%);
     border: 2px solid color.scale(vars.$warningButtonColor, $lightness: -30%);
+    box-shadow: 2px 2px 9px 0px rgba(0,0,0,0.7);
+    transform: scale(1.01);
   }
 
   & .icon {
@@ -41,6 +45,12 @@
 
 .ui.styled.accordion {
   box-shadow: none;
+  transition: all .2s ease-in-out;
+
+  &:hover {
+    box-shadow: 2px 2px 9px 0px rgba(0,0,0,0.7);
+    transform: scale(1.01);
+  }
 
   & .title {
     border: none;
