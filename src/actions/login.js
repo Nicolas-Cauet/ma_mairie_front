@@ -33,12 +33,11 @@ export const setLogout = () => ({
 
 /** Submit signup form to auth midlleware for auth API */
 export const SUBMIT_SIGNUP = 'SUBMIT_SIGNUP';
-export const submitSignup = (pseudo, email, password, confirmPassword, inseeCode) => ({
+export const submitSignup = (pseudo, email, password, inseeCode) => ({
   type: SUBMIT_SIGNUP,
   pseudo,
   email,
   password,
-  confirmPassword,
   inseeCode,
 });
 
