@@ -71,7 +71,7 @@ function ReportAdmin() {
     } else if (!textAreaValue && !reporting_statut) {
       dispatch(setMessage('Vous devez donner une réponse et choisir un status', false));
     } else if (!reporting_statut) {
-      dispatch(setMessage('Vous devez choisir un status', false));
+      dispatch(setMessage('Vous devez choisir un statut', false));
     } else {
       dispatch(setMessage('Vous devez remplir la réponse de la mairie', false));
     }

@@ -226,6 +226,11 @@ input[type="radio"].abort:checked + label {
           align-items: center;
             justify-content: space-between;
             padding: 0 2rem;
+
+            & .ui.label {
+                margin-top: 1rem;
+          
+              }
         }
     }
 
@@ -234,8 +239,4 @@ input[type="radio"].abort:checked + label {
         font-size: 1.25rem;
     }
     
-    .ui.label {
-      margin-top: 1rem;
-
-    }
 }

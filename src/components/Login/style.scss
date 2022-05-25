@@ -5,9 +5,9 @@
     text-align: center;
     padding: 1.5rem 0rem 2rem;
 
-    p {
-      margin-bottom: 2rem;
-    }
+    // p {
+    //   margin-bottom: 2rem;
+    // }
 
     & h2 {
       margin: 1rem 0 2.5rem;
@@ -88,7 +88,8 @@
 }
 
 .forms{
-  background-color: rgb(215, 223, 228);
+  background-color: vars.$backgroundModuleColor;
+  border: vars.$borderModule;
   width: 100%;
   margin: auto;
   padding: 0 0 1rem;

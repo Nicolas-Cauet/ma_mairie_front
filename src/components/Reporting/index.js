@@ -267,7 +267,7 @@ function Reporting() {
 
                 <Message
                   content="En acceptant les termes et les conditions de ce formulaire, j'autorise
-                mamairie.fr à stocker mon addresse IP durant 30j, afin que mamairie.fr puisse se prém.unir en cas d'événement pouvant compromettre la sécurité du site."
+                mamairie.fr à stocker mon adresse IP durant 30 jours, afin que mamairie.fr puisse se prémunir en cas d'événement pouvant compromettre la sécurité du site."
                 />
               </Accordion.Content>
             </Accordion>

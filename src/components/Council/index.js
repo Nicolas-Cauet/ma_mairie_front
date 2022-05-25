@@ -27,7 +27,7 @@ function Council() {
    */
   useEffect(() => {
     dispatch(getCouncilMembers());
-  }, []);
+  }, [councilMembers]);
 
   return (
     <section className="card-container">

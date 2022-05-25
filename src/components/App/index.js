@@ -18,6 +18,7 @@ import NotFound from '../NotFound';
 
 import 'semantic-ui-css/semantic.min.css';
 import './style.scss';
+import { getCouncilMembers } from '../../actions/council';
 
 function App() {
   const dispatch = useDispatch();
@@ -32,6 +33,7 @@ function App() {
   useEffect(() => {
     dispatch(setTownHallId(1));
     dispatch(toggleMenu(true));
+    dispatch(getCouncilMembers());
   }, []);
 
   return (
