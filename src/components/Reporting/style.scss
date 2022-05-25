@@ -159,9 +159,6 @@
     margin-right: auto;
     margin-left: auto;
   }
-  .reporting-form .ui.form .ui.input.field-reporting_title {
-    width: 65%;
-  }
 
   .ui.form .field {
     width: 65%;
@@ -169,7 +166,8 @@
     justify-content: center ;
   }
 
-  .reporting-form .ui.form .ui.input {
-    width: 50%;
+  .reporting .ui.form .ui.input.field-reporting_title {
+  width: 65%;  
   }
+
 }

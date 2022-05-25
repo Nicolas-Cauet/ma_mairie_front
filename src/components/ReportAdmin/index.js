@@ -69,7 +69,7 @@ function ReportAdmin() {
       ));
       navigate('/admin/reports/1');
     } else if (!textAreaValue && !reporting_statut) {
-      dispatch(setMessage('Vous devez donner une réponse et choisir un status', false));
+      dispatch(setMessage('Vous devez donner une réponse et choisir un statut', false));
     } else if (!reporting_statut) {
       dispatch(setMessage('Vous devez choisir un statut', false));
     } else {

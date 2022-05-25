@@ -29,7 +29,7 @@ export const initialState = {
     {
       // key: 'Catégories',
       text: 'Catégories',
-      value: 'Catégories',
+      value: null,
     },
     {
       // key: 'Voirie',

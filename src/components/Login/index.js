@@ -180,7 +180,7 @@ function Login() {
             {samePassword ? '' : <p className="red">Les mots de passe sont différents</p>}
 
             <Field
-              type="tel"
+              type="password"
               className="login-input"
               placeholder="Code INSEE"
               value={inseeCode}

@@ -73,6 +73,7 @@ function Reporting() {
     dispatch(resetErrorReporting());
     if (reporting_checkBox
       && reporting_category !== ''
+      && reporting_category !== 'Catégories'
       && reporting_title !== ''
       && reporting_description !== ''
       && reporting_email !== ''
@@ -93,7 +94,7 @@ function Reporting() {
     } else {
       dispatch(setMessage('Vous devez compléter les champs obligatoires', false));
 
-      if (reporting_category === '') {
+      if (reporting_category === '' || reporting_category === 'Catégories') {
         dispatch(errorReportingCategory());
       }
       if (reporting_title === '') {
@@ -167,7 +168,7 @@ function Reporting() {
           )}
           <Field
             type="text"
-            className="reporting-title ddd"
+            className="reporting-title"
             placeholder="Titre *"
             value={reporting_title}
             title="Titre"

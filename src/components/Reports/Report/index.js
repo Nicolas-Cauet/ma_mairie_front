@@ -59,6 +59,12 @@ function Report({
     dispatch(getAdminReports());
   };
 
+  // const confirmDeleteReport = () => setTimeout(() => {
+  //   dispatch(deleteSelectedReport(reporting_id));
+  //   setConfirm(false);
+  //   dispatch(getAdminReports());
+  // }, 2000);
+
   return (
     <>
       {/* Accordion list of reports */}
