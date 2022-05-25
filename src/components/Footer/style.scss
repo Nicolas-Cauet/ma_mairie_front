@@ -1,8 +1,11 @@
+@use 'src/styles/vars';
+
 .footer{
+  color: vars.$fontColor;
   margin-top: 2rem;
   padding-bottom: 1rem;
   text-align: center;
-  background-color: #cccccc;
+  background-color: vars.$seconderyColor;
 
     &-content {
       border-top: black 0.1rem solid;
