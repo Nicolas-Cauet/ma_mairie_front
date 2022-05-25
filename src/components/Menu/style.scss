@@ -36,16 +36,17 @@
     margin: 0;
   } 
 
-}
+  h1 {
+    font-size: 1.5rem;
+  }
 
-h1 {
-  font-size: 1rem;
 }
 
 .ui.button.menu-button {
   background-color: #FFFCF0;
+  color: vars.$seconderyColor;
   // border-radius: 50%;
-  padding: 1.5rem;
+  padding: 1rem;
 }
 
 .ui.button.menu-button .icon {
@@ -166,5 +167,9 @@ a {
   .menu-list .ui.button {
     width: 20rem;
     height: 10rem;
+  }
+
+  .ui.button.menu-button {
+    padding: 1.5rem;
   }
 }

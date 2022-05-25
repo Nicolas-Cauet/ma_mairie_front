@@ -1,7 +1,12 @@
 @use 'src/styles/vars';
 
 .reportAdmin {
-    
+    background-color: vars.$backgroundModuleColor;
+    margin-top: 2rem;
+    border: vars.$borderModule;
+    border-radius: 1rem;
+    padding-bottom: 2rem;
+
     &-checkbox {
       width: 28%;
 
@@ -95,7 +100,6 @@
         }
 
     &-info {
-        background-color: vars.$backgroundModuleColor;
         width: 80%;
         margin: auto;
         margin-bottom: 2rem;
@@ -120,7 +124,6 @@
         display: flex;
         width: 90%;
         margin: auto;
-        padding-top: 2rem;
     }
     & .ui.button {
         width: 50%;
@@ -196,9 +199,9 @@ input[type="radio"].abort:checked + label {
     .reportAdmin {
         // border: 0.1rem solid black;
         // background-color: vars.$fontColor; 
-        padding-bottom: 2rem;
-        width: 70%;
-        margin: 0 auto;
+        width: 80%;
+        margin-right: auto;
+        margin-left: auto;
         
         &-checkbox {
           width: 30%;

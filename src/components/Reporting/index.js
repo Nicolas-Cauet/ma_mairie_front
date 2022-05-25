@@ -147,8 +147,8 @@ function Reporting() {
   return (
     <>
       {isReporting && (
-      <section className="reporting-form">
-        <h1>Signaler un événement</h1>
+      <section className="reporting">
+        <h2>Signaler un événement</h2>
         <Form className="reporting-form">
           <section className="filter-section">
             <Dropdown

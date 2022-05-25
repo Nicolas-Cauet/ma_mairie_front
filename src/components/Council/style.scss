@@ -8,10 +8,18 @@
   flex-wrap: wrap;
   justify-content: center;
 
+  background-color: vars.$backgroundModuleColor;
+  margin-bottom: 2rem;
+  margin-top: 2rem;
+  border-radius: 1rem;
+  padding: 1rem;
+  border: vars.$borderModule;
+
   & .editingIcon {
     position: absolute;
     right: 0.05rem;
     bottom: 0.05rem;
+    cursor: pointer;
   }
 
   & .deleteIcon {
@@ -19,12 +27,12 @@
     position: absolute;
     right: 0.05rem;
     top: 0.05rem;
+    cursor: pointer;
   }
 
-  & h1 {
+  & h2 {
     text-align: center;
     margin: 1rem 0 2.5rem;
-    font-size: 2rem;
     width: 100%;
   }
 
@@ -47,6 +55,7 @@
       justify-content: center;
 
       &.content-circle {
+        cursor: pointer;
         display: flex;
         flex-direction: column;
         justify-content: space-between;
@@ -125,4 +134,13 @@
     }
 
   }
+}
+
+/* Desktop */
+@media (min-width: 900px) {
+ .card-container {
+   width: 80%;
+   margin-left: auto;
+   margin-right: auto;
+ }
 }

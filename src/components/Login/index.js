@@ -98,7 +98,7 @@ function Login() {
   return (
     <div className="login">
       {!logged && (
-      <h1>Accèder à votre espace d'administration</h1>
+      <h2>Accèder à votre espace d'administration</h2>
       )}
       {logged && (
         <div>

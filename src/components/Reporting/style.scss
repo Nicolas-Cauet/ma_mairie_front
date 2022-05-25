@@ -2,8 +2,16 @@
 @use 'src/styles/vars';
 
 
-.reporting-form {
+.reporting {
   margin-bottom: 0rem;
+  text-align: center;
+
+  background-color: vars.$backgroundModuleColor;
+  margin-bottom: 2rem;
+  margin-top: 2rem;
+  border-radius: 1rem;
+  padding: 1rem;
+  border: vars.$borderModule;
 
   & .obligateFields {
     font-size: 0.75rem ;  }
@@ -141,9 +149,15 @@
 
 /* Desktop */
 @media (min-width: 900px) {
+  .reporting {
+    width: 80%;
+    margin-right: auto;
+    margin-left: auto;
+  }
   .reporting-form .filter-section .ui.fluid.dropdown.categories {
     width: 65%;
-    margin: auto;
+    margin-right: auto;
+    margin-left: auto;
   }
   .reporting-form .ui.form .ui.input.field-reporting_title {
     width: 65%;

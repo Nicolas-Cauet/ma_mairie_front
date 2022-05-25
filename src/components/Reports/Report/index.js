@@ -111,14 +111,14 @@ function Report({
               <div className="report-button">
                 <Link to={`/admin/reports/1/${reporting_id}`}>
                   <Button
+                    className="report-button--inProgress"
                     onClick={() => { dispatch(eraseValueActiveIndex()); }}
                   >
                     Traiter le signalement
                   </Button>
                 </Link>
-                <Button onClick={toggleDeleteConfirm}>Supprimer</Button>
+                <Button className="report-button--delete" onClick={toggleDeleteConfirm}>Supprimer</Button>
                 <Confirm
-                  report="coucou"
                   content="Êtes-vous sûr de vouloir supprimer ce signalement ?"
                   cancelButton="Annuler"
                   confirmButton="Supprimer"

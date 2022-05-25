@@ -31,7 +31,7 @@ function Council() {
 
   return (
     <section className="card-container">
-      <h1>Présentation du conseil Municipal</h1>
+      <h2>Présentation du conseil Municipal</h2>
       {councilMembers.map((card) => (
         <CardModel key={card.town_hall_staff_id} imageName={card.photo} name={`${card.first_name} ${card.last_name}`} role={card.role} {...card} />
       ))}
