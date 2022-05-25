@@ -1,4 +1,5 @@
 @use 'sass:color';
+@use 'src/styles/vars';
 
 .admin {
     margin: 0 1.5rem 0;
@@ -47,7 +48,7 @@
 
     &-button {
         text-align: center;
-        background-color: #EEEEEE;
+        background-color: vars.$backgroundModuleColor;
         padding: 1rem;
         border: solid 0.1rem grey;
         border-radius: 1rem;
