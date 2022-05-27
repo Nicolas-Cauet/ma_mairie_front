@@ -3,6 +3,8 @@ import axios from 'axios';
 // import { toggleMenu } from '../actions/menu';
 import { eraseReportingFields, SUBMIT_REPORTING } from '../actions/reporting';
 import {
+  getAdminReports,
+  getReports,
   GET_REPORTS,
   saveReports,
 } from '../actions/reports';
@@ -62,6 +64,10 @@ const api = (store) => (next) => (action) => {
            * @setMessage set a message error
            */
           store.dispatch(setMessage(error.response.data.error.message, false));
+        })
+        .finally(() => {
+          store.dispatch(getReports());
+          store.dispatch(getAdminReports());
         });
       break;
     default:
