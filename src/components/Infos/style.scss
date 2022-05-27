@@ -20,7 +20,6 @@
     width: 80%;
     margin-bottom: 1rem;
     text-align: center;
-
   }
 
   &-content {
@@ -42,7 +41,13 @@
       box-shadow: 2px 2px 9px 0px rgba(0,0,0,0.3);
         
     }
+
+    &:focus {
+      background-color: vars.$infosbutton;
+      border: 2px solid color.scale(vars.$infosbutton, $lightness: -20%);
+
+
+    }
   }
 }
-
 
