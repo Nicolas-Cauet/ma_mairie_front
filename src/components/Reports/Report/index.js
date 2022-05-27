@@ -56,7 +56,6 @@ function Report({
   const confirmDeleteReport = () => {
     dispatch(deleteSelectedReport(reporting_id));
     setConfirm(false);
-    dispatch(getAdminReports());
   };
 
   // const confirmDeleteReport = () => setTimeout(() => {

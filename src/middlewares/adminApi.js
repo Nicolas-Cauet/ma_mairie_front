@@ -49,10 +49,10 @@ const adminApi = (store) => (next) => (action) => {
 
         .then((response) => {
           /** success of get request
-           * @deleteReport close confirm window
+           * @getAdminReports get new reports list to state value
            * @setMessage set a success message
            */
-          // store.dispatch(deleteReport(action.id));
+          store.dispatch(getAdminReports());
           store.dispatch(setMessage(response.data, true));
         })
         .catch((error) => {
