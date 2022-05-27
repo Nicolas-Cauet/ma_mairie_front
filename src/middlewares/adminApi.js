@@ -52,7 +52,7 @@ const adminApi = (store) => (next) => (action) => {
            * @deleteReport close confirm window
            * @setMessage set a success message
            */
-          store.dispatch(deleteReport(action.id));
+          // store.dispatch(deleteReport(action.id));
           store.dispatch(setMessage(response.data, true));
         })
         .catch((error) => {
