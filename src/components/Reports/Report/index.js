@@ -15,7 +15,7 @@ import Moment from 'react-moment';
 import {
   deleteSelectedReport,
   eraseValueActiveIndex,
-  getAdminReports,
+  // getAdminReports,
   setActiveIndex,
 } from '../../../actions/reports';
 

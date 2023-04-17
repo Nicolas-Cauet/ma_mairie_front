@@ -1,3 +1,4 @@
+/* eslint-disable react/no-unknown-property */
 import {
   Button,
   Form,
@@ -43,7 +44,7 @@ function ReportAdmin() {
   useEffect(() => {
     dispatch(createStateTextAreaAdminReport(report.admin_text, `textArea-${report.reporting_id}`));
     dispatch(setMessage(''));
-  }, []);
+  }, [dispatch, report.admin_text, report.reporting_id]);
 
   /** Clicking on a status button
    * @changeCheckboxAdminReporting reset error message
@@ -71,9 +72,9 @@ function ReportAdmin() {
     } else if (!textAreaValue && !reporting_statut) {
       dispatch(setMessage('Vous devez donner une réponse et choisir un statut', false));
     } else if (!reporting_statut) {
-      dispatch(setMessage('Vous devez choisir un statut', false));
+      dispatch(setMessage('le statut du signalement est requis !', false));
     } else {
-      dispatch(setMessage('Vous devez remplir la réponse de la mairie', false));
+      dispatch(setMessage('le texte de l\'administrateur est requis ! et doit faire minimum 10 caratères de long.', false));
     }
   };
 

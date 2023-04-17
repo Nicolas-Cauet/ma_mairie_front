@@ -1,7 +1,7 @@
 import axios from 'axios';
 
 import {
-  deleteReport,
+  // deleteReport,
   DELETE_SELECTED_REPORT,
   getAdminReports,
   GET_ADMIN_REPORTS,
@@ -12,7 +12,7 @@ import { loading, setMessage } from '../actions/utilities';
 
 /** Instance of axios with options */
 const instance = axios.create({
-  baseURL: 'https://mamairie.herokuapp.com',
+  baseURL: 'http://localhost:4000',
   headers: {
     Authorization: `Bearer ${localStorage.getItem('accessToken')}`,
   },
@@ -35,7 +35,7 @@ const adminApi = (store) => (next) => (action) => {
           /** error on request
            * @setMessage set a message error
            */
-          store.dispatch(setMessage(error.response.data.error.message, false));
+          store.dispatch(setMessage(error.response.data, false));
         })
         .finally(() => {
           /** after success action
@@ -59,7 +59,7 @@ const adminApi = (store) => (next) => (action) => {
           /** error on request
            * @setMessage set a message error
            */
-          store.dispatch(setMessage(error.response.data.error.message, false));
+          store.dispatch(setMessage(error.response.data, false));
         });
       break;
     }
@@ -81,7 +81,7 @@ const adminApi = (store) => (next) => (action) => {
           /** error on request
            * @setMessage set a message error
            */
-          store.dispatch(setMessage(error.response.data.error.message, false));
+          store.dispatch(setMessage(error.response.data, false));
         });
       break;
     }

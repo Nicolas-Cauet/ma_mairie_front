@@ -81,7 +81,7 @@ function CardModel({ ...card }) {
     dispatch(createEditingMemberFirstName(card.first_name, `firstNameMember-${card.town_hall_staff_id}`));
     dispatch(createEditingMemberRole(card.role, `roleMember-${card.town_hall_staff_id}`));
     dispatch(createEditingMemberPhoto(card.photo, `photoMember-${card.town_hall_staff_id}`));
-  }, []);
+  }, [card.first_name, card.last_name, card.photo, card.role, card.town_hall_staff_id, dispatch]);
 
   return (
     <Card className={`card-${card.town_hall_staff_id}`} name={card.town_hall_staff_id}>

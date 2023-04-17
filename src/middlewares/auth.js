@@ -13,7 +13,7 @@ import { redirect, setMessage } from '../actions/utilities';
 
 /** Instance of axios with options */
 const instance = axios.create({
-  baseURL: 'https://mamairie.herokuapp.com',
+  baseURL: 'http://localhost:4000',
 });
 
 // if (localStorage.getItem('accessToken')) {
@@ -44,7 +44,7 @@ const auth = (store) => (next) => (action) => {
           /** error on request
            * @setMessage set a message error
            */
-          store.dispatch(setMessage(error.response.data.error.message, false));
+          store.dispatch(setMessage(error.response.data, false));
         });
       break;
     case SUBMIT_LOGIN:
@@ -69,7 +69,7 @@ const auth = (store) => (next) => (action) => {
           /** error on request
            * @setMessage set a message error
            */
-          store.dispatch(setMessage(error.response.data.error.message, false));
+          store.dispatch(setMessage(error.response.data, false));
         });
       break;
     case LOGOUT: {

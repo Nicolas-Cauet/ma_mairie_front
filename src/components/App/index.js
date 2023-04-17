@@ -34,7 +34,7 @@ function App() {
     dispatch(setTownHallId(1));
     dispatch(toggleMenu(true));
     dispatch(getCouncilMembers());
-  }, []);
+  }, [dispatch]);
 
   return (
     <div className="app">

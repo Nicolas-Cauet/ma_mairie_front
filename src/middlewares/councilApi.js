@@ -8,7 +8,7 @@ import { setMessage } from '../actions/utilities';
 
 /** Instance of axios with options */
 const instance = axios.create({
-  baseURL: 'https://mamairie.herokuapp.com',
+  baseURL: 'http://localhost:4000',
   headers: {
     Authorization: `Bearer ${localStorage.getItem('accessToken')}`,
   },
@@ -50,7 +50,7 @@ const councilApi = (store) => (next) => (action) => {
           /** error on request
            * @setMessage set a message error
            */
-          store.dispatch(setMessage(error.response.data.error.message, false));
+          store.dispatch(setMessage(error.response.data, false));
         });
       break;
     case PATCH_COUNCIL_MEMBERS:
@@ -71,7 +71,7 @@ const councilApi = (store) => (next) => (action) => {
           /** error on request
            * @setMessage set a message error
            */
-          store.dispatch(setMessage(error.response.data.error.message, false));
+          store.dispatch(setMessage(error.response.data, false));
         });
       break;
     case DELETE_COUNCIL_MEMBERS:

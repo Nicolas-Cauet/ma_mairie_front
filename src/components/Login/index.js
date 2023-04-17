@@ -45,7 +45,7 @@ function Login() {
     if (redirectTo !== '') {
       navigate(redirectTo);
     }
-  }, []);
+  }, [navigate, redirectTo]);
 
   /** Clicking on connection button
    * @setMessage reset error message

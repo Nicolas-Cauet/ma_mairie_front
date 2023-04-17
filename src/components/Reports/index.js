@@ -49,7 +49,7 @@ function Reports() {
     } else {
       dispatch(getReports());
     }
-  }, []);
+  }, [dispatch, logged]);
 
   /** list of month in french fot moment */
   moment.updateLocale('fr', {

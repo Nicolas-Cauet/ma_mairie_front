@@ -12,7 +12,7 @@ import { loading, setMessage } from '../actions/utilities';
 
 /** Instance of axios with options */
 const instance = axios.create({
-  baseURL: 'https://mamairie.herokuapp.com',
+  baseURL: 'http://localhost:4000',
 });
 
 const api = (store) => (next) => (action) => {
@@ -63,7 +63,7 @@ const api = (store) => (next) => (action) => {
           /** error on request
            * @setMessage set a message error
            */
-          store.dispatch(setMessage(error.response.data.error.message, false));
+          store.dispatch(setMessage(error.response.data, false));
         })
         .finally(() => {
           store.dispatch(getReports());

@@ -1,7 +1,7 @@
 import { useSelector, useDispatch } from 'react-redux';
 import { Link, NavLink } from 'react-router-dom';
 import { Button, Icon } from 'semantic-ui-react';
-import { useEffect, useRef } from 'react';
+// import { useEffect, useRef } from 'react';
 
 import { toggleMenu } from '../../actions/menu';
 import { setMessage } from '../../actions/utilities';
